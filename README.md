@@ -1,29 +1,61 @@
-# Create T3 App
+# Office Manager (OM) Weekly Report Management System
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+An automated, centralized weekly activity reporting, monitoring, summary, target achievement, and email notification web platform built with **Next.js 15 (App Router)**, **TypeScript**, **tRPC v11**, **Prisma ORM**, **Tailwind CSS v4**, and **SQLite / PostgreSQL**.
 
-## What's next? How do I make an app with this?
+---
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## 🚀 Key Highlights & Capabilities
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+1. **Enter Once, Auto-Calculate Everything**:
+   - Office Managers (OM) input weekly numbers once.
+   - Summaries, KPIs, target achievement percentages, and Excel export files are computed automatically in real time.
+2. **4 Core Weekly Activities**:
+   - **Market Visit**: Visits, Findings, Solved, Pending (Enforces $\text{Solved} + \text{Pending} = \text{Finding}$).
+   - **Location Tracking (LOC)**: Submitted Qty & Finding Day Qty (Supports decimal e.g. 3.5 days; strictly NO LOC Visit field).
+   - **Dress Code**: Qty & Findings.
+   - **Mess Visit**: Qty & Findings.
+   - **Zero Activity Rule**: Submitting 0 for any activity is completely valid.
+3. **Submission Tracking Matrix**:
+   - Week 1 to Week 4 status tracking (`Submitted`, `Late Submitted`, `Pending`, `Upcoming`).
+   - Friday 11:59 PM deadline enforcement.
+4. **Target vs Achievement Module**:
+   - Admin sets monthly targets (LOC, Mess Visit, Dress Code).
+   - Automatically computes achievement percentages and ranks OMs on a leaderboard.
+   - Month-over-month performance comparison (e.g. August vs September).
+5. **Finding Status Follow-up & Audit Trail**:
+   - Allows status updates (Solved/Pending) as issues are addressed in the field.
+   - Preserves complete historical audit trail with previous vs new numbers, updater ID, timestamp, and notes.
+6. **Automatic Email Notification Engine**:
+   - Evaluates missed reports after Friday 11:59 PM.
+   - Sends email directly to responsible OM (`To`), while copying senior reporting managers (`CC`).
+   - Prevents duplicate email dispatches via dedicated notification logging.
+7. **18-Column Formatted Excel Export**:
+   - Pre-filtered 1-click download of all reporting records directly in Excel-compatible CSV format.
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+---
 
-## Learn More
+## 📁 System Architecture & Documentation
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+All technical documentation is stored in the [`docs/`](./docs) folder:
+- 📖 [**Architecture & Design Blueprint**](./docs/ARCHITECTURE_AND_DESIGN.md)
+- 📋 [**59-Point Business Logic Mapping**](./docs/BUSINESS_LOGIC_AND_SPEC.md)
+- 🗄️ [**Database Schema & ERD**](./docs/DATABASE_SCHEMA.md)
+- 🔌 [**API & tRPC Documentation**](./docs/API_DOCUMENTATION.md)
+- 🚢 [**Deployment Guide**](./docs/DEPLOYMENT_GUIDE.md)
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+---
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+## ⚡ Quick Start
 
-## How do I deploy this?
+```bash
+# 1. Push database schema to local SQLite database
+npm run db:push
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+# 2. Seed database with real OMs, zones, targets, and September 2026 reports
+node prisma/seed.js
+
+# 3. Start development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the live dashboard and use the top-right **Role Switcher** to test both **Head Office Admin** and **Office Manager** user roles.

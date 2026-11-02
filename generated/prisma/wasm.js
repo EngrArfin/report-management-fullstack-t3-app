@@ -87,65 +87,113 @@ Prisma.NullTypes = {
  * Enums
  */
 exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
-  ReadUncommitted: 'ReadUncommitted',
-  ReadCommitted: 'ReadCommitted',
-  RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
 });
 
-exports.Prisma.PostScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  createdById: 'createdById'
-};
-
-exports.Prisma.AccountScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  type: 'type',
-  provider: 'provider',
-  providerAccountId: 'providerAccountId',
-  refresh_token: 'refresh_token',
-  access_token: 'access_token',
-  expires_at: 'expires_at',
-  token_type: 'token_type',
-  scope: 'scope',
-  id_token: 'id_token',
-  session_state: 'session_state',
-  refresh_token_expires_in: 'refresh_token_expires_in'
-};
-
-exports.Prisma.SessionScalarFieldEnum = {
-  id: 'id',
-  sessionToken: 'sessionToken',
-  userId: 'userId',
-  expires: 'expires'
-};
-
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
+  staffId: 'staffId',
   name: 'name',
+  designation: 'designation',
+  zone: 'zone',
   email: 'email',
-  emailVerified: 'emailVerified',
-  image: 'image'
+  mobile: 'mobile',
+  role: 'role',
+  status: 'status',
+  password: 'password',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
-exports.Prisma.VerificationTokenScalarFieldEnum = {
-  identifier: 'identifier',
-  token: 'token',
-  expires: 'expires'
+exports.Prisma.ZoneScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  code: 'code',
+  isActive: 'isActive',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.WeeklyReportScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  monthYear: 'monthYear',
+  year: 'year',
+  month: 'month',
+  week: 'week',
+  marketVisitQty: 'marketVisitQty',
+  marketVisitFindingQty: 'marketVisitFindingQty',
+  solvedQty: 'solvedQty',
+  pendingQty: 'pendingQty',
+  locSubmittedQty: 'locSubmittedQty',
+  locFindingDayQty: 'locFindingDayQty',
+  dressCodeQty: 'dressCodeQty',
+  dressCodeFindingQty: 'dressCodeFindingQty',
+  messVisitQty: 'messVisitQty',
+  messVisitFindingQty: 'messVisitFindingQty',
+  status: 'status',
+  deadline: 'deadline',
+  submittedAt: 'submittedAt',
+  updatedAt: 'updatedAt',
+  notes: 'notes'
+};
+
+exports.Prisma.FindingHistoryScalarFieldEnum = {
+  id: 'id',
+  reportId: 'reportId',
+  updatedById: 'updatedById',
+  previousSolved: 'previousSolved',
+  newSolved: 'newSolved',
+  previousPending: 'previousPending',
+  newPending: 'newPending',
+  remark: 'remark',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.MonthlyTargetScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  year: 'year',
+  month: 'month',
+  monthYear: 'monthYear',
+  locTarget: 'locTarget',
+  messVisitTarget: 'messVisitTarget',
+  dressCodeTarget: 'dressCodeTarget',
+  isLocked: 'isLocked',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.EmailNotificationConfigScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  name: 'name',
+  description: 'description',
+  subjectTemplate: 'subjectTemplate',
+  bodyTemplate: 'bodyTemplate',
+  ccRecipients: 'ccRecipients',
+  bccRecipients: 'bccRecipients',
+  isActive: 'isActive',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.EmailNotificationLogScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  year: 'year',
+  month: 'month',
+  week: 'week',
+  emailType: 'emailType',
+  toEmail: 'toEmail',
+  ccEmails: 'ccEmails',
+  subject: 'subject',
+  status: 'status',
+  sentAt: 'sentAt',
+  errorMessage: 'errorMessage'
 };
 
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
-};
-
-exports.Prisma.QueryMode = {
-  default: 'default',
-  insensitive: 'insensitive'
 };
 
 exports.Prisma.NullsOrder = {
@@ -155,11 +203,13 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  Post: 'Post',
-  Account: 'Account',
-  Session: 'Session',
   User: 'User',
-  VerificationToken: 'VerificationToken'
+  Zone: 'Zone',
+  WeeklyReport: 'WeeklyReport',
+  FindingHistory: 'FindingHistory',
+  MonthlyTarget: 'MonthlyTarget',
+  EmailNotificationConfig: 'EmailNotificationConfig',
+  EmailNotificationLog: 'EmailNotificationLog'
 };
 /**
  * Create the Client
@@ -199,8 +249,7 @@ const config = {
   "datasourceNames": [
     "db"
   ],
-  "activeProvider": "postgresql",
-  "postinstall": false,
+  "activeProvider": "sqlite",
   "inlineDatasources": {
     "db": {
       "url": {
@@ -209,13 +258,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  // NOTE: When using mysql or sqlserver, uncomment the @db.Text annotations in model Account below\n  // Further reading:\n  // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema\n  // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Post {\n  id        Int      @id @default(autoincrement())\n  name      String\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  createdBy   User   @relation(fields: [createdById], references: [id])\n  createdById String\n\n  @@index([name])\n}\n\n// Necessary for Next auth\nmodel Account {\n  id                       String  @id @default(cuid())\n  userId                   String\n  type                     String\n  provider                 String\n  providerAccountId        String\n  refresh_token            String? // @db.Text\n  access_token             String? // @db.Text\n  expires_at               Int?\n  token_type               String?\n  scope                    String?\n  id_token                 String? // @db.Text\n  session_state            String?\n  user                     User    @relation(fields: [userId], references: [id], onDelete: Cascade)\n  refresh_token_expires_in Int?\n\n  @@unique([provider, providerAccountId])\n}\n\nmodel Session {\n  id           String   @id @default(cuid())\n  sessionToken String   @unique\n  userId       String\n  expires      DateTime\n  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n}\n\nmodel User {\n  id            String    @id @default(cuid())\n  name          String?\n  email         String?   @unique\n  emailVerified DateTime?\n  image         String?\n  accounts      Account[]\n  sessions      Session[]\n  posts         Post[]\n}\n\nmodel VerificationToken {\n  identifier String\n  token      String   @unique\n  expires    DateTime\n\n  @@unique([identifier, token])\n}\n",
-  "inlineSchemaHash": "dd9a6edd7dcf3768e8fd246695361ce51823871115a517c30ff53e4d5bffa20b",
+  "inlineSchema": "// Prisma schema for Office Manager (OM) Weekly Report Management System\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = env(\"DATABASE_URL\")\n}\n\n// User / Office Manager (OM) or Admin\nmodel User {\n  id          String   @id @default(cuid())\n  staffId     String   @unique // e.g. \"572816\", \"451467\", \"362578\"\n  name        String // e.g. \"Md. Benajir Alam\"\n  designation String // e.g. \"TE\", \"Jex\", \"Area Manager\"\n  zone        String // e.g. \"D.M-01/Mitford\", \"Comilla\", \"Cox's Bazar\"\n  email       String   @unique\n  mobile      String?\n  role        String   @default(\"OM\") // \"OM\" | \"ADMIN\"\n  status      String   @default(\"ACTIVE\") // \"ACTIVE\" | \"INACTIVE\"\n  password    String? // Optional password/PIN\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n\n  reports       WeeklyReport[]\n  targets       MonthlyTarget[]\n  findingAudits FindingHistory[]       @relation(\"UpdatedByAudits\")\n  emailLogs     EmailNotificationLog[]\n\n  @@index([zone])\n  @@index([status])\n  @@index([role])\n}\n\n// Zone Master Table\nmodel Zone {\n  id        String   @id @default(cuid())\n  name      String   @unique // e.g. \"D.M-01/Mitford\", \"Comilla\"\n  code      String?\n  isActive  Boolean  @default(true)\n  createdAt DateTime @default(now())\n}\n\n// Weekly Report submitted by OM\nmodel WeeklyReport {\n  id     String @id @default(cuid())\n  userId String\n  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  monthYear String // Display label: \"September 2026\", \"October 2026\"\n  year      Int // 2026\n  month     Int // 1 - 12 (e.g. 9)\n  week      Int // 1, 2, 3, 4\n\n  // 1. Market Visit\n  marketVisitQty        Int @default(0)\n  marketVisitFindingQty Int @default(0)\n  solvedQty             Int @default(0)\n  pendingQty            Int @default(0)\n\n  // 2. Location Tracking (LOC) - STRICTLY NO \"LOC Visit Qty\" field\n  locSubmittedQty  Int   @default(0)\n  locFindingDayQty Float @default(0.0) // Can be float e.g. 3.5 days\n\n  // 3. Dress Code\n  dressCodeQty        Int @default(0)\n  dressCodeFindingQty Int @default(0)\n\n  // 4. Mess Visit\n  messVisitQty        Int @default(0)\n  messVisitFindingQty Int @default(0)\n\n  // Status: SUBMITTED | PENDING | LATE_SUBMITTED\n  status      String   @default(\"SUBMITTED\")\n  deadline    DateTime // Friday 11:59:59 PM of that week\n  submittedAt DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n  notes       String?\n\n  findingHistory FindingHistory[]\n\n  @@unique([userId, year, month, week])\n  @@index([year, month, week])\n  @@index([userId])\n  @@index([status])\n}\n\n// Audit history for Market Visit Finding status updates\nmodel FindingHistory {\n  id       String       @id @default(cuid())\n  reportId String\n  report   WeeklyReport @relation(fields: [reportId], references: [id], onDelete: Cascade)\n\n  updatedById String\n  updatedBy   User   @relation(\"UpdatedByAudits\", fields: [updatedById], references: [id])\n\n  previousSolved  Int\n  newSolved       Int\n  previousPending Int\n  newPending      Int\n  remark          String?\n  createdAt       DateTime @default(now())\n\n  @@index([reportId])\n}\n\n// Monthly Target set by Admin for each OM\nmodel MonthlyTarget {\n  id     String @id @default(cuid())\n  userId String\n  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  year      Int // 2026\n  month     Int // 1 - 12\n  monthYear String // e.g. \"September 2026\"\n\n  locTarget       Int @default(0) // LOC Submitted Qty Target\n  messVisitTarget Int @default(0) // Mess Visit Qty Target\n  dressCodeTarget Int @default(0) // Dress Code Qty Target\n\n  isLocked  Boolean  @default(false) // Locked/Approved flag to protect historical calculations\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@unique([userId, year, month])\n  @@index([year, month])\n}\n\n// Admin-configurable Email Notification Rules\nmodel EmailNotificationConfig {\n  id              String   @id @default(cuid())\n  code            String   @unique // e.g. \"WEEKLY_DEADLINE_MISSED\"\n  name            String // e.g. \"Missed Weekly Report Reminder\"\n  description     String?\n  subjectTemplate String // e.g. \"[URGENT] Missed Weekly Report - {OM_NAME} ({MONTH} Week {WEEK})\"\n  bodyTemplate    String // Template with placeholders\n  ccRecipients    String // Comma-separated emails for Seniors / Reporting Bosses\n  bccRecipients   String?\n  isActive        Boolean  @default(true)\n  updatedAt       DateTime @updatedAt\n}\n\n// Email Notification History to prevent duplicate spamming\nmodel EmailNotificationLog {\n  id     String @id @default(cuid())\n  userId String\n  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  year         Int\n  month        Int\n  week         Int\n  emailType    String // \"MISSED_DEADLINE\"\n  toEmail      String\n  ccEmails     String?\n  subject      String\n  status       String   @default(\"SENT\") // \"SENT\" | \"FAILED\"\n  sentAt       DateTime @default(now())\n  errorMessage String?\n\n  @@unique([userId, year, month, week, emailType])\n  @@index([year, month, week])\n}\n",
+  "inlineSchemaHash": "7ab60798bb0247a2109ed23e69cc07853c9cbd69ff5f51a4da94aba300509372",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Post\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"createdBy\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"PostToUser\"},{\"name\":\"createdById\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null},\"Account\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"provider\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"providerAccountId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"refresh_token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"access_token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"expires_at\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"token_type\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"scope\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"id_token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"session_state\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"AccountToUser\"},{\"name\":\"refresh_token_expires_in\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null},\"Session\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sessionToken\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"expires\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"SessionToUser\"}],\"dbName\":null},\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"emailVerified\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"accounts\",\"kind\":\"object\",\"type\":\"Account\",\"relationName\":\"AccountToUser\"},{\"name\":\"sessions\",\"kind\":\"object\",\"type\":\"Session\",\"relationName\":\"SessionToUser\"},{\"name\":\"posts\",\"kind\":\"object\",\"type\":\"Post\",\"relationName\":\"PostToUser\"}],\"dbName\":null},\"VerificationToken\":{\"fields\":[{\"name\":\"identifier\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"expires\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"staffId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"designation\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"zone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"mobile\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"role\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"reports\",\"kind\":\"object\",\"type\":\"WeeklyReport\",\"relationName\":\"UserToWeeklyReport\"},{\"name\":\"targets\",\"kind\":\"object\",\"type\":\"MonthlyTarget\",\"relationName\":\"MonthlyTargetToUser\"},{\"name\":\"findingAudits\",\"kind\":\"object\",\"type\":\"FindingHistory\",\"relationName\":\"UpdatedByAudits\"},{\"name\":\"emailLogs\",\"kind\":\"object\",\"type\":\"EmailNotificationLog\",\"relationName\":\"EmailNotificationLogToUser\"}],\"dbName\":null},\"Zone\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"code\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"WeeklyReport\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"UserToWeeklyReport\"},{\"name\":\"monthYear\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"year\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"month\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"week\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"marketVisitQty\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"marketVisitFindingQty\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"solvedQty\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"pendingQty\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"locSubmittedQty\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"locFindingDayQty\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"dressCodeQty\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"dressCodeFindingQty\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"messVisitQty\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"messVisitFindingQty\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"deadline\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"submittedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"notes\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"findingHistory\",\"kind\":\"object\",\"type\":\"FindingHistory\",\"relationName\":\"FindingHistoryToWeeklyReport\"}],\"dbName\":null},\"FindingHistory\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"reportId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"report\",\"kind\":\"object\",\"type\":\"WeeklyReport\",\"relationName\":\"FindingHistoryToWeeklyReport\"},{\"name\":\"updatedById\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"updatedBy\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"UpdatedByAudits\"},{\"name\":\"previousSolved\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"newSolved\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"previousPending\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"newPending\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"remark\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"MonthlyTarget\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"MonthlyTargetToUser\"},{\"name\":\"year\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"month\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"monthYear\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"locTarget\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"messVisitTarget\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"dressCodeTarget\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"isLocked\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"EmailNotificationConfig\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"code\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"subjectTemplate\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"bodyTemplate\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"ccRecipients\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"bccRecipients\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isActive\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"EmailNotificationLog\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"EmailNotificationLogToUser\"},{\"name\":\"year\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"month\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"week\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"emailType\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"toEmail\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"ccEmails\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"subject\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sentAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"errorMessage\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

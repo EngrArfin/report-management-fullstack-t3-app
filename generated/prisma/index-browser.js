@@ -115,65 +115,113 @@ Prisma.NullTypes = {
  */
 
 exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
-  ReadUncommitted: 'ReadUncommitted',
-  ReadCommitted: 'ReadCommitted',
-  RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
 });
 
-exports.Prisma.PostScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  createdById: 'createdById'
-};
-
-exports.Prisma.AccountScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  type: 'type',
-  provider: 'provider',
-  providerAccountId: 'providerAccountId',
-  refresh_token: 'refresh_token',
-  access_token: 'access_token',
-  expires_at: 'expires_at',
-  token_type: 'token_type',
-  scope: 'scope',
-  id_token: 'id_token',
-  session_state: 'session_state',
-  refresh_token_expires_in: 'refresh_token_expires_in'
-};
-
-exports.Prisma.SessionScalarFieldEnum = {
-  id: 'id',
-  sessionToken: 'sessionToken',
-  userId: 'userId',
-  expires: 'expires'
-};
-
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
+  staffId: 'staffId',
   name: 'name',
+  designation: 'designation',
+  zone: 'zone',
   email: 'email',
-  emailVerified: 'emailVerified',
-  image: 'image'
+  mobile: 'mobile',
+  role: 'role',
+  status: 'status',
+  password: 'password',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
-exports.Prisma.VerificationTokenScalarFieldEnum = {
-  identifier: 'identifier',
-  token: 'token',
-  expires: 'expires'
+exports.Prisma.ZoneScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  code: 'code',
+  isActive: 'isActive',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.WeeklyReportScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  monthYear: 'monthYear',
+  year: 'year',
+  month: 'month',
+  week: 'week',
+  marketVisitQty: 'marketVisitQty',
+  marketVisitFindingQty: 'marketVisitFindingQty',
+  solvedQty: 'solvedQty',
+  pendingQty: 'pendingQty',
+  locSubmittedQty: 'locSubmittedQty',
+  locFindingDayQty: 'locFindingDayQty',
+  dressCodeQty: 'dressCodeQty',
+  dressCodeFindingQty: 'dressCodeFindingQty',
+  messVisitQty: 'messVisitQty',
+  messVisitFindingQty: 'messVisitFindingQty',
+  status: 'status',
+  deadline: 'deadline',
+  submittedAt: 'submittedAt',
+  updatedAt: 'updatedAt',
+  notes: 'notes'
+};
+
+exports.Prisma.FindingHistoryScalarFieldEnum = {
+  id: 'id',
+  reportId: 'reportId',
+  updatedById: 'updatedById',
+  previousSolved: 'previousSolved',
+  newSolved: 'newSolved',
+  previousPending: 'previousPending',
+  newPending: 'newPending',
+  remark: 'remark',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.MonthlyTargetScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  year: 'year',
+  month: 'month',
+  monthYear: 'monthYear',
+  locTarget: 'locTarget',
+  messVisitTarget: 'messVisitTarget',
+  dressCodeTarget: 'dressCodeTarget',
+  isLocked: 'isLocked',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.EmailNotificationConfigScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  name: 'name',
+  description: 'description',
+  subjectTemplate: 'subjectTemplate',
+  bodyTemplate: 'bodyTemplate',
+  ccRecipients: 'ccRecipients',
+  bccRecipients: 'bccRecipients',
+  isActive: 'isActive',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.EmailNotificationLogScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  year: 'year',
+  month: 'month',
+  week: 'week',
+  emailType: 'emailType',
+  toEmail: 'toEmail',
+  ccEmails: 'ccEmails',
+  subject: 'subject',
+  status: 'status',
+  sentAt: 'sentAt',
+  errorMessage: 'errorMessage'
 };
 
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
-};
-
-exports.Prisma.QueryMode = {
-  default: 'default',
-  insensitive: 'insensitive'
 };
 
 exports.Prisma.NullsOrder = {
@@ -183,11 +231,13 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  Post: 'Post',
-  Account: 'Account',
-  Session: 'Session',
   User: 'User',
-  VerificationToken: 'VerificationToken'
+  Zone: 'Zone',
+  WeeklyReport: 'WeeklyReport',
+  FindingHistory: 'FindingHistory',
+  MonthlyTarget: 'MonthlyTarget',
+  EmailNotificationConfig: 'EmailNotificationConfig',
+  EmailNotificationLog: 'EmailNotificationLog'
 };
 
 /**

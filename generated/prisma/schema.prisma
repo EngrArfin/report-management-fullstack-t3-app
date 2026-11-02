@@ -1,5 +1,4 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// Prisma schema for Office Manager (OM) Weekly Report Management System
 
 generator client {
   provider = "prisma-client-js"
@@ -7,69 +6,160 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  // NOTE: When using mysql or sqlserver, uncomment the @db.Text annotations in model Account below
-  // Further reading:
-  // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
-  // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
-model Post {
-  id        Int      @id @default(autoincrement())
-  name      String
+// User / Office Manager (OM) or Admin
+model User {
+  id          String   @id @default(cuid())
+  staffId     String   @unique // e.g. "572816", "451467", "362578"
+  name        String // e.g. "Md. Benajir Alam"
+  designation String // e.g. "TE", "Jex", "Area Manager"
+  zone        String // e.g. "D.M-01/Mitford", "Comilla", "Cox's Bazar"
+  email       String   @unique
+  mobile      String?
+  role        String   @default("OM") // "OM" | "ADMIN"
+  status      String   @default("ACTIVE") // "ACTIVE" | "INACTIVE"
+  password    String? // Optional password/PIN
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  reports       WeeklyReport[]
+  targets       MonthlyTarget[]
+  findingAudits FindingHistory[]       @relation("UpdatedByAudits")
+  emailLogs     EmailNotificationLog[]
+
+  @@index([zone])
+  @@index([status])
+  @@index([role])
+}
+
+// Zone Master Table
+model Zone {
+  id        String   @id @default(cuid())
+  name      String   @unique // e.g. "D.M-01/Mitford", "Comilla"
+  code      String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+// Weekly Report submitted by OM
+model WeeklyReport {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  monthYear String // Display label: "September 2026", "October 2026"
+  year      Int // 2026
+  month     Int // 1 - 12 (e.g. 9)
+  week      Int // 1, 2, 3, 4
+
+  // 1. Market Visit
+  marketVisitQty        Int @default(0)
+  marketVisitFindingQty Int @default(0)
+  solvedQty             Int @default(0)
+  pendingQty            Int @default(0)
+
+  // 2. Location Tracking (LOC) - STRICTLY NO "LOC Visit Qty" field
+  locSubmittedQty  Int   @default(0)
+  locFindingDayQty Float @default(0.0) // Can be float e.g. 3.5 days
+
+  // 3. Dress Code
+  dressCodeQty        Int @default(0)
+  dressCodeFindingQty Int @default(0)
+
+  // 4. Mess Visit
+  messVisitQty        Int @default(0)
+  messVisitFindingQty Int @default(0)
+
+  // Status: SUBMITTED | PENDING | LATE_SUBMITTED
+  status      String   @default("SUBMITTED")
+  deadline    DateTime // Friday 11:59:59 PM of that week
+  submittedAt DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  notes       String?
+
+  findingHistory FindingHistory[]
+
+  @@unique([userId, year, month, week])
+  @@index([year, month, week])
+  @@index([userId])
+  @@index([status])
+}
+
+// Audit history for Market Visit Finding status updates
+model FindingHistory {
+  id       String       @id @default(cuid())
+  reportId String
+  report   WeeklyReport @relation(fields: [reportId], references: [id], onDelete: Cascade)
+
+  updatedById String
+  updatedBy   User   @relation("UpdatedByAudits", fields: [updatedById], references: [id])
+
+  previousSolved  Int
+  newSolved       Int
+  previousPending Int
+  newPending      Int
+  remark          String?
+  createdAt       DateTime @default(now())
+
+  @@index([reportId])
+}
+
+// Monthly Target set by Admin for each OM
+model MonthlyTarget {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  year      Int // 2026
+  month     Int // 1 - 12
+  monthYear String // e.g. "September 2026"
+
+  locTarget       Int @default(0) // LOC Submitted Qty Target
+  messVisitTarget Int @default(0) // Mess Visit Qty Target
+  dressCodeTarget Int @default(0) // Dress Code Qty Target
+
+  isLocked  Boolean  @default(false) // Locked/Approved flag to protect historical calculations
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  createdBy   User   @relation(fields: [createdById], references: [id])
-  createdById String
-
-  @@index([name])
+  @@unique([userId, year, month])
+  @@index([year, month])
 }
 
-// Necessary for Next auth
-model Account {
-  id                       String  @id @default(cuid())
-  userId                   String
-  type                     String
-  provider                 String
-  providerAccountId        String
-  refresh_token            String? // @db.Text
-  access_token             String? // @db.Text
-  expires_at               Int?
-  token_type               String?
-  scope                    String?
-  id_token                 String? // @db.Text
-  session_state            String?
-  user                     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  refresh_token_expires_in Int?
-
-  @@unique([provider, providerAccountId])
+// Admin-configurable Email Notification Rules
+model EmailNotificationConfig {
+  id              String   @id @default(cuid())
+  code            String   @unique // e.g. "WEEKLY_DEADLINE_MISSED"
+  name            String // e.g. "Missed Weekly Report Reminder"
+  description     String?
+  subjectTemplate String // e.g. "[URGENT] Missed Weekly Report - {OM_NAME} ({MONTH} Week {WEEK})"
+  bodyTemplate    String // Template with placeholders
+  ccRecipients    String // Comma-separated emails for Seniors / Reporting Bosses
+  bccRecipients   String?
+  isActive        Boolean  @default(true)
+  updatedAt       DateTime @updatedAt
 }
 
-model Session {
-  id           String   @id @default(cuid())
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
+// Email Notification History to prevent duplicate spamming
+model EmailNotificationLog {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-  posts         Post[]
-}
+  year         Int
+  month        Int
+  week         Int
+  emailType    String // "MISSED_DEADLINE"
+  toEmail      String
+  ccEmails     String?
+  subject      String
+  status       String   @default("SENT") // "SENT" | "FAILED"
+  sentAt       DateTime @default(now())
+  errorMessage String?
 
-model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
-
-  @@unique([identifier, token])
+  @@unique([userId, year, month, week, emailType])
+  @@index([year, month, week])
 }

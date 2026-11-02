@@ -14,30 +14,40 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model Post
- * 
- */
-export type Post = $Result.DefaultSelection<Prisma.$PostPayload>
-/**
- * Model Account
- * 
- */
-export type Account = $Result.DefaultSelection<Prisma.$AccountPayload>
-/**
- * Model Session
- * 
- */
-export type Session = $Result.DefaultSelection<Prisma.$SessionPayload>
-/**
  * Model User
  * 
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 /**
- * Model VerificationToken
+ * Model Zone
  * 
  */
-export type VerificationToken = $Result.DefaultSelection<Prisma.$VerificationTokenPayload>
+export type Zone = $Result.DefaultSelection<Prisma.$ZonePayload>
+/**
+ * Model WeeklyReport
+ * 
+ */
+export type WeeklyReport = $Result.DefaultSelection<Prisma.$WeeklyReportPayload>
+/**
+ * Model FindingHistory
+ * 
+ */
+export type FindingHistory = $Result.DefaultSelection<Prisma.$FindingHistoryPayload>
+/**
+ * Model MonthlyTarget
+ * 
+ */
+export type MonthlyTarget = $Result.DefaultSelection<Prisma.$MonthlyTargetPayload>
+/**
+ * Model EmailNotificationConfig
+ * 
+ */
+export type EmailNotificationConfig = $Result.DefaultSelection<Prisma.$EmailNotificationConfigPayload>
+/**
+ * Model EmailNotificationLog
+ * 
+ */
+export type EmailNotificationLog = $Result.DefaultSelection<Prisma.$EmailNotificationLogPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -46,8 +56,8 @@ export type VerificationToken = $Result.DefaultSelection<Prisma.$VerificationTok
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Posts
- * const posts = await prisma.post.findMany()
+ * // Fetch zero or more Users
+ * const users = await prisma.user.findMany()
  * ```
  *
  *
@@ -67,8 +77,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Posts
-   * const posts = await prisma.post.findMany()
+   * // Fetch zero or more Users
+   * const users = await prisma.user.findMany()
    * ```
    *
    *
@@ -158,36 +168,6 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.post`: Exposes CRUD operations for the **Post** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Posts
-    * const posts = await prisma.post.findMany()
-    * ```
-    */
-  get post(): Prisma.PostDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.account`: Exposes CRUD operations for the **Account** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Accounts
-    * const accounts = await prisma.account.findMany()
-    * ```
-    */
-  get account(): Prisma.AccountDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.session`: Exposes CRUD operations for the **Session** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Sessions
-    * const sessions = await prisma.session.findMany()
-    * ```
-    */
-  get session(): Prisma.SessionDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
     * Example usage:
     * ```ts
@@ -198,14 +178,64 @@ export class PrismaClient<
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.verificationToken`: Exposes CRUD operations for the **VerificationToken** model.
+   * `prisma.zone`: Exposes CRUD operations for the **Zone** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more VerificationTokens
-    * const verificationTokens = await prisma.verificationToken.findMany()
+    * // Fetch zero or more Zones
+    * const zones = await prisma.zone.findMany()
     * ```
     */
-  get verificationToken(): Prisma.VerificationTokenDelegate<ExtArgs, ClientOptions>;
+  get zone(): Prisma.ZoneDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.weeklyReport`: Exposes CRUD operations for the **WeeklyReport** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more WeeklyReports
+    * const weeklyReports = await prisma.weeklyReport.findMany()
+    * ```
+    */
+  get weeklyReport(): Prisma.WeeklyReportDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.findingHistory`: Exposes CRUD operations for the **FindingHistory** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more FindingHistories
+    * const findingHistories = await prisma.findingHistory.findMany()
+    * ```
+    */
+  get findingHistory(): Prisma.FindingHistoryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.monthlyTarget`: Exposes CRUD operations for the **MonthlyTarget** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MonthlyTargets
+    * const monthlyTargets = await prisma.monthlyTarget.findMany()
+    * ```
+    */
+  get monthlyTarget(): Prisma.MonthlyTargetDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.emailNotificationConfig`: Exposes CRUD operations for the **EmailNotificationConfig** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more EmailNotificationConfigs
+    * const emailNotificationConfigs = await prisma.emailNotificationConfig.findMany()
+    * ```
+    */
+  get emailNotificationConfig(): Prisma.EmailNotificationConfigDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.emailNotificationLog`: Exposes CRUD operations for the **EmailNotificationLog** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more EmailNotificationLogs
+    * const emailNotificationLogs = await prisma.emailNotificationLog.findMany()
+    * ```
+    */
+  get emailNotificationLog(): Prisma.EmailNotificationLogDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -647,11 +677,13 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Post: 'Post',
-    Account: 'Account',
-    Session: 'Session',
     User: 'User',
-    VerificationToken: 'VerificationToken'
+    Zone: 'Zone',
+    WeeklyReport: 'WeeklyReport',
+    FindingHistory: 'FindingHistory',
+    MonthlyTarget: 'MonthlyTarget',
+    EmailNotificationConfig: 'EmailNotificationConfig',
+    EmailNotificationLog: 'EmailNotificationLog'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -670,232 +702,10 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "post" | "account" | "session" | "user" | "verificationToken"
+      modelProps: "user" | "zone" | "weeklyReport" | "findingHistory" | "monthlyTarget" | "emailNotificationConfig" | "emailNotificationLog"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      Post: {
-        payload: Prisma.$PostPayload<ExtArgs>
-        fields: Prisma.PostFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.PostFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.PostFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>
-          }
-          findFirst: {
-            args: Prisma.PostFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.PostFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>
-          }
-          findMany: {
-            args: Prisma.PostFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>[]
-          }
-          create: {
-            args: Prisma.PostCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>
-          }
-          createMany: {
-            args: Prisma.PostCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.PostCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>[]
-          }
-          delete: {
-            args: Prisma.PostDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>
-          }
-          update: {
-            args: Prisma.PostUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>
-          }
-          deleteMany: {
-            args: Prisma.PostDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.PostUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.PostUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>[]
-          }
-          upsert: {
-            args: Prisma.PostUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PostPayload>
-          }
-          aggregate: {
-            args: Prisma.PostAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregatePost>
-          }
-          groupBy: {
-            args: Prisma.PostGroupByArgs<ExtArgs>
-            result: $Utils.Optional<PostGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.PostCountArgs<ExtArgs>
-            result: $Utils.Optional<PostCountAggregateOutputType> | number
-          }
-        }
-      }
-      Account: {
-        payload: Prisma.$AccountPayload<ExtArgs>
-        fields: Prisma.AccountFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.AccountFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccountPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.AccountFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccountPayload>
-          }
-          findFirst: {
-            args: Prisma.AccountFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccountPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.AccountFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccountPayload>
-          }
-          findMany: {
-            args: Prisma.AccountFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccountPayload>[]
-          }
-          create: {
-            args: Prisma.AccountCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccountPayload>
-          }
-          createMany: {
-            args: Prisma.AccountCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.AccountCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccountPayload>[]
-          }
-          delete: {
-            args: Prisma.AccountDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccountPayload>
-          }
-          update: {
-            args: Prisma.AccountUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccountPayload>
-          }
-          deleteMany: {
-            args: Prisma.AccountDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.AccountUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.AccountUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccountPayload>[]
-          }
-          upsert: {
-            args: Prisma.AccountUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AccountPayload>
-          }
-          aggregate: {
-            args: Prisma.AccountAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateAccount>
-          }
-          groupBy: {
-            args: Prisma.AccountGroupByArgs<ExtArgs>
-            result: $Utils.Optional<AccountGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.AccountCountArgs<ExtArgs>
-            result: $Utils.Optional<AccountCountAggregateOutputType> | number
-          }
-        }
-      }
-      Session: {
-        payload: Prisma.$SessionPayload<ExtArgs>
-        fields: Prisma.SessionFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.SessionFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.SessionFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload>
-          }
-          findFirst: {
-            args: Prisma.SessionFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.SessionFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload>
-          }
-          findMany: {
-            args: Prisma.SessionFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload>[]
-          }
-          create: {
-            args: Prisma.SessionCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload>
-          }
-          createMany: {
-            args: Prisma.SessionCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.SessionCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload>[]
-          }
-          delete: {
-            args: Prisma.SessionDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload>
-          }
-          update: {
-            args: Prisma.SessionUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload>
-          }
-          deleteMany: {
-            args: Prisma.SessionDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.SessionUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.SessionUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload>[]
-          }
-          upsert: {
-            args: Prisma.SessionUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SessionPayload>
-          }
-          aggregate: {
-            args: Prisma.SessionAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateSession>
-          }
-          groupBy: {
-            args: Prisma.SessionGroupByArgs<ExtArgs>
-            result: $Utils.Optional<SessionGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.SessionCountArgs<ExtArgs>
-            result: $Utils.Optional<SessionCountAggregateOutputType> | number
-          }
-        }
-      }
       User: {
         payload: Prisma.$UserPayload<ExtArgs>
         fields: Prisma.UserFieldRefs
@@ -970,77 +780,447 @@ export namespace Prisma {
           }
         }
       }
-      VerificationToken: {
-        payload: Prisma.$VerificationTokenPayload<ExtArgs>
-        fields: Prisma.VerificationTokenFieldRefs
+      Zone: {
+        payload: Prisma.$ZonePayload<ExtArgs>
+        fields: Prisma.ZoneFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.VerificationTokenFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationTokenPayload> | null
+            args: Prisma.ZoneFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ZonePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.VerificationTokenFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationTokenPayload>
+            args: Prisma.ZoneFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ZonePayload>
           }
           findFirst: {
-            args: Prisma.VerificationTokenFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationTokenPayload> | null
+            args: Prisma.ZoneFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ZonePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.VerificationTokenFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationTokenPayload>
+            args: Prisma.ZoneFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ZonePayload>
           }
           findMany: {
-            args: Prisma.VerificationTokenFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationTokenPayload>[]
+            args: Prisma.ZoneFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ZonePayload>[]
           }
           create: {
-            args: Prisma.VerificationTokenCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationTokenPayload>
+            args: Prisma.ZoneCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ZonePayload>
           }
           createMany: {
-            args: Prisma.VerificationTokenCreateManyArgs<ExtArgs>
+            args: Prisma.ZoneCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.VerificationTokenCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationTokenPayload>[]
+            args: Prisma.ZoneCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ZonePayload>[]
           }
           delete: {
-            args: Prisma.VerificationTokenDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationTokenPayload>
+            args: Prisma.ZoneDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ZonePayload>
           }
           update: {
-            args: Prisma.VerificationTokenUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationTokenPayload>
+            args: Prisma.ZoneUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ZonePayload>
           }
           deleteMany: {
-            args: Prisma.VerificationTokenDeleteManyArgs<ExtArgs>
+            args: Prisma.ZoneDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.VerificationTokenUpdateManyArgs<ExtArgs>
+            args: Prisma.ZoneUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.VerificationTokenUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationTokenPayload>[]
+            args: Prisma.ZoneUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ZonePayload>[]
           }
           upsert: {
-            args: Prisma.VerificationTokenUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationTokenPayload>
+            args: Prisma.ZoneUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ZonePayload>
           }
           aggregate: {
-            args: Prisma.VerificationTokenAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateVerificationToken>
+            args: Prisma.ZoneAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateZone>
           }
           groupBy: {
-            args: Prisma.VerificationTokenGroupByArgs<ExtArgs>
-            result: $Utils.Optional<VerificationTokenGroupByOutputType>[]
+            args: Prisma.ZoneGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ZoneGroupByOutputType>[]
           }
           count: {
-            args: Prisma.VerificationTokenCountArgs<ExtArgs>
-            result: $Utils.Optional<VerificationTokenCountAggregateOutputType> | number
+            args: Prisma.ZoneCountArgs<ExtArgs>
+            result: $Utils.Optional<ZoneCountAggregateOutputType> | number
+          }
+        }
+      }
+      WeeklyReport: {
+        payload: Prisma.$WeeklyReportPayload<ExtArgs>
+        fields: Prisma.WeeklyReportFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WeeklyReportFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyReportPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WeeklyReportFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyReportPayload>
+          }
+          findFirst: {
+            args: Prisma.WeeklyReportFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyReportPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WeeklyReportFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyReportPayload>
+          }
+          findMany: {
+            args: Prisma.WeeklyReportFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyReportPayload>[]
+          }
+          create: {
+            args: Prisma.WeeklyReportCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyReportPayload>
+          }
+          createMany: {
+            args: Prisma.WeeklyReportCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WeeklyReportCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyReportPayload>[]
+          }
+          delete: {
+            args: Prisma.WeeklyReportDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyReportPayload>
+          }
+          update: {
+            args: Prisma.WeeklyReportUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyReportPayload>
+          }
+          deleteMany: {
+            args: Prisma.WeeklyReportDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WeeklyReportUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.WeeklyReportUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyReportPayload>[]
+          }
+          upsert: {
+            args: Prisma.WeeklyReportUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeeklyReportPayload>
+          }
+          aggregate: {
+            args: Prisma.WeeklyReportAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWeeklyReport>
+          }
+          groupBy: {
+            args: Prisma.WeeklyReportGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WeeklyReportGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WeeklyReportCountArgs<ExtArgs>
+            result: $Utils.Optional<WeeklyReportCountAggregateOutputType> | number
+          }
+        }
+      }
+      FindingHistory: {
+        payload: Prisma.$FindingHistoryPayload<ExtArgs>
+        fields: Prisma.FindingHistoryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FindingHistoryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FindingHistoryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FindingHistoryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FindingHistoryPayload>
+          }
+          findFirst: {
+            args: Prisma.FindingHistoryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FindingHistoryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FindingHistoryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FindingHistoryPayload>
+          }
+          findMany: {
+            args: Prisma.FindingHistoryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FindingHistoryPayload>[]
+          }
+          create: {
+            args: Prisma.FindingHistoryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FindingHistoryPayload>
+          }
+          createMany: {
+            args: Prisma.FindingHistoryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FindingHistoryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FindingHistoryPayload>[]
+          }
+          delete: {
+            args: Prisma.FindingHistoryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FindingHistoryPayload>
+          }
+          update: {
+            args: Prisma.FindingHistoryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FindingHistoryPayload>
+          }
+          deleteMany: {
+            args: Prisma.FindingHistoryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FindingHistoryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FindingHistoryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FindingHistoryPayload>[]
+          }
+          upsert: {
+            args: Prisma.FindingHistoryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FindingHistoryPayload>
+          }
+          aggregate: {
+            args: Prisma.FindingHistoryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFindingHistory>
+          }
+          groupBy: {
+            args: Prisma.FindingHistoryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FindingHistoryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FindingHistoryCountArgs<ExtArgs>
+            result: $Utils.Optional<FindingHistoryCountAggregateOutputType> | number
+          }
+        }
+      }
+      MonthlyTarget: {
+        payload: Prisma.$MonthlyTargetPayload<ExtArgs>
+        fields: Prisma.MonthlyTargetFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MonthlyTargetFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MonthlyTargetPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MonthlyTargetFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MonthlyTargetPayload>
+          }
+          findFirst: {
+            args: Prisma.MonthlyTargetFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MonthlyTargetPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MonthlyTargetFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MonthlyTargetPayload>
+          }
+          findMany: {
+            args: Prisma.MonthlyTargetFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MonthlyTargetPayload>[]
+          }
+          create: {
+            args: Prisma.MonthlyTargetCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MonthlyTargetPayload>
+          }
+          createMany: {
+            args: Prisma.MonthlyTargetCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MonthlyTargetCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MonthlyTargetPayload>[]
+          }
+          delete: {
+            args: Prisma.MonthlyTargetDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MonthlyTargetPayload>
+          }
+          update: {
+            args: Prisma.MonthlyTargetUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MonthlyTargetPayload>
+          }
+          deleteMany: {
+            args: Prisma.MonthlyTargetDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MonthlyTargetUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MonthlyTargetUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MonthlyTargetPayload>[]
+          }
+          upsert: {
+            args: Prisma.MonthlyTargetUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MonthlyTargetPayload>
+          }
+          aggregate: {
+            args: Prisma.MonthlyTargetAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMonthlyTarget>
+          }
+          groupBy: {
+            args: Prisma.MonthlyTargetGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MonthlyTargetGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MonthlyTargetCountArgs<ExtArgs>
+            result: $Utils.Optional<MonthlyTargetCountAggregateOutputType> | number
+          }
+        }
+      }
+      EmailNotificationConfig: {
+        payload: Prisma.$EmailNotificationConfigPayload<ExtArgs>
+        fields: Prisma.EmailNotificationConfigFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.EmailNotificationConfigFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationConfigPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.EmailNotificationConfigFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationConfigPayload>
+          }
+          findFirst: {
+            args: Prisma.EmailNotificationConfigFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationConfigPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.EmailNotificationConfigFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationConfigPayload>
+          }
+          findMany: {
+            args: Prisma.EmailNotificationConfigFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationConfigPayload>[]
+          }
+          create: {
+            args: Prisma.EmailNotificationConfigCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationConfigPayload>
+          }
+          createMany: {
+            args: Prisma.EmailNotificationConfigCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.EmailNotificationConfigCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationConfigPayload>[]
+          }
+          delete: {
+            args: Prisma.EmailNotificationConfigDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationConfigPayload>
+          }
+          update: {
+            args: Prisma.EmailNotificationConfigUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationConfigPayload>
+          }
+          deleteMany: {
+            args: Prisma.EmailNotificationConfigDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.EmailNotificationConfigUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.EmailNotificationConfigUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationConfigPayload>[]
+          }
+          upsert: {
+            args: Prisma.EmailNotificationConfigUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationConfigPayload>
+          }
+          aggregate: {
+            args: Prisma.EmailNotificationConfigAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEmailNotificationConfig>
+          }
+          groupBy: {
+            args: Prisma.EmailNotificationConfigGroupByArgs<ExtArgs>
+            result: $Utils.Optional<EmailNotificationConfigGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.EmailNotificationConfigCountArgs<ExtArgs>
+            result: $Utils.Optional<EmailNotificationConfigCountAggregateOutputType> | number
+          }
+        }
+      }
+      EmailNotificationLog: {
+        payload: Prisma.$EmailNotificationLogPayload<ExtArgs>
+        fields: Prisma.EmailNotificationLogFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.EmailNotificationLogFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationLogPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.EmailNotificationLogFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationLogPayload>
+          }
+          findFirst: {
+            args: Prisma.EmailNotificationLogFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationLogPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.EmailNotificationLogFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationLogPayload>
+          }
+          findMany: {
+            args: Prisma.EmailNotificationLogFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationLogPayload>[]
+          }
+          create: {
+            args: Prisma.EmailNotificationLogCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationLogPayload>
+          }
+          createMany: {
+            args: Prisma.EmailNotificationLogCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.EmailNotificationLogCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationLogPayload>[]
+          }
+          delete: {
+            args: Prisma.EmailNotificationLogDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationLogPayload>
+          }
+          update: {
+            args: Prisma.EmailNotificationLogUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationLogPayload>
+          }
+          deleteMany: {
+            args: Prisma.EmailNotificationLogDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.EmailNotificationLogUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.EmailNotificationLogUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationLogPayload>[]
+          }
+          upsert: {
+            args: Prisma.EmailNotificationLogUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EmailNotificationLogPayload>
+          }
+          aggregate: {
+            args: Prisma.EmailNotificationLogAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEmailNotificationLog>
+          }
+          groupBy: {
+            args: Prisma.EmailNotificationLogGroupByArgs<ExtArgs>
+            result: $Utils.Optional<EmailNotificationLogGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.EmailNotificationLogCountArgs<ExtArgs>
+            result: $Utils.Optional<EmailNotificationLogCountAggregateOutputType> | number
           }
         }
       }
@@ -1140,11 +1320,13 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    post?: PostOmit
-    account?: AccountOmit
-    session?: SessionOmit
     user?: UserOmit
-    verificationToken?: VerificationTokenOmit
+    zone?: ZoneOmit
+    weeklyReport?: WeeklyReportOmit
+    findingHistory?: FindingHistoryOmit
+    monthlyTarget?: MonthlyTargetOmit
+    emailNotificationConfig?: EmailNotificationConfigOmit
+    emailNotificationLog?: EmailNotificationLogOmit
   }
 
   /* Types for Logging */
@@ -1225,15 +1407,17 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    accounts: number
-    sessions: number
-    posts: number
+    reports: number
+    targets: number
+    findingAudits: number
+    emailLogs: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    accounts?: boolean | UserCountOutputTypeCountAccountsArgs
-    sessions?: boolean | UserCountOutputTypeCountSessionsArgs
-    posts?: boolean | UserCountOutputTypeCountPostsArgs
+    reports?: boolean | UserCountOutputTypeCountReportsArgs
+    targets?: boolean | UserCountOutputTypeCountTargetsArgs
+    findingAudits?: boolean | UserCountOutputTypeCountFindingAuditsArgs
+    emailLogs?: boolean | UserCountOutputTypeCountEmailLogsArgs
   }
 
   // Custom InputTypes
@@ -1250,3365 +1434,66 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountAccountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AccountWhereInput
+  export type UserCountOutputTypeCountReportsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WeeklyReportWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SessionWhereInput
+  export type UserCountOutputTypeCountTargetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MonthlyTargetWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountPostsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PostWhereInput
+  export type UserCountOutputTypeCountFindingAuditsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FindingHistoryWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountEmailLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EmailNotificationLogWhereInput
+  }
+
+
+  /**
+   * Count Type WeeklyReportCountOutputType
+   */
+
+  export type WeeklyReportCountOutputType = {
+    findingHistory: number
+  }
+
+  export type WeeklyReportCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    findingHistory?: boolean | WeeklyReportCountOutputTypeCountFindingHistoryArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * WeeklyReportCountOutputType without action
+   */
+  export type WeeklyReportCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyReportCountOutputType
+     */
+    select?: WeeklyReportCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * WeeklyReportCountOutputType without action
+   */
+  export type WeeklyReportCountOutputTypeCountFindingHistoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FindingHistoryWhereInput
   }
 
 
   /**
    * Models
    */
-
-  /**
-   * Model Post
-   */
-
-  export type AggregatePost = {
-    _count: PostCountAggregateOutputType | null
-    _avg: PostAvgAggregateOutputType | null
-    _sum: PostSumAggregateOutputType | null
-    _min: PostMinAggregateOutputType | null
-    _max: PostMaxAggregateOutputType | null
-  }
-
-  export type PostAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type PostSumAggregateOutputType = {
-    id: number | null
-  }
-
-  export type PostMinAggregateOutputType = {
-    id: number | null
-    name: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-    createdById: string | null
-  }
-
-  export type PostMaxAggregateOutputType = {
-    id: number | null
-    name: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-    createdById: string | null
-  }
-
-  export type PostCountAggregateOutputType = {
-    id: number
-    name: number
-    createdAt: number
-    updatedAt: number
-    createdById: number
-    _all: number
-  }
-
-
-  export type PostAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type PostSumAggregateInputType = {
-    id?: true
-  }
-
-  export type PostMinAggregateInputType = {
-    id?: true
-    name?: true
-    createdAt?: true
-    updatedAt?: true
-    createdById?: true
-  }
-
-  export type PostMaxAggregateInputType = {
-    id?: true
-    name?: true
-    createdAt?: true
-    updatedAt?: true
-    createdById?: true
-  }
-
-  export type PostCountAggregateInputType = {
-    id?: true
-    name?: true
-    createdAt?: true
-    updatedAt?: true
-    createdById?: true
-    _all?: true
-  }
-
-  export type PostAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Post to aggregate.
-     */
-    where?: PostWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Posts to fetch.
-     */
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: PostWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Posts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Posts.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Posts
-    **/
-    _count?: true | PostCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: PostAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: PostSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: PostMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: PostMaxAggregateInputType
-  }
-
-  export type GetPostAggregateType<T extends PostAggregateArgs> = {
-        [P in keyof T & keyof AggregatePost]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregatePost[P]>
-      : GetScalarType<T[P], AggregatePost[P]>
-  }
-
-
-
-
-  export type PostGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PostWhereInput
-    orderBy?: PostOrderByWithAggregationInput | PostOrderByWithAggregationInput[]
-    by: PostScalarFieldEnum[] | PostScalarFieldEnum
-    having?: PostScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: PostCountAggregateInputType | true
-    _avg?: PostAvgAggregateInputType
-    _sum?: PostSumAggregateInputType
-    _min?: PostMinAggregateInputType
-    _max?: PostMaxAggregateInputType
-  }
-
-  export type PostGroupByOutputType = {
-    id: number
-    name: string
-    createdAt: Date
-    updatedAt: Date
-    createdById: string
-    _count: PostCountAggregateOutputType | null
-    _avg: PostAvgAggregateOutputType | null
-    _sum: PostSumAggregateOutputType | null
-    _min: PostMinAggregateOutputType | null
-    _max: PostMaxAggregateOutputType | null
-  }
-
-  type GetPostGroupByPayload<T extends PostGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<PostGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof PostGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], PostGroupByOutputType[P]>
-            : GetScalarType<T[P], PostGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type PostSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    createdById?: boolean
-    createdBy?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["post"]>
-
-  export type PostSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    createdById?: boolean
-    createdBy?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["post"]>
-
-  export type PostSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    createdById?: boolean
-    createdBy?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["post"]>
-
-  export type PostSelectScalar = {
-    id?: boolean
-    name?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    createdById?: boolean
-  }
-
-  export type PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt" | "createdById", ExtArgs["result"]["post"]>
-  export type PostInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    createdBy?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type PostIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    createdBy?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type PostIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    createdBy?: boolean | UserDefaultArgs<ExtArgs>
-  }
-
-  export type $PostPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Post"
-    objects: {
-      createdBy: Prisma.$UserPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      name: string
-      createdAt: Date
-      updatedAt: Date
-      createdById: string
-    }, ExtArgs["result"]["post"]>
-    composites: {}
-  }
-
-  type PostGetPayload<S extends boolean | null | undefined | PostDefaultArgs> = $Result.GetResult<Prisma.$PostPayload, S>
-
-  type PostCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<PostFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: PostCountAggregateInputType | true
-    }
-
-  export interface PostDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Post'], meta: { name: 'Post' } }
-    /**
-     * Find zero or one Post that matches the filter.
-     * @param {PostFindUniqueArgs} args - Arguments to find a Post
-     * @example
-     * // Get one Post
-     * const post = await prisma.post.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends PostFindUniqueArgs>(args: SelectSubset<T, PostFindUniqueArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Post that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {PostFindUniqueOrThrowArgs} args - Arguments to find a Post
-     * @example
-     * // Get one Post
-     * const post = await prisma.post.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends PostFindUniqueOrThrowArgs>(args: SelectSubset<T, PostFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Post that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostFindFirstArgs} args - Arguments to find a Post
-     * @example
-     * // Get one Post
-     * const post = await prisma.post.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends PostFindFirstArgs>(args?: SelectSubset<T, PostFindFirstArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Post that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostFindFirstOrThrowArgs} args - Arguments to find a Post
-     * @example
-     * // Get one Post
-     * const post = await prisma.post.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends PostFindFirstOrThrowArgs>(args?: SelectSubset<T, PostFindFirstOrThrowArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Posts that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Posts
-     * const posts = await prisma.post.findMany()
-     * 
-     * // Get first 10 Posts
-     * const posts = await prisma.post.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const postWithIdOnly = await prisma.post.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends PostFindManyArgs>(args?: SelectSubset<T, PostFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Post.
-     * @param {PostCreateArgs} args - Arguments to create a Post.
-     * @example
-     * // Create one Post
-     * const Post = await prisma.post.create({
-     *   data: {
-     *     // ... data to create a Post
-     *   }
-     * })
-     * 
-     */
-    create<T extends PostCreateArgs>(args: SelectSubset<T, PostCreateArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Posts.
-     * @param {PostCreateManyArgs} args - Arguments to create many Posts.
-     * @example
-     * // Create many Posts
-     * const post = await prisma.post.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends PostCreateManyArgs>(args?: SelectSubset<T, PostCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Posts and returns the data saved in the database.
-     * @param {PostCreateManyAndReturnArgs} args - Arguments to create many Posts.
-     * @example
-     * // Create many Posts
-     * const post = await prisma.post.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Posts and only return the `id`
-     * const postWithIdOnly = await prisma.post.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends PostCreateManyAndReturnArgs>(args?: SelectSubset<T, PostCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Post.
-     * @param {PostDeleteArgs} args - Arguments to delete one Post.
-     * @example
-     * // Delete one Post
-     * const Post = await prisma.post.delete({
-     *   where: {
-     *     // ... filter to delete one Post
-     *   }
-     * })
-     * 
-     */
-    delete<T extends PostDeleteArgs>(args: SelectSubset<T, PostDeleteArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Post.
-     * @param {PostUpdateArgs} args - Arguments to update one Post.
-     * @example
-     * // Update one Post
-     * const post = await prisma.post.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends PostUpdateArgs>(args: SelectSubset<T, PostUpdateArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Posts.
-     * @param {PostDeleteManyArgs} args - Arguments to filter Posts to delete.
-     * @example
-     * // Delete a few Posts
-     * const { count } = await prisma.post.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends PostDeleteManyArgs>(args?: SelectSubset<T, PostDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Posts.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Posts
-     * const post = await prisma.post.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends PostUpdateManyArgs>(args: SelectSubset<T, PostUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Posts and returns the data updated in the database.
-     * @param {PostUpdateManyAndReturnArgs} args - Arguments to update many Posts.
-     * @example
-     * // Update many Posts
-     * const post = await prisma.post.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Posts and only return the `id`
-     * const postWithIdOnly = await prisma.post.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends PostUpdateManyAndReturnArgs>(args: SelectSubset<T, PostUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Post.
-     * @param {PostUpsertArgs} args - Arguments to update or create a Post.
-     * @example
-     * // Update or create a Post
-     * const post = await prisma.post.upsert({
-     *   create: {
-     *     // ... data to create a Post
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Post we want to update
-     *   }
-     * })
-     */
-    upsert<T extends PostUpsertArgs>(args: SelectSubset<T, PostUpsertArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Posts.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostCountArgs} args - Arguments to filter Posts to count.
-     * @example
-     * // Count the number of Posts
-     * const count = await prisma.post.count({
-     *   where: {
-     *     // ... the filter for the Posts we want to count
-     *   }
-     * })
-    **/
-    count<T extends PostCountArgs>(
-      args?: Subset<T, PostCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], PostCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Post.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends PostAggregateArgs>(args: Subset<T, PostAggregateArgs>): Prisma.PrismaPromise<GetPostAggregateType<T>>
-
-    /**
-     * Group by Post.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PostGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends PostGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: PostGroupByArgs['orderBy'] }
-        : { orderBy?: PostGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, PostGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPostGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Post model
-   */
-  readonly fields: PostFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Post.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__PostClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    createdBy<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Post model
-   */
-  interface PostFieldRefs {
-    readonly id: FieldRef<"Post", 'Int'>
-    readonly name: FieldRef<"Post", 'String'>
-    readonly createdAt: FieldRef<"Post", 'DateTime'>
-    readonly updatedAt: FieldRef<"Post", 'DateTime'>
-    readonly createdById: FieldRef<"Post", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Post findUnique
-   */
-  export type PostFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
-    /**
-     * Filter, which Post to fetch.
-     */
-    where: PostWhereUniqueInput
-  }
-
-  /**
-   * Post findUniqueOrThrow
-   */
-  export type PostFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
-    /**
-     * Filter, which Post to fetch.
-     */
-    where: PostWhereUniqueInput
-  }
-
-  /**
-   * Post findFirst
-   */
-  export type PostFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
-    /**
-     * Filter, which Post to fetch.
-     */
-    where?: PostWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Posts to fetch.
-     */
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Posts.
-     */
-    cursor?: PostWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Posts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Posts.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Posts.
-     */
-    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
-  }
-
-  /**
-   * Post findFirstOrThrow
-   */
-  export type PostFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
-    /**
-     * Filter, which Post to fetch.
-     */
-    where?: PostWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Posts to fetch.
-     */
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Posts.
-     */
-    cursor?: PostWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Posts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Posts.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Posts.
-     */
-    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
-  }
-
-  /**
-   * Post findMany
-   */
-  export type PostFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
-    /**
-     * Filter, which Posts to fetch.
-     */
-    where?: PostWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Posts to fetch.
-     */
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Posts.
-     */
-    cursor?: PostWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Posts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Posts.
-     */
-    skip?: number
-    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
-  }
-
-  /**
-   * Post create
-   */
-  export type PostCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Post.
-     */
-    data: XOR<PostCreateInput, PostUncheckedCreateInput>
-  }
-
-  /**
-   * Post createMany
-   */
-  export type PostCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Posts.
-     */
-    data: PostCreateManyInput | PostCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Post createManyAndReturn
-   */
-  export type PostCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * The data used to create many Posts.
-     */
-    data: PostCreateManyInput | PostCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Post update
-   */
-  export type PostUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Post.
-     */
-    data: XOR<PostUpdateInput, PostUncheckedUpdateInput>
-    /**
-     * Choose, which Post to update.
-     */
-    where: PostWhereUniqueInput
-  }
-
-  /**
-   * Post updateMany
-   */
-  export type PostUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Posts.
-     */
-    data: XOR<PostUpdateManyMutationInput, PostUncheckedUpdateManyInput>
-    /**
-     * Filter which Posts to update
-     */
-    where?: PostWhereInput
-    /**
-     * Limit how many Posts to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Post updateManyAndReturn
-   */
-  export type PostUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * The data used to update Posts.
-     */
-    data: XOR<PostUpdateManyMutationInput, PostUncheckedUpdateManyInput>
-    /**
-     * Filter which Posts to update
-     */
-    where?: PostWhereInput
-    /**
-     * Limit how many Posts to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Post upsert
-   */
-  export type PostUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Post to update in case it exists.
-     */
-    where: PostWhereUniqueInput
-    /**
-     * In case the Post found by the `where` argument doesn't exist, create a new Post with this data.
-     */
-    create: XOR<PostCreateInput, PostUncheckedCreateInput>
-    /**
-     * In case the Post was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<PostUpdateInput, PostUncheckedUpdateInput>
-  }
-
-  /**
-   * Post delete
-   */
-  export type PostDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
-    /**
-     * Filter which Post to delete.
-     */
-    where: PostWhereUniqueInput
-  }
-
-  /**
-   * Post deleteMany
-   */
-  export type PostDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Posts to delete
-     */
-    where?: PostWhereInput
-    /**
-     * Limit how many Posts to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Post without action
-   */
-  export type PostDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model Account
-   */
-
-  export type AggregateAccount = {
-    _count: AccountCountAggregateOutputType | null
-    _avg: AccountAvgAggregateOutputType | null
-    _sum: AccountSumAggregateOutputType | null
-    _min: AccountMinAggregateOutputType | null
-    _max: AccountMaxAggregateOutputType | null
-  }
-
-  export type AccountAvgAggregateOutputType = {
-    expires_at: number | null
-    refresh_token_expires_in: number | null
-  }
-
-  export type AccountSumAggregateOutputType = {
-    expires_at: number | null
-    refresh_token_expires_in: number | null
-  }
-
-  export type AccountMinAggregateOutputType = {
-    id: string | null
-    userId: string | null
-    type: string | null
-    provider: string | null
-    providerAccountId: string | null
-    refresh_token: string | null
-    access_token: string | null
-    expires_at: number | null
-    token_type: string | null
-    scope: string | null
-    id_token: string | null
-    session_state: string | null
-    refresh_token_expires_in: number | null
-  }
-
-  export type AccountMaxAggregateOutputType = {
-    id: string | null
-    userId: string | null
-    type: string | null
-    provider: string | null
-    providerAccountId: string | null
-    refresh_token: string | null
-    access_token: string | null
-    expires_at: number | null
-    token_type: string | null
-    scope: string | null
-    id_token: string | null
-    session_state: string | null
-    refresh_token_expires_in: number | null
-  }
-
-  export type AccountCountAggregateOutputType = {
-    id: number
-    userId: number
-    type: number
-    provider: number
-    providerAccountId: number
-    refresh_token: number
-    access_token: number
-    expires_at: number
-    token_type: number
-    scope: number
-    id_token: number
-    session_state: number
-    refresh_token_expires_in: number
-    _all: number
-  }
-
-
-  export type AccountAvgAggregateInputType = {
-    expires_at?: true
-    refresh_token_expires_in?: true
-  }
-
-  export type AccountSumAggregateInputType = {
-    expires_at?: true
-    refresh_token_expires_in?: true
-  }
-
-  export type AccountMinAggregateInputType = {
-    id?: true
-    userId?: true
-    type?: true
-    provider?: true
-    providerAccountId?: true
-    refresh_token?: true
-    access_token?: true
-    expires_at?: true
-    token_type?: true
-    scope?: true
-    id_token?: true
-    session_state?: true
-    refresh_token_expires_in?: true
-  }
-
-  export type AccountMaxAggregateInputType = {
-    id?: true
-    userId?: true
-    type?: true
-    provider?: true
-    providerAccountId?: true
-    refresh_token?: true
-    access_token?: true
-    expires_at?: true
-    token_type?: true
-    scope?: true
-    id_token?: true
-    session_state?: true
-    refresh_token_expires_in?: true
-  }
-
-  export type AccountCountAggregateInputType = {
-    id?: true
-    userId?: true
-    type?: true
-    provider?: true
-    providerAccountId?: true
-    refresh_token?: true
-    access_token?: true
-    expires_at?: true
-    token_type?: true
-    scope?: true
-    id_token?: true
-    session_state?: true
-    refresh_token_expires_in?: true
-    _all?: true
-  }
-
-  export type AccountAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Account to aggregate.
-     */
-    where?: AccountWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Accounts to fetch.
-     */
-    orderBy?: AccountOrderByWithRelationInput | AccountOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: AccountWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Accounts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Accounts.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Accounts
-    **/
-    _count?: true | AccountCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: AccountAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: AccountSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: AccountMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: AccountMaxAggregateInputType
-  }
-
-  export type GetAccountAggregateType<T extends AccountAggregateArgs> = {
-        [P in keyof T & keyof AggregateAccount]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateAccount[P]>
-      : GetScalarType<T[P], AggregateAccount[P]>
-  }
-
-
-
-
-  export type AccountGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AccountWhereInput
-    orderBy?: AccountOrderByWithAggregationInput | AccountOrderByWithAggregationInput[]
-    by: AccountScalarFieldEnum[] | AccountScalarFieldEnum
-    having?: AccountScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: AccountCountAggregateInputType | true
-    _avg?: AccountAvgAggregateInputType
-    _sum?: AccountSumAggregateInputType
-    _min?: AccountMinAggregateInputType
-    _max?: AccountMaxAggregateInputType
-  }
-
-  export type AccountGroupByOutputType = {
-    id: string
-    userId: string
-    type: string
-    provider: string
-    providerAccountId: string
-    refresh_token: string | null
-    access_token: string | null
-    expires_at: number | null
-    token_type: string | null
-    scope: string | null
-    id_token: string | null
-    session_state: string | null
-    refresh_token_expires_in: number | null
-    _count: AccountCountAggregateOutputType | null
-    _avg: AccountAvgAggregateOutputType | null
-    _sum: AccountSumAggregateOutputType | null
-    _min: AccountMinAggregateOutputType | null
-    _max: AccountMaxAggregateOutputType | null
-  }
-
-  type GetAccountGroupByPayload<T extends AccountGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<AccountGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof AccountGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], AccountGroupByOutputType[P]>
-            : GetScalarType<T[P], AccountGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type AccountSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    userId?: boolean
-    type?: boolean
-    provider?: boolean
-    providerAccountId?: boolean
-    refresh_token?: boolean
-    access_token?: boolean
-    expires_at?: boolean
-    token_type?: boolean
-    scope?: boolean
-    id_token?: boolean
-    session_state?: boolean
-    refresh_token_expires_in?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["account"]>
-
-  export type AccountSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    userId?: boolean
-    type?: boolean
-    provider?: boolean
-    providerAccountId?: boolean
-    refresh_token?: boolean
-    access_token?: boolean
-    expires_at?: boolean
-    token_type?: boolean
-    scope?: boolean
-    id_token?: boolean
-    session_state?: boolean
-    refresh_token_expires_in?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["account"]>
-
-  export type AccountSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    userId?: boolean
-    type?: boolean
-    provider?: boolean
-    providerAccountId?: boolean
-    refresh_token?: boolean
-    access_token?: boolean
-    expires_at?: boolean
-    token_type?: boolean
-    scope?: boolean
-    id_token?: boolean
-    session_state?: boolean
-    refresh_token_expires_in?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["account"]>
-
-  export type AccountSelectScalar = {
-    id?: boolean
-    userId?: boolean
-    type?: boolean
-    provider?: boolean
-    providerAccountId?: boolean
-    refresh_token?: boolean
-    access_token?: boolean
-    expires_at?: boolean
-    token_type?: boolean
-    scope?: boolean
-    id_token?: boolean
-    session_state?: boolean
-    refresh_token_expires_in?: boolean
-  }
-
-  export type AccountOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "type" | "provider" | "providerAccountId" | "refresh_token" | "access_token" | "expires_at" | "token_type" | "scope" | "id_token" | "session_state" | "refresh_token_expires_in", ExtArgs["result"]["account"]>
-  export type AccountInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type AccountIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type AccountIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-
-  export type $AccountPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Account"
-    objects: {
-      user: Prisma.$UserPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      userId: string
-      type: string
-      provider: string
-      providerAccountId: string
-      refresh_token: string | null
-      access_token: string | null
-      expires_at: number | null
-      token_type: string | null
-      scope: string | null
-      id_token: string | null
-      session_state: string | null
-      refresh_token_expires_in: number | null
-    }, ExtArgs["result"]["account"]>
-    composites: {}
-  }
-
-  type AccountGetPayload<S extends boolean | null | undefined | AccountDefaultArgs> = $Result.GetResult<Prisma.$AccountPayload, S>
-
-  type AccountCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<AccountFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: AccountCountAggregateInputType | true
-    }
-
-  export interface AccountDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Account'], meta: { name: 'Account' } }
-    /**
-     * Find zero or one Account that matches the filter.
-     * @param {AccountFindUniqueArgs} args - Arguments to find a Account
-     * @example
-     * // Get one Account
-     * const account = await prisma.account.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends AccountFindUniqueArgs>(args: SelectSubset<T, AccountFindUniqueArgs<ExtArgs>>): Prisma__AccountClient<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Account that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {AccountFindUniqueOrThrowArgs} args - Arguments to find a Account
-     * @example
-     * // Get one Account
-     * const account = await prisma.account.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends AccountFindUniqueOrThrowArgs>(args: SelectSubset<T, AccountFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AccountClient<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Account that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AccountFindFirstArgs} args - Arguments to find a Account
-     * @example
-     * // Get one Account
-     * const account = await prisma.account.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends AccountFindFirstArgs>(args?: SelectSubset<T, AccountFindFirstArgs<ExtArgs>>): Prisma__AccountClient<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Account that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AccountFindFirstOrThrowArgs} args - Arguments to find a Account
-     * @example
-     * // Get one Account
-     * const account = await prisma.account.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends AccountFindFirstOrThrowArgs>(args?: SelectSubset<T, AccountFindFirstOrThrowArgs<ExtArgs>>): Prisma__AccountClient<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Accounts that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AccountFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Accounts
-     * const accounts = await prisma.account.findMany()
-     * 
-     * // Get first 10 Accounts
-     * const accounts = await prisma.account.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const accountWithIdOnly = await prisma.account.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends AccountFindManyArgs>(args?: SelectSubset<T, AccountFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Account.
-     * @param {AccountCreateArgs} args - Arguments to create a Account.
-     * @example
-     * // Create one Account
-     * const Account = await prisma.account.create({
-     *   data: {
-     *     // ... data to create a Account
-     *   }
-     * })
-     * 
-     */
-    create<T extends AccountCreateArgs>(args: SelectSubset<T, AccountCreateArgs<ExtArgs>>): Prisma__AccountClient<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Accounts.
-     * @param {AccountCreateManyArgs} args - Arguments to create many Accounts.
-     * @example
-     * // Create many Accounts
-     * const account = await prisma.account.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends AccountCreateManyArgs>(args?: SelectSubset<T, AccountCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Accounts and returns the data saved in the database.
-     * @param {AccountCreateManyAndReturnArgs} args - Arguments to create many Accounts.
-     * @example
-     * // Create many Accounts
-     * const account = await prisma.account.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Accounts and only return the `id`
-     * const accountWithIdOnly = await prisma.account.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends AccountCreateManyAndReturnArgs>(args?: SelectSubset<T, AccountCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Account.
-     * @param {AccountDeleteArgs} args - Arguments to delete one Account.
-     * @example
-     * // Delete one Account
-     * const Account = await prisma.account.delete({
-     *   where: {
-     *     // ... filter to delete one Account
-     *   }
-     * })
-     * 
-     */
-    delete<T extends AccountDeleteArgs>(args: SelectSubset<T, AccountDeleteArgs<ExtArgs>>): Prisma__AccountClient<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Account.
-     * @param {AccountUpdateArgs} args - Arguments to update one Account.
-     * @example
-     * // Update one Account
-     * const account = await prisma.account.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends AccountUpdateArgs>(args: SelectSubset<T, AccountUpdateArgs<ExtArgs>>): Prisma__AccountClient<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Accounts.
-     * @param {AccountDeleteManyArgs} args - Arguments to filter Accounts to delete.
-     * @example
-     * // Delete a few Accounts
-     * const { count } = await prisma.account.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends AccountDeleteManyArgs>(args?: SelectSubset<T, AccountDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Accounts.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AccountUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Accounts
-     * const account = await prisma.account.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends AccountUpdateManyArgs>(args: SelectSubset<T, AccountUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Accounts and returns the data updated in the database.
-     * @param {AccountUpdateManyAndReturnArgs} args - Arguments to update many Accounts.
-     * @example
-     * // Update many Accounts
-     * const account = await prisma.account.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Accounts and only return the `id`
-     * const accountWithIdOnly = await prisma.account.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends AccountUpdateManyAndReturnArgs>(args: SelectSubset<T, AccountUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Account.
-     * @param {AccountUpsertArgs} args - Arguments to update or create a Account.
-     * @example
-     * // Update or create a Account
-     * const account = await prisma.account.upsert({
-     *   create: {
-     *     // ... data to create a Account
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Account we want to update
-     *   }
-     * })
-     */
-    upsert<T extends AccountUpsertArgs>(args: SelectSubset<T, AccountUpsertArgs<ExtArgs>>): Prisma__AccountClient<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Accounts.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AccountCountArgs} args - Arguments to filter Accounts to count.
-     * @example
-     * // Count the number of Accounts
-     * const count = await prisma.account.count({
-     *   where: {
-     *     // ... the filter for the Accounts we want to count
-     *   }
-     * })
-    **/
-    count<T extends AccountCountArgs>(
-      args?: Subset<T, AccountCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], AccountCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Account.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AccountAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends AccountAggregateArgs>(args: Subset<T, AccountAggregateArgs>): Prisma.PrismaPromise<GetAccountAggregateType<T>>
-
-    /**
-     * Group by Account.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {AccountGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends AccountGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: AccountGroupByArgs['orderBy'] }
-        : { orderBy?: AccountGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, AccountGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAccountGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Account model
-   */
-  readonly fields: AccountFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Account.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__AccountClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Account model
-   */
-  interface AccountFieldRefs {
-    readonly id: FieldRef<"Account", 'String'>
-    readonly userId: FieldRef<"Account", 'String'>
-    readonly type: FieldRef<"Account", 'String'>
-    readonly provider: FieldRef<"Account", 'String'>
-    readonly providerAccountId: FieldRef<"Account", 'String'>
-    readonly refresh_token: FieldRef<"Account", 'String'>
-    readonly access_token: FieldRef<"Account", 'String'>
-    readonly expires_at: FieldRef<"Account", 'Int'>
-    readonly token_type: FieldRef<"Account", 'String'>
-    readonly scope: FieldRef<"Account", 'String'>
-    readonly id_token: FieldRef<"Account", 'String'>
-    readonly session_state: FieldRef<"Account", 'String'>
-    readonly refresh_token_expires_in: FieldRef<"Account", 'Int'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Account findUnique
-   */
-  export type AccountFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Account
-     */
-    select?: AccountSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Account
-     */
-    omit?: AccountOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccountInclude<ExtArgs> | null
-    /**
-     * Filter, which Account to fetch.
-     */
-    where: AccountWhereUniqueInput
-  }
-
-  /**
-   * Account findUniqueOrThrow
-   */
-  export type AccountFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Account
-     */
-    select?: AccountSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Account
-     */
-    omit?: AccountOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccountInclude<ExtArgs> | null
-    /**
-     * Filter, which Account to fetch.
-     */
-    where: AccountWhereUniqueInput
-  }
-
-  /**
-   * Account findFirst
-   */
-  export type AccountFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Account
-     */
-    select?: AccountSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Account
-     */
-    omit?: AccountOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccountInclude<ExtArgs> | null
-    /**
-     * Filter, which Account to fetch.
-     */
-    where?: AccountWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Accounts to fetch.
-     */
-    orderBy?: AccountOrderByWithRelationInput | AccountOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Accounts.
-     */
-    cursor?: AccountWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Accounts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Accounts.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Accounts.
-     */
-    distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
-  }
-
-  /**
-   * Account findFirstOrThrow
-   */
-  export type AccountFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Account
-     */
-    select?: AccountSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Account
-     */
-    omit?: AccountOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccountInclude<ExtArgs> | null
-    /**
-     * Filter, which Account to fetch.
-     */
-    where?: AccountWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Accounts to fetch.
-     */
-    orderBy?: AccountOrderByWithRelationInput | AccountOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Accounts.
-     */
-    cursor?: AccountWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Accounts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Accounts.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Accounts.
-     */
-    distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
-  }
-
-  /**
-   * Account findMany
-   */
-  export type AccountFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Account
-     */
-    select?: AccountSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Account
-     */
-    omit?: AccountOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccountInclude<ExtArgs> | null
-    /**
-     * Filter, which Accounts to fetch.
-     */
-    where?: AccountWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Accounts to fetch.
-     */
-    orderBy?: AccountOrderByWithRelationInput | AccountOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Accounts.
-     */
-    cursor?: AccountWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Accounts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Accounts.
-     */
-    skip?: number
-    distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
-  }
-
-  /**
-   * Account create
-   */
-  export type AccountCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Account
-     */
-    select?: AccountSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Account
-     */
-    omit?: AccountOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccountInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Account.
-     */
-    data: XOR<AccountCreateInput, AccountUncheckedCreateInput>
-  }
-
-  /**
-   * Account createMany
-   */
-  export type AccountCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Accounts.
-     */
-    data: AccountCreateManyInput | AccountCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Account createManyAndReturn
-   */
-  export type AccountCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Account
-     */
-    select?: AccountSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Account
-     */
-    omit?: AccountOmit<ExtArgs> | null
-    /**
-     * The data used to create many Accounts.
-     */
-    data: AccountCreateManyInput | AccountCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccountIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Account update
-   */
-  export type AccountUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Account
-     */
-    select?: AccountSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Account
-     */
-    omit?: AccountOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccountInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Account.
-     */
-    data: XOR<AccountUpdateInput, AccountUncheckedUpdateInput>
-    /**
-     * Choose, which Account to update.
-     */
-    where: AccountWhereUniqueInput
-  }
-
-  /**
-   * Account updateMany
-   */
-  export type AccountUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Accounts.
-     */
-    data: XOR<AccountUpdateManyMutationInput, AccountUncheckedUpdateManyInput>
-    /**
-     * Filter which Accounts to update
-     */
-    where?: AccountWhereInput
-    /**
-     * Limit how many Accounts to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Account updateManyAndReturn
-   */
-  export type AccountUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Account
-     */
-    select?: AccountSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Account
-     */
-    omit?: AccountOmit<ExtArgs> | null
-    /**
-     * The data used to update Accounts.
-     */
-    data: XOR<AccountUpdateManyMutationInput, AccountUncheckedUpdateManyInput>
-    /**
-     * Filter which Accounts to update
-     */
-    where?: AccountWhereInput
-    /**
-     * Limit how many Accounts to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccountIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Account upsert
-   */
-  export type AccountUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Account
-     */
-    select?: AccountSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Account
-     */
-    omit?: AccountOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccountInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Account to update in case it exists.
-     */
-    where: AccountWhereUniqueInput
-    /**
-     * In case the Account found by the `where` argument doesn't exist, create a new Account with this data.
-     */
-    create: XOR<AccountCreateInput, AccountUncheckedCreateInput>
-    /**
-     * In case the Account was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<AccountUpdateInput, AccountUncheckedUpdateInput>
-  }
-
-  /**
-   * Account delete
-   */
-  export type AccountDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Account
-     */
-    select?: AccountSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Account
-     */
-    omit?: AccountOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccountInclude<ExtArgs> | null
-    /**
-     * Filter which Account to delete.
-     */
-    where: AccountWhereUniqueInput
-  }
-
-  /**
-   * Account deleteMany
-   */
-  export type AccountDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Accounts to delete
-     */
-    where?: AccountWhereInput
-    /**
-     * Limit how many Accounts to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Account without action
-   */
-  export type AccountDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Account
-     */
-    select?: AccountSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Account
-     */
-    omit?: AccountOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AccountInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model Session
-   */
-
-  export type AggregateSession = {
-    _count: SessionCountAggregateOutputType | null
-    _min: SessionMinAggregateOutputType | null
-    _max: SessionMaxAggregateOutputType | null
-  }
-
-  export type SessionMinAggregateOutputType = {
-    id: string | null
-    sessionToken: string | null
-    userId: string | null
-    expires: Date | null
-  }
-
-  export type SessionMaxAggregateOutputType = {
-    id: string | null
-    sessionToken: string | null
-    userId: string | null
-    expires: Date | null
-  }
-
-  export type SessionCountAggregateOutputType = {
-    id: number
-    sessionToken: number
-    userId: number
-    expires: number
-    _all: number
-  }
-
-
-  export type SessionMinAggregateInputType = {
-    id?: true
-    sessionToken?: true
-    userId?: true
-    expires?: true
-  }
-
-  export type SessionMaxAggregateInputType = {
-    id?: true
-    sessionToken?: true
-    userId?: true
-    expires?: true
-  }
-
-  export type SessionCountAggregateInputType = {
-    id?: true
-    sessionToken?: true
-    userId?: true
-    expires?: true
-    _all?: true
-  }
-
-  export type SessionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Session to aggregate.
-     */
-    where?: SessionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Sessions to fetch.
-     */
-    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: SessionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Sessions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Sessions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Sessions
-    **/
-    _count?: true | SessionCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: SessionMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: SessionMaxAggregateInputType
-  }
-
-  export type GetSessionAggregateType<T extends SessionAggregateArgs> = {
-        [P in keyof T & keyof AggregateSession]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateSession[P]>
-      : GetScalarType<T[P], AggregateSession[P]>
-  }
-
-
-
-
-  export type SessionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SessionWhereInput
-    orderBy?: SessionOrderByWithAggregationInput | SessionOrderByWithAggregationInput[]
-    by: SessionScalarFieldEnum[] | SessionScalarFieldEnum
-    having?: SessionScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: SessionCountAggregateInputType | true
-    _min?: SessionMinAggregateInputType
-    _max?: SessionMaxAggregateInputType
-  }
-
-  export type SessionGroupByOutputType = {
-    id: string
-    sessionToken: string
-    userId: string
-    expires: Date
-    _count: SessionCountAggregateOutputType | null
-    _min: SessionMinAggregateOutputType | null
-    _max: SessionMaxAggregateOutputType | null
-  }
-
-  type GetSessionGroupByPayload<T extends SessionGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<SessionGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof SessionGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], SessionGroupByOutputType[P]>
-            : GetScalarType<T[P], SessionGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type SessionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    sessionToken?: boolean
-    userId?: boolean
-    expires?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["session"]>
-
-  export type SessionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    sessionToken?: boolean
-    userId?: boolean
-    expires?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["session"]>
-
-  export type SessionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    sessionToken?: boolean
-    userId?: boolean
-    expires?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["session"]>
-
-  export type SessionSelectScalar = {
-    id?: boolean
-    sessionToken?: boolean
-    userId?: boolean
-    expires?: boolean
-  }
-
-  export type SessionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sessionToken" | "userId" | "expires", ExtArgs["result"]["session"]>
-  export type SessionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type SessionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type SessionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-
-  export type $SessionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Session"
-    objects: {
-      user: Prisma.$UserPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      sessionToken: string
-      userId: string
-      expires: Date
-    }, ExtArgs["result"]["session"]>
-    composites: {}
-  }
-
-  type SessionGetPayload<S extends boolean | null | undefined | SessionDefaultArgs> = $Result.GetResult<Prisma.$SessionPayload, S>
-
-  type SessionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<SessionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: SessionCountAggregateInputType | true
-    }
-
-  export interface SessionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Session'], meta: { name: 'Session' } }
-    /**
-     * Find zero or one Session that matches the filter.
-     * @param {SessionFindUniqueArgs} args - Arguments to find a Session
-     * @example
-     * // Get one Session
-     * const session = await prisma.session.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends SessionFindUniqueArgs>(args: SelectSubset<T, SessionFindUniqueArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Session that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {SessionFindUniqueOrThrowArgs} args - Arguments to find a Session
-     * @example
-     * // Get one Session
-     * const session = await prisma.session.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends SessionFindUniqueOrThrowArgs>(args: SelectSubset<T, SessionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Session that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SessionFindFirstArgs} args - Arguments to find a Session
-     * @example
-     * // Get one Session
-     * const session = await prisma.session.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends SessionFindFirstArgs>(args?: SelectSubset<T, SessionFindFirstArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Session that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SessionFindFirstOrThrowArgs} args - Arguments to find a Session
-     * @example
-     * // Get one Session
-     * const session = await prisma.session.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends SessionFindFirstOrThrowArgs>(args?: SelectSubset<T, SessionFindFirstOrThrowArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Sessions that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SessionFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Sessions
-     * const sessions = await prisma.session.findMany()
-     * 
-     * // Get first 10 Sessions
-     * const sessions = await prisma.session.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const sessionWithIdOnly = await prisma.session.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends SessionFindManyArgs>(args?: SelectSubset<T, SessionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Session.
-     * @param {SessionCreateArgs} args - Arguments to create a Session.
-     * @example
-     * // Create one Session
-     * const Session = await prisma.session.create({
-     *   data: {
-     *     // ... data to create a Session
-     *   }
-     * })
-     * 
-     */
-    create<T extends SessionCreateArgs>(args: SelectSubset<T, SessionCreateArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Sessions.
-     * @param {SessionCreateManyArgs} args - Arguments to create many Sessions.
-     * @example
-     * // Create many Sessions
-     * const session = await prisma.session.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends SessionCreateManyArgs>(args?: SelectSubset<T, SessionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Sessions and returns the data saved in the database.
-     * @param {SessionCreateManyAndReturnArgs} args - Arguments to create many Sessions.
-     * @example
-     * // Create many Sessions
-     * const session = await prisma.session.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Sessions and only return the `id`
-     * const sessionWithIdOnly = await prisma.session.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends SessionCreateManyAndReturnArgs>(args?: SelectSubset<T, SessionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Session.
-     * @param {SessionDeleteArgs} args - Arguments to delete one Session.
-     * @example
-     * // Delete one Session
-     * const Session = await prisma.session.delete({
-     *   where: {
-     *     // ... filter to delete one Session
-     *   }
-     * })
-     * 
-     */
-    delete<T extends SessionDeleteArgs>(args: SelectSubset<T, SessionDeleteArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Session.
-     * @param {SessionUpdateArgs} args - Arguments to update one Session.
-     * @example
-     * // Update one Session
-     * const session = await prisma.session.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends SessionUpdateArgs>(args: SelectSubset<T, SessionUpdateArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Sessions.
-     * @param {SessionDeleteManyArgs} args - Arguments to filter Sessions to delete.
-     * @example
-     * // Delete a few Sessions
-     * const { count } = await prisma.session.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends SessionDeleteManyArgs>(args?: SelectSubset<T, SessionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Sessions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SessionUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Sessions
-     * const session = await prisma.session.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends SessionUpdateManyArgs>(args: SelectSubset<T, SessionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Sessions and returns the data updated in the database.
-     * @param {SessionUpdateManyAndReturnArgs} args - Arguments to update many Sessions.
-     * @example
-     * // Update many Sessions
-     * const session = await prisma.session.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Sessions and only return the `id`
-     * const sessionWithIdOnly = await prisma.session.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends SessionUpdateManyAndReturnArgs>(args: SelectSubset<T, SessionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Session.
-     * @param {SessionUpsertArgs} args - Arguments to update or create a Session.
-     * @example
-     * // Update or create a Session
-     * const session = await prisma.session.upsert({
-     *   create: {
-     *     // ... data to create a Session
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Session we want to update
-     *   }
-     * })
-     */
-    upsert<T extends SessionUpsertArgs>(args: SelectSubset<T, SessionUpsertArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Sessions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SessionCountArgs} args - Arguments to filter Sessions to count.
-     * @example
-     * // Count the number of Sessions
-     * const count = await prisma.session.count({
-     *   where: {
-     *     // ... the filter for the Sessions we want to count
-     *   }
-     * })
-    **/
-    count<T extends SessionCountArgs>(
-      args?: Subset<T, SessionCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], SessionCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Session.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SessionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends SessionAggregateArgs>(args: Subset<T, SessionAggregateArgs>): Prisma.PrismaPromise<GetSessionAggregateType<T>>
-
-    /**
-     * Group by Session.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SessionGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends SessionGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: SessionGroupByArgs['orderBy'] }
-        : { orderBy?: SessionGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, SessionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSessionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Session model
-   */
-  readonly fields: SessionFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Session.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__SessionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Session model
-   */
-  interface SessionFieldRefs {
-    readonly id: FieldRef<"Session", 'String'>
-    readonly sessionToken: FieldRef<"Session", 'String'>
-    readonly userId: FieldRef<"Session", 'String'>
-    readonly expires: FieldRef<"Session", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Session findUnique
-   */
-  export type SessionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Session
-     */
-    select?: SessionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Session
-     */
-    omit?: SessionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SessionInclude<ExtArgs> | null
-    /**
-     * Filter, which Session to fetch.
-     */
-    where: SessionWhereUniqueInput
-  }
-
-  /**
-   * Session findUniqueOrThrow
-   */
-  export type SessionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Session
-     */
-    select?: SessionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Session
-     */
-    omit?: SessionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SessionInclude<ExtArgs> | null
-    /**
-     * Filter, which Session to fetch.
-     */
-    where: SessionWhereUniqueInput
-  }
-
-  /**
-   * Session findFirst
-   */
-  export type SessionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Session
-     */
-    select?: SessionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Session
-     */
-    omit?: SessionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SessionInclude<ExtArgs> | null
-    /**
-     * Filter, which Session to fetch.
-     */
-    where?: SessionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Sessions to fetch.
-     */
-    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Sessions.
-     */
-    cursor?: SessionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Sessions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Sessions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Sessions.
-     */
-    distinct?: SessionScalarFieldEnum | SessionScalarFieldEnum[]
-  }
-
-  /**
-   * Session findFirstOrThrow
-   */
-  export type SessionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Session
-     */
-    select?: SessionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Session
-     */
-    omit?: SessionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SessionInclude<ExtArgs> | null
-    /**
-     * Filter, which Session to fetch.
-     */
-    where?: SessionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Sessions to fetch.
-     */
-    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Sessions.
-     */
-    cursor?: SessionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Sessions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Sessions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Sessions.
-     */
-    distinct?: SessionScalarFieldEnum | SessionScalarFieldEnum[]
-  }
-
-  /**
-   * Session findMany
-   */
-  export type SessionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Session
-     */
-    select?: SessionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Session
-     */
-    omit?: SessionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SessionInclude<ExtArgs> | null
-    /**
-     * Filter, which Sessions to fetch.
-     */
-    where?: SessionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Sessions to fetch.
-     */
-    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Sessions.
-     */
-    cursor?: SessionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Sessions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Sessions.
-     */
-    skip?: number
-    distinct?: SessionScalarFieldEnum | SessionScalarFieldEnum[]
-  }
-
-  /**
-   * Session create
-   */
-  export type SessionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Session
-     */
-    select?: SessionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Session
-     */
-    omit?: SessionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SessionInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Session.
-     */
-    data: XOR<SessionCreateInput, SessionUncheckedCreateInput>
-  }
-
-  /**
-   * Session createMany
-   */
-  export type SessionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Sessions.
-     */
-    data: SessionCreateManyInput | SessionCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Session createManyAndReturn
-   */
-  export type SessionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Session
-     */
-    select?: SessionSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Session
-     */
-    omit?: SessionOmit<ExtArgs> | null
-    /**
-     * The data used to create many Sessions.
-     */
-    data: SessionCreateManyInput | SessionCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SessionIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Session update
-   */
-  export type SessionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Session
-     */
-    select?: SessionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Session
-     */
-    omit?: SessionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SessionInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Session.
-     */
-    data: XOR<SessionUpdateInput, SessionUncheckedUpdateInput>
-    /**
-     * Choose, which Session to update.
-     */
-    where: SessionWhereUniqueInput
-  }
-
-  /**
-   * Session updateMany
-   */
-  export type SessionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Sessions.
-     */
-    data: XOR<SessionUpdateManyMutationInput, SessionUncheckedUpdateManyInput>
-    /**
-     * Filter which Sessions to update
-     */
-    where?: SessionWhereInput
-    /**
-     * Limit how many Sessions to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Session updateManyAndReturn
-   */
-  export type SessionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Session
-     */
-    select?: SessionSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Session
-     */
-    omit?: SessionOmit<ExtArgs> | null
-    /**
-     * The data used to update Sessions.
-     */
-    data: XOR<SessionUpdateManyMutationInput, SessionUncheckedUpdateManyInput>
-    /**
-     * Filter which Sessions to update
-     */
-    where?: SessionWhereInput
-    /**
-     * Limit how many Sessions to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SessionIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Session upsert
-   */
-  export type SessionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Session
-     */
-    select?: SessionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Session
-     */
-    omit?: SessionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SessionInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Session to update in case it exists.
-     */
-    where: SessionWhereUniqueInput
-    /**
-     * In case the Session found by the `where` argument doesn't exist, create a new Session with this data.
-     */
-    create: XOR<SessionCreateInput, SessionUncheckedCreateInput>
-    /**
-     * In case the Session was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<SessionUpdateInput, SessionUncheckedUpdateInput>
-  }
-
-  /**
-   * Session delete
-   */
-  export type SessionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Session
-     */
-    select?: SessionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Session
-     */
-    omit?: SessionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SessionInclude<ExtArgs> | null
-    /**
-     * Filter which Session to delete.
-     */
-    where: SessionWhereUniqueInput
-  }
-
-  /**
-   * Session deleteMany
-   */
-  export type SessionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Sessions to delete
-     */
-    where?: SessionWhereInput
-    /**
-     * Limit how many Sessions to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Session without action
-   */
-  export type SessionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Session
-     */
-    select?: SessionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Session
-     */
-    omit?: SessionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SessionInclude<ExtArgs> | null
-  }
-
 
   /**
    * Model User
@@ -4622,52 +1507,94 @@ export namespace Prisma {
 
   export type UserMinAggregateOutputType = {
     id: string | null
+    staffId: string | null
     name: string | null
+    designation: string | null
+    zone: string | null
     email: string | null
-    emailVerified: Date | null
-    image: string | null
+    mobile: string | null
+    role: string | null
+    status: string | null
+    password: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: string | null
+    staffId: string | null
     name: string | null
+    designation: string | null
+    zone: string | null
     email: string | null
-    emailVerified: Date | null
-    image: string | null
+    mobile: string | null
+    role: string | null
+    status: string | null
+    password: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
+    staffId: number
     name: number
+    designation: number
+    zone: number
     email: number
-    emailVerified: number
-    image: number
+    mobile: number
+    role: number
+    status: number
+    password: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
 
   export type UserMinAggregateInputType = {
     id?: true
+    staffId?: true
     name?: true
+    designation?: true
+    zone?: true
     email?: true
-    emailVerified?: true
-    image?: true
+    mobile?: true
+    role?: true
+    status?: true
+    password?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
+    staffId?: true
     name?: true
+    designation?: true
+    zone?: true
     email?: true
-    emailVerified?: true
-    image?: true
+    mobile?: true
+    role?: true
+    status?: true
+    password?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
+    staffId?: true
     name?: true
+    designation?: true
+    zone?: true
     email?: true
-    emailVerified?: true
-    image?: true
+    mobile?: true
+    role?: true
+    status?: true
+    password?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -4745,10 +1672,17 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: string
-    name: string | null
-    email: string | null
-    emailVerified: Date | null
-    image: string | null
+    staffId: string
+    name: string
+    designation: string
+    zone: string
+    email: string
+    mobile: string | null
+    role: string
+    status: string
+    password: string | null
+    createdAt: Date
+    updatedAt: Date
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -4770,45 +1704,75 @@ export namespace Prisma {
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    staffId?: boolean
     name?: boolean
+    designation?: boolean
+    zone?: boolean
     email?: boolean
-    emailVerified?: boolean
-    image?: boolean
-    accounts?: boolean | User$accountsArgs<ExtArgs>
-    sessions?: boolean | User$sessionsArgs<ExtArgs>
-    posts?: boolean | User$postsArgs<ExtArgs>
+    mobile?: boolean
+    role?: boolean
+    status?: boolean
+    password?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    reports?: boolean | User$reportsArgs<ExtArgs>
+    targets?: boolean | User$targetsArgs<ExtArgs>
+    findingAudits?: boolean | User$findingAuditsArgs<ExtArgs>
+    emailLogs?: boolean | User$emailLogsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    staffId?: boolean
     name?: boolean
+    designation?: boolean
+    zone?: boolean
     email?: boolean
-    emailVerified?: boolean
-    image?: boolean
+    mobile?: boolean
+    role?: boolean
+    status?: boolean
+    password?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    staffId?: boolean
     name?: boolean
+    designation?: boolean
+    zone?: boolean
     email?: boolean
-    emailVerified?: boolean
-    image?: boolean
+    mobile?: boolean
+    role?: boolean
+    status?: boolean
+    password?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
+    staffId?: boolean
     name?: boolean
+    designation?: boolean
+    zone?: boolean
     email?: boolean
-    emailVerified?: boolean
-    image?: boolean
+    mobile?: boolean
+    role?: boolean
+    status?: boolean
+    password?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "staffId" | "name" | "designation" | "zone" | "email" | "mobile" | "role" | "status" | "password" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    accounts?: boolean | User$accountsArgs<ExtArgs>
-    sessions?: boolean | User$sessionsArgs<ExtArgs>
-    posts?: boolean | User$postsArgs<ExtArgs>
+    reports?: boolean | User$reportsArgs<ExtArgs>
+    targets?: boolean | User$targetsArgs<ExtArgs>
+    findingAudits?: boolean | User$findingAuditsArgs<ExtArgs>
+    emailLogs?: boolean | User$emailLogsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -4817,16 +1781,24 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      accounts: Prisma.$AccountPayload<ExtArgs>[]
-      sessions: Prisma.$SessionPayload<ExtArgs>[]
-      posts: Prisma.$PostPayload<ExtArgs>[]
+      reports: Prisma.$WeeklyReportPayload<ExtArgs>[]
+      targets: Prisma.$MonthlyTargetPayload<ExtArgs>[]
+      findingAudits: Prisma.$FindingHistoryPayload<ExtArgs>[]
+      emailLogs: Prisma.$EmailNotificationLogPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      name: string | null
-      email: string | null
-      emailVerified: Date | null
-      image: string | null
+      staffId: string
+      name: string
+      designation: string
+      zone: string
+      email: string
+      mobile: string | null
+      role: string
+      status: string
+      password: string | null
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -5221,9 +2193,10 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    posts<T extends User$postsArgs<ExtArgs> = {}>(args?: Subset<T, User$postsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reports<T extends User$reportsArgs<ExtArgs> = {}>(args?: Subset<T, User$reportsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeeklyReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    targets<T extends User$targetsArgs<ExtArgs> = {}>(args?: Subset<T, User$targetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MonthlyTargetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    findingAudits<T extends User$findingAuditsArgs<ExtArgs> = {}>(args?: Subset<T, User$findingAuditsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FindingHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    emailLogs<T extends User$emailLogsArgs<ExtArgs> = {}>(args?: Subset<T, User$emailLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmailNotificationLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5254,10 +2227,17 @@ export namespace Prisma {
    */
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'String'>
+    readonly staffId: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
+    readonly designation: FieldRef<"User", 'String'>
+    readonly zone: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
-    readonly emailVerified: FieldRef<"User", 'DateTime'>
-    readonly image: FieldRef<"User", 'String'>
+    readonly mobile: FieldRef<"User", 'String'>
+    readonly role: FieldRef<"User", 'String'>
+    readonly status: FieldRef<"User", 'String'>
+    readonly password: FieldRef<"User", 'String'>
+    readonly createdAt: FieldRef<"User", 'DateTime'>
+    readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
     
 
@@ -5476,7 +2456,7 @@ export namespace Prisma {
     /**
      * The data needed to create a User.
      */
-    data?: XOR<UserCreateInput, UserUncheckedCreateInput>
+    data: XOR<UserCreateInput, UserUncheckedCreateInput>
   }
 
   /**
@@ -5487,7 +2467,6 @@ export namespace Prisma {
      * The data used to create many Users.
      */
     data: UserCreateManyInput | UserCreateManyInput[]
-    skipDuplicates?: boolean
   }
 
   /**
@@ -5506,7 +2485,6 @@ export namespace Prisma {
      * The data used to create many Users.
      */
     data: UserCreateManyInput | UserCreateManyInput[]
-    skipDuplicates?: boolean
   }
 
   /**
@@ -5646,75 +2624,99 @@ export namespace Prisma {
   }
 
   /**
-   * User.accounts
+   * User.reports
    */
-  export type User$accountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$reportsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Account
+     * Select specific fields to fetch from the WeeklyReport
      */
-    select?: AccountSelect<ExtArgs> | null
+    select?: WeeklyReportSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Account
+     * Omit specific fields from the WeeklyReport
      */
-    omit?: AccountOmit<ExtArgs> | null
+    omit?: WeeklyReportOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AccountInclude<ExtArgs> | null
-    where?: AccountWhereInput
-    orderBy?: AccountOrderByWithRelationInput | AccountOrderByWithRelationInput[]
-    cursor?: AccountWhereUniqueInput
+    include?: WeeklyReportInclude<ExtArgs> | null
+    where?: WeeklyReportWhereInput
+    orderBy?: WeeklyReportOrderByWithRelationInput | WeeklyReportOrderByWithRelationInput[]
+    cursor?: WeeklyReportWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
+    distinct?: WeeklyReportScalarFieldEnum | WeeklyReportScalarFieldEnum[]
   }
 
   /**
-   * User.sessions
+   * User.targets
    */
-  export type User$sessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$targetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Session
+     * Select specific fields to fetch from the MonthlyTarget
      */
-    select?: SessionSelect<ExtArgs> | null
+    select?: MonthlyTargetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Session
+     * Omit specific fields from the MonthlyTarget
      */
-    omit?: SessionOmit<ExtArgs> | null
+    omit?: MonthlyTargetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SessionInclude<ExtArgs> | null
-    where?: SessionWhereInput
-    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
-    cursor?: SessionWhereUniqueInput
+    include?: MonthlyTargetInclude<ExtArgs> | null
+    where?: MonthlyTargetWhereInput
+    orderBy?: MonthlyTargetOrderByWithRelationInput | MonthlyTargetOrderByWithRelationInput[]
+    cursor?: MonthlyTargetWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: SessionScalarFieldEnum | SessionScalarFieldEnum[]
+    distinct?: MonthlyTargetScalarFieldEnum | MonthlyTargetScalarFieldEnum[]
   }
 
   /**
-   * User.posts
+   * User.findingAudits
    */
-  export type User$postsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$findingAuditsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Post
+     * Select specific fields to fetch from the FindingHistory
      */
-    select?: PostSelect<ExtArgs> | null
+    select?: FindingHistorySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Post
+     * Omit specific fields from the FindingHistory
      */
-    omit?: PostOmit<ExtArgs> | null
+    omit?: FindingHistoryOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PostInclude<ExtArgs> | null
-    where?: PostWhereInput
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
-    cursor?: PostWhereUniqueInput
+    include?: FindingHistoryInclude<ExtArgs> | null
+    where?: FindingHistoryWhereInput
+    orderBy?: FindingHistoryOrderByWithRelationInput | FindingHistoryOrderByWithRelationInput[]
+    cursor?: FindingHistoryWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
+    distinct?: FindingHistoryScalarFieldEnum | FindingHistoryScalarFieldEnum[]
+  }
+
+  /**
+   * User.emailLogs
+   */
+  export type User$emailLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationLog
+     */
+    select?: EmailNotificationLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationLog
+     */
+    omit?: EmailNotificationLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailNotificationLogInclude<ExtArgs> | null
+    where?: EmailNotificationLogWhereInput
+    orderBy?: EmailNotificationLogOrderByWithRelationInput | EmailNotificationLogOrderByWithRelationInput[]
+    cursor?: EmailNotificationLogWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EmailNotificationLogScalarFieldEnum | EmailNotificationLogScalarFieldEnum[]
   }
 
   /**
@@ -5737,313 +2739,337 @@ export namespace Prisma {
 
 
   /**
-   * Model VerificationToken
+   * Model Zone
    */
 
-  export type AggregateVerificationToken = {
-    _count: VerificationTokenCountAggregateOutputType | null
-    _min: VerificationTokenMinAggregateOutputType | null
-    _max: VerificationTokenMaxAggregateOutputType | null
+  export type AggregateZone = {
+    _count: ZoneCountAggregateOutputType | null
+    _min: ZoneMinAggregateOutputType | null
+    _max: ZoneMaxAggregateOutputType | null
   }
 
-  export type VerificationTokenMinAggregateOutputType = {
-    identifier: string | null
-    token: string | null
-    expires: Date | null
+  export type ZoneMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    code: string | null
+    isActive: boolean | null
+    createdAt: Date | null
   }
 
-  export type VerificationTokenMaxAggregateOutputType = {
-    identifier: string | null
-    token: string | null
-    expires: Date | null
+  export type ZoneMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    code: string | null
+    isActive: boolean | null
+    createdAt: Date | null
   }
 
-  export type VerificationTokenCountAggregateOutputType = {
-    identifier: number
-    token: number
-    expires: number
+  export type ZoneCountAggregateOutputType = {
+    id: number
+    name: number
+    code: number
+    isActive: number
+    createdAt: number
     _all: number
   }
 
 
-  export type VerificationTokenMinAggregateInputType = {
-    identifier?: true
-    token?: true
-    expires?: true
+  export type ZoneMinAggregateInputType = {
+    id?: true
+    name?: true
+    code?: true
+    isActive?: true
+    createdAt?: true
   }
 
-  export type VerificationTokenMaxAggregateInputType = {
-    identifier?: true
-    token?: true
-    expires?: true
+  export type ZoneMaxAggregateInputType = {
+    id?: true
+    name?: true
+    code?: true
+    isActive?: true
+    createdAt?: true
   }
 
-  export type VerificationTokenCountAggregateInputType = {
-    identifier?: true
-    token?: true
-    expires?: true
+  export type ZoneCountAggregateInputType = {
+    id?: true
+    name?: true
+    code?: true
+    isActive?: true
+    createdAt?: true
     _all?: true
   }
 
-  export type VerificationTokenAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ZoneAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which VerificationToken to aggregate.
+     * Filter which Zone to aggregate.
      */
-    where?: VerificationTokenWhereInput
+    where?: ZoneWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of VerificationTokens to fetch.
+     * Determine the order of Zones to fetch.
      */
-    orderBy?: VerificationTokenOrderByWithRelationInput | VerificationTokenOrderByWithRelationInput[]
+    orderBy?: ZoneOrderByWithRelationInput | ZoneOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: VerificationTokenWhereUniqueInput
+    cursor?: ZoneWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` VerificationTokens from the position of the cursor.
+     * Take `±n` Zones from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` VerificationTokens.
+     * Skip the first `n` Zones.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned VerificationTokens
+     * Count returned Zones
     **/
-    _count?: true | VerificationTokenCountAggregateInputType
+    _count?: true | ZoneCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: VerificationTokenMinAggregateInputType
+    _min?: ZoneMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: VerificationTokenMaxAggregateInputType
+    _max?: ZoneMaxAggregateInputType
   }
 
-  export type GetVerificationTokenAggregateType<T extends VerificationTokenAggregateArgs> = {
-        [P in keyof T & keyof AggregateVerificationToken]: P extends '_count' | 'count'
+  export type GetZoneAggregateType<T extends ZoneAggregateArgs> = {
+        [P in keyof T & keyof AggregateZone]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateVerificationToken[P]>
-      : GetScalarType<T[P], AggregateVerificationToken[P]>
+        : GetScalarType<T[P], AggregateZone[P]>
+      : GetScalarType<T[P], AggregateZone[P]>
   }
 
 
 
 
-  export type VerificationTokenGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: VerificationTokenWhereInput
-    orderBy?: VerificationTokenOrderByWithAggregationInput | VerificationTokenOrderByWithAggregationInput[]
-    by: VerificationTokenScalarFieldEnum[] | VerificationTokenScalarFieldEnum
-    having?: VerificationTokenScalarWhereWithAggregatesInput
+  export type ZoneGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ZoneWhereInput
+    orderBy?: ZoneOrderByWithAggregationInput | ZoneOrderByWithAggregationInput[]
+    by: ZoneScalarFieldEnum[] | ZoneScalarFieldEnum
+    having?: ZoneScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: VerificationTokenCountAggregateInputType | true
-    _min?: VerificationTokenMinAggregateInputType
-    _max?: VerificationTokenMaxAggregateInputType
+    _count?: ZoneCountAggregateInputType | true
+    _min?: ZoneMinAggregateInputType
+    _max?: ZoneMaxAggregateInputType
   }
 
-  export type VerificationTokenGroupByOutputType = {
-    identifier: string
-    token: string
-    expires: Date
-    _count: VerificationTokenCountAggregateOutputType | null
-    _min: VerificationTokenMinAggregateOutputType | null
-    _max: VerificationTokenMaxAggregateOutputType | null
+  export type ZoneGroupByOutputType = {
+    id: string
+    name: string
+    code: string | null
+    isActive: boolean
+    createdAt: Date
+    _count: ZoneCountAggregateOutputType | null
+    _min: ZoneMinAggregateOutputType | null
+    _max: ZoneMaxAggregateOutputType | null
   }
 
-  type GetVerificationTokenGroupByPayload<T extends VerificationTokenGroupByArgs> = Prisma.PrismaPromise<
+  type GetZoneGroupByPayload<T extends ZoneGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<VerificationTokenGroupByOutputType, T['by']> &
+      PickEnumerable<ZoneGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof VerificationTokenGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ZoneGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], VerificationTokenGroupByOutputType[P]>
-            : GetScalarType<T[P], VerificationTokenGroupByOutputType[P]>
+              : GetScalarType<T[P], ZoneGroupByOutputType[P]>
+            : GetScalarType<T[P], ZoneGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type VerificationTokenSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    identifier?: boolean
-    token?: boolean
-    expires?: boolean
-  }, ExtArgs["result"]["verificationToken"]>
+  export type ZoneSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    code?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["zone"]>
 
-  export type VerificationTokenSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    identifier?: boolean
-    token?: boolean
-    expires?: boolean
-  }, ExtArgs["result"]["verificationToken"]>
+  export type ZoneSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    code?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["zone"]>
 
-  export type VerificationTokenSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    identifier?: boolean
-    token?: boolean
-    expires?: boolean
-  }, ExtArgs["result"]["verificationToken"]>
+  export type ZoneSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    code?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["zone"]>
 
-  export type VerificationTokenSelectScalar = {
-    identifier?: boolean
-    token?: boolean
-    expires?: boolean
+  export type ZoneSelectScalar = {
+    id?: boolean
+    name?: boolean
+    code?: boolean
+    isActive?: boolean
+    createdAt?: boolean
   }
 
-  export type VerificationTokenOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"identifier" | "token" | "expires", ExtArgs["result"]["verificationToken"]>
+  export type ZoneOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "code" | "isActive" | "createdAt", ExtArgs["result"]["zone"]>
 
-  export type $VerificationTokenPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "VerificationToken"
+  export type $ZonePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Zone"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      identifier: string
-      token: string
-      expires: Date
-    }, ExtArgs["result"]["verificationToken"]>
+      id: string
+      name: string
+      code: string | null
+      isActive: boolean
+      createdAt: Date
+    }, ExtArgs["result"]["zone"]>
     composites: {}
   }
 
-  type VerificationTokenGetPayload<S extends boolean | null | undefined | VerificationTokenDefaultArgs> = $Result.GetResult<Prisma.$VerificationTokenPayload, S>
+  type ZoneGetPayload<S extends boolean | null | undefined | ZoneDefaultArgs> = $Result.GetResult<Prisma.$ZonePayload, S>
 
-  type VerificationTokenCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<VerificationTokenFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: VerificationTokenCountAggregateInputType | true
+  type ZoneCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ZoneFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ZoneCountAggregateInputType | true
     }
 
-  export interface VerificationTokenDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['VerificationToken'], meta: { name: 'VerificationToken' } }
+  export interface ZoneDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Zone'], meta: { name: 'Zone' } }
     /**
-     * Find zero or one VerificationToken that matches the filter.
-     * @param {VerificationTokenFindUniqueArgs} args - Arguments to find a VerificationToken
+     * Find zero or one Zone that matches the filter.
+     * @param {ZoneFindUniqueArgs} args - Arguments to find a Zone
      * @example
-     * // Get one VerificationToken
-     * const verificationToken = await prisma.verificationToken.findUnique({
+     * // Get one Zone
+     * const zone = await prisma.zone.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends VerificationTokenFindUniqueArgs>(args: SelectSubset<T, VerificationTokenFindUniqueArgs<ExtArgs>>): Prisma__VerificationTokenClient<$Result.GetResult<Prisma.$VerificationTokenPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends ZoneFindUniqueArgs>(args: SelectSubset<T, ZoneFindUniqueArgs<ExtArgs>>): Prisma__ZoneClient<$Result.GetResult<Prisma.$ZonePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one VerificationToken that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Zone that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {VerificationTokenFindUniqueOrThrowArgs} args - Arguments to find a VerificationToken
+     * @param {ZoneFindUniqueOrThrowArgs} args - Arguments to find a Zone
      * @example
-     * // Get one VerificationToken
-     * const verificationToken = await prisma.verificationToken.findUniqueOrThrow({
+     * // Get one Zone
+     * const zone = await prisma.zone.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends VerificationTokenFindUniqueOrThrowArgs>(args: SelectSubset<T, VerificationTokenFindUniqueOrThrowArgs<ExtArgs>>): Prisma__VerificationTokenClient<$Result.GetResult<Prisma.$VerificationTokenPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends ZoneFindUniqueOrThrowArgs>(args: SelectSubset<T, ZoneFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ZoneClient<$Result.GetResult<Prisma.$ZonePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first VerificationToken that matches the filter.
+     * Find the first Zone that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {VerificationTokenFindFirstArgs} args - Arguments to find a VerificationToken
+     * @param {ZoneFindFirstArgs} args - Arguments to find a Zone
      * @example
-     * // Get one VerificationToken
-     * const verificationToken = await prisma.verificationToken.findFirst({
+     * // Get one Zone
+     * const zone = await prisma.zone.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends VerificationTokenFindFirstArgs>(args?: SelectSubset<T, VerificationTokenFindFirstArgs<ExtArgs>>): Prisma__VerificationTokenClient<$Result.GetResult<Prisma.$VerificationTokenPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends ZoneFindFirstArgs>(args?: SelectSubset<T, ZoneFindFirstArgs<ExtArgs>>): Prisma__ZoneClient<$Result.GetResult<Prisma.$ZonePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first VerificationToken that matches the filter or
+     * Find the first Zone that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {VerificationTokenFindFirstOrThrowArgs} args - Arguments to find a VerificationToken
+     * @param {ZoneFindFirstOrThrowArgs} args - Arguments to find a Zone
      * @example
-     * // Get one VerificationToken
-     * const verificationToken = await prisma.verificationToken.findFirstOrThrow({
+     * // Get one Zone
+     * const zone = await prisma.zone.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends VerificationTokenFindFirstOrThrowArgs>(args?: SelectSubset<T, VerificationTokenFindFirstOrThrowArgs<ExtArgs>>): Prisma__VerificationTokenClient<$Result.GetResult<Prisma.$VerificationTokenPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends ZoneFindFirstOrThrowArgs>(args?: SelectSubset<T, ZoneFindFirstOrThrowArgs<ExtArgs>>): Prisma__ZoneClient<$Result.GetResult<Prisma.$ZonePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more VerificationTokens that matches the filter.
+     * Find zero or more Zones that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {VerificationTokenFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {ZoneFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all VerificationTokens
-     * const verificationTokens = await prisma.verificationToken.findMany()
+     * // Get all Zones
+     * const zones = await prisma.zone.findMany()
      * 
-     * // Get first 10 VerificationTokens
-     * const verificationTokens = await prisma.verificationToken.findMany({ take: 10 })
+     * // Get first 10 Zones
+     * const zones = await prisma.zone.findMany({ take: 10 })
      * 
-     * // Only select the `identifier`
-     * const verificationTokenWithIdentifierOnly = await prisma.verificationToken.findMany({ select: { identifier: true } })
+     * // Only select the `id`
+     * const zoneWithIdOnly = await prisma.zone.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends VerificationTokenFindManyArgs>(args?: SelectSubset<T, VerificationTokenFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VerificationTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends ZoneFindManyArgs>(args?: SelectSubset<T, ZoneFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ZonePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a VerificationToken.
-     * @param {VerificationTokenCreateArgs} args - Arguments to create a VerificationToken.
+     * Create a Zone.
+     * @param {ZoneCreateArgs} args - Arguments to create a Zone.
      * @example
-     * // Create one VerificationToken
-     * const VerificationToken = await prisma.verificationToken.create({
+     * // Create one Zone
+     * const Zone = await prisma.zone.create({
      *   data: {
-     *     // ... data to create a VerificationToken
+     *     // ... data to create a Zone
      *   }
      * })
      * 
      */
-    create<T extends VerificationTokenCreateArgs>(args: SelectSubset<T, VerificationTokenCreateArgs<ExtArgs>>): Prisma__VerificationTokenClient<$Result.GetResult<Prisma.$VerificationTokenPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends ZoneCreateArgs>(args: SelectSubset<T, ZoneCreateArgs<ExtArgs>>): Prisma__ZoneClient<$Result.GetResult<Prisma.$ZonePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many VerificationTokens.
-     * @param {VerificationTokenCreateManyArgs} args - Arguments to create many VerificationTokens.
+     * Create many Zones.
+     * @param {ZoneCreateManyArgs} args - Arguments to create many Zones.
      * @example
-     * // Create many VerificationTokens
-     * const verificationToken = await prisma.verificationToken.createMany({
+     * // Create many Zones
+     * const zone = await prisma.zone.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends VerificationTokenCreateManyArgs>(args?: SelectSubset<T, VerificationTokenCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends ZoneCreateManyArgs>(args?: SelectSubset<T, ZoneCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many VerificationTokens and returns the data saved in the database.
-     * @param {VerificationTokenCreateManyAndReturnArgs} args - Arguments to create many VerificationTokens.
+     * Create many Zones and returns the data saved in the database.
+     * @param {ZoneCreateManyAndReturnArgs} args - Arguments to create many Zones.
      * @example
-     * // Create many VerificationTokens
-     * const verificationToken = await prisma.verificationToken.createManyAndReturn({
+     * // Create many Zones
+     * const zone = await prisma.zone.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many VerificationTokens and only return the `identifier`
-     * const verificationTokenWithIdentifierOnly = await prisma.verificationToken.createManyAndReturn({
-     *   select: { identifier: true },
+     * // Create many Zones and only return the `id`
+     * const zoneWithIdOnly = await prisma.zone.createManyAndReturn({
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -6052,28 +3078,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends VerificationTokenCreateManyAndReturnArgs>(args?: SelectSubset<T, VerificationTokenCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VerificationTokenPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends ZoneCreateManyAndReturnArgs>(args?: SelectSubset<T, ZoneCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ZonePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a VerificationToken.
-     * @param {VerificationTokenDeleteArgs} args - Arguments to delete one VerificationToken.
+     * Delete a Zone.
+     * @param {ZoneDeleteArgs} args - Arguments to delete one Zone.
      * @example
-     * // Delete one VerificationToken
-     * const VerificationToken = await prisma.verificationToken.delete({
+     * // Delete one Zone
+     * const Zone = await prisma.zone.delete({
      *   where: {
-     *     // ... filter to delete one VerificationToken
+     *     // ... filter to delete one Zone
      *   }
      * })
      * 
      */
-    delete<T extends VerificationTokenDeleteArgs>(args: SelectSubset<T, VerificationTokenDeleteArgs<ExtArgs>>): Prisma__VerificationTokenClient<$Result.GetResult<Prisma.$VerificationTokenPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends ZoneDeleteArgs>(args: SelectSubset<T, ZoneDeleteArgs<ExtArgs>>): Prisma__ZoneClient<$Result.GetResult<Prisma.$ZonePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one VerificationToken.
-     * @param {VerificationTokenUpdateArgs} args - Arguments to update one VerificationToken.
+     * Update one Zone.
+     * @param {ZoneUpdateArgs} args - Arguments to update one Zone.
      * @example
-     * // Update one VerificationToken
-     * const verificationToken = await prisma.verificationToken.update({
+     * // Update one Zone
+     * const zone = await prisma.zone.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6083,30 +3109,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends VerificationTokenUpdateArgs>(args: SelectSubset<T, VerificationTokenUpdateArgs<ExtArgs>>): Prisma__VerificationTokenClient<$Result.GetResult<Prisma.$VerificationTokenPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends ZoneUpdateArgs>(args: SelectSubset<T, ZoneUpdateArgs<ExtArgs>>): Prisma__ZoneClient<$Result.GetResult<Prisma.$ZonePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more VerificationTokens.
-     * @param {VerificationTokenDeleteManyArgs} args - Arguments to filter VerificationTokens to delete.
+     * Delete zero or more Zones.
+     * @param {ZoneDeleteManyArgs} args - Arguments to filter Zones to delete.
      * @example
-     * // Delete a few VerificationTokens
-     * const { count } = await prisma.verificationToken.deleteMany({
+     * // Delete a few Zones
+     * const { count } = await prisma.zone.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends VerificationTokenDeleteManyArgs>(args?: SelectSubset<T, VerificationTokenDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends ZoneDeleteManyArgs>(args?: SelectSubset<T, ZoneDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more VerificationTokens.
+     * Update zero or more Zones.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {VerificationTokenUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {ZoneUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many VerificationTokens
-     * const verificationToken = await prisma.verificationToken.updateMany({
+     * // Update many Zones
+     * const zone = await prisma.zone.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6116,14 +3142,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends VerificationTokenUpdateManyArgs>(args: SelectSubset<T, VerificationTokenUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends ZoneUpdateManyArgs>(args: SelectSubset<T, ZoneUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more VerificationTokens and returns the data updated in the database.
-     * @param {VerificationTokenUpdateManyAndReturnArgs} args - Arguments to update many VerificationTokens.
+     * Update zero or more Zones and returns the data updated in the database.
+     * @param {ZoneUpdateManyAndReturnArgs} args - Arguments to update many Zones.
      * @example
-     * // Update many VerificationTokens
-     * const verificationToken = await prisma.verificationToken.updateManyAndReturn({
+     * // Update many Zones
+     * const zone = await prisma.zone.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6132,9 +3158,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more VerificationTokens and only return the `identifier`
-     * const verificationTokenWithIdentifierOnly = await prisma.verificationToken.updateManyAndReturn({
-     *   select: { identifier: true },
+     * // Update zero or more Zones and only return the `id`
+     * const zoneWithIdOnly = await prisma.zone.updateManyAndReturn({
+     *   select: { id: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6146,56 +3172,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends VerificationTokenUpdateManyAndReturnArgs>(args: SelectSubset<T, VerificationTokenUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VerificationTokenPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends ZoneUpdateManyAndReturnArgs>(args: SelectSubset<T, ZoneUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ZonePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one VerificationToken.
-     * @param {VerificationTokenUpsertArgs} args - Arguments to update or create a VerificationToken.
+     * Create or update one Zone.
+     * @param {ZoneUpsertArgs} args - Arguments to update or create a Zone.
      * @example
-     * // Update or create a VerificationToken
-     * const verificationToken = await prisma.verificationToken.upsert({
+     * // Update or create a Zone
+     * const zone = await prisma.zone.upsert({
      *   create: {
-     *     // ... data to create a VerificationToken
+     *     // ... data to create a Zone
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the VerificationToken we want to update
+     *     // ... the filter for the Zone we want to update
      *   }
      * })
      */
-    upsert<T extends VerificationTokenUpsertArgs>(args: SelectSubset<T, VerificationTokenUpsertArgs<ExtArgs>>): Prisma__VerificationTokenClient<$Result.GetResult<Prisma.$VerificationTokenPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends ZoneUpsertArgs>(args: SelectSubset<T, ZoneUpsertArgs<ExtArgs>>): Prisma__ZoneClient<$Result.GetResult<Prisma.$ZonePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of VerificationTokens.
+     * Count the number of Zones.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {VerificationTokenCountArgs} args - Arguments to filter VerificationTokens to count.
+     * @param {ZoneCountArgs} args - Arguments to filter Zones to count.
      * @example
-     * // Count the number of VerificationTokens
-     * const count = await prisma.verificationToken.count({
+     * // Count the number of Zones
+     * const count = await prisma.zone.count({
      *   where: {
-     *     // ... the filter for the VerificationTokens we want to count
+     *     // ... the filter for the Zones we want to count
      *   }
      * })
     **/
-    count<T extends VerificationTokenCountArgs>(
-      args?: Subset<T, VerificationTokenCountArgs>,
+    count<T extends ZoneCountArgs>(
+      args?: Subset<T, ZoneCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], VerificationTokenCountAggregateOutputType>
+          : GetScalarType<T['select'], ZoneCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a VerificationToken.
+     * Allows you to perform aggregations operations on a Zone.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {VerificationTokenAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ZoneAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -6215,13 +3241,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends VerificationTokenAggregateArgs>(args: Subset<T, VerificationTokenAggregateArgs>): Prisma.PrismaPromise<GetVerificationTokenAggregateType<T>>
+    aggregate<T extends ZoneAggregateArgs>(args: Subset<T, ZoneAggregateArgs>): Prisma.PrismaPromise<GetZoneAggregateType<T>>
 
     /**
-     * Group by VerificationToken.
+     * Group by Zone.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {VerificationTokenGroupByArgs} args - Group by arguments.
+     * @param {ZoneGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -6236,14 +3262,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends VerificationTokenGroupByArgs,
+      T extends ZoneGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: VerificationTokenGroupByArgs['orderBy'] }
-        : { orderBy?: VerificationTokenGroupByArgs['orderBy'] },
+        ? { orderBy: ZoneGroupByArgs['orderBy'] }
+        : { orderBy?: ZoneGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -6292,20 +3318,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, VerificationTokenGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVerificationTokenGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, ZoneGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetZoneGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the VerificationToken model
+   * Fields of the Zone model
    */
-  readonly fields: VerificationTokenFieldRefs;
+  readonly fields: ZoneFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for VerificationToken.
+   * The delegate class that acts as a "Promise-like" for Zone.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__VerificationTokenClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ZoneClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -6333,375 +3359,6344 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the VerificationToken model
+   * Fields of the Zone model
    */
-  interface VerificationTokenFieldRefs {
-    readonly identifier: FieldRef<"VerificationToken", 'String'>
-    readonly token: FieldRef<"VerificationToken", 'String'>
-    readonly expires: FieldRef<"VerificationToken", 'DateTime'>
+  interface ZoneFieldRefs {
+    readonly id: FieldRef<"Zone", 'String'>
+    readonly name: FieldRef<"Zone", 'String'>
+    readonly code: FieldRef<"Zone", 'String'>
+    readonly isActive: FieldRef<"Zone", 'Boolean'>
+    readonly createdAt: FieldRef<"Zone", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * VerificationToken findUnique
+   * Zone findUnique
    */
-  export type VerificationTokenFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ZoneFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VerificationToken
+     * Select specific fields to fetch from the Zone
      */
-    select?: VerificationTokenSelect<ExtArgs> | null
+    select?: ZoneSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the VerificationToken
+     * Omit specific fields from the Zone
      */
-    omit?: VerificationTokenOmit<ExtArgs> | null
+    omit?: ZoneOmit<ExtArgs> | null
     /**
-     * Filter, which VerificationToken to fetch.
+     * Filter, which Zone to fetch.
      */
-    where: VerificationTokenWhereUniqueInput
+    where: ZoneWhereUniqueInput
   }
 
   /**
-   * VerificationToken findUniqueOrThrow
+   * Zone findUniqueOrThrow
    */
-  export type VerificationTokenFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ZoneFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VerificationToken
+     * Select specific fields to fetch from the Zone
      */
-    select?: VerificationTokenSelect<ExtArgs> | null
+    select?: ZoneSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the VerificationToken
+     * Omit specific fields from the Zone
      */
-    omit?: VerificationTokenOmit<ExtArgs> | null
+    omit?: ZoneOmit<ExtArgs> | null
     /**
-     * Filter, which VerificationToken to fetch.
+     * Filter, which Zone to fetch.
      */
-    where: VerificationTokenWhereUniqueInput
+    where: ZoneWhereUniqueInput
   }
 
   /**
-   * VerificationToken findFirst
+   * Zone findFirst
    */
-  export type VerificationTokenFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ZoneFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VerificationToken
+     * Select specific fields to fetch from the Zone
      */
-    select?: VerificationTokenSelect<ExtArgs> | null
+    select?: ZoneSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the VerificationToken
+     * Omit specific fields from the Zone
      */
-    omit?: VerificationTokenOmit<ExtArgs> | null
+    omit?: ZoneOmit<ExtArgs> | null
     /**
-     * Filter, which VerificationToken to fetch.
+     * Filter, which Zone to fetch.
      */
-    where?: VerificationTokenWhereInput
+    where?: ZoneWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of VerificationTokens to fetch.
+     * Determine the order of Zones to fetch.
      */
-    orderBy?: VerificationTokenOrderByWithRelationInput | VerificationTokenOrderByWithRelationInput[]
+    orderBy?: ZoneOrderByWithRelationInput | ZoneOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for VerificationTokens.
+     * Sets the position for searching for Zones.
      */
-    cursor?: VerificationTokenWhereUniqueInput
+    cursor?: ZoneWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` VerificationTokens from the position of the cursor.
+     * Take `±n` Zones from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` VerificationTokens.
+     * Skip the first `n` Zones.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of VerificationTokens.
+     * Filter by unique combinations of Zones.
      */
-    distinct?: VerificationTokenScalarFieldEnum | VerificationTokenScalarFieldEnum[]
+    distinct?: ZoneScalarFieldEnum | ZoneScalarFieldEnum[]
   }
 
   /**
-   * VerificationToken findFirstOrThrow
+   * Zone findFirstOrThrow
    */
-  export type VerificationTokenFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ZoneFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VerificationToken
+     * Select specific fields to fetch from the Zone
      */
-    select?: VerificationTokenSelect<ExtArgs> | null
+    select?: ZoneSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the VerificationToken
+     * Omit specific fields from the Zone
      */
-    omit?: VerificationTokenOmit<ExtArgs> | null
+    omit?: ZoneOmit<ExtArgs> | null
     /**
-     * Filter, which VerificationToken to fetch.
+     * Filter, which Zone to fetch.
      */
-    where?: VerificationTokenWhereInput
+    where?: ZoneWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of VerificationTokens to fetch.
+     * Determine the order of Zones to fetch.
      */
-    orderBy?: VerificationTokenOrderByWithRelationInput | VerificationTokenOrderByWithRelationInput[]
+    orderBy?: ZoneOrderByWithRelationInput | ZoneOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for VerificationTokens.
+     * Sets the position for searching for Zones.
      */
-    cursor?: VerificationTokenWhereUniqueInput
+    cursor?: ZoneWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` VerificationTokens from the position of the cursor.
+     * Take `±n` Zones from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` VerificationTokens.
+     * Skip the first `n` Zones.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of VerificationTokens.
+     * Filter by unique combinations of Zones.
      */
-    distinct?: VerificationTokenScalarFieldEnum | VerificationTokenScalarFieldEnum[]
+    distinct?: ZoneScalarFieldEnum | ZoneScalarFieldEnum[]
   }
 
   /**
-   * VerificationToken findMany
+   * Zone findMany
    */
-  export type VerificationTokenFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ZoneFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VerificationToken
+     * Select specific fields to fetch from the Zone
      */
-    select?: VerificationTokenSelect<ExtArgs> | null
+    select?: ZoneSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the VerificationToken
+     * Omit specific fields from the Zone
      */
-    omit?: VerificationTokenOmit<ExtArgs> | null
+    omit?: ZoneOmit<ExtArgs> | null
     /**
-     * Filter, which VerificationTokens to fetch.
+     * Filter, which Zones to fetch.
      */
-    where?: VerificationTokenWhereInput
+    where?: ZoneWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of VerificationTokens to fetch.
+     * Determine the order of Zones to fetch.
      */
-    orderBy?: VerificationTokenOrderByWithRelationInput | VerificationTokenOrderByWithRelationInput[]
+    orderBy?: ZoneOrderByWithRelationInput | ZoneOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing VerificationTokens.
+     * Sets the position for listing Zones.
      */
-    cursor?: VerificationTokenWhereUniqueInput
+    cursor?: ZoneWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` VerificationTokens from the position of the cursor.
+     * Take `±n` Zones from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` VerificationTokens.
+     * Skip the first `n` Zones.
      */
     skip?: number
-    distinct?: VerificationTokenScalarFieldEnum | VerificationTokenScalarFieldEnum[]
+    distinct?: ZoneScalarFieldEnum | ZoneScalarFieldEnum[]
   }
 
   /**
-   * VerificationToken create
+   * Zone create
    */
-  export type VerificationTokenCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ZoneCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VerificationToken
+     * Select specific fields to fetch from the Zone
      */
-    select?: VerificationTokenSelect<ExtArgs> | null
+    select?: ZoneSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the VerificationToken
+     * Omit specific fields from the Zone
      */
-    omit?: VerificationTokenOmit<ExtArgs> | null
+    omit?: ZoneOmit<ExtArgs> | null
     /**
-     * The data needed to create a VerificationToken.
+     * The data needed to create a Zone.
      */
-    data: XOR<VerificationTokenCreateInput, VerificationTokenUncheckedCreateInput>
+    data: XOR<ZoneCreateInput, ZoneUncheckedCreateInput>
   }
 
   /**
-   * VerificationToken createMany
+   * Zone createMany
    */
-  export type VerificationTokenCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ZoneCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many VerificationTokens.
+     * The data used to create many Zones.
      */
-    data: VerificationTokenCreateManyInput | VerificationTokenCreateManyInput[]
-    skipDuplicates?: boolean
+    data: ZoneCreateManyInput | ZoneCreateManyInput[]
   }
 
   /**
-   * VerificationToken createManyAndReturn
+   * Zone createManyAndReturn
    */
-  export type VerificationTokenCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ZoneCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VerificationToken
+     * Select specific fields to fetch from the Zone
      */
-    select?: VerificationTokenSelectCreateManyAndReturn<ExtArgs> | null
+    select?: ZoneSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the VerificationToken
+     * Omit specific fields from the Zone
      */
-    omit?: VerificationTokenOmit<ExtArgs> | null
+    omit?: ZoneOmit<ExtArgs> | null
     /**
-     * The data used to create many VerificationTokens.
+     * The data used to create many Zones.
      */
-    data: VerificationTokenCreateManyInput | VerificationTokenCreateManyInput[]
-    skipDuplicates?: boolean
+    data: ZoneCreateManyInput | ZoneCreateManyInput[]
   }
 
   /**
-   * VerificationToken update
+   * Zone update
    */
-  export type VerificationTokenUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ZoneUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VerificationToken
+     * Select specific fields to fetch from the Zone
      */
-    select?: VerificationTokenSelect<ExtArgs> | null
+    select?: ZoneSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the VerificationToken
+     * Omit specific fields from the Zone
      */
-    omit?: VerificationTokenOmit<ExtArgs> | null
+    omit?: ZoneOmit<ExtArgs> | null
     /**
-     * The data needed to update a VerificationToken.
+     * The data needed to update a Zone.
      */
-    data: XOR<VerificationTokenUpdateInput, VerificationTokenUncheckedUpdateInput>
+    data: XOR<ZoneUpdateInput, ZoneUncheckedUpdateInput>
     /**
-     * Choose, which VerificationToken to update.
+     * Choose, which Zone to update.
      */
-    where: VerificationTokenWhereUniqueInput
+    where: ZoneWhereUniqueInput
   }
 
   /**
-   * VerificationToken updateMany
+   * Zone updateMany
    */
-  export type VerificationTokenUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ZoneUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update VerificationTokens.
+     * The data used to update Zones.
      */
-    data: XOR<VerificationTokenUpdateManyMutationInput, VerificationTokenUncheckedUpdateManyInput>
+    data: XOR<ZoneUpdateManyMutationInput, ZoneUncheckedUpdateManyInput>
     /**
-     * Filter which VerificationTokens to update
+     * Filter which Zones to update
      */
-    where?: VerificationTokenWhereInput
+    where?: ZoneWhereInput
     /**
-     * Limit how many VerificationTokens to update.
+     * Limit how many Zones to update.
      */
     limit?: number
   }
 
   /**
-   * VerificationToken updateManyAndReturn
+   * Zone updateManyAndReturn
    */
-  export type VerificationTokenUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ZoneUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VerificationToken
+     * Select specific fields to fetch from the Zone
      */
-    select?: VerificationTokenSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: ZoneSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the VerificationToken
+     * Omit specific fields from the Zone
      */
-    omit?: VerificationTokenOmit<ExtArgs> | null
+    omit?: ZoneOmit<ExtArgs> | null
     /**
-     * The data used to update VerificationTokens.
+     * The data used to update Zones.
      */
-    data: XOR<VerificationTokenUpdateManyMutationInput, VerificationTokenUncheckedUpdateManyInput>
+    data: XOR<ZoneUpdateManyMutationInput, ZoneUncheckedUpdateManyInput>
     /**
-     * Filter which VerificationTokens to update
+     * Filter which Zones to update
      */
-    where?: VerificationTokenWhereInput
+    where?: ZoneWhereInput
     /**
-     * Limit how many VerificationTokens to update.
+     * Limit how many Zones to update.
      */
     limit?: number
   }
 
   /**
-   * VerificationToken upsert
+   * Zone upsert
    */
-  export type VerificationTokenUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ZoneUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VerificationToken
+     * Select specific fields to fetch from the Zone
      */
-    select?: VerificationTokenSelect<ExtArgs> | null
+    select?: ZoneSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the VerificationToken
+     * Omit specific fields from the Zone
      */
-    omit?: VerificationTokenOmit<ExtArgs> | null
+    omit?: ZoneOmit<ExtArgs> | null
     /**
-     * The filter to search for the VerificationToken to update in case it exists.
+     * The filter to search for the Zone to update in case it exists.
      */
-    where: VerificationTokenWhereUniqueInput
+    where: ZoneWhereUniqueInput
     /**
-     * In case the VerificationToken found by the `where` argument doesn't exist, create a new VerificationToken with this data.
+     * In case the Zone found by the `where` argument doesn't exist, create a new Zone with this data.
      */
-    create: XOR<VerificationTokenCreateInput, VerificationTokenUncheckedCreateInput>
+    create: XOR<ZoneCreateInput, ZoneUncheckedCreateInput>
     /**
-     * In case the VerificationToken was found with the provided `where` argument, update it with this data.
+     * In case the Zone was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<VerificationTokenUpdateInput, VerificationTokenUncheckedUpdateInput>
+    update: XOR<ZoneUpdateInput, ZoneUncheckedUpdateInput>
   }
 
   /**
-   * VerificationToken delete
+   * Zone delete
    */
-  export type VerificationTokenDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ZoneDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VerificationToken
+     * Select specific fields to fetch from the Zone
      */
-    select?: VerificationTokenSelect<ExtArgs> | null
+    select?: ZoneSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the VerificationToken
+     * Omit specific fields from the Zone
      */
-    omit?: VerificationTokenOmit<ExtArgs> | null
+    omit?: ZoneOmit<ExtArgs> | null
     /**
-     * Filter which VerificationToken to delete.
+     * Filter which Zone to delete.
      */
-    where: VerificationTokenWhereUniqueInput
+    where: ZoneWhereUniqueInput
   }
 
   /**
-   * VerificationToken deleteMany
+   * Zone deleteMany
    */
-  export type VerificationTokenDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ZoneDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which VerificationTokens to delete
+     * Filter which Zones to delete
      */
-    where?: VerificationTokenWhereInput
+    where?: ZoneWhereInput
     /**
-     * Limit how many VerificationTokens to delete.
+     * Limit how many Zones to delete.
      */
     limit?: number
   }
 
   /**
-   * VerificationToken without action
+   * Zone without action
    */
-  export type VerificationTokenDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ZoneDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the VerificationToken
+     * Select specific fields to fetch from the Zone
      */
-    select?: VerificationTokenSelect<ExtArgs> | null
+    select?: ZoneSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the VerificationToken
+     * Omit specific fields from the Zone
      */
-    omit?: VerificationTokenOmit<ExtArgs> | null
+    omit?: ZoneOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model WeeklyReport
+   */
+
+  export type AggregateWeeklyReport = {
+    _count: WeeklyReportCountAggregateOutputType | null
+    _avg: WeeklyReportAvgAggregateOutputType | null
+    _sum: WeeklyReportSumAggregateOutputType | null
+    _min: WeeklyReportMinAggregateOutputType | null
+    _max: WeeklyReportMaxAggregateOutputType | null
+  }
+
+  export type WeeklyReportAvgAggregateOutputType = {
+    year: number | null
+    month: number | null
+    week: number | null
+    marketVisitQty: number | null
+    marketVisitFindingQty: number | null
+    solvedQty: number | null
+    pendingQty: number | null
+    locSubmittedQty: number | null
+    locFindingDayQty: number | null
+    dressCodeQty: number | null
+    dressCodeFindingQty: number | null
+    messVisitQty: number | null
+    messVisitFindingQty: number | null
+  }
+
+  export type WeeklyReportSumAggregateOutputType = {
+    year: number | null
+    month: number | null
+    week: number | null
+    marketVisitQty: number | null
+    marketVisitFindingQty: number | null
+    solvedQty: number | null
+    pendingQty: number | null
+    locSubmittedQty: number | null
+    locFindingDayQty: number | null
+    dressCodeQty: number | null
+    dressCodeFindingQty: number | null
+    messVisitQty: number | null
+    messVisitFindingQty: number | null
+  }
+
+  export type WeeklyReportMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    monthYear: string | null
+    year: number | null
+    month: number | null
+    week: number | null
+    marketVisitQty: number | null
+    marketVisitFindingQty: number | null
+    solvedQty: number | null
+    pendingQty: number | null
+    locSubmittedQty: number | null
+    locFindingDayQty: number | null
+    dressCodeQty: number | null
+    dressCodeFindingQty: number | null
+    messVisitQty: number | null
+    messVisitFindingQty: number | null
+    status: string | null
+    deadline: Date | null
+    submittedAt: Date | null
+    updatedAt: Date | null
+    notes: string | null
+  }
+
+  export type WeeklyReportMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    monthYear: string | null
+    year: number | null
+    month: number | null
+    week: number | null
+    marketVisitQty: number | null
+    marketVisitFindingQty: number | null
+    solvedQty: number | null
+    pendingQty: number | null
+    locSubmittedQty: number | null
+    locFindingDayQty: number | null
+    dressCodeQty: number | null
+    dressCodeFindingQty: number | null
+    messVisitQty: number | null
+    messVisitFindingQty: number | null
+    status: string | null
+    deadline: Date | null
+    submittedAt: Date | null
+    updatedAt: Date | null
+    notes: string | null
+  }
+
+  export type WeeklyReportCountAggregateOutputType = {
+    id: number
+    userId: number
+    monthYear: number
+    year: number
+    month: number
+    week: number
+    marketVisitQty: number
+    marketVisitFindingQty: number
+    solvedQty: number
+    pendingQty: number
+    locSubmittedQty: number
+    locFindingDayQty: number
+    dressCodeQty: number
+    dressCodeFindingQty: number
+    messVisitQty: number
+    messVisitFindingQty: number
+    status: number
+    deadline: number
+    submittedAt: number
+    updatedAt: number
+    notes: number
+    _all: number
+  }
+
+
+  export type WeeklyReportAvgAggregateInputType = {
+    year?: true
+    month?: true
+    week?: true
+    marketVisitQty?: true
+    marketVisitFindingQty?: true
+    solvedQty?: true
+    pendingQty?: true
+    locSubmittedQty?: true
+    locFindingDayQty?: true
+    dressCodeQty?: true
+    dressCodeFindingQty?: true
+    messVisitQty?: true
+    messVisitFindingQty?: true
+  }
+
+  export type WeeklyReportSumAggregateInputType = {
+    year?: true
+    month?: true
+    week?: true
+    marketVisitQty?: true
+    marketVisitFindingQty?: true
+    solvedQty?: true
+    pendingQty?: true
+    locSubmittedQty?: true
+    locFindingDayQty?: true
+    dressCodeQty?: true
+    dressCodeFindingQty?: true
+    messVisitQty?: true
+    messVisitFindingQty?: true
+  }
+
+  export type WeeklyReportMinAggregateInputType = {
+    id?: true
+    userId?: true
+    monthYear?: true
+    year?: true
+    month?: true
+    week?: true
+    marketVisitQty?: true
+    marketVisitFindingQty?: true
+    solvedQty?: true
+    pendingQty?: true
+    locSubmittedQty?: true
+    locFindingDayQty?: true
+    dressCodeQty?: true
+    dressCodeFindingQty?: true
+    messVisitQty?: true
+    messVisitFindingQty?: true
+    status?: true
+    deadline?: true
+    submittedAt?: true
+    updatedAt?: true
+    notes?: true
+  }
+
+  export type WeeklyReportMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    monthYear?: true
+    year?: true
+    month?: true
+    week?: true
+    marketVisitQty?: true
+    marketVisitFindingQty?: true
+    solvedQty?: true
+    pendingQty?: true
+    locSubmittedQty?: true
+    locFindingDayQty?: true
+    dressCodeQty?: true
+    dressCodeFindingQty?: true
+    messVisitQty?: true
+    messVisitFindingQty?: true
+    status?: true
+    deadline?: true
+    submittedAt?: true
+    updatedAt?: true
+    notes?: true
+  }
+
+  export type WeeklyReportCountAggregateInputType = {
+    id?: true
+    userId?: true
+    monthYear?: true
+    year?: true
+    month?: true
+    week?: true
+    marketVisitQty?: true
+    marketVisitFindingQty?: true
+    solvedQty?: true
+    pendingQty?: true
+    locSubmittedQty?: true
+    locFindingDayQty?: true
+    dressCodeQty?: true
+    dressCodeFindingQty?: true
+    messVisitQty?: true
+    messVisitFindingQty?: true
+    status?: true
+    deadline?: true
+    submittedAt?: true
+    updatedAt?: true
+    notes?: true
+    _all?: true
+  }
+
+  export type WeeklyReportAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WeeklyReport to aggregate.
+     */
+    where?: WeeklyReportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WeeklyReports to fetch.
+     */
+    orderBy?: WeeklyReportOrderByWithRelationInput | WeeklyReportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WeeklyReportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WeeklyReports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WeeklyReports.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned WeeklyReports
+    **/
+    _count?: true | WeeklyReportCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: WeeklyReportAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: WeeklyReportSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WeeklyReportMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WeeklyReportMaxAggregateInputType
+  }
+
+  export type GetWeeklyReportAggregateType<T extends WeeklyReportAggregateArgs> = {
+        [P in keyof T & keyof AggregateWeeklyReport]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWeeklyReport[P]>
+      : GetScalarType<T[P], AggregateWeeklyReport[P]>
+  }
+
+
+
+
+  export type WeeklyReportGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WeeklyReportWhereInput
+    orderBy?: WeeklyReportOrderByWithAggregationInput | WeeklyReportOrderByWithAggregationInput[]
+    by: WeeklyReportScalarFieldEnum[] | WeeklyReportScalarFieldEnum
+    having?: WeeklyReportScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WeeklyReportCountAggregateInputType | true
+    _avg?: WeeklyReportAvgAggregateInputType
+    _sum?: WeeklyReportSumAggregateInputType
+    _min?: WeeklyReportMinAggregateInputType
+    _max?: WeeklyReportMaxAggregateInputType
+  }
+
+  export type WeeklyReportGroupByOutputType = {
+    id: string
+    userId: string
+    monthYear: string
+    year: number
+    month: number
+    week: number
+    marketVisitQty: number
+    marketVisitFindingQty: number
+    solvedQty: number
+    pendingQty: number
+    locSubmittedQty: number
+    locFindingDayQty: number
+    dressCodeQty: number
+    dressCodeFindingQty: number
+    messVisitQty: number
+    messVisitFindingQty: number
+    status: string
+    deadline: Date
+    submittedAt: Date
+    updatedAt: Date
+    notes: string | null
+    _count: WeeklyReportCountAggregateOutputType | null
+    _avg: WeeklyReportAvgAggregateOutputType | null
+    _sum: WeeklyReportSumAggregateOutputType | null
+    _min: WeeklyReportMinAggregateOutputType | null
+    _max: WeeklyReportMaxAggregateOutputType | null
+  }
+
+  type GetWeeklyReportGroupByPayload<T extends WeeklyReportGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WeeklyReportGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WeeklyReportGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WeeklyReportGroupByOutputType[P]>
+            : GetScalarType<T[P], WeeklyReportGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WeeklyReportSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    monthYear?: boolean
+    year?: boolean
+    month?: boolean
+    week?: boolean
+    marketVisitQty?: boolean
+    marketVisitFindingQty?: boolean
+    solvedQty?: boolean
+    pendingQty?: boolean
+    locSubmittedQty?: boolean
+    locFindingDayQty?: boolean
+    dressCodeQty?: boolean
+    dressCodeFindingQty?: boolean
+    messVisitQty?: boolean
+    messVisitFindingQty?: boolean
+    status?: boolean
+    deadline?: boolean
+    submittedAt?: boolean
+    updatedAt?: boolean
+    notes?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    findingHistory?: boolean | WeeklyReport$findingHistoryArgs<ExtArgs>
+    _count?: boolean | WeeklyReportCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["weeklyReport"]>
+
+  export type WeeklyReportSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    monthYear?: boolean
+    year?: boolean
+    month?: boolean
+    week?: boolean
+    marketVisitQty?: boolean
+    marketVisitFindingQty?: boolean
+    solvedQty?: boolean
+    pendingQty?: boolean
+    locSubmittedQty?: boolean
+    locFindingDayQty?: boolean
+    dressCodeQty?: boolean
+    dressCodeFindingQty?: boolean
+    messVisitQty?: boolean
+    messVisitFindingQty?: boolean
+    status?: boolean
+    deadline?: boolean
+    submittedAt?: boolean
+    updatedAt?: boolean
+    notes?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["weeklyReport"]>
+
+  export type WeeklyReportSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    monthYear?: boolean
+    year?: boolean
+    month?: boolean
+    week?: boolean
+    marketVisitQty?: boolean
+    marketVisitFindingQty?: boolean
+    solvedQty?: boolean
+    pendingQty?: boolean
+    locSubmittedQty?: boolean
+    locFindingDayQty?: boolean
+    dressCodeQty?: boolean
+    dressCodeFindingQty?: boolean
+    messVisitQty?: boolean
+    messVisitFindingQty?: boolean
+    status?: boolean
+    deadline?: boolean
+    submittedAt?: boolean
+    updatedAt?: boolean
+    notes?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["weeklyReport"]>
+
+  export type WeeklyReportSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    monthYear?: boolean
+    year?: boolean
+    month?: boolean
+    week?: boolean
+    marketVisitQty?: boolean
+    marketVisitFindingQty?: boolean
+    solvedQty?: boolean
+    pendingQty?: boolean
+    locSubmittedQty?: boolean
+    locFindingDayQty?: boolean
+    dressCodeQty?: boolean
+    dressCodeFindingQty?: boolean
+    messVisitQty?: boolean
+    messVisitFindingQty?: boolean
+    status?: boolean
+    deadline?: boolean
+    submittedAt?: boolean
+    updatedAt?: boolean
+    notes?: boolean
+  }
+
+  export type WeeklyReportOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "monthYear" | "year" | "month" | "week" | "marketVisitQty" | "marketVisitFindingQty" | "solvedQty" | "pendingQty" | "locSubmittedQty" | "locFindingDayQty" | "dressCodeQty" | "dressCodeFindingQty" | "messVisitQty" | "messVisitFindingQty" | "status" | "deadline" | "submittedAt" | "updatedAt" | "notes", ExtArgs["result"]["weeklyReport"]>
+  export type WeeklyReportInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    findingHistory?: boolean | WeeklyReport$findingHistoryArgs<ExtArgs>
+    _count?: boolean | WeeklyReportCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type WeeklyReportIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type WeeklyReportIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $WeeklyReportPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "WeeklyReport"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      findingHistory: Prisma.$FindingHistoryPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      monthYear: string
+      year: number
+      month: number
+      week: number
+      marketVisitQty: number
+      marketVisitFindingQty: number
+      solvedQty: number
+      pendingQty: number
+      locSubmittedQty: number
+      locFindingDayQty: number
+      dressCodeQty: number
+      dressCodeFindingQty: number
+      messVisitQty: number
+      messVisitFindingQty: number
+      status: string
+      deadline: Date
+      submittedAt: Date
+      updatedAt: Date
+      notes: string | null
+    }, ExtArgs["result"]["weeklyReport"]>
+    composites: {}
+  }
+
+  type WeeklyReportGetPayload<S extends boolean | null | undefined | WeeklyReportDefaultArgs> = $Result.GetResult<Prisma.$WeeklyReportPayload, S>
+
+  type WeeklyReportCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<WeeklyReportFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: WeeklyReportCountAggregateInputType | true
+    }
+
+  export interface WeeklyReportDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['WeeklyReport'], meta: { name: 'WeeklyReport' } }
+    /**
+     * Find zero or one WeeklyReport that matches the filter.
+     * @param {WeeklyReportFindUniqueArgs} args - Arguments to find a WeeklyReport
+     * @example
+     * // Get one WeeklyReport
+     * const weeklyReport = await prisma.weeklyReport.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WeeklyReportFindUniqueArgs>(args: SelectSubset<T, WeeklyReportFindUniqueArgs<ExtArgs>>): Prisma__WeeklyReportClient<$Result.GetResult<Prisma.$WeeklyReportPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one WeeklyReport that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {WeeklyReportFindUniqueOrThrowArgs} args - Arguments to find a WeeklyReport
+     * @example
+     * // Get one WeeklyReport
+     * const weeklyReport = await prisma.weeklyReport.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WeeklyReportFindUniqueOrThrowArgs>(args: SelectSubset<T, WeeklyReportFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WeeklyReportClient<$Result.GetResult<Prisma.$WeeklyReportPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first WeeklyReport that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeeklyReportFindFirstArgs} args - Arguments to find a WeeklyReport
+     * @example
+     * // Get one WeeklyReport
+     * const weeklyReport = await prisma.weeklyReport.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WeeklyReportFindFirstArgs>(args?: SelectSubset<T, WeeklyReportFindFirstArgs<ExtArgs>>): Prisma__WeeklyReportClient<$Result.GetResult<Prisma.$WeeklyReportPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first WeeklyReport that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeeklyReportFindFirstOrThrowArgs} args - Arguments to find a WeeklyReport
+     * @example
+     * // Get one WeeklyReport
+     * const weeklyReport = await prisma.weeklyReport.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WeeklyReportFindFirstOrThrowArgs>(args?: SelectSubset<T, WeeklyReportFindFirstOrThrowArgs<ExtArgs>>): Prisma__WeeklyReportClient<$Result.GetResult<Prisma.$WeeklyReportPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more WeeklyReports that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeeklyReportFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all WeeklyReports
+     * const weeklyReports = await prisma.weeklyReport.findMany()
+     * 
+     * // Get first 10 WeeklyReports
+     * const weeklyReports = await prisma.weeklyReport.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const weeklyReportWithIdOnly = await prisma.weeklyReport.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WeeklyReportFindManyArgs>(args?: SelectSubset<T, WeeklyReportFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeeklyReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a WeeklyReport.
+     * @param {WeeklyReportCreateArgs} args - Arguments to create a WeeklyReport.
+     * @example
+     * // Create one WeeklyReport
+     * const WeeklyReport = await prisma.weeklyReport.create({
+     *   data: {
+     *     // ... data to create a WeeklyReport
+     *   }
+     * })
+     * 
+     */
+    create<T extends WeeklyReportCreateArgs>(args: SelectSubset<T, WeeklyReportCreateArgs<ExtArgs>>): Prisma__WeeklyReportClient<$Result.GetResult<Prisma.$WeeklyReportPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many WeeklyReports.
+     * @param {WeeklyReportCreateManyArgs} args - Arguments to create many WeeklyReports.
+     * @example
+     * // Create many WeeklyReports
+     * const weeklyReport = await prisma.weeklyReport.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WeeklyReportCreateManyArgs>(args?: SelectSubset<T, WeeklyReportCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many WeeklyReports and returns the data saved in the database.
+     * @param {WeeklyReportCreateManyAndReturnArgs} args - Arguments to create many WeeklyReports.
+     * @example
+     * // Create many WeeklyReports
+     * const weeklyReport = await prisma.weeklyReport.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many WeeklyReports and only return the `id`
+     * const weeklyReportWithIdOnly = await prisma.weeklyReport.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WeeklyReportCreateManyAndReturnArgs>(args?: SelectSubset<T, WeeklyReportCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeeklyReportPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a WeeklyReport.
+     * @param {WeeklyReportDeleteArgs} args - Arguments to delete one WeeklyReport.
+     * @example
+     * // Delete one WeeklyReport
+     * const WeeklyReport = await prisma.weeklyReport.delete({
+     *   where: {
+     *     // ... filter to delete one WeeklyReport
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WeeklyReportDeleteArgs>(args: SelectSubset<T, WeeklyReportDeleteArgs<ExtArgs>>): Prisma__WeeklyReportClient<$Result.GetResult<Prisma.$WeeklyReportPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one WeeklyReport.
+     * @param {WeeklyReportUpdateArgs} args - Arguments to update one WeeklyReport.
+     * @example
+     * // Update one WeeklyReport
+     * const weeklyReport = await prisma.weeklyReport.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WeeklyReportUpdateArgs>(args: SelectSubset<T, WeeklyReportUpdateArgs<ExtArgs>>): Prisma__WeeklyReportClient<$Result.GetResult<Prisma.$WeeklyReportPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more WeeklyReports.
+     * @param {WeeklyReportDeleteManyArgs} args - Arguments to filter WeeklyReports to delete.
+     * @example
+     * // Delete a few WeeklyReports
+     * const { count } = await prisma.weeklyReport.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WeeklyReportDeleteManyArgs>(args?: SelectSubset<T, WeeklyReportDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WeeklyReports.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeeklyReportUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many WeeklyReports
+     * const weeklyReport = await prisma.weeklyReport.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WeeklyReportUpdateManyArgs>(args: SelectSubset<T, WeeklyReportUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WeeklyReports and returns the data updated in the database.
+     * @param {WeeklyReportUpdateManyAndReturnArgs} args - Arguments to update many WeeklyReports.
+     * @example
+     * // Update many WeeklyReports
+     * const weeklyReport = await prisma.weeklyReport.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more WeeklyReports and only return the `id`
+     * const weeklyReportWithIdOnly = await prisma.weeklyReport.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends WeeklyReportUpdateManyAndReturnArgs>(args: SelectSubset<T, WeeklyReportUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeeklyReportPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one WeeklyReport.
+     * @param {WeeklyReportUpsertArgs} args - Arguments to update or create a WeeklyReport.
+     * @example
+     * // Update or create a WeeklyReport
+     * const weeklyReport = await prisma.weeklyReport.upsert({
+     *   create: {
+     *     // ... data to create a WeeklyReport
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the WeeklyReport we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WeeklyReportUpsertArgs>(args: SelectSubset<T, WeeklyReportUpsertArgs<ExtArgs>>): Prisma__WeeklyReportClient<$Result.GetResult<Prisma.$WeeklyReportPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of WeeklyReports.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeeklyReportCountArgs} args - Arguments to filter WeeklyReports to count.
+     * @example
+     * // Count the number of WeeklyReports
+     * const count = await prisma.weeklyReport.count({
+     *   where: {
+     *     // ... the filter for the WeeklyReports we want to count
+     *   }
+     * })
+    **/
+    count<T extends WeeklyReportCountArgs>(
+      args?: Subset<T, WeeklyReportCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WeeklyReportCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a WeeklyReport.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeeklyReportAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WeeklyReportAggregateArgs>(args: Subset<T, WeeklyReportAggregateArgs>): Prisma.PrismaPromise<GetWeeklyReportAggregateType<T>>
+
+    /**
+     * Group by WeeklyReport.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeeklyReportGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WeeklyReportGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WeeklyReportGroupByArgs['orderBy'] }
+        : { orderBy?: WeeklyReportGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WeeklyReportGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWeeklyReportGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the WeeklyReport model
+   */
+  readonly fields: WeeklyReportFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for WeeklyReport.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WeeklyReportClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    findingHistory<T extends WeeklyReport$findingHistoryArgs<ExtArgs> = {}>(args?: Subset<T, WeeklyReport$findingHistoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FindingHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the WeeklyReport model
+   */
+  interface WeeklyReportFieldRefs {
+    readonly id: FieldRef<"WeeklyReport", 'String'>
+    readonly userId: FieldRef<"WeeklyReport", 'String'>
+    readonly monthYear: FieldRef<"WeeklyReport", 'String'>
+    readonly year: FieldRef<"WeeklyReport", 'Int'>
+    readonly month: FieldRef<"WeeklyReport", 'Int'>
+    readonly week: FieldRef<"WeeklyReport", 'Int'>
+    readonly marketVisitQty: FieldRef<"WeeklyReport", 'Int'>
+    readonly marketVisitFindingQty: FieldRef<"WeeklyReport", 'Int'>
+    readonly solvedQty: FieldRef<"WeeklyReport", 'Int'>
+    readonly pendingQty: FieldRef<"WeeklyReport", 'Int'>
+    readonly locSubmittedQty: FieldRef<"WeeklyReport", 'Int'>
+    readonly locFindingDayQty: FieldRef<"WeeklyReport", 'Float'>
+    readonly dressCodeQty: FieldRef<"WeeklyReport", 'Int'>
+    readonly dressCodeFindingQty: FieldRef<"WeeklyReport", 'Int'>
+    readonly messVisitQty: FieldRef<"WeeklyReport", 'Int'>
+    readonly messVisitFindingQty: FieldRef<"WeeklyReport", 'Int'>
+    readonly status: FieldRef<"WeeklyReport", 'String'>
+    readonly deadline: FieldRef<"WeeklyReport", 'DateTime'>
+    readonly submittedAt: FieldRef<"WeeklyReport", 'DateTime'>
+    readonly updatedAt: FieldRef<"WeeklyReport", 'DateTime'>
+    readonly notes: FieldRef<"WeeklyReport", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * WeeklyReport findUnique
+   */
+  export type WeeklyReportFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyReport
+     */
+    select?: WeeklyReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyReport
+     */
+    omit?: WeeklyReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyReportInclude<ExtArgs> | null
+    /**
+     * Filter, which WeeklyReport to fetch.
+     */
+    where: WeeklyReportWhereUniqueInput
+  }
+
+  /**
+   * WeeklyReport findUniqueOrThrow
+   */
+  export type WeeklyReportFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyReport
+     */
+    select?: WeeklyReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyReport
+     */
+    omit?: WeeklyReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyReportInclude<ExtArgs> | null
+    /**
+     * Filter, which WeeklyReport to fetch.
+     */
+    where: WeeklyReportWhereUniqueInput
+  }
+
+  /**
+   * WeeklyReport findFirst
+   */
+  export type WeeklyReportFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyReport
+     */
+    select?: WeeklyReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyReport
+     */
+    omit?: WeeklyReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyReportInclude<ExtArgs> | null
+    /**
+     * Filter, which WeeklyReport to fetch.
+     */
+    where?: WeeklyReportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WeeklyReports to fetch.
+     */
+    orderBy?: WeeklyReportOrderByWithRelationInput | WeeklyReportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WeeklyReports.
+     */
+    cursor?: WeeklyReportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WeeklyReports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WeeklyReports.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WeeklyReports.
+     */
+    distinct?: WeeklyReportScalarFieldEnum | WeeklyReportScalarFieldEnum[]
+  }
+
+  /**
+   * WeeklyReport findFirstOrThrow
+   */
+  export type WeeklyReportFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyReport
+     */
+    select?: WeeklyReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyReport
+     */
+    omit?: WeeklyReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyReportInclude<ExtArgs> | null
+    /**
+     * Filter, which WeeklyReport to fetch.
+     */
+    where?: WeeklyReportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WeeklyReports to fetch.
+     */
+    orderBy?: WeeklyReportOrderByWithRelationInput | WeeklyReportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WeeklyReports.
+     */
+    cursor?: WeeklyReportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WeeklyReports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WeeklyReports.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WeeklyReports.
+     */
+    distinct?: WeeklyReportScalarFieldEnum | WeeklyReportScalarFieldEnum[]
+  }
+
+  /**
+   * WeeklyReport findMany
+   */
+  export type WeeklyReportFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyReport
+     */
+    select?: WeeklyReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyReport
+     */
+    omit?: WeeklyReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyReportInclude<ExtArgs> | null
+    /**
+     * Filter, which WeeklyReports to fetch.
+     */
+    where?: WeeklyReportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WeeklyReports to fetch.
+     */
+    orderBy?: WeeklyReportOrderByWithRelationInput | WeeklyReportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing WeeklyReports.
+     */
+    cursor?: WeeklyReportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WeeklyReports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WeeklyReports.
+     */
+    skip?: number
+    distinct?: WeeklyReportScalarFieldEnum | WeeklyReportScalarFieldEnum[]
+  }
+
+  /**
+   * WeeklyReport create
+   */
+  export type WeeklyReportCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyReport
+     */
+    select?: WeeklyReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyReport
+     */
+    omit?: WeeklyReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyReportInclude<ExtArgs> | null
+    /**
+     * The data needed to create a WeeklyReport.
+     */
+    data: XOR<WeeklyReportCreateInput, WeeklyReportUncheckedCreateInput>
+  }
+
+  /**
+   * WeeklyReport createMany
+   */
+  export type WeeklyReportCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many WeeklyReports.
+     */
+    data: WeeklyReportCreateManyInput | WeeklyReportCreateManyInput[]
+  }
+
+  /**
+   * WeeklyReport createManyAndReturn
+   */
+  export type WeeklyReportCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyReport
+     */
+    select?: WeeklyReportSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyReport
+     */
+    omit?: WeeklyReportOmit<ExtArgs> | null
+    /**
+     * The data used to create many WeeklyReports.
+     */
+    data: WeeklyReportCreateManyInput | WeeklyReportCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyReportIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WeeklyReport update
+   */
+  export type WeeklyReportUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyReport
+     */
+    select?: WeeklyReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyReport
+     */
+    omit?: WeeklyReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyReportInclude<ExtArgs> | null
+    /**
+     * The data needed to update a WeeklyReport.
+     */
+    data: XOR<WeeklyReportUpdateInput, WeeklyReportUncheckedUpdateInput>
+    /**
+     * Choose, which WeeklyReport to update.
+     */
+    where: WeeklyReportWhereUniqueInput
+  }
+
+  /**
+   * WeeklyReport updateMany
+   */
+  export type WeeklyReportUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update WeeklyReports.
+     */
+    data: XOR<WeeklyReportUpdateManyMutationInput, WeeklyReportUncheckedUpdateManyInput>
+    /**
+     * Filter which WeeklyReports to update
+     */
+    where?: WeeklyReportWhereInput
+    /**
+     * Limit how many WeeklyReports to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * WeeklyReport updateManyAndReturn
+   */
+  export type WeeklyReportUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyReport
+     */
+    select?: WeeklyReportSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyReport
+     */
+    omit?: WeeklyReportOmit<ExtArgs> | null
+    /**
+     * The data used to update WeeklyReports.
+     */
+    data: XOR<WeeklyReportUpdateManyMutationInput, WeeklyReportUncheckedUpdateManyInput>
+    /**
+     * Filter which WeeklyReports to update
+     */
+    where?: WeeklyReportWhereInput
+    /**
+     * Limit how many WeeklyReports to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyReportIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WeeklyReport upsert
+   */
+  export type WeeklyReportUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyReport
+     */
+    select?: WeeklyReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyReport
+     */
+    omit?: WeeklyReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyReportInclude<ExtArgs> | null
+    /**
+     * The filter to search for the WeeklyReport to update in case it exists.
+     */
+    where: WeeklyReportWhereUniqueInput
+    /**
+     * In case the WeeklyReport found by the `where` argument doesn't exist, create a new WeeklyReport with this data.
+     */
+    create: XOR<WeeklyReportCreateInput, WeeklyReportUncheckedCreateInput>
+    /**
+     * In case the WeeklyReport was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WeeklyReportUpdateInput, WeeklyReportUncheckedUpdateInput>
+  }
+
+  /**
+   * WeeklyReport delete
+   */
+  export type WeeklyReportDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyReport
+     */
+    select?: WeeklyReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyReport
+     */
+    omit?: WeeklyReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyReportInclude<ExtArgs> | null
+    /**
+     * Filter which WeeklyReport to delete.
+     */
+    where: WeeklyReportWhereUniqueInput
+  }
+
+  /**
+   * WeeklyReport deleteMany
+   */
+  export type WeeklyReportDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WeeklyReports to delete
+     */
+    where?: WeeklyReportWhereInput
+    /**
+     * Limit how many WeeklyReports to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * WeeklyReport.findingHistory
+   */
+  export type WeeklyReport$findingHistoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FindingHistory
+     */
+    select?: FindingHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FindingHistory
+     */
+    omit?: FindingHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FindingHistoryInclude<ExtArgs> | null
+    where?: FindingHistoryWhereInput
+    orderBy?: FindingHistoryOrderByWithRelationInput | FindingHistoryOrderByWithRelationInput[]
+    cursor?: FindingHistoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FindingHistoryScalarFieldEnum | FindingHistoryScalarFieldEnum[]
+  }
+
+  /**
+   * WeeklyReport without action
+   */
+  export type WeeklyReportDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeeklyReport
+     */
+    select?: WeeklyReportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WeeklyReport
+     */
+    omit?: WeeklyReportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeeklyReportInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model FindingHistory
+   */
+
+  export type AggregateFindingHistory = {
+    _count: FindingHistoryCountAggregateOutputType | null
+    _avg: FindingHistoryAvgAggregateOutputType | null
+    _sum: FindingHistorySumAggregateOutputType | null
+    _min: FindingHistoryMinAggregateOutputType | null
+    _max: FindingHistoryMaxAggregateOutputType | null
+  }
+
+  export type FindingHistoryAvgAggregateOutputType = {
+    previousSolved: number | null
+    newSolved: number | null
+    previousPending: number | null
+    newPending: number | null
+  }
+
+  export type FindingHistorySumAggregateOutputType = {
+    previousSolved: number | null
+    newSolved: number | null
+    previousPending: number | null
+    newPending: number | null
+  }
+
+  export type FindingHistoryMinAggregateOutputType = {
+    id: string | null
+    reportId: string | null
+    updatedById: string | null
+    previousSolved: number | null
+    newSolved: number | null
+    previousPending: number | null
+    newPending: number | null
+    remark: string | null
+    createdAt: Date | null
+  }
+
+  export type FindingHistoryMaxAggregateOutputType = {
+    id: string | null
+    reportId: string | null
+    updatedById: string | null
+    previousSolved: number | null
+    newSolved: number | null
+    previousPending: number | null
+    newPending: number | null
+    remark: string | null
+    createdAt: Date | null
+  }
+
+  export type FindingHistoryCountAggregateOutputType = {
+    id: number
+    reportId: number
+    updatedById: number
+    previousSolved: number
+    newSolved: number
+    previousPending: number
+    newPending: number
+    remark: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type FindingHistoryAvgAggregateInputType = {
+    previousSolved?: true
+    newSolved?: true
+    previousPending?: true
+    newPending?: true
+  }
+
+  export type FindingHistorySumAggregateInputType = {
+    previousSolved?: true
+    newSolved?: true
+    previousPending?: true
+    newPending?: true
+  }
+
+  export type FindingHistoryMinAggregateInputType = {
+    id?: true
+    reportId?: true
+    updatedById?: true
+    previousSolved?: true
+    newSolved?: true
+    previousPending?: true
+    newPending?: true
+    remark?: true
+    createdAt?: true
+  }
+
+  export type FindingHistoryMaxAggregateInputType = {
+    id?: true
+    reportId?: true
+    updatedById?: true
+    previousSolved?: true
+    newSolved?: true
+    previousPending?: true
+    newPending?: true
+    remark?: true
+    createdAt?: true
+  }
+
+  export type FindingHistoryCountAggregateInputType = {
+    id?: true
+    reportId?: true
+    updatedById?: true
+    previousSolved?: true
+    newSolved?: true
+    previousPending?: true
+    newPending?: true
+    remark?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type FindingHistoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FindingHistory to aggregate.
+     */
+    where?: FindingHistoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FindingHistories to fetch.
+     */
+    orderBy?: FindingHistoryOrderByWithRelationInput | FindingHistoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FindingHistoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FindingHistories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FindingHistories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned FindingHistories
+    **/
+    _count?: true | FindingHistoryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FindingHistoryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FindingHistorySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FindingHistoryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FindingHistoryMaxAggregateInputType
+  }
+
+  export type GetFindingHistoryAggregateType<T extends FindingHistoryAggregateArgs> = {
+        [P in keyof T & keyof AggregateFindingHistory]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFindingHistory[P]>
+      : GetScalarType<T[P], AggregateFindingHistory[P]>
+  }
+
+
+
+
+  export type FindingHistoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FindingHistoryWhereInput
+    orderBy?: FindingHistoryOrderByWithAggregationInput | FindingHistoryOrderByWithAggregationInput[]
+    by: FindingHistoryScalarFieldEnum[] | FindingHistoryScalarFieldEnum
+    having?: FindingHistoryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FindingHistoryCountAggregateInputType | true
+    _avg?: FindingHistoryAvgAggregateInputType
+    _sum?: FindingHistorySumAggregateInputType
+    _min?: FindingHistoryMinAggregateInputType
+    _max?: FindingHistoryMaxAggregateInputType
+  }
+
+  export type FindingHistoryGroupByOutputType = {
+    id: string
+    reportId: string
+    updatedById: string
+    previousSolved: number
+    newSolved: number
+    previousPending: number
+    newPending: number
+    remark: string | null
+    createdAt: Date
+    _count: FindingHistoryCountAggregateOutputType | null
+    _avg: FindingHistoryAvgAggregateOutputType | null
+    _sum: FindingHistorySumAggregateOutputType | null
+    _min: FindingHistoryMinAggregateOutputType | null
+    _max: FindingHistoryMaxAggregateOutputType | null
+  }
+
+  type GetFindingHistoryGroupByPayload<T extends FindingHistoryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FindingHistoryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FindingHistoryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FindingHistoryGroupByOutputType[P]>
+            : GetScalarType<T[P], FindingHistoryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FindingHistorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    reportId?: boolean
+    updatedById?: boolean
+    previousSolved?: boolean
+    newSolved?: boolean
+    previousPending?: boolean
+    newPending?: boolean
+    remark?: boolean
+    createdAt?: boolean
+    report?: boolean | WeeklyReportDefaultArgs<ExtArgs>
+    updatedBy?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["findingHistory"]>
+
+  export type FindingHistorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    reportId?: boolean
+    updatedById?: boolean
+    previousSolved?: boolean
+    newSolved?: boolean
+    previousPending?: boolean
+    newPending?: boolean
+    remark?: boolean
+    createdAt?: boolean
+    report?: boolean | WeeklyReportDefaultArgs<ExtArgs>
+    updatedBy?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["findingHistory"]>
+
+  export type FindingHistorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    reportId?: boolean
+    updatedById?: boolean
+    previousSolved?: boolean
+    newSolved?: boolean
+    previousPending?: boolean
+    newPending?: boolean
+    remark?: boolean
+    createdAt?: boolean
+    report?: boolean | WeeklyReportDefaultArgs<ExtArgs>
+    updatedBy?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["findingHistory"]>
+
+  export type FindingHistorySelectScalar = {
+    id?: boolean
+    reportId?: boolean
+    updatedById?: boolean
+    previousSolved?: boolean
+    newSolved?: boolean
+    previousPending?: boolean
+    newPending?: boolean
+    remark?: boolean
+    createdAt?: boolean
+  }
+
+  export type FindingHistoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "reportId" | "updatedById" | "previousSolved" | "newSolved" | "previousPending" | "newPending" | "remark" | "createdAt", ExtArgs["result"]["findingHistory"]>
+  export type FindingHistoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    report?: boolean | WeeklyReportDefaultArgs<ExtArgs>
+    updatedBy?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type FindingHistoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    report?: boolean | WeeklyReportDefaultArgs<ExtArgs>
+    updatedBy?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type FindingHistoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    report?: boolean | WeeklyReportDefaultArgs<ExtArgs>
+    updatedBy?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $FindingHistoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FindingHistory"
+    objects: {
+      report: Prisma.$WeeklyReportPayload<ExtArgs>
+      updatedBy: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      reportId: string
+      updatedById: string
+      previousSolved: number
+      newSolved: number
+      previousPending: number
+      newPending: number
+      remark: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["findingHistory"]>
+    composites: {}
+  }
+
+  type FindingHistoryGetPayload<S extends boolean | null | undefined | FindingHistoryDefaultArgs> = $Result.GetResult<Prisma.$FindingHistoryPayload, S>
+
+  type FindingHistoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FindingHistoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FindingHistoryCountAggregateInputType | true
+    }
+
+  export interface FindingHistoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FindingHistory'], meta: { name: 'FindingHistory' } }
+    /**
+     * Find zero or one FindingHistory that matches the filter.
+     * @param {FindingHistoryFindUniqueArgs} args - Arguments to find a FindingHistory
+     * @example
+     * // Get one FindingHistory
+     * const findingHistory = await prisma.findingHistory.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FindingHistoryFindUniqueArgs>(args: SelectSubset<T, FindingHistoryFindUniqueArgs<ExtArgs>>): Prisma__FindingHistoryClient<$Result.GetResult<Prisma.$FindingHistoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one FindingHistory that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FindingHistoryFindUniqueOrThrowArgs} args - Arguments to find a FindingHistory
+     * @example
+     * // Get one FindingHistory
+     * const findingHistory = await prisma.findingHistory.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FindingHistoryFindUniqueOrThrowArgs>(args: SelectSubset<T, FindingHistoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FindingHistoryClient<$Result.GetResult<Prisma.$FindingHistoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FindingHistory that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FindingHistoryFindFirstArgs} args - Arguments to find a FindingHistory
+     * @example
+     * // Get one FindingHistory
+     * const findingHistory = await prisma.findingHistory.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FindingHistoryFindFirstArgs>(args?: SelectSubset<T, FindingHistoryFindFirstArgs<ExtArgs>>): Prisma__FindingHistoryClient<$Result.GetResult<Prisma.$FindingHistoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FindingHistory that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FindingHistoryFindFirstOrThrowArgs} args - Arguments to find a FindingHistory
+     * @example
+     * // Get one FindingHistory
+     * const findingHistory = await prisma.findingHistory.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FindingHistoryFindFirstOrThrowArgs>(args?: SelectSubset<T, FindingHistoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__FindingHistoryClient<$Result.GetResult<Prisma.$FindingHistoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more FindingHistories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FindingHistoryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all FindingHistories
+     * const findingHistories = await prisma.findingHistory.findMany()
+     * 
+     * // Get first 10 FindingHistories
+     * const findingHistories = await prisma.findingHistory.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const findingHistoryWithIdOnly = await prisma.findingHistory.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends FindingHistoryFindManyArgs>(args?: SelectSubset<T, FindingHistoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FindingHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a FindingHistory.
+     * @param {FindingHistoryCreateArgs} args - Arguments to create a FindingHistory.
+     * @example
+     * // Create one FindingHistory
+     * const FindingHistory = await prisma.findingHistory.create({
+     *   data: {
+     *     // ... data to create a FindingHistory
+     *   }
+     * })
+     * 
+     */
+    create<T extends FindingHistoryCreateArgs>(args: SelectSubset<T, FindingHistoryCreateArgs<ExtArgs>>): Prisma__FindingHistoryClient<$Result.GetResult<Prisma.$FindingHistoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many FindingHistories.
+     * @param {FindingHistoryCreateManyArgs} args - Arguments to create many FindingHistories.
+     * @example
+     * // Create many FindingHistories
+     * const findingHistory = await prisma.findingHistory.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FindingHistoryCreateManyArgs>(args?: SelectSubset<T, FindingHistoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many FindingHistories and returns the data saved in the database.
+     * @param {FindingHistoryCreateManyAndReturnArgs} args - Arguments to create many FindingHistories.
+     * @example
+     * // Create many FindingHistories
+     * const findingHistory = await prisma.findingHistory.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many FindingHistories and only return the `id`
+     * const findingHistoryWithIdOnly = await prisma.findingHistory.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends FindingHistoryCreateManyAndReturnArgs>(args?: SelectSubset<T, FindingHistoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FindingHistoryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a FindingHistory.
+     * @param {FindingHistoryDeleteArgs} args - Arguments to delete one FindingHistory.
+     * @example
+     * // Delete one FindingHistory
+     * const FindingHistory = await prisma.findingHistory.delete({
+     *   where: {
+     *     // ... filter to delete one FindingHistory
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FindingHistoryDeleteArgs>(args: SelectSubset<T, FindingHistoryDeleteArgs<ExtArgs>>): Prisma__FindingHistoryClient<$Result.GetResult<Prisma.$FindingHistoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one FindingHistory.
+     * @param {FindingHistoryUpdateArgs} args - Arguments to update one FindingHistory.
+     * @example
+     * // Update one FindingHistory
+     * const findingHistory = await prisma.findingHistory.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FindingHistoryUpdateArgs>(args: SelectSubset<T, FindingHistoryUpdateArgs<ExtArgs>>): Prisma__FindingHistoryClient<$Result.GetResult<Prisma.$FindingHistoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more FindingHistories.
+     * @param {FindingHistoryDeleteManyArgs} args - Arguments to filter FindingHistories to delete.
+     * @example
+     * // Delete a few FindingHistories
+     * const { count } = await prisma.findingHistory.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FindingHistoryDeleteManyArgs>(args?: SelectSubset<T, FindingHistoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FindingHistories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FindingHistoryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many FindingHistories
+     * const findingHistory = await prisma.findingHistory.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FindingHistoryUpdateManyArgs>(args: SelectSubset<T, FindingHistoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FindingHistories and returns the data updated in the database.
+     * @param {FindingHistoryUpdateManyAndReturnArgs} args - Arguments to update many FindingHistories.
+     * @example
+     * // Update many FindingHistories
+     * const findingHistory = await prisma.findingHistory.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more FindingHistories and only return the `id`
+     * const findingHistoryWithIdOnly = await prisma.findingHistory.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends FindingHistoryUpdateManyAndReturnArgs>(args: SelectSubset<T, FindingHistoryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FindingHistoryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one FindingHistory.
+     * @param {FindingHistoryUpsertArgs} args - Arguments to update or create a FindingHistory.
+     * @example
+     * // Update or create a FindingHistory
+     * const findingHistory = await prisma.findingHistory.upsert({
+     *   create: {
+     *     // ... data to create a FindingHistory
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the FindingHistory we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FindingHistoryUpsertArgs>(args: SelectSubset<T, FindingHistoryUpsertArgs<ExtArgs>>): Prisma__FindingHistoryClient<$Result.GetResult<Prisma.$FindingHistoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of FindingHistories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FindingHistoryCountArgs} args - Arguments to filter FindingHistories to count.
+     * @example
+     * // Count the number of FindingHistories
+     * const count = await prisma.findingHistory.count({
+     *   where: {
+     *     // ... the filter for the FindingHistories we want to count
+     *   }
+     * })
+    **/
+    count<T extends FindingHistoryCountArgs>(
+      args?: Subset<T, FindingHistoryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FindingHistoryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a FindingHistory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FindingHistoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FindingHistoryAggregateArgs>(args: Subset<T, FindingHistoryAggregateArgs>): Prisma.PrismaPromise<GetFindingHistoryAggregateType<T>>
+
+    /**
+     * Group by FindingHistory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FindingHistoryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FindingHistoryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FindingHistoryGroupByArgs['orderBy'] }
+        : { orderBy?: FindingHistoryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FindingHistoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFindingHistoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the FindingHistory model
+   */
+  readonly fields: FindingHistoryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for FindingHistory.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FindingHistoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    report<T extends WeeklyReportDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WeeklyReportDefaultArgs<ExtArgs>>): Prisma__WeeklyReportClient<$Result.GetResult<Prisma.$WeeklyReportPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    updatedBy<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the FindingHistory model
+   */
+  interface FindingHistoryFieldRefs {
+    readonly id: FieldRef<"FindingHistory", 'String'>
+    readonly reportId: FieldRef<"FindingHistory", 'String'>
+    readonly updatedById: FieldRef<"FindingHistory", 'String'>
+    readonly previousSolved: FieldRef<"FindingHistory", 'Int'>
+    readonly newSolved: FieldRef<"FindingHistory", 'Int'>
+    readonly previousPending: FieldRef<"FindingHistory", 'Int'>
+    readonly newPending: FieldRef<"FindingHistory", 'Int'>
+    readonly remark: FieldRef<"FindingHistory", 'String'>
+    readonly createdAt: FieldRef<"FindingHistory", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * FindingHistory findUnique
+   */
+  export type FindingHistoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FindingHistory
+     */
+    select?: FindingHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FindingHistory
+     */
+    omit?: FindingHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FindingHistoryInclude<ExtArgs> | null
+    /**
+     * Filter, which FindingHistory to fetch.
+     */
+    where: FindingHistoryWhereUniqueInput
+  }
+
+  /**
+   * FindingHistory findUniqueOrThrow
+   */
+  export type FindingHistoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FindingHistory
+     */
+    select?: FindingHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FindingHistory
+     */
+    omit?: FindingHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FindingHistoryInclude<ExtArgs> | null
+    /**
+     * Filter, which FindingHistory to fetch.
+     */
+    where: FindingHistoryWhereUniqueInput
+  }
+
+  /**
+   * FindingHistory findFirst
+   */
+  export type FindingHistoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FindingHistory
+     */
+    select?: FindingHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FindingHistory
+     */
+    omit?: FindingHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FindingHistoryInclude<ExtArgs> | null
+    /**
+     * Filter, which FindingHistory to fetch.
+     */
+    where?: FindingHistoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FindingHistories to fetch.
+     */
+    orderBy?: FindingHistoryOrderByWithRelationInput | FindingHistoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FindingHistories.
+     */
+    cursor?: FindingHistoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FindingHistories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FindingHistories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FindingHistories.
+     */
+    distinct?: FindingHistoryScalarFieldEnum | FindingHistoryScalarFieldEnum[]
+  }
+
+  /**
+   * FindingHistory findFirstOrThrow
+   */
+  export type FindingHistoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FindingHistory
+     */
+    select?: FindingHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FindingHistory
+     */
+    omit?: FindingHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FindingHistoryInclude<ExtArgs> | null
+    /**
+     * Filter, which FindingHistory to fetch.
+     */
+    where?: FindingHistoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FindingHistories to fetch.
+     */
+    orderBy?: FindingHistoryOrderByWithRelationInput | FindingHistoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FindingHistories.
+     */
+    cursor?: FindingHistoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FindingHistories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FindingHistories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FindingHistories.
+     */
+    distinct?: FindingHistoryScalarFieldEnum | FindingHistoryScalarFieldEnum[]
+  }
+
+  /**
+   * FindingHistory findMany
+   */
+  export type FindingHistoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FindingHistory
+     */
+    select?: FindingHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FindingHistory
+     */
+    omit?: FindingHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FindingHistoryInclude<ExtArgs> | null
+    /**
+     * Filter, which FindingHistories to fetch.
+     */
+    where?: FindingHistoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FindingHistories to fetch.
+     */
+    orderBy?: FindingHistoryOrderByWithRelationInput | FindingHistoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing FindingHistories.
+     */
+    cursor?: FindingHistoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FindingHistories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FindingHistories.
+     */
+    skip?: number
+    distinct?: FindingHistoryScalarFieldEnum | FindingHistoryScalarFieldEnum[]
+  }
+
+  /**
+   * FindingHistory create
+   */
+  export type FindingHistoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FindingHistory
+     */
+    select?: FindingHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FindingHistory
+     */
+    omit?: FindingHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FindingHistoryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a FindingHistory.
+     */
+    data: XOR<FindingHistoryCreateInput, FindingHistoryUncheckedCreateInput>
+  }
+
+  /**
+   * FindingHistory createMany
+   */
+  export type FindingHistoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many FindingHistories.
+     */
+    data: FindingHistoryCreateManyInput | FindingHistoryCreateManyInput[]
+  }
+
+  /**
+   * FindingHistory createManyAndReturn
+   */
+  export type FindingHistoryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FindingHistory
+     */
+    select?: FindingHistorySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FindingHistory
+     */
+    omit?: FindingHistoryOmit<ExtArgs> | null
+    /**
+     * The data used to create many FindingHistories.
+     */
+    data: FindingHistoryCreateManyInput | FindingHistoryCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FindingHistoryIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * FindingHistory update
+   */
+  export type FindingHistoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FindingHistory
+     */
+    select?: FindingHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FindingHistory
+     */
+    omit?: FindingHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FindingHistoryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a FindingHistory.
+     */
+    data: XOR<FindingHistoryUpdateInput, FindingHistoryUncheckedUpdateInput>
+    /**
+     * Choose, which FindingHistory to update.
+     */
+    where: FindingHistoryWhereUniqueInput
+  }
+
+  /**
+   * FindingHistory updateMany
+   */
+  export type FindingHistoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update FindingHistories.
+     */
+    data: XOR<FindingHistoryUpdateManyMutationInput, FindingHistoryUncheckedUpdateManyInput>
+    /**
+     * Filter which FindingHistories to update
+     */
+    where?: FindingHistoryWhereInput
+    /**
+     * Limit how many FindingHistories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * FindingHistory updateManyAndReturn
+   */
+  export type FindingHistoryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FindingHistory
+     */
+    select?: FindingHistorySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FindingHistory
+     */
+    omit?: FindingHistoryOmit<ExtArgs> | null
+    /**
+     * The data used to update FindingHistories.
+     */
+    data: XOR<FindingHistoryUpdateManyMutationInput, FindingHistoryUncheckedUpdateManyInput>
+    /**
+     * Filter which FindingHistories to update
+     */
+    where?: FindingHistoryWhereInput
+    /**
+     * Limit how many FindingHistories to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FindingHistoryIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * FindingHistory upsert
+   */
+  export type FindingHistoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FindingHistory
+     */
+    select?: FindingHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FindingHistory
+     */
+    omit?: FindingHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FindingHistoryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the FindingHistory to update in case it exists.
+     */
+    where: FindingHistoryWhereUniqueInput
+    /**
+     * In case the FindingHistory found by the `where` argument doesn't exist, create a new FindingHistory with this data.
+     */
+    create: XOR<FindingHistoryCreateInput, FindingHistoryUncheckedCreateInput>
+    /**
+     * In case the FindingHistory was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FindingHistoryUpdateInput, FindingHistoryUncheckedUpdateInput>
+  }
+
+  /**
+   * FindingHistory delete
+   */
+  export type FindingHistoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FindingHistory
+     */
+    select?: FindingHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FindingHistory
+     */
+    omit?: FindingHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FindingHistoryInclude<ExtArgs> | null
+    /**
+     * Filter which FindingHistory to delete.
+     */
+    where: FindingHistoryWhereUniqueInput
+  }
+
+  /**
+   * FindingHistory deleteMany
+   */
+  export type FindingHistoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FindingHistories to delete
+     */
+    where?: FindingHistoryWhereInput
+    /**
+     * Limit how many FindingHistories to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * FindingHistory without action
+   */
+  export type FindingHistoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FindingHistory
+     */
+    select?: FindingHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FindingHistory
+     */
+    omit?: FindingHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FindingHistoryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MonthlyTarget
+   */
+
+  export type AggregateMonthlyTarget = {
+    _count: MonthlyTargetCountAggregateOutputType | null
+    _avg: MonthlyTargetAvgAggregateOutputType | null
+    _sum: MonthlyTargetSumAggregateOutputType | null
+    _min: MonthlyTargetMinAggregateOutputType | null
+    _max: MonthlyTargetMaxAggregateOutputType | null
+  }
+
+  export type MonthlyTargetAvgAggregateOutputType = {
+    year: number | null
+    month: number | null
+    locTarget: number | null
+    messVisitTarget: number | null
+    dressCodeTarget: number | null
+  }
+
+  export type MonthlyTargetSumAggregateOutputType = {
+    year: number | null
+    month: number | null
+    locTarget: number | null
+    messVisitTarget: number | null
+    dressCodeTarget: number | null
+  }
+
+  export type MonthlyTargetMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    year: number | null
+    month: number | null
+    monthYear: string | null
+    locTarget: number | null
+    messVisitTarget: number | null
+    dressCodeTarget: number | null
+    isLocked: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MonthlyTargetMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    year: number | null
+    month: number | null
+    monthYear: string | null
+    locTarget: number | null
+    messVisitTarget: number | null
+    dressCodeTarget: number | null
+    isLocked: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MonthlyTargetCountAggregateOutputType = {
+    id: number
+    userId: number
+    year: number
+    month: number
+    monthYear: number
+    locTarget: number
+    messVisitTarget: number
+    dressCodeTarget: number
+    isLocked: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MonthlyTargetAvgAggregateInputType = {
+    year?: true
+    month?: true
+    locTarget?: true
+    messVisitTarget?: true
+    dressCodeTarget?: true
+  }
+
+  export type MonthlyTargetSumAggregateInputType = {
+    year?: true
+    month?: true
+    locTarget?: true
+    messVisitTarget?: true
+    dressCodeTarget?: true
+  }
+
+  export type MonthlyTargetMinAggregateInputType = {
+    id?: true
+    userId?: true
+    year?: true
+    month?: true
+    monthYear?: true
+    locTarget?: true
+    messVisitTarget?: true
+    dressCodeTarget?: true
+    isLocked?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MonthlyTargetMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    year?: true
+    month?: true
+    monthYear?: true
+    locTarget?: true
+    messVisitTarget?: true
+    dressCodeTarget?: true
+    isLocked?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MonthlyTargetCountAggregateInputType = {
+    id?: true
+    userId?: true
+    year?: true
+    month?: true
+    monthYear?: true
+    locTarget?: true
+    messVisitTarget?: true
+    dressCodeTarget?: true
+    isLocked?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MonthlyTargetAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MonthlyTarget to aggregate.
+     */
+    where?: MonthlyTargetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MonthlyTargets to fetch.
+     */
+    orderBy?: MonthlyTargetOrderByWithRelationInput | MonthlyTargetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MonthlyTargetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MonthlyTargets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MonthlyTargets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MonthlyTargets
+    **/
+    _count?: true | MonthlyTargetCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MonthlyTargetAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MonthlyTargetSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MonthlyTargetMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MonthlyTargetMaxAggregateInputType
+  }
+
+  export type GetMonthlyTargetAggregateType<T extends MonthlyTargetAggregateArgs> = {
+        [P in keyof T & keyof AggregateMonthlyTarget]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMonthlyTarget[P]>
+      : GetScalarType<T[P], AggregateMonthlyTarget[P]>
+  }
+
+
+
+
+  export type MonthlyTargetGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MonthlyTargetWhereInput
+    orderBy?: MonthlyTargetOrderByWithAggregationInput | MonthlyTargetOrderByWithAggregationInput[]
+    by: MonthlyTargetScalarFieldEnum[] | MonthlyTargetScalarFieldEnum
+    having?: MonthlyTargetScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MonthlyTargetCountAggregateInputType | true
+    _avg?: MonthlyTargetAvgAggregateInputType
+    _sum?: MonthlyTargetSumAggregateInputType
+    _min?: MonthlyTargetMinAggregateInputType
+    _max?: MonthlyTargetMaxAggregateInputType
+  }
+
+  export type MonthlyTargetGroupByOutputType = {
+    id: string
+    userId: string
+    year: number
+    month: number
+    monthYear: string
+    locTarget: number
+    messVisitTarget: number
+    dressCodeTarget: number
+    isLocked: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: MonthlyTargetCountAggregateOutputType | null
+    _avg: MonthlyTargetAvgAggregateOutputType | null
+    _sum: MonthlyTargetSumAggregateOutputType | null
+    _min: MonthlyTargetMinAggregateOutputType | null
+    _max: MonthlyTargetMaxAggregateOutputType | null
+  }
+
+  type GetMonthlyTargetGroupByPayload<T extends MonthlyTargetGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MonthlyTargetGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MonthlyTargetGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MonthlyTargetGroupByOutputType[P]>
+            : GetScalarType<T[P], MonthlyTargetGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MonthlyTargetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    year?: boolean
+    month?: boolean
+    monthYear?: boolean
+    locTarget?: boolean
+    messVisitTarget?: boolean
+    dressCodeTarget?: boolean
+    isLocked?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["monthlyTarget"]>
+
+  export type MonthlyTargetSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    year?: boolean
+    month?: boolean
+    monthYear?: boolean
+    locTarget?: boolean
+    messVisitTarget?: boolean
+    dressCodeTarget?: boolean
+    isLocked?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["monthlyTarget"]>
+
+  export type MonthlyTargetSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    year?: boolean
+    month?: boolean
+    monthYear?: boolean
+    locTarget?: boolean
+    messVisitTarget?: boolean
+    dressCodeTarget?: boolean
+    isLocked?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["monthlyTarget"]>
+
+  export type MonthlyTargetSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    year?: boolean
+    month?: boolean
+    monthYear?: boolean
+    locTarget?: boolean
+    messVisitTarget?: boolean
+    dressCodeTarget?: boolean
+    isLocked?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type MonthlyTargetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "year" | "month" | "monthYear" | "locTarget" | "messVisitTarget" | "dressCodeTarget" | "isLocked" | "createdAt" | "updatedAt", ExtArgs["result"]["monthlyTarget"]>
+  export type MonthlyTargetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type MonthlyTargetIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type MonthlyTargetIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $MonthlyTargetPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MonthlyTarget"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      year: number
+      month: number
+      monthYear: string
+      locTarget: number
+      messVisitTarget: number
+      dressCodeTarget: number
+      isLocked: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["monthlyTarget"]>
+    composites: {}
+  }
+
+  type MonthlyTargetGetPayload<S extends boolean | null | undefined | MonthlyTargetDefaultArgs> = $Result.GetResult<Prisma.$MonthlyTargetPayload, S>
+
+  type MonthlyTargetCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MonthlyTargetFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MonthlyTargetCountAggregateInputType | true
+    }
+
+  export interface MonthlyTargetDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MonthlyTarget'], meta: { name: 'MonthlyTarget' } }
+    /**
+     * Find zero or one MonthlyTarget that matches the filter.
+     * @param {MonthlyTargetFindUniqueArgs} args - Arguments to find a MonthlyTarget
+     * @example
+     * // Get one MonthlyTarget
+     * const monthlyTarget = await prisma.monthlyTarget.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MonthlyTargetFindUniqueArgs>(args: SelectSubset<T, MonthlyTargetFindUniqueArgs<ExtArgs>>): Prisma__MonthlyTargetClient<$Result.GetResult<Prisma.$MonthlyTargetPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MonthlyTarget that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MonthlyTargetFindUniqueOrThrowArgs} args - Arguments to find a MonthlyTarget
+     * @example
+     * // Get one MonthlyTarget
+     * const monthlyTarget = await prisma.monthlyTarget.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MonthlyTargetFindUniqueOrThrowArgs>(args: SelectSubset<T, MonthlyTargetFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MonthlyTargetClient<$Result.GetResult<Prisma.$MonthlyTargetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MonthlyTarget that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MonthlyTargetFindFirstArgs} args - Arguments to find a MonthlyTarget
+     * @example
+     * // Get one MonthlyTarget
+     * const monthlyTarget = await prisma.monthlyTarget.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MonthlyTargetFindFirstArgs>(args?: SelectSubset<T, MonthlyTargetFindFirstArgs<ExtArgs>>): Prisma__MonthlyTargetClient<$Result.GetResult<Prisma.$MonthlyTargetPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MonthlyTarget that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MonthlyTargetFindFirstOrThrowArgs} args - Arguments to find a MonthlyTarget
+     * @example
+     * // Get one MonthlyTarget
+     * const monthlyTarget = await prisma.monthlyTarget.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MonthlyTargetFindFirstOrThrowArgs>(args?: SelectSubset<T, MonthlyTargetFindFirstOrThrowArgs<ExtArgs>>): Prisma__MonthlyTargetClient<$Result.GetResult<Prisma.$MonthlyTargetPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MonthlyTargets that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MonthlyTargetFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MonthlyTargets
+     * const monthlyTargets = await prisma.monthlyTarget.findMany()
+     * 
+     * // Get first 10 MonthlyTargets
+     * const monthlyTargets = await prisma.monthlyTarget.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const monthlyTargetWithIdOnly = await prisma.monthlyTarget.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MonthlyTargetFindManyArgs>(args?: SelectSubset<T, MonthlyTargetFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MonthlyTargetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MonthlyTarget.
+     * @param {MonthlyTargetCreateArgs} args - Arguments to create a MonthlyTarget.
+     * @example
+     * // Create one MonthlyTarget
+     * const MonthlyTarget = await prisma.monthlyTarget.create({
+     *   data: {
+     *     // ... data to create a MonthlyTarget
+     *   }
+     * })
+     * 
+     */
+    create<T extends MonthlyTargetCreateArgs>(args: SelectSubset<T, MonthlyTargetCreateArgs<ExtArgs>>): Prisma__MonthlyTargetClient<$Result.GetResult<Prisma.$MonthlyTargetPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MonthlyTargets.
+     * @param {MonthlyTargetCreateManyArgs} args - Arguments to create many MonthlyTargets.
+     * @example
+     * // Create many MonthlyTargets
+     * const monthlyTarget = await prisma.monthlyTarget.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MonthlyTargetCreateManyArgs>(args?: SelectSubset<T, MonthlyTargetCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MonthlyTargets and returns the data saved in the database.
+     * @param {MonthlyTargetCreateManyAndReturnArgs} args - Arguments to create many MonthlyTargets.
+     * @example
+     * // Create many MonthlyTargets
+     * const monthlyTarget = await prisma.monthlyTarget.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MonthlyTargets and only return the `id`
+     * const monthlyTargetWithIdOnly = await prisma.monthlyTarget.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MonthlyTargetCreateManyAndReturnArgs>(args?: SelectSubset<T, MonthlyTargetCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MonthlyTargetPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MonthlyTarget.
+     * @param {MonthlyTargetDeleteArgs} args - Arguments to delete one MonthlyTarget.
+     * @example
+     * // Delete one MonthlyTarget
+     * const MonthlyTarget = await prisma.monthlyTarget.delete({
+     *   where: {
+     *     // ... filter to delete one MonthlyTarget
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MonthlyTargetDeleteArgs>(args: SelectSubset<T, MonthlyTargetDeleteArgs<ExtArgs>>): Prisma__MonthlyTargetClient<$Result.GetResult<Prisma.$MonthlyTargetPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MonthlyTarget.
+     * @param {MonthlyTargetUpdateArgs} args - Arguments to update one MonthlyTarget.
+     * @example
+     * // Update one MonthlyTarget
+     * const monthlyTarget = await prisma.monthlyTarget.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MonthlyTargetUpdateArgs>(args: SelectSubset<T, MonthlyTargetUpdateArgs<ExtArgs>>): Prisma__MonthlyTargetClient<$Result.GetResult<Prisma.$MonthlyTargetPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MonthlyTargets.
+     * @param {MonthlyTargetDeleteManyArgs} args - Arguments to filter MonthlyTargets to delete.
+     * @example
+     * // Delete a few MonthlyTargets
+     * const { count } = await prisma.monthlyTarget.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MonthlyTargetDeleteManyArgs>(args?: SelectSubset<T, MonthlyTargetDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MonthlyTargets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MonthlyTargetUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MonthlyTargets
+     * const monthlyTarget = await prisma.monthlyTarget.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MonthlyTargetUpdateManyArgs>(args: SelectSubset<T, MonthlyTargetUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MonthlyTargets and returns the data updated in the database.
+     * @param {MonthlyTargetUpdateManyAndReturnArgs} args - Arguments to update many MonthlyTargets.
+     * @example
+     * // Update many MonthlyTargets
+     * const monthlyTarget = await prisma.monthlyTarget.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MonthlyTargets and only return the `id`
+     * const monthlyTargetWithIdOnly = await prisma.monthlyTarget.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MonthlyTargetUpdateManyAndReturnArgs>(args: SelectSubset<T, MonthlyTargetUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MonthlyTargetPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MonthlyTarget.
+     * @param {MonthlyTargetUpsertArgs} args - Arguments to update or create a MonthlyTarget.
+     * @example
+     * // Update or create a MonthlyTarget
+     * const monthlyTarget = await prisma.monthlyTarget.upsert({
+     *   create: {
+     *     // ... data to create a MonthlyTarget
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MonthlyTarget we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MonthlyTargetUpsertArgs>(args: SelectSubset<T, MonthlyTargetUpsertArgs<ExtArgs>>): Prisma__MonthlyTargetClient<$Result.GetResult<Prisma.$MonthlyTargetPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MonthlyTargets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MonthlyTargetCountArgs} args - Arguments to filter MonthlyTargets to count.
+     * @example
+     * // Count the number of MonthlyTargets
+     * const count = await prisma.monthlyTarget.count({
+     *   where: {
+     *     // ... the filter for the MonthlyTargets we want to count
+     *   }
+     * })
+    **/
+    count<T extends MonthlyTargetCountArgs>(
+      args?: Subset<T, MonthlyTargetCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MonthlyTargetCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MonthlyTarget.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MonthlyTargetAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MonthlyTargetAggregateArgs>(args: Subset<T, MonthlyTargetAggregateArgs>): Prisma.PrismaPromise<GetMonthlyTargetAggregateType<T>>
+
+    /**
+     * Group by MonthlyTarget.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MonthlyTargetGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MonthlyTargetGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MonthlyTargetGroupByArgs['orderBy'] }
+        : { orderBy?: MonthlyTargetGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MonthlyTargetGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMonthlyTargetGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MonthlyTarget model
+   */
+  readonly fields: MonthlyTargetFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MonthlyTarget.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MonthlyTargetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MonthlyTarget model
+   */
+  interface MonthlyTargetFieldRefs {
+    readonly id: FieldRef<"MonthlyTarget", 'String'>
+    readonly userId: FieldRef<"MonthlyTarget", 'String'>
+    readonly year: FieldRef<"MonthlyTarget", 'Int'>
+    readonly month: FieldRef<"MonthlyTarget", 'Int'>
+    readonly monthYear: FieldRef<"MonthlyTarget", 'String'>
+    readonly locTarget: FieldRef<"MonthlyTarget", 'Int'>
+    readonly messVisitTarget: FieldRef<"MonthlyTarget", 'Int'>
+    readonly dressCodeTarget: FieldRef<"MonthlyTarget", 'Int'>
+    readonly isLocked: FieldRef<"MonthlyTarget", 'Boolean'>
+    readonly createdAt: FieldRef<"MonthlyTarget", 'DateTime'>
+    readonly updatedAt: FieldRef<"MonthlyTarget", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MonthlyTarget findUnique
+   */
+  export type MonthlyTargetFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonthlyTarget
+     */
+    select?: MonthlyTargetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MonthlyTarget
+     */
+    omit?: MonthlyTargetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonthlyTargetInclude<ExtArgs> | null
+    /**
+     * Filter, which MonthlyTarget to fetch.
+     */
+    where: MonthlyTargetWhereUniqueInput
+  }
+
+  /**
+   * MonthlyTarget findUniqueOrThrow
+   */
+  export type MonthlyTargetFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonthlyTarget
+     */
+    select?: MonthlyTargetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MonthlyTarget
+     */
+    omit?: MonthlyTargetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonthlyTargetInclude<ExtArgs> | null
+    /**
+     * Filter, which MonthlyTarget to fetch.
+     */
+    where: MonthlyTargetWhereUniqueInput
+  }
+
+  /**
+   * MonthlyTarget findFirst
+   */
+  export type MonthlyTargetFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonthlyTarget
+     */
+    select?: MonthlyTargetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MonthlyTarget
+     */
+    omit?: MonthlyTargetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonthlyTargetInclude<ExtArgs> | null
+    /**
+     * Filter, which MonthlyTarget to fetch.
+     */
+    where?: MonthlyTargetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MonthlyTargets to fetch.
+     */
+    orderBy?: MonthlyTargetOrderByWithRelationInput | MonthlyTargetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MonthlyTargets.
+     */
+    cursor?: MonthlyTargetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MonthlyTargets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MonthlyTargets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MonthlyTargets.
+     */
+    distinct?: MonthlyTargetScalarFieldEnum | MonthlyTargetScalarFieldEnum[]
+  }
+
+  /**
+   * MonthlyTarget findFirstOrThrow
+   */
+  export type MonthlyTargetFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonthlyTarget
+     */
+    select?: MonthlyTargetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MonthlyTarget
+     */
+    omit?: MonthlyTargetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonthlyTargetInclude<ExtArgs> | null
+    /**
+     * Filter, which MonthlyTarget to fetch.
+     */
+    where?: MonthlyTargetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MonthlyTargets to fetch.
+     */
+    orderBy?: MonthlyTargetOrderByWithRelationInput | MonthlyTargetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MonthlyTargets.
+     */
+    cursor?: MonthlyTargetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MonthlyTargets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MonthlyTargets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MonthlyTargets.
+     */
+    distinct?: MonthlyTargetScalarFieldEnum | MonthlyTargetScalarFieldEnum[]
+  }
+
+  /**
+   * MonthlyTarget findMany
+   */
+  export type MonthlyTargetFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonthlyTarget
+     */
+    select?: MonthlyTargetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MonthlyTarget
+     */
+    omit?: MonthlyTargetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonthlyTargetInclude<ExtArgs> | null
+    /**
+     * Filter, which MonthlyTargets to fetch.
+     */
+    where?: MonthlyTargetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MonthlyTargets to fetch.
+     */
+    orderBy?: MonthlyTargetOrderByWithRelationInput | MonthlyTargetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MonthlyTargets.
+     */
+    cursor?: MonthlyTargetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MonthlyTargets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MonthlyTargets.
+     */
+    skip?: number
+    distinct?: MonthlyTargetScalarFieldEnum | MonthlyTargetScalarFieldEnum[]
+  }
+
+  /**
+   * MonthlyTarget create
+   */
+  export type MonthlyTargetCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonthlyTarget
+     */
+    select?: MonthlyTargetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MonthlyTarget
+     */
+    omit?: MonthlyTargetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonthlyTargetInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MonthlyTarget.
+     */
+    data: XOR<MonthlyTargetCreateInput, MonthlyTargetUncheckedCreateInput>
+  }
+
+  /**
+   * MonthlyTarget createMany
+   */
+  export type MonthlyTargetCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MonthlyTargets.
+     */
+    data: MonthlyTargetCreateManyInput | MonthlyTargetCreateManyInput[]
+  }
+
+  /**
+   * MonthlyTarget createManyAndReturn
+   */
+  export type MonthlyTargetCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonthlyTarget
+     */
+    select?: MonthlyTargetSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MonthlyTarget
+     */
+    omit?: MonthlyTargetOmit<ExtArgs> | null
+    /**
+     * The data used to create many MonthlyTargets.
+     */
+    data: MonthlyTargetCreateManyInput | MonthlyTargetCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonthlyTargetIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MonthlyTarget update
+   */
+  export type MonthlyTargetUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonthlyTarget
+     */
+    select?: MonthlyTargetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MonthlyTarget
+     */
+    omit?: MonthlyTargetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonthlyTargetInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MonthlyTarget.
+     */
+    data: XOR<MonthlyTargetUpdateInput, MonthlyTargetUncheckedUpdateInput>
+    /**
+     * Choose, which MonthlyTarget to update.
+     */
+    where: MonthlyTargetWhereUniqueInput
+  }
+
+  /**
+   * MonthlyTarget updateMany
+   */
+  export type MonthlyTargetUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MonthlyTargets.
+     */
+    data: XOR<MonthlyTargetUpdateManyMutationInput, MonthlyTargetUncheckedUpdateManyInput>
+    /**
+     * Filter which MonthlyTargets to update
+     */
+    where?: MonthlyTargetWhereInput
+    /**
+     * Limit how many MonthlyTargets to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MonthlyTarget updateManyAndReturn
+   */
+  export type MonthlyTargetUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonthlyTarget
+     */
+    select?: MonthlyTargetSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MonthlyTarget
+     */
+    omit?: MonthlyTargetOmit<ExtArgs> | null
+    /**
+     * The data used to update MonthlyTargets.
+     */
+    data: XOR<MonthlyTargetUpdateManyMutationInput, MonthlyTargetUncheckedUpdateManyInput>
+    /**
+     * Filter which MonthlyTargets to update
+     */
+    where?: MonthlyTargetWhereInput
+    /**
+     * Limit how many MonthlyTargets to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonthlyTargetIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MonthlyTarget upsert
+   */
+  export type MonthlyTargetUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonthlyTarget
+     */
+    select?: MonthlyTargetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MonthlyTarget
+     */
+    omit?: MonthlyTargetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonthlyTargetInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MonthlyTarget to update in case it exists.
+     */
+    where: MonthlyTargetWhereUniqueInput
+    /**
+     * In case the MonthlyTarget found by the `where` argument doesn't exist, create a new MonthlyTarget with this data.
+     */
+    create: XOR<MonthlyTargetCreateInput, MonthlyTargetUncheckedCreateInput>
+    /**
+     * In case the MonthlyTarget was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MonthlyTargetUpdateInput, MonthlyTargetUncheckedUpdateInput>
+  }
+
+  /**
+   * MonthlyTarget delete
+   */
+  export type MonthlyTargetDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonthlyTarget
+     */
+    select?: MonthlyTargetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MonthlyTarget
+     */
+    omit?: MonthlyTargetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonthlyTargetInclude<ExtArgs> | null
+    /**
+     * Filter which MonthlyTarget to delete.
+     */
+    where: MonthlyTargetWhereUniqueInput
+  }
+
+  /**
+   * MonthlyTarget deleteMany
+   */
+  export type MonthlyTargetDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MonthlyTargets to delete
+     */
+    where?: MonthlyTargetWhereInput
+    /**
+     * Limit how many MonthlyTargets to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MonthlyTarget without action
+   */
+  export type MonthlyTargetDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MonthlyTarget
+     */
+    select?: MonthlyTargetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MonthlyTarget
+     */
+    omit?: MonthlyTargetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MonthlyTargetInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model EmailNotificationConfig
+   */
+
+  export type AggregateEmailNotificationConfig = {
+    _count: EmailNotificationConfigCountAggregateOutputType | null
+    _min: EmailNotificationConfigMinAggregateOutputType | null
+    _max: EmailNotificationConfigMaxAggregateOutputType | null
+  }
+
+  export type EmailNotificationConfigMinAggregateOutputType = {
+    id: string | null
+    code: string | null
+    name: string | null
+    description: string | null
+    subjectTemplate: string | null
+    bodyTemplate: string | null
+    ccRecipients: string | null
+    bccRecipients: string | null
+    isActive: boolean | null
+    updatedAt: Date | null
+  }
+
+  export type EmailNotificationConfigMaxAggregateOutputType = {
+    id: string | null
+    code: string | null
+    name: string | null
+    description: string | null
+    subjectTemplate: string | null
+    bodyTemplate: string | null
+    ccRecipients: string | null
+    bccRecipients: string | null
+    isActive: boolean | null
+    updatedAt: Date | null
+  }
+
+  export type EmailNotificationConfigCountAggregateOutputType = {
+    id: number
+    code: number
+    name: number
+    description: number
+    subjectTemplate: number
+    bodyTemplate: number
+    ccRecipients: number
+    bccRecipients: number
+    isActive: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type EmailNotificationConfigMinAggregateInputType = {
+    id?: true
+    code?: true
+    name?: true
+    description?: true
+    subjectTemplate?: true
+    bodyTemplate?: true
+    ccRecipients?: true
+    bccRecipients?: true
+    isActive?: true
+    updatedAt?: true
+  }
+
+  export type EmailNotificationConfigMaxAggregateInputType = {
+    id?: true
+    code?: true
+    name?: true
+    description?: true
+    subjectTemplate?: true
+    bodyTemplate?: true
+    ccRecipients?: true
+    bccRecipients?: true
+    isActive?: true
+    updatedAt?: true
+  }
+
+  export type EmailNotificationConfigCountAggregateInputType = {
+    id?: true
+    code?: true
+    name?: true
+    description?: true
+    subjectTemplate?: true
+    bodyTemplate?: true
+    ccRecipients?: true
+    bccRecipients?: true
+    isActive?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type EmailNotificationConfigAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EmailNotificationConfig to aggregate.
+     */
+    where?: EmailNotificationConfigWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmailNotificationConfigs to fetch.
+     */
+    orderBy?: EmailNotificationConfigOrderByWithRelationInput | EmailNotificationConfigOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: EmailNotificationConfigWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmailNotificationConfigs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmailNotificationConfigs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned EmailNotificationConfigs
+    **/
+    _count?: true | EmailNotificationConfigCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EmailNotificationConfigMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EmailNotificationConfigMaxAggregateInputType
+  }
+
+  export type GetEmailNotificationConfigAggregateType<T extends EmailNotificationConfigAggregateArgs> = {
+        [P in keyof T & keyof AggregateEmailNotificationConfig]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEmailNotificationConfig[P]>
+      : GetScalarType<T[P], AggregateEmailNotificationConfig[P]>
+  }
+
+
+
+
+  export type EmailNotificationConfigGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EmailNotificationConfigWhereInput
+    orderBy?: EmailNotificationConfigOrderByWithAggregationInput | EmailNotificationConfigOrderByWithAggregationInput[]
+    by: EmailNotificationConfigScalarFieldEnum[] | EmailNotificationConfigScalarFieldEnum
+    having?: EmailNotificationConfigScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EmailNotificationConfigCountAggregateInputType | true
+    _min?: EmailNotificationConfigMinAggregateInputType
+    _max?: EmailNotificationConfigMaxAggregateInputType
+  }
+
+  export type EmailNotificationConfigGroupByOutputType = {
+    id: string
+    code: string
+    name: string
+    description: string | null
+    subjectTemplate: string
+    bodyTemplate: string
+    ccRecipients: string
+    bccRecipients: string | null
+    isActive: boolean
+    updatedAt: Date
+    _count: EmailNotificationConfigCountAggregateOutputType | null
+    _min: EmailNotificationConfigMinAggregateOutputType | null
+    _max: EmailNotificationConfigMaxAggregateOutputType | null
+  }
+
+  type GetEmailNotificationConfigGroupByPayload<T extends EmailNotificationConfigGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EmailNotificationConfigGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EmailNotificationConfigGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EmailNotificationConfigGroupByOutputType[P]>
+            : GetScalarType<T[P], EmailNotificationConfigGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type EmailNotificationConfigSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    code?: boolean
+    name?: boolean
+    description?: boolean
+    subjectTemplate?: boolean
+    bodyTemplate?: boolean
+    ccRecipients?: boolean
+    bccRecipients?: boolean
+    isActive?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["emailNotificationConfig"]>
+
+  export type EmailNotificationConfigSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    code?: boolean
+    name?: boolean
+    description?: boolean
+    subjectTemplate?: boolean
+    bodyTemplate?: boolean
+    ccRecipients?: boolean
+    bccRecipients?: boolean
+    isActive?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["emailNotificationConfig"]>
+
+  export type EmailNotificationConfigSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    code?: boolean
+    name?: boolean
+    description?: boolean
+    subjectTemplate?: boolean
+    bodyTemplate?: boolean
+    ccRecipients?: boolean
+    bccRecipients?: boolean
+    isActive?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["emailNotificationConfig"]>
+
+  export type EmailNotificationConfigSelectScalar = {
+    id?: boolean
+    code?: boolean
+    name?: boolean
+    description?: boolean
+    subjectTemplate?: boolean
+    bodyTemplate?: boolean
+    ccRecipients?: boolean
+    bccRecipients?: boolean
+    isActive?: boolean
+    updatedAt?: boolean
+  }
+
+  export type EmailNotificationConfigOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "code" | "name" | "description" | "subjectTemplate" | "bodyTemplate" | "ccRecipients" | "bccRecipients" | "isActive" | "updatedAt", ExtArgs["result"]["emailNotificationConfig"]>
+
+  export type $EmailNotificationConfigPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "EmailNotificationConfig"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      code: string
+      name: string
+      description: string | null
+      subjectTemplate: string
+      bodyTemplate: string
+      ccRecipients: string
+      bccRecipients: string | null
+      isActive: boolean
+      updatedAt: Date
+    }, ExtArgs["result"]["emailNotificationConfig"]>
+    composites: {}
+  }
+
+  type EmailNotificationConfigGetPayload<S extends boolean | null | undefined | EmailNotificationConfigDefaultArgs> = $Result.GetResult<Prisma.$EmailNotificationConfigPayload, S>
+
+  type EmailNotificationConfigCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<EmailNotificationConfigFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: EmailNotificationConfigCountAggregateInputType | true
+    }
+
+  export interface EmailNotificationConfigDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['EmailNotificationConfig'], meta: { name: 'EmailNotificationConfig' } }
+    /**
+     * Find zero or one EmailNotificationConfig that matches the filter.
+     * @param {EmailNotificationConfigFindUniqueArgs} args - Arguments to find a EmailNotificationConfig
+     * @example
+     * // Get one EmailNotificationConfig
+     * const emailNotificationConfig = await prisma.emailNotificationConfig.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends EmailNotificationConfigFindUniqueArgs>(args: SelectSubset<T, EmailNotificationConfigFindUniqueArgs<ExtArgs>>): Prisma__EmailNotificationConfigClient<$Result.GetResult<Prisma.$EmailNotificationConfigPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one EmailNotificationConfig that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {EmailNotificationConfigFindUniqueOrThrowArgs} args - Arguments to find a EmailNotificationConfig
+     * @example
+     * // Get one EmailNotificationConfig
+     * const emailNotificationConfig = await prisma.emailNotificationConfig.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends EmailNotificationConfigFindUniqueOrThrowArgs>(args: SelectSubset<T, EmailNotificationConfigFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EmailNotificationConfigClient<$Result.GetResult<Prisma.$EmailNotificationConfigPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EmailNotificationConfig that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmailNotificationConfigFindFirstArgs} args - Arguments to find a EmailNotificationConfig
+     * @example
+     * // Get one EmailNotificationConfig
+     * const emailNotificationConfig = await prisma.emailNotificationConfig.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends EmailNotificationConfigFindFirstArgs>(args?: SelectSubset<T, EmailNotificationConfigFindFirstArgs<ExtArgs>>): Prisma__EmailNotificationConfigClient<$Result.GetResult<Prisma.$EmailNotificationConfigPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EmailNotificationConfig that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmailNotificationConfigFindFirstOrThrowArgs} args - Arguments to find a EmailNotificationConfig
+     * @example
+     * // Get one EmailNotificationConfig
+     * const emailNotificationConfig = await prisma.emailNotificationConfig.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends EmailNotificationConfigFindFirstOrThrowArgs>(args?: SelectSubset<T, EmailNotificationConfigFindFirstOrThrowArgs<ExtArgs>>): Prisma__EmailNotificationConfigClient<$Result.GetResult<Prisma.$EmailNotificationConfigPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more EmailNotificationConfigs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmailNotificationConfigFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all EmailNotificationConfigs
+     * const emailNotificationConfigs = await prisma.emailNotificationConfig.findMany()
+     * 
+     * // Get first 10 EmailNotificationConfigs
+     * const emailNotificationConfigs = await prisma.emailNotificationConfig.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const emailNotificationConfigWithIdOnly = await prisma.emailNotificationConfig.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends EmailNotificationConfigFindManyArgs>(args?: SelectSubset<T, EmailNotificationConfigFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmailNotificationConfigPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a EmailNotificationConfig.
+     * @param {EmailNotificationConfigCreateArgs} args - Arguments to create a EmailNotificationConfig.
+     * @example
+     * // Create one EmailNotificationConfig
+     * const EmailNotificationConfig = await prisma.emailNotificationConfig.create({
+     *   data: {
+     *     // ... data to create a EmailNotificationConfig
+     *   }
+     * })
+     * 
+     */
+    create<T extends EmailNotificationConfigCreateArgs>(args: SelectSubset<T, EmailNotificationConfigCreateArgs<ExtArgs>>): Prisma__EmailNotificationConfigClient<$Result.GetResult<Prisma.$EmailNotificationConfigPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many EmailNotificationConfigs.
+     * @param {EmailNotificationConfigCreateManyArgs} args - Arguments to create many EmailNotificationConfigs.
+     * @example
+     * // Create many EmailNotificationConfigs
+     * const emailNotificationConfig = await prisma.emailNotificationConfig.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends EmailNotificationConfigCreateManyArgs>(args?: SelectSubset<T, EmailNotificationConfigCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many EmailNotificationConfigs and returns the data saved in the database.
+     * @param {EmailNotificationConfigCreateManyAndReturnArgs} args - Arguments to create many EmailNotificationConfigs.
+     * @example
+     * // Create many EmailNotificationConfigs
+     * const emailNotificationConfig = await prisma.emailNotificationConfig.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many EmailNotificationConfigs and only return the `id`
+     * const emailNotificationConfigWithIdOnly = await prisma.emailNotificationConfig.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends EmailNotificationConfigCreateManyAndReturnArgs>(args?: SelectSubset<T, EmailNotificationConfigCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmailNotificationConfigPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a EmailNotificationConfig.
+     * @param {EmailNotificationConfigDeleteArgs} args - Arguments to delete one EmailNotificationConfig.
+     * @example
+     * // Delete one EmailNotificationConfig
+     * const EmailNotificationConfig = await prisma.emailNotificationConfig.delete({
+     *   where: {
+     *     // ... filter to delete one EmailNotificationConfig
+     *   }
+     * })
+     * 
+     */
+    delete<T extends EmailNotificationConfigDeleteArgs>(args: SelectSubset<T, EmailNotificationConfigDeleteArgs<ExtArgs>>): Prisma__EmailNotificationConfigClient<$Result.GetResult<Prisma.$EmailNotificationConfigPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one EmailNotificationConfig.
+     * @param {EmailNotificationConfigUpdateArgs} args - Arguments to update one EmailNotificationConfig.
+     * @example
+     * // Update one EmailNotificationConfig
+     * const emailNotificationConfig = await prisma.emailNotificationConfig.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends EmailNotificationConfigUpdateArgs>(args: SelectSubset<T, EmailNotificationConfigUpdateArgs<ExtArgs>>): Prisma__EmailNotificationConfigClient<$Result.GetResult<Prisma.$EmailNotificationConfigPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more EmailNotificationConfigs.
+     * @param {EmailNotificationConfigDeleteManyArgs} args - Arguments to filter EmailNotificationConfigs to delete.
+     * @example
+     * // Delete a few EmailNotificationConfigs
+     * const { count } = await prisma.emailNotificationConfig.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends EmailNotificationConfigDeleteManyArgs>(args?: SelectSubset<T, EmailNotificationConfigDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EmailNotificationConfigs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmailNotificationConfigUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many EmailNotificationConfigs
+     * const emailNotificationConfig = await prisma.emailNotificationConfig.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends EmailNotificationConfigUpdateManyArgs>(args: SelectSubset<T, EmailNotificationConfigUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EmailNotificationConfigs and returns the data updated in the database.
+     * @param {EmailNotificationConfigUpdateManyAndReturnArgs} args - Arguments to update many EmailNotificationConfigs.
+     * @example
+     * // Update many EmailNotificationConfigs
+     * const emailNotificationConfig = await prisma.emailNotificationConfig.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more EmailNotificationConfigs and only return the `id`
+     * const emailNotificationConfigWithIdOnly = await prisma.emailNotificationConfig.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends EmailNotificationConfigUpdateManyAndReturnArgs>(args: SelectSubset<T, EmailNotificationConfigUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmailNotificationConfigPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one EmailNotificationConfig.
+     * @param {EmailNotificationConfigUpsertArgs} args - Arguments to update or create a EmailNotificationConfig.
+     * @example
+     * // Update or create a EmailNotificationConfig
+     * const emailNotificationConfig = await prisma.emailNotificationConfig.upsert({
+     *   create: {
+     *     // ... data to create a EmailNotificationConfig
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the EmailNotificationConfig we want to update
+     *   }
+     * })
+     */
+    upsert<T extends EmailNotificationConfigUpsertArgs>(args: SelectSubset<T, EmailNotificationConfigUpsertArgs<ExtArgs>>): Prisma__EmailNotificationConfigClient<$Result.GetResult<Prisma.$EmailNotificationConfigPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of EmailNotificationConfigs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmailNotificationConfigCountArgs} args - Arguments to filter EmailNotificationConfigs to count.
+     * @example
+     * // Count the number of EmailNotificationConfigs
+     * const count = await prisma.emailNotificationConfig.count({
+     *   where: {
+     *     // ... the filter for the EmailNotificationConfigs we want to count
+     *   }
+     * })
+    **/
+    count<T extends EmailNotificationConfigCountArgs>(
+      args?: Subset<T, EmailNotificationConfigCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EmailNotificationConfigCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a EmailNotificationConfig.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmailNotificationConfigAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EmailNotificationConfigAggregateArgs>(args: Subset<T, EmailNotificationConfigAggregateArgs>): Prisma.PrismaPromise<GetEmailNotificationConfigAggregateType<T>>
+
+    /**
+     * Group by EmailNotificationConfig.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmailNotificationConfigGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends EmailNotificationConfigGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: EmailNotificationConfigGroupByArgs['orderBy'] }
+        : { orderBy?: EmailNotificationConfigGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, EmailNotificationConfigGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEmailNotificationConfigGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the EmailNotificationConfig model
+   */
+  readonly fields: EmailNotificationConfigFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for EmailNotificationConfig.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__EmailNotificationConfigClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the EmailNotificationConfig model
+   */
+  interface EmailNotificationConfigFieldRefs {
+    readonly id: FieldRef<"EmailNotificationConfig", 'String'>
+    readonly code: FieldRef<"EmailNotificationConfig", 'String'>
+    readonly name: FieldRef<"EmailNotificationConfig", 'String'>
+    readonly description: FieldRef<"EmailNotificationConfig", 'String'>
+    readonly subjectTemplate: FieldRef<"EmailNotificationConfig", 'String'>
+    readonly bodyTemplate: FieldRef<"EmailNotificationConfig", 'String'>
+    readonly ccRecipients: FieldRef<"EmailNotificationConfig", 'String'>
+    readonly bccRecipients: FieldRef<"EmailNotificationConfig", 'String'>
+    readonly isActive: FieldRef<"EmailNotificationConfig", 'Boolean'>
+    readonly updatedAt: FieldRef<"EmailNotificationConfig", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * EmailNotificationConfig findUnique
+   */
+  export type EmailNotificationConfigFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationConfig
+     */
+    select?: EmailNotificationConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationConfig
+     */
+    omit?: EmailNotificationConfigOmit<ExtArgs> | null
+    /**
+     * Filter, which EmailNotificationConfig to fetch.
+     */
+    where: EmailNotificationConfigWhereUniqueInput
+  }
+
+  /**
+   * EmailNotificationConfig findUniqueOrThrow
+   */
+  export type EmailNotificationConfigFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationConfig
+     */
+    select?: EmailNotificationConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationConfig
+     */
+    omit?: EmailNotificationConfigOmit<ExtArgs> | null
+    /**
+     * Filter, which EmailNotificationConfig to fetch.
+     */
+    where: EmailNotificationConfigWhereUniqueInput
+  }
+
+  /**
+   * EmailNotificationConfig findFirst
+   */
+  export type EmailNotificationConfigFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationConfig
+     */
+    select?: EmailNotificationConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationConfig
+     */
+    omit?: EmailNotificationConfigOmit<ExtArgs> | null
+    /**
+     * Filter, which EmailNotificationConfig to fetch.
+     */
+    where?: EmailNotificationConfigWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmailNotificationConfigs to fetch.
+     */
+    orderBy?: EmailNotificationConfigOrderByWithRelationInput | EmailNotificationConfigOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EmailNotificationConfigs.
+     */
+    cursor?: EmailNotificationConfigWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmailNotificationConfigs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmailNotificationConfigs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EmailNotificationConfigs.
+     */
+    distinct?: EmailNotificationConfigScalarFieldEnum | EmailNotificationConfigScalarFieldEnum[]
+  }
+
+  /**
+   * EmailNotificationConfig findFirstOrThrow
+   */
+  export type EmailNotificationConfigFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationConfig
+     */
+    select?: EmailNotificationConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationConfig
+     */
+    omit?: EmailNotificationConfigOmit<ExtArgs> | null
+    /**
+     * Filter, which EmailNotificationConfig to fetch.
+     */
+    where?: EmailNotificationConfigWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmailNotificationConfigs to fetch.
+     */
+    orderBy?: EmailNotificationConfigOrderByWithRelationInput | EmailNotificationConfigOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EmailNotificationConfigs.
+     */
+    cursor?: EmailNotificationConfigWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmailNotificationConfigs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmailNotificationConfigs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EmailNotificationConfigs.
+     */
+    distinct?: EmailNotificationConfigScalarFieldEnum | EmailNotificationConfigScalarFieldEnum[]
+  }
+
+  /**
+   * EmailNotificationConfig findMany
+   */
+  export type EmailNotificationConfigFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationConfig
+     */
+    select?: EmailNotificationConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationConfig
+     */
+    omit?: EmailNotificationConfigOmit<ExtArgs> | null
+    /**
+     * Filter, which EmailNotificationConfigs to fetch.
+     */
+    where?: EmailNotificationConfigWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmailNotificationConfigs to fetch.
+     */
+    orderBy?: EmailNotificationConfigOrderByWithRelationInput | EmailNotificationConfigOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing EmailNotificationConfigs.
+     */
+    cursor?: EmailNotificationConfigWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmailNotificationConfigs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmailNotificationConfigs.
+     */
+    skip?: number
+    distinct?: EmailNotificationConfigScalarFieldEnum | EmailNotificationConfigScalarFieldEnum[]
+  }
+
+  /**
+   * EmailNotificationConfig create
+   */
+  export type EmailNotificationConfigCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationConfig
+     */
+    select?: EmailNotificationConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationConfig
+     */
+    omit?: EmailNotificationConfigOmit<ExtArgs> | null
+    /**
+     * The data needed to create a EmailNotificationConfig.
+     */
+    data: XOR<EmailNotificationConfigCreateInput, EmailNotificationConfigUncheckedCreateInput>
+  }
+
+  /**
+   * EmailNotificationConfig createMany
+   */
+  export type EmailNotificationConfigCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many EmailNotificationConfigs.
+     */
+    data: EmailNotificationConfigCreateManyInput | EmailNotificationConfigCreateManyInput[]
+  }
+
+  /**
+   * EmailNotificationConfig createManyAndReturn
+   */
+  export type EmailNotificationConfigCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationConfig
+     */
+    select?: EmailNotificationConfigSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationConfig
+     */
+    omit?: EmailNotificationConfigOmit<ExtArgs> | null
+    /**
+     * The data used to create many EmailNotificationConfigs.
+     */
+    data: EmailNotificationConfigCreateManyInput | EmailNotificationConfigCreateManyInput[]
+  }
+
+  /**
+   * EmailNotificationConfig update
+   */
+  export type EmailNotificationConfigUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationConfig
+     */
+    select?: EmailNotificationConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationConfig
+     */
+    omit?: EmailNotificationConfigOmit<ExtArgs> | null
+    /**
+     * The data needed to update a EmailNotificationConfig.
+     */
+    data: XOR<EmailNotificationConfigUpdateInput, EmailNotificationConfigUncheckedUpdateInput>
+    /**
+     * Choose, which EmailNotificationConfig to update.
+     */
+    where: EmailNotificationConfigWhereUniqueInput
+  }
+
+  /**
+   * EmailNotificationConfig updateMany
+   */
+  export type EmailNotificationConfigUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update EmailNotificationConfigs.
+     */
+    data: XOR<EmailNotificationConfigUpdateManyMutationInput, EmailNotificationConfigUncheckedUpdateManyInput>
+    /**
+     * Filter which EmailNotificationConfigs to update
+     */
+    where?: EmailNotificationConfigWhereInput
+    /**
+     * Limit how many EmailNotificationConfigs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * EmailNotificationConfig updateManyAndReturn
+   */
+  export type EmailNotificationConfigUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationConfig
+     */
+    select?: EmailNotificationConfigSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationConfig
+     */
+    omit?: EmailNotificationConfigOmit<ExtArgs> | null
+    /**
+     * The data used to update EmailNotificationConfigs.
+     */
+    data: XOR<EmailNotificationConfigUpdateManyMutationInput, EmailNotificationConfigUncheckedUpdateManyInput>
+    /**
+     * Filter which EmailNotificationConfigs to update
+     */
+    where?: EmailNotificationConfigWhereInput
+    /**
+     * Limit how many EmailNotificationConfigs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * EmailNotificationConfig upsert
+   */
+  export type EmailNotificationConfigUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationConfig
+     */
+    select?: EmailNotificationConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationConfig
+     */
+    omit?: EmailNotificationConfigOmit<ExtArgs> | null
+    /**
+     * The filter to search for the EmailNotificationConfig to update in case it exists.
+     */
+    where: EmailNotificationConfigWhereUniqueInput
+    /**
+     * In case the EmailNotificationConfig found by the `where` argument doesn't exist, create a new EmailNotificationConfig with this data.
+     */
+    create: XOR<EmailNotificationConfigCreateInput, EmailNotificationConfigUncheckedCreateInput>
+    /**
+     * In case the EmailNotificationConfig was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<EmailNotificationConfigUpdateInput, EmailNotificationConfigUncheckedUpdateInput>
+  }
+
+  /**
+   * EmailNotificationConfig delete
+   */
+  export type EmailNotificationConfigDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationConfig
+     */
+    select?: EmailNotificationConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationConfig
+     */
+    omit?: EmailNotificationConfigOmit<ExtArgs> | null
+    /**
+     * Filter which EmailNotificationConfig to delete.
+     */
+    where: EmailNotificationConfigWhereUniqueInput
+  }
+
+  /**
+   * EmailNotificationConfig deleteMany
+   */
+  export type EmailNotificationConfigDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EmailNotificationConfigs to delete
+     */
+    where?: EmailNotificationConfigWhereInput
+    /**
+     * Limit how many EmailNotificationConfigs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * EmailNotificationConfig without action
+   */
+  export type EmailNotificationConfigDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationConfig
+     */
+    select?: EmailNotificationConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationConfig
+     */
+    omit?: EmailNotificationConfigOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model EmailNotificationLog
+   */
+
+  export type AggregateEmailNotificationLog = {
+    _count: EmailNotificationLogCountAggregateOutputType | null
+    _avg: EmailNotificationLogAvgAggregateOutputType | null
+    _sum: EmailNotificationLogSumAggregateOutputType | null
+    _min: EmailNotificationLogMinAggregateOutputType | null
+    _max: EmailNotificationLogMaxAggregateOutputType | null
+  }
+
+  export type EmailNotificationLogAvgAggregateOutputType = {
+    year: number | null
+    month: number | null
+    week: number | null
+  }
+
+  export type EmailNotificationLogSumAggregateOutputType = {
+    year: number | null
+    month: number | null
+    week: number | null
+  }
+
+  export type EmailNotificationLogMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    year: number | null
+    month: number | null
+    week: number | null
+    emailType: string | null
+    toEmail: string | null
+    ccEmails: string | null
+    subject: string | null
+    status: string | null
+    sentAt: Date | null
+    errorMessage: string | null
+  }
+
+  export type EmailNotificationLogMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    year: number | null
+    month: number | null
+    week: number | null
+    emailType: string | null
+    toEmail: string | null
+    ccEmails: string | null
+    subject: string | null
+    status: string | null
+    sentAt: Date | null
+    errorMessage: string | null
+  }
+
+  export type EmailNotificationLogCountAggregateOutputType = {
+    id: number
+    userId: number
+    year: number
+    month: number
+    week: number
+    emailType: number
+    toEmail: number
+    ccEmails: number
+    subject: number
+    status: number
+    sentAt: number
+    errorMessage: number
+    _all: number
+  }
+
+
+  export type EmailNotificationLogAvgAggregateInputType = {
+    year?: true
+    month?: true
+    week?: true
+  }
+
+  export type EmailNotificationLogSumAggregateInputType = {
+    year?: true
+    month?: true
+    week?: true
+  }
+
+  export type EmailNotificationLogMinAggregateInputType = {
+    id?: true
+    userId?: true
+    year?: true
+    month?: true
+    week?: true
+    emailType?: true
+    toEmail?: true
+    ccEmails?: true
+    subject?: true
+    status?: true
+    sentAt?: true
+    errorMessage?: true
+  }
+
+  export type EmailNotificationLogMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    year?: true
+    month?: true
+    week?: true
+    emailType?: true
+    toEmail?: true
+    ccEmails?: true
+    subject?: true
+    status?: true
+    sentAt?: true
+    errorMessage?: true
+  }
+
+  export type EmailNotificationLogCountAggregateInputType = {
+    id?: true
+    userId?: true
+    year?: true
+    month?: true
+    week?: true
+    emailType?: true
+    toEmail?: true
+    ccEmails?: true
+    subject?: true
+    status?: true
+    sentAt?: true
+    errorMessage?: true
+    _all?: true
+  }
+
+  export type EmailNotificationLogAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EmailNotificationLog to aggregate.
+     */
+    where?: EmailNotificationLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmailNotificationLogs to fetch.
+     */
+    orderBy?: EmailNotificationLogOrderByWithRelationInput | EmailNotificationLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: EmailNotificationLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmailNotificationLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmailNotificationLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned EmailNotificationLogs
+    **/
+    _count?: true | EmailNotificationLogCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: EmailNotificationLogAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: EmailNotificationLogSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EmailNotificationLogMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EmailNotificationLogMaxAggregateInputType
+  }
+
+  export type GetEmailNotificationLogAggregateType<T extends EmailNotificationLogAggregateArgs> = {
+        [P in keyof T & keyof AggregateEmailNotificationLog]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEmailNotificationLog[P]>
+      : GetScalarType<T[P], AggregateEmailNotificationLog[P]>
+  }
+
+
+
+
+  export type EmailNotificationLogGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EmailNotificationLogWhereInput
+    orderBy?: EmailNotificationLogOrderByWithAggregationInput | EmailNotificationLogOrderByWithAggregationInput[]
+    by: EmailNotificationLogScalarFieldEnum[] | EmailNotificationLogScalarFieldEnum
+    having?: EmailNotificationLogScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EmailNotificationLogCountAggregateInputType | true
+    _avg?: EmailNotificationLogAvgAggregateInputType
+    _sum?: EmailNotificationLogSumAggregateInputType
+    _min?: EmailNotificationLogMinAggregateInputType
+    _max?: EmailNotificationLogMaxAggregateInputType
+  }
+
+  export type EmailNotificationLogGroupByOutputType = {
+    id: string
+    userId: string
+    year: number
+    month: number
+    week: number
+    emailType: string
+    toEmail: string
+    ccEmails: string | null
+    subject: string
+    status: string
+    sentAt: Date
+    errorMessage: string | null
+    _count: EmailNotificationLogCountAggregateOutputType | null
+    _avg: EmailNotificationLogAvgAggregateOutputType | null
+    _sum: EmailNotificationLogSumAggregateOutputType | null
+    _min: EmailNotificationLogMinAggregateOutputType | null
+    _max: EmailNotificationLogMaxAggregateOutputType | null
+  }
+
+  type GetEmailNotificationLogGroupByPayload<T extends EmailNotificationLogGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EmailNotificationLogGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EmailNotificationLogGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EmailNotificationLogGroupByOutputType[P]>
+            : GetScalarType<T[P], EmailNotificationLogGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type EmailNotificationLogSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    year?: boolean
+    month?: boolean
+    week?: boolean
+    emailType?: boolean
+    toEmail?: boolean
+    ccEmails?: boolean
+    subject?: boolean
+    status?: boolean
+    sentAt?: boolean
+    errorMessage?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["emailNotificationLog"]>
+
+  export type EmailNotificationLogSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    year?: boolean
+    month?: boolean
+    week?: boolean
+    emailType?: boolean
+    toEmail?: boolean
+    ccEmails?: boolean
+    subject?: boolean
+    status?: boolean
+    sentAt?: boolean
+    errorMessage?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["emailNotificationLog"]>
+
+  export type EmailNotificationLogSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    year?: boolean
+    month?: boolean
+    week?: boolean
+    emailType?: boolean
+    toEmail?: boolean
+    ccEmails?: boolean
+    subject?: boolean
+    status?: boolean
+    sentAt?: boolean
+    errorMessage?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["emailNotificationLog"]>
+
+  export type EmailNotificationLogSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    year?: boolean
+    month?: boolean
+    week?: boolean
+    emailType?: boolean
+    toEmail?: boolean
+    ccEmails?: boolean
+    subject?: boolean
+    status?: boolean
+    sentAt?: boolean
+    errorMessage?: boolean
+  }
+
+  export type EmailNotificationLogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "year" | "month" | "week" | "emailType" | "toEmail" | "ccEmails" | "subject" | "status" | "sentAt" | "errorMessage", ExtArgs["result"]["emailNotificationLog"]>
+  export type EmailNotificationLogInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type EmailNotificationLogIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type EmailNotificationLogIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $EmailNotificationLogPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "EmailNotificationLog"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      year: number
+      month: number
+      week: number
+      emailType: string
+      toEmail: string
+      ccEmails: string | null
+      subject: string
+      status: string
+      sentAt: Date
+      errorMessage: string | null
+    }, ExtArgs["result"]["emailNotificationLog"]>
+    composites: {}
+  }
+
+  type EmailNotificationLogGetPayload<S extends boolean | null | undefined | EmailNotificationLogDefaultArgs> = $Result.GetResult<Prisma.$EmailNotificationLogPayload, S>
+
+  type EmailNotificationLogCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<EmailNotificationLogFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: EmailNotificationLogCountAggregateInputType | true
+    }
+
+  export interface EmailNotificationLogDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['EmailNotificationLog'], meta: { name: 'EmailNotificationLog' } }
+    /**
+     * Find zero or one EmailNotificationLog that matches the filter.
+     * @param {EmailNotificationLogFindUniqueArgs} args - Arguments to find a EmailNotificationLog
+     * @example
+     * // Get one EmailNotificationLog
+     * const emailNotificationLog = await prisma.emailNotificationLog.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends EmailNotificationLogFindUniqueArgs>(args: SelectSubset<T, EmailNotificationLogFindUniqueArgs<ExtArgs>>): Prisma__EmailNotificationLogClient<$Result.GetResult<Prisma.$EmailNotificationLogPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one EmailNotificationLog that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {EmailNotificationLogFindUniqueOrThrowArgs} args - Arguments to find a EmailNotificationLog
+     * @example
+     * // Get one EmailNotificationLog
+     * const emailNotificationLog = await prisma.emailNotificationLog.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends EmailNotificationLogFindUniqueOrThrowArgs>(args: SelectSubset<T, EmailNotificationLogFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EmailNotificationLogClient<$Result.GetResult<Prisma.$EmailNotificationLogPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EmailNotificationLog that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmailNotificationLogFindFirstArgs} args - Arguments to find a EmailNotificationLog
+     * @example
+     * // Get one EmailNotificationLog
+     * const emailNotificationLog = await prisma.emailNotificationLog.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends EmailNotificationLogFindFirstArgs>(args?: SelectSubset<T, EmailNotificationLogFindFirstArgs<ExtArgs>>): Prisma__EmailNotificationLogClient<$Result.GetResult<Prisma.$EmailNotificationLogPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EmailNotificationLog that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmailNotificationLogFindFirstOrThrowArgs} args - Arguments to find a EmailNotificationLog
+     * @example
+     * // Get one EmailNotificationLog
+     * const emailNotificationLog = await prisma.emailNotificationLog.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends EmailNotificationLogFindFirstOrThrowArgs>(args?: SelectSubset<T, EmailNotificationLogFindFirstOrThrowArgs<ExtArgs>>): Prisma__EmailNotificationLogClient<$Result.GetResult<Prisma.$EmailNotificationLogPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more EmailNotificationLogs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmailNotificationLogFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all EmailNotificationLogs
+     * const emailNotificationLogs = await prisma.emailNotificationLog.findMany()
+     * 
+     * // Get first 10 EmailNotificationLogs
+     * const emailNotificationLogs = await prisma.emailNotificationLog.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const emailNotificationLogWithIdOnly = await prisma.emailNotificationLog.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends EmailNotificationLogFindManyArgs>(args?: SelectSubset<T, EmailNotificationLogFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmailNotificationLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a EmailNotificationLog.
+     * @param {EmailNotificationLogCreateArgs} args - Arguments to create a EmailNotificationLog.
+     * @example
+     * // Create one EmailNotificationLog
+     * const EmailNotificationLog = await prisma.emailNotificationLog.create({
+     *   data: {
+     *     // ... data to create a EmailNotificationLog
+     *   }
+     * })
+     * 
+     */
+    create<T extends EmailNotificationLogCreateArgs>(args: SelectSubset<T, EmailNotificationLogCreateArgs<ExtArgs>>): Prisma__EmailNotificationLogClient<$Result.GetResult<Prisma.$EmailNotificationLogPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many EmailNotificationLogs.
+     * @param {EmailNotificationLogCreateManyArgs} args - Arguments to create many EmailNotificationLogs.
+     * @example
+     * // Create many EmailNotificationLogs
+     * const emailNotificationLog = await prisma.emailNotificationLog.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends EmailNotificationLogCreateManyArgs>(args?: SelectSubset<T, EmailNotificationLogCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many EmailNotificationLogs and returns the data saved in the database.
+     * @param {EmailNotificationLogCreateManyAndReturnArgs} args - Arguments to create many EmailNotificationLogs.
+     * @example
+     * // Create many EmailNotificationLogs
+     * const emailNotificationLog = await prisma.emailNotificationLog.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many EmailNotificationLogs and only return the `id`
+     * const emailNotificationLogWithIdOnly = await prisma.emailNotificationLog.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends EmailNotificationLogCreateManyAndReturnArgs>(args?: SelectSubset<T, EmailNotificationLogCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmailNotificationLogPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a EmailNotificationLog.
+     * @param {EmailNotificationLogDeleteArgs} args - Arguments to delete one EmailNotificationLog.
+     * @example
+     * // Delete one EmailNotificationLog
+     * const EmailNotificationLog = await prisma.emailNotificationLog.delete({
+     *   where: {
+     *     // ... filter to delete one EmailNotificationLog
+     *   }
+     * })
+     * 
+     */
+    delete<T extends EmailNotificationLogDeleteArgs>(args: SelectSubset<T, EmailNotificationLogDeleteArgs<ExtArgs>>): Prisma__EmailNotificationLogClient<$Result.GetResult<Prisma.$EmailNotificationLogPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one EmailNotificationLog.
+     * @param {EmailNotificationLogUpdateArgs} args - Arguments to update one EmailNotificationLog.
+     * @example
+     * // Update one EmailNotificationLog
+     * const emailNotificationLog = await prisma.emailNotificationLog.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends EmailNotificationLogUpdateArgs>(args: SelectSubset<T, EmailNotificationLogUpdateArgs<ExtArgs>>): Prisma__EmailNotificationLogClient<$Result.GetResult<Prisma.$EmailNotificationLogPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more EmailNotificationLogs.
+     * @param {EmailNotificationLogDeleteManyArgs} args - Arguments to filter EmailNotificationLogs to delete.
+     * @example
+     * // Delete a few EmailNotificationLogs
+     * const { count } = await prisma.emailNotificationLog.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends EmailNotificationLogDeleteManyArgs>(args?: SelectSubset<T, EmailNotificationLogDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EmailNotificationLogs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmailNotificationLogUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many EmailNotificationLogs
+     * const emailNotificationLog = await prisma.emailNotificationLog.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends EmailNotificationLogUpdateManyArgs>(args: SelectSubset<T, EmailNotificationLogUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EmailNotificationLogs and returns the data updated in the database.
+     * @param {EmailNotificationLogUpdateManyAndReturnArgs} args - Arguments to update many EmailNotificationLogs.
+     * @example
+     * // Update many EmailNotificationLogs
+     * const emailNotificationLog = await prisma.emailNotificationLog.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more EmailNotificationLogs and only return the `id`
+     * const emailNotificationLogWithIdOnly = await prisma.emailNotificationLog.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends EmailNotificationLogUpdateManyAndReturnArgs>(args: SelectSubset<T, EmailNotificationLogUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmailNotificationLogPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one EmailNotificationLog.
+     * @param {EmailNotificationLogUpsertArgs} args - Arguments to update or create a EmailNotificationLog.
+     * @example
+     * // Update or create a EmailNotificationLog
+     * const emailNotificationLog = await prisma.emailNotificationLog.upsert({
+     *   create: {
+     *     // ... data to create a EmailNotificationLog
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the EmailNotificationLog we want to update
+     *   }
+     * })
+     */
+    upsert<T extends EmailNotificationLogUpsertArgs>(args: SelectSubset<T, EmailNotificationLogUpsertArgs<ExtArgs>>): Prisma__EmailNotificationLogClient<$Result.GetResult<Prisma.$EmailNotificationLogPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of EmailNotificationLogs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmailNotificationLogCountArgs} args - Arguments to filter EmailNotificationLogs to count.
+     * @example
+     * // Count the number of EmailNotificationLogs
+     * const count = await prisma.emailNotificationLog.count({
+     *   where: {
+     *     // ... the filter for the EmailNotificationLogs we want to count
+     *   }
+     * })
+    **/
+    count<T extends EmailNotificationLogCountArgs>(
+      args?: Subset<T, EmailNotificationLogCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EmailNotificationLogCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a EmailNotificationLog.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmailNotificationLogAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EmailNotificationLogAggregateArgs>(args: Subset<T, EmailNotificationLogAggregateArgs>): Prisma.PrismaPromise<GetEmailNotificationLogAggregateType<T>>
+
+    /**
+     * Group by EmailNotificationLog.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EmailNotificationLogGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends EmailNotificationLogGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: EmailNotificationLogGroupByArgs['orderBy'] }
+        : { orderBy?: EmailNotificationLogGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, EmailNotificationLogGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEmailNotificationLogGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the EmailNotificationLog model
+   */
+  readonly fields: EmailNotificationLogFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for EmailNotificationLog.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__EmailNotificationLogClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the EmailNotificationLog model
+   */
+  interface EmailNotificationLogFieldRefs {
+    readonly id: FieldRef<"EmailNotificationLog", 'String'>
+    readonly userId: FieldRef<"EmailNotificationLog", 'String'>
+    readonly year: FieldRef<"EmailNotificationLog", 'Int'>
+    readonly month: FieldRef<"EmailNotificationLog", 'Int'>
+    readonly week: FieldRef<"EmailNotificationLog", 'Int'>
+    readonly emailType: FieldRef<"EmailNotificationLog", 'String'>
+    readonly toEmail: FieldRef<"EmailNotificationLog", 'String'>
+    readonly ccEmails: FieldRef<"EmailNotificationLog", 'String'>
+    readonly subject: FieldRef<"EmailNotificationLog", 'String'>
+    readonly status: FieldRef<"EmailNotificationLog", 'String'>
+    readonly sentAt: FieldRef<"EmailNotificationLog", 'DateTime'>
+    readonly errorMessage: FieldRef<"EmailNotificationLog", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * EmailNotificationLog findUnique
+   */
+  export type EmailNotificationLogFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationLog
+     */
+    select?: EmailNotificationLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationLog
+     */
+    omit?: EmailNotificationLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailNotificationLogInclude<ExtArgs> | null
+    /**
+     * Filter, which EmailNotificationLog to fetch.
+     */
+    where: EmailNotificationLogWhereUniqueInput
+  }
+
+  /**
+   * EmailNotificationLog findUniqueOrThrow
+   */
+  export type EmailNotificationLogFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationLog
+     */
+    select?: EmailNotificationLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationLog
+     */
+    omit?: EmailNotificationLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailNotificationLogInclude<ExtArgs> | null
+    /**
+     * Filter, which EmailNotificationLog to fetch.
+     */
+    where: EmailNotificationLogWhereUniqueInput
+  }
+
+  /**
+   * EmailNotificationLog findFirst
+   */
+  export type EmailNotificationLogFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationLog
+     */
+    select?: EmailNotificationLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationLog
+     */
+    omit?: EmailNotificationLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailNotificationLogInclude<ExtArgs> | null
+    /**
+     * Filter, which EmailNotificationLog to fetch.
+     */
+    where?: EmailNotificationLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmailNotificationLogs to fetch.
+     */
+    orderBy?: EmailNotificationLogOrderByWithRelationInput | EmailNotificationLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EmailNotificationLogs.
+     */
+    cursor?: EmailNotificationLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmailNotificationLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmailNotificationLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EmailNotificationLogs.
+     */
+    distinct?: EmailNotificationLogScalarFieldEnum | EmailNotificationLogScalarFieldEnum[]
+  }
+
+  /**
+   * EmailNotificationLog findFirstOrThrow
+   */
+  export type EmailNotificationLogFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationLog
+     */
+    select?: EmailNotificationLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationLog
+     */
+    omit?: EmailNotificationLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailNotificationLogInclude<ExtArgs> | null
+    /**
+     * Filter, which EmailNotificationLog to fetch.
+     */
+    where?: EmailNotificationLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmailNotificationLogs to fetch.
+     */
+    orderBy?: EmailNotificationLogOrderByWithRelationInput | EmailNotificationLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EmailNotificationLogs.
+     */
+    cursor?: EmailNotificationLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmailNotificationLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmailNotificationLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EmailNotificationLogs.
+     */
+    distinct?: EmailNotificationLogScalarFieldEnum | EmailNotificationLogScalarFieldEnum[]
+  }
+
+  /**
+   * EmailNotificationLog findMany
+   */
+  export type EmailNotificationLogFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationLog
+     */
+    select?: EmailNotificationLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationLog
+     */
+    omit?: EmailNotificationLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailNotificationLogInclude<ExtArgs> | null
+    /**
+     * Filter, which EmailNotificationLogs to fetch.
+     */
+    where?: EmailNotificationLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EmailNotificationLogs to fetch.
+     */
+    orderBy?: EmailNotificationLogOrderByWithRelationInput | EmailNotificationLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing EmailNotificationLogs.
+     */
+    cursor?: EmailNotificationLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EmailNotificationLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EmailNotificationLogs.
+     */
+    skip?: number
+    distinct?: EmailNotificationLogScalarFieldEnum | EmailNotificationLogScalarFieldEnum[]
+  }
+
+  /**
+   * EmailNotificationLog create
+   */
+  export type EmailNotificationLogCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationLog
+     */
+    select?: EmailNotificationLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationLog
+     */
+    omit?: EmailNotificationLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailNotificationLogInclude<ExtArgs> | null
+    /**
+     * The data needed to create a EmailNotificationLog.
+     */
+    data: XOR<EmailNotificationLogCreateInput, EmailNotificationLogUncheckedCreateInput>
+  }
+
+  /**
+   * EmailNotificationLog createMany
+   */
+  export type EmailNotificationLogCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many EmailNotificationLogs.
+     */
+    data: EmailNotificationLogCreateManyInput | EmailNotificationLogCreateManyInput[]
+  }
+
+  /**
+   * EmailNotificationLog createManyAndReturn
+   */
+  export type EmailNotificationLogCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationLog
+     */
+    select?: EmailNotificationLogSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationLog
+     */
+    omit?: EmailNotificationLogOmit<ExtArgs> | null
+    /**
+     * The data used to create many EmailNotificationLogs.
+     */
+    data: EmailNotificationLogCreateManyInput | EmailNotificationLogCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailNotificationLogIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EmailNotificationLog update
+   */
+  export type EmailNotificationLogUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationLog
+     */
+    select?: EmailNotificationLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationLog
+     */
+    omit?: EmailNotificationLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailNotificationLogInclude<ExtArgs> | null
+    /**
+     * The data needed to update a EmailNotificationLog.
+     */
+    data: XOR<EmailNotificationLogUpdateInput, EmailNotificationLogUncheckedUpdateInput>
+    /**
+     * Choose, which EmailNotificationLog to update.
+     */
+    where: EmailNotificationLogWhereUniqueInput
+  }
+
+  /**
+   * EmailNotificationLog updateMany
+   */
+  export type EmailNotificationLogUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update EmailNotificationLogs.
+     */
+    data: XOR<EmailNotificationLogUpdateManyMutationInput, EmailNotificationLogUncheckedUpdateManyInput>
+    /**
+     * Filter which EmailNotificationLogs to update
+     */
+    where?: EmailNotificationLogWhereInput
+    /**
+     * Limit how many EmailNotificationLogs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * EmailNotificationLog updateManyAndReturn
+   */
+  export type EmailNotificationLogUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationLog
+     */
+    select?: EmailNotificationLogSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationLog
+     */
+    omit?: EmailNotificationLogOmit<ExtArgs> | null
+    /**
+     * The data used to update EmailNotificationLogs.
+     */
+    data: XOR<EmailNotificationLogUpdateManyMutationInput, EmailNotificationLogUncheckedUpdateManyInput>
+    /**
+     * Filter which EmailNotificationLogs to update
+     */
+    where?: EmailNotificationLogWhereInput
+    /**
+     * Limit how many EmailNotificationLogs to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailNotificationLogIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EmailNotificationLog upsert
+   */
+  export type EmailNotificationLogUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationLog
+     */
+    select?: EmailNotificationLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationLog
+     */
+    omit?: EmailNotificationLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailNotificationLogInclude<ExtArgs> | null
+    /**
+     * The filter to search for the EmailNotificationLog to update in case it exists.
+     */
+    where: EmailNotificationLogWhereUniqueInput
+    /**
+     * In case the EmailNotificationLog found by the `where` argument doesn't exist, create a new EmailNotificationLog with this data.
+     */
+    create: XOR<EmailNotificationLogCreateInput, EmailNotificationLogUncheckedCreateInput>
+    /**
+     * In case the EmailNotificationLog was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<EmailNotificationLogUpdateInput, EmailNotificationLogUncheckedUpdateInput>
+  }
+
+  /**
+   * EmailNotificationLog delete
+   */
+  export type EmailNotificationLogDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationLog
+     */
+    select?: EmailNotificationLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationLog
+     */
+    omit?: EmailNotificationLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailNotificationLogInclude<ExtArgs> | null
+    /**
+     * Filter which EmailNotificationLog to delete.
+     */
+    where: EmailNotificationLogWhereUniqueInput
+  }
+
+  /**
+   * EmailNotificationLog deleteMany
+   */
+  export type EmailNotificationLogDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EmailNotificationLogs to delete
+     */
+    where?: EmailNotificationLogWhereInput
+    /**
+     * Limit how many EmailNotificationLogs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * EmailNotificationLog without action
+   */
+  export type EmailNotificationLogDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EmailNotificationLog
+     */
+    select?: EmailNotificationLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EmailNotificationLog
+     */
+    omit?: EmailNotificationLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmailNotificationLogInclude<ExtArgs> | null
   }
 
 
@@ -6710,73 +9705,132 @@ export namespace Prisma {
    */
 
   export const TransactionIsolationLevel: {
-    ReadUncommitted: 'ReadUncommitted',
-    ReadCommitted: 'ReadCommitted',
-    RepeatableRead: 'RepeatableRead',
     Serializable: 'Serializable'
   };
 
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const PostScalarFieldEnum: {
-    id: 'id',
-    name: 'name',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    createdById: 'createdById'
-  };
-
-  export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
-
-
-  export const AccountScalarFieldEnum: {
-    id: 'id',
-    userId: 'userId',
-    type: 'type',
-    provider: 'provider',
-    providerAccountId: 'providerAccountId',
-    refresh_token: 'refresh_token',
-    access_token: 'access_token',
-    expires_at: 'expires_at',
-    token_type: 'token_type',
-    scope: 'scope',
-    id_token: 'id_token',
-    session_state: 'session_state',
-    refresh_token_expires_in: 'refresh_token_expires_in'
-  };
-
-  export type AccountScalarFieldEnum = (typeof AccountScalarFieldEnum)[keyof typeof AccountScalarFieldEnum]
-
-
-  export const SessionScalarFieldEnum: {
-    id: 'id',
-    sessionToken: 'sessionToken',
-    userId: 'userId',
-    expires: 'expires'
-  };
-
-  export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
-
-
   export const UserScalarFieldEnum: {
     id: 'id',
+    staffId: 'staffId',
     name: 'name',
+    designation: 'designation',
+    zone: 'zone',
     email: 'email',
-    emailVerified: 'emailVerified',
-    image: 'image'
+    mobile: 'mobile',
+    role: 'role',
+    status: 'status',
+    password: 'password',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
-  export const VerificationTokenScalarFieldEnum: {
-    identifier: 'identifier',
-    token: 'token',
-    expires: 'expires'
+  export const ZoneScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    code: 'code',
+    isActive: 'isActive',
+    createdAt: 'createdAt'
   };
 
-  export type VerificationTokenScalarFieldEnum = (typeof VerificationTokenScalarFieldEnum)[keyof typeof VerificationTokenScalarFieldEnum]
+  export type ZoneScalarFieldEnum = (typeof ZoneScalarFieldEnum)[keyof typeof ZoneScalarFieldEnum]
+
+
+  export const WeeklyReportScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    monthYear: 'monthYear',
+    year: 'year',
+    month: 'month',
+    week: 'week',
+    marketVisitQty: 'marketVisitQty',
+    marketVisitFindingQty: 'marketVisitFindingQty',
+    solvedQty: 'solvedQty',
+    pendingQty: 'pendingQty',
+    locSubmittedQty: 'locSubmittedQty',
+    locFindingDayQty: 'locFindingDayQty',
+    dressCodeQty: 'dressCodeQty',
+    dressCodeFindingQty: 'dressCodeFindingQty',
+    messVisitQty: 'messVisitQty',
+    messVisitFindingQty: 'messVisitFindingQty',
+    status: 'status',
+    deadline: 'deadline',
+    submittedAt: 'submittedAt',
+    updatedAt: 'updatedAt',
+    notes: 'notes'
+  };
+
+  export type WeeklyReportScalarFieldEnum = (typeof WeeklyReportScalarFieldEnum)[keyof typeof WeeklyReportScalarFieldEnum]
+
+
+  export const FindingHistoryScalarFieldEnum: {
+    id: 'id',
+    reportId: 'reportId',
+    updatedById: 'updatedById',
+    previousSolved: 'previousSolved',
+    newSolved: 'newSolved',
+    previousPending: 'previousPending',
+    newPending: 'newPending',
+    remark: 'remark',
+    createdAt: 'createdAt'
+  };
+
+  export type FindingHistoryScalarFieldEnum = (typeof FindingHistoryScalarFieldEnum)[keyof typeof FindingHistoryScalarFieldEnum]
+
+
+  export const MonthlyTargetScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    year: 'year',
+    month: 'month',
+    monthYear: 'monthYear',
+    locTarget: 'locTarget',
+    messVisitTarget: 'messVisitTarget',
+    dressCodeTarget: 'dressCodeTarget',
+    isLocked: 'isLocked',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MonthlyTargetScalarFieldEnum = (typeof MonthlyTargetScalarFieldEnum)[keyof typeof MonthlyTargetScalarFieldEnum]
+
+
+  export const EmailNotificationConfigScalarFieldEnum: {
+    id: 'id',
+    code: 'code',
+    name: 'name',
+    description: 'description',
+    subjectTemplate: 'subjectTemplate',
+    bodyTemplate: 'bodyTemplate',
+    ccRecipients: 'ccRecipients',
+    bccRecipients: 'bccRecipients',
+    isActive: 'isActive',
+    updatedAt: 'updatedAt'
+  };
+
+  export type EmailNotificationConfigScalarFieldEnum = (typeof EmailNotificationConfigScalarFieldEnum)[keyof typeof EmailNotificationConfigScalarFieldEnum]
+
+
+  export const EmailNotificationLogScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    year: 'year',
+    month: 'month',
+    week: 'week',
+    emailType: 'emailType',
+    toEmail: 'toEmail',
+    ccEmails: 'ccEmails',
+    subject: 'subject',
+    status: 'status',
+    sentAt: 'sentAt',
+    errorMessage: 'errorMessage'
+  };
+
+  export type EmailNotificationLogScalarFieldEnum = (typeof EmailNotificationLogScalarFieldEnum)[keyof typeof EmailNotificationLogScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -6785,14 +9839,6 @@ export namespace Prisma {
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
-
-
-  export const QueryMode: {
-    default: 'default',
-    insensitive: 'insensitive'
-  };
-
-  export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
   export const NullsOrder: {
@@ -6809,30 +9855,9 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-  /**
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
-    
-
-
-  /**
-   * Reference to a field of type 'String[]'
-   */
-  export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
     
 
 
@@ -6844,9 +9869,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DateTime[]'
+   * Reference to a field of type 'Boolean'
    */
-  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
     
 
 
@@ -6855,268 +9887,87 @@ export namespace Prisma {
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
     
-
-
-  /**
-   * Reference to a field of type 'Float[]'
-   */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
-    
   /**
    * Deep Input Types
    */
 
-
-  export type PostWhereInput = {
-    AND?: PostWhereInput | PostWhereInput[]
-    OR?: PostWhereInput[]
-    NOT?: PostWhereInput | PostWhereInput[]
-    id?: IntFilter<"Post"> | number
-    name?: StringFilter<"Post"> | string
-    createdAt?: DateTimeFilter<"Post"> | Date | string
-    updatedAt?: DateTimeFilter<"Post"> | Date | string
-    createdById?: StringFilter<"Post"> | string
-    createdBy?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }
-
-  export type PostOrderByWithRelationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    createdById?: SortOrder
-    createdBy?: UserOrderByWithRelationInput
-  }
-
-  export type PostWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: PostWhereInput | PostWhereInput[]
-    OR?: PostWhereInput[]
-    NOT?: PostWhereInput | PostWhereInput[]
-    name?: StringFilter<"Post"> | string
-    createdAt?: DateTimeFilter<"Post"> | Date | string
-    updatedAt?: DateTimeFilter<"Post"> | Date | string
-    createdById?: StringFilter<"Post"> | string
-    createdBy?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id">
-
-  export type PostOrderByWithAggregationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    createdById?: SortOrder
-    _count?: PostCountOrderByAggregateInput
-    _avg?: PostAvgOrderByAggregateInput
-    _max?: PostMaxOrderByAggregateInput
-    _min?: PostMinOrderByAggregateInput
-    _sum?: PostSumOrderByAggregateInput
-  }
-
-  export type PostScalarWhereWithAggregatesInput = {
-    AND?: PostScalarWhereWithAggregatesInput | PostScalarWhereWithAggregatesInput[]
-    OR?: PostScalarWhereWithAggregatesInput[]
-    NOT?: PostScalarWhereWithAggregatesInput | PostScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Post"> | number
-    name?: StringWithAggregatesFilter<"Post"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
-    createdById?: StringWithAggregatesFilter<"Post"> | string
-  }
-
-  export type AccountWhereInput = {
-    AND?: AccountWhereInput | AccountWhereInput[]
-    OR?: AccountWhereInput[]
-    NOT?: AccountWhereInput | AccountWhereInput[]
-    id?: StringFilter<"Account"> | string
-    userId?: StringFilter<"Account"> | string
-    type?: StringFilter<"Account"> | string
-    provider?: StringFilter<"Account"> | string
-    providerAccountId?: StringFilter<"Account"> | string
-    refresh_token?: StringNullableFilter<"Account"> | string | null
-    access_token?: StringNullableFilter<"Account"> | string | null
-    expires_at?: IntNullableFilter<"Account"> | number | null
-    token_type?: StringNullableFilter<"Account"> | string | null
-    scope?: StringNullableFilter<"Account"> | string | null
-    id_token?: StringNullableFilter<"Account"> | string | null
-    session_state?: StringNullableFilter<"Account"> | string | null
-    refresh_token_expires_in?: IntNullableFilter<"Account"> | number | null
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }
-
-  export type AccountOrderByWithRelationInput = {
-    id?: SortOrder
-    userId?: SortOrder
-    type?: SortOrder
-    provider?: SortOrder
-    providerAccountId?: SortOrder
-    refresh_token?: SortOrderInput | SortOrder
-    access_token?: SortOrderInput | SortOrder
-    expires_at?: SortOrderInput | SortOrder
-    token_type?: SortOrderInput | SortOrder
-    scope?: SortOrderInput | SortOrder
-    id_token?: SortOrderInput | SortOrder
-    session_state?: SortOrderInput | SortOrder
-    refresh_token_expires_in?: SortOrderInput | SortOrder
-    user?: UserOrderByWithRelationInput
-  }
-
-  export type AccountWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    provider_providerAccountId?: AccountProviderProviderAccountIdCompoundUniqueInput
-    AND?: AccountWhereInput | AccountWhereInput[]
-    OR?: AccountWhereInput[]
-    NOT?: AccountWhereInput | AccountWhereInput[]
-    userId?: StringFilter<"Account"> | string
-    type?: StringFilter<"Account"> | string
-    provider?: StringFilter<"Account"> | string
-    providerAccountId?: StringFilter<"Account"> | string
-    refresh_token?: StringNullableFilter<"Account"> | string | null
-    access_token?: StringNullableFilter<"Account"> | string | null
-    expires_at?: IntNullableFilter<"Account"> | number | null
-    token_type?: StringNullableFilter<"Account"> | string | null
-    scope?: StringNullableFilter<"Account"> | string | null
-    id_token?: StringNullableFilter<"Account"> | string | null
-    session_state?: StringNullableFilter<"Account"> | string | null
-    refresh_token_expires_in?: IntNullableFilter<"Account"> | number | null
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id" | "provider_providerAccountId">
-
-  export type AccountOrderByWithAggregationInput = {
-    id?: SortOrder
-    userId?: SortOrder
-    type?: SortOrder
-    provider?: SortOrder
-    providerAccountId?: SortOrder
-    refresh_token?: SortOrderInput | SortOrder
-    access_token?: SortOrderInput | SortOrder
-    expires_at?: SortOrderInput | SortOrder
-    token_type?: SortOrderInput | SortOrder
-    scope?: SortOrderInput | SortOrder
-    id_token?: SortOrderInput | SortOrder
-    session_state?: SortOrderInput | SortOrder
-    refresh_token_expires_in?: SortOrderInput | SortOrder
-    _count?: AccountCountOrderByAggregateInput
-    _avg?: AccountAvgOrderByAggregateInput
-    _max?: AccountMaxOrderByAggregateInput
-    _min?: AccountMinOrderByAggregateInput
-    _sum?: AccountSumOrderByAggregateInput
-  }
-
-  export type AccountScalarWhereWithAggregatesInput = {
-    AND?: AccountScalarWhereWithAggregatesInput | AccountScalarWhereWithAggregatesInput[]
-    OR?: AccountScalarWhereWithAggregatesInput[]
-    NOT?: AccountScalarWhereWithAggregatesInput | AccountScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Account"> | string
-    userId?: StringWithAggregatesFilter<"Account"> | string
-    type?: StringWithAggregatesFilter<"Account"> | string
-    provider?: StringWithAggregatesFilter<"Account"> | string
-    providerAccountId?: StringWithAggregatesFilter<"Account"> | string
-    refresh_token?: StringNullableWithAggregatesFilter<"Account"> | string | null
-    access_token?: StringNullableWithAggregatesFilter<"Account"> | string | null
-    expires_at?: IntNullableWithAggregatesFilter<"Account"> | number | null
-    token_type?: StringNullableWithAggregatesFilter<"Account"> | string | null
-    scope?: StringNullableWithAggregatesFilter<"Account"> | string | null
-    id_token?: StringNullableWithAggregatesFilter<"Account"> | string | null
-    session_state?: StringNullableWithAggregatesFilter<"Account"> | string | null
-    refresh_token_expires_in?: IntNullableWithAggregatesFilter<"Account"> | number | null
-  }
-
-  export type SessionWhereInput = {
-    AND?: SessionWhereInput | SessionWhereInput[]
-    OR?: SessionWhereInput[]
-    NOT?: SessionWhereInput | SessionWhereInput[]
-    id?: StringFilter<"Session"> | string
-    sessionToken?: StringFilter<"Session"> | string
-    userId?: StringFilter<"Session"> | string
-    expires?: DateTimeFilter<"Session"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }
-
-  export type SessionOrderByWithRelationInput = {
-    id?: SortOrder
-    sessionToken?: SortOrder
-    userId?: SortOrder
-    expires?: SortOrder
-    user?: UserOrderByWithRelationInput
-  }
-
-  export type SessionWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    sessionToken?: string
-    AND?: SessionWhereInput | SessionWhereInput[]
-    OR?: SessionWhereInput[]
-    NOT?: SessionWhereInput | SessionWhereInput[]
-    userId?: StringFilter<"Session"> | string
-    expires?: DateTimeFilter<"Session"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id" | "sessionToken">
-
-  export type SessionOrderByWithAggregationInput = {
-    id?: SortOrder
-    sessionToken?: SortOrder
-    userId?: SortOrder
-    expires?: SortOrder
-    _count?: SessionCountOrderByAggregateInput
-    _max?: SessionMaxOrderByAggregateInput
-    _min?: SessionMinOrderByAggregateInput
-  }
-
-  export type SessionScalarWhereWithAggregatesInput = {
-    AND?: SessionScalarWhereWithAggregatesInput | SessionScalarWhereWithAggregatesInput[]
-    OR?: SessionScalarWhereWithAggregatesInput[]
-    NOT?: SessionScalarWhereWithAggregatesInput | SessionScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Session"> | string
-    sessionToken?: StringWithAggregatesFilter<"Session"> | string
-    userId?: StringWithAggregatesFilter<"Session"> | string
-    expires?: DateTimeWithAggregatesFilter<"Session"> | Date | string
-  }
 
   export type UserWhereInput = {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
-    name?: StringNullableFilter<"User"> | string | null
-    email?: StringNullableFilter<"User"> | string | null
-    emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
-    image?: StringNullableFilter<"User"> | string | null
-    accounts?: AccountListRelationFilter
-    sessions?: SessionListRelationFilter
-    posts?: PostListRelationFilter
+    staffId?: StringFilter<"User"> | string
+    name?: StringFilter<"User"> | string
+    designation?: StringFilter<"User"> | string
+    zone?: StringFilter<"User"> | string
+    email?: StringFilter<"User"> | string
+    mobile?: StringNullableFilter<"User"> | string | null
+    role?: StringFilter<"User"> | string
+    status?: StringFilter<"User"> | string
+    password?: StringNullableFilter<"User"> | string | null
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    updatedAt?: DateTimeFilter<"User"> | Date | string
+    reports?: WeeklyReportListRelationFilter
+    targets?: MonthlyTargetListRelationFilter
+    findingAudits?: FindingHistoryListRelationFilter
+    emailLogs?: EmailNotificationLogListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
-    name?: SortOrderInput | SortOrder
-    email?: SortOrderInput | SortOrder
-    emailVerified?: SortOrderInput | SortOrder
-    image?: SortOrderInput | SortOrder
-    accounts?: AccountOrderByRelationAggregateInput
-    sessions?: SessionOrderByRelationAggregateInput
-    posts?: PostOrderByRelationAggregateInput
+    staffId?: SortOrder
+    name?: SortOrder
+    designation?: SortOrder
+    zone?: SortOrder
+    email?: SortOrder
+    mobile?: SortOrderInput | SortOrder
+    role?: SortOrder
+    status?: SortOrder
+    password?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    reports?: WeeklyReportOrderByRelationAggregateInput
+    targets?: MonthlyTargetOrderByRelationAggregateInput
+    findingAudits?: FindingHistoryOrderByRelationAggregateInput
+    emailLogs?: EmailNotificationLogOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    staffId?: string
     email?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    name?: StringNullableFilter<"User"> | string | null
-    emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
-    image?: StringNullableFilter<"User"> | string | null
-    accounts?: AccountListRelationFilter
-    sessions?: SessionListRelationFilter
-    posts?: PostListRelationFilter
-  }, "id" | "email">
+    name?: StringFilter<"User"> | string
+    designation?: StringFilter<"User"> | string
+    zone?: StringFilter<"User"> | string
+    mobile?: StringNullableFilter<"User"> | string | null
+    role?: StringFilter<"User"> | string
+    status?: StringFilter<"User"> | string
+    password?: StringNullableFilter<"User"> | string | null
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    updatedAt?: DateTimeFilter<"User"> | Date | string
+    reports?: WeeklyReportListRelationFilter
+    targets?: MonthlyTargetListRelationFilter
+    findingAudits?: FindingHistoryListRelationFilter
+    emailLogs?: EmailNotificationLogListRelationFilter
+  }, "id" | "staffId" | "email">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
-    name?: SortOrderInput | SortOrder
-    email?: SortOrderInput | SortOrder
-    emailVerified?: SortOrderInput | SortOrder
-    image?: SortOrderInput | SortOrder
+    staffId?: SortOrder
+    name?: SortOrder
+    designation?: SortOrder
+    zone?: SortOrder
+    email?: SortOrder
+    mobile?: SortOrderInput | SortOrder
+    role?: SortOrder
+    status?: SortOrder
+    password?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -7127,391 +9978,1276 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
-    name?: StringNullableWithAggregatesFilter<"User"> | string | null
-    email?: StringNullableWithAggregatesFilter<"User"> | string | null
-    emailVerified?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
-    image?: StringNullableWithAggregatesFilter<"User"> | string | null
+    staffId?: StringWithAggregatesFilter<"User"> | string
+    name?: StringWithAggregatesFilter<"User"> | string
+    designation?: StringWithAggregatesFilter<"User"> | string
+    zone?: StringWithAggregatesFilter<"User"> | string
+    email?: StringWithAggregatesFilter<"User"> | string
+    mobile?: StringNullableWithAggregatesFilter<"User"> | string | null
+    role?: StringWithAggregatesFilter<"User"> | string
+    status?: StringWithAggregatesFilter<"User"> | string
+    password?: StringNullableWithAggregatesFilter<"User"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
 
-  export type VerificationTokenWhereInput = {
-    AND?: VerificationTokenWhereInput | VerificationTokenWhereInput[]
-    OR?: VerificationTokenWhereInput[]
-    NOT?: VerificationTokenWhereInput | VerificationTokenWhereInput[]
-    identifier?: StringFilter<"VerificationToken"> | string
-    token?: StringFilter<"VerificationToken"> | string
-    expires?: DateTimeFilter<"VerificationToken"> | Date | string
+  export type ZoneWhereInput = {
+    AND?: ZoneWhereInput | ZoneWhereInput[]
+    OR?: ZoneWhereInput[]
+    NOT?: ZoneWhereInput | ZoneWhereInput[]
+    id?: StringFilter<"Zone"> | string
+    name?: StringFilter<"Zone"> | string
+    code?: StringNullableFilter<"Zone"> | string | null
+    isActive?: BoolFilter<"Zone"> | boolean
+    createdAt?: DateTimeFilter<"Zone"> | Date | string
   }
 
-  export type VerificationTokenOrderByWithRelationInput = {
-    identifier?: SortOrder
-    token?: SortOrder
-    expires?: SortOrder
+  export type ZoneOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    code?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
   }
 
-  export type VerificationTokenWhereUniqueInput = Prisma.AtLeast<{
-    token?: string
-    identifier_token?: VerificationTokenIdentifierTokenCompoundUniqueInput
-    AND?: VerificationTokenWhereInput | VerificationTokenWhereInput[]
-    OR?: VerificationTokenWhereInput[]
-    NOT?: VerificationTokenWhereInput | VerificationTokenWhereInput[]
-    identifier?: StringFilter<"VerificationToken"> | string
-    expires?: DateTimeFilter<"VerificationToken"> | Date | string
-  }, "token" | "identifier_token">
-
-  export type VerificationTokenOrderByWithAggregationInput = {
-    identifier?: SortOrder
-    token?: SortOrder
-    expires?: SortOrder
-    _count?: VerificationTokenCountOrderByAggregateInput
-    _max?: VerificationTokenMaxOrderByAggregateInput
-    _min?: VerificationTokenMinOrderByAggregateInput
-  }
-
-  export type VerificationTokenScalarWhereWithAggregatesInput = {
-    AND?: VerificationTokenScalarWhereWithAggregatesInput | VerificationTokenScalarWhereWithAggregatesInput[]
-    OR?: VerificationTokenScalarWhereWithAggregatesInput[]
-    NOT?: VerificationTokenScalarWhereWithAggregatesInput | VerificationTokenScalarWhereWithAggregatesInput[]
-    identifier?: StringWithAggregatesFilter<"VerificationToken"> | string
-    token?: StringWithAggregatesFilter<"VerificationToken"> | string
-    expires?: DateTimeWithAggregatesFilter<"VerificationToken"> | Date | string
-  }
-
-  export type PostCreateInput = {
-    name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    createdBy: UserCreateNestedOneWithoutPostsInput
-  }
-
-  export type PostUncheckedCreateInput = {
-    id?: number
-    name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    createdById: string
-  }
-
-  export type PostUpdateInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdBy?: UserUpdateOneRequiredWithoutPostsNestedInput
-  }
-
-  export type PostUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type PostCreateManyInput = {
-    id?: number
-    name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    createdById: string
-  }
-
-  export type PostUpdateManyMutationInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PostUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdById?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type AccountCreateInput = {
+  export type ZoneWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    type: string
-    provider: string
-    providerAccountId: string
-    refresh_token?: string | null
-    access_token?: string | null
-    expires_at?: number | null
-    token_type?: string | null
-    scope?: string | null
-    id_token?: string | null
-    session_state?: string | null
-    refresh_token_expires_in?: number | null
-    user: UserCreateNestedOneWithoutAccountsInput
+    name?: string
+    AND?: ZoneWhereInput | ZoneWhereInput[]
+    OR?: ZoneWhereInput[]
+    NOT?: ZoneWhereInput | ZoneWhereInput[]
+    code?: StringNullableFilter<"Zone"> | string | null
+    isActive?: BoolFilter<"Zone"> | boolean
+    createdAt?: DateTimeFilter<"Zone"> | Date | string
+  }, "id" | "name">
+
+  export type ZoneOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    code?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    _count?: ZoneCountOrderByAggregateInput
+    _max?: ZoneMaxOrderByAggregateInput
+    _min?: ZoneMinOrderByAggregateInput
   }
 
-  export type AccountUncheckedCreateInput = {
+  export type ZoneScalarWhereWithAggregatesInput = {
+    AND?: ZoneScalarWhereWithAggregatesInput | ZoneScalarWhereWithAggregatesInput[]
+    OR?: ZoneScalarWhereWithAggregatesInput[]
+    NOT?: ZoneScalarWhereWithAggregatesInput | ZoneScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Zone"> | string
+    name?: StringWithAggregatesFilter<"Zone"> | string
+    code?: StringNullableWithAggregatesFilter<"Zone"> | string | null
+    isActive?: BoolWithAggregatesFilter<"Zone"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Zone"> | Date | string
+  }
+
+  export type WeeklyReportWhereInput = {
+    AND?: WeeklyReportWhereInput | WeeklyReportWhereInput[]
+    OR?: WeeklyReportWhereInput[]
+    NOT?: WeeklyReportWhereInput | WeeklyReportWhereInput[]
+    id?: StringFilter<"WeeklyReport"> | string
+    userId?: StringFilter<"WeeklyReport"> | string
+    monthYear?: StringFilter<"WeeklyReport"> | string
+    year?: IntFilter<"WeeklyReport"> | number
+    month?: IntFilter<"WeeklyReport"> | number
+    week?: IntFilter<"WeeklyReport"> | number
+    marketVisitQty?: IntFilter<"WeeklyReport"> | number
+    marketVisitFindingQty?: IntFilter<"WeeklyReport"> | number
+    solvedQty?: IntFilter<"WeeklyReport"> | number
+    pendingQty?: IntFilter<"WeeklyReport"> | number
+    locSubmittedQty?: IntFilter<"WeeklyReport"> | number
+    locFindingDayQty?: FloatFilter<"WeeklyReport"> | number
+    dressCodeQty?: IntFilter<"WeeklyReport"> | number
+    dressCodeFindingQty?: IntFilter<"WeeklyReport"> | number
+    messVisitQty?: IntFilter<"WeeklyReport"> | number
+    messVisitFindingQty?: IntFilter<"WeeklyReport"> | number
+    status?: StringFilter<"WeeklyReport"> | string
+    deadline?: DateTimeFilter<"WeeklyReport"> | Date | string
+    submittedAt?: DateTimeFilter<"WeeklyReport"> | Date | string
+    updatedAt?: DateTimeFilter<"WeeklyReport"> | Date | string
+    notes?: StringNullableFilter<"WeeklyReport"> | string | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    findingHistory?: FindingHistoryListRelationFilter
+  }
+
+  export type WeeklyReportOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    monthYear?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    week?: SortOrder
+    marketVisitQty?: SortOrder
+    marketVisitFindingQty?: SortOrder
+    solvedQty?: SortOrder
+    pendingQty?: SortOrder
+    locSubmittedQty?: SortOrder
+    locFindingDayQty?: SortOrder
+    dressCodeQty?: SortOrder
+    dressCodeFindingQty?: SortOrder
+    messVisitQty?: SortOrder
+    messVisitFindingQty?: SortOrder
+    status?: SortOrder
+    deadline?: SortOrder
+    submittedAt?: SortOrder
+    updatedAt?: SortOrder
+    notes?: SortOrderInput | SortOrder
+    user?: UserOrderByWithRelationInput
+    findingHistory?: FindingHistoryOrderByRelationAggregateInput
+  }
+
+  export type WeeklyReportWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    userId: string
-    type: string
-    provider: string
-    providerAccountId: string
-    refresh_token?: string | null
-    access_token?: string | null
-    expires_at?: number | null
-    token_type?: string | null
-    scope?: string | null
-    id_token?: string | null
-    session_state?: string | null
-    refresh_token_expires_in?: number | null
+    userId_year_month_week?: WeeklyReportUserIdYearMonthWeekCompoundUniqueInput
+    AND?: WeeklyReportWhereInput | WeeklyReportWhereInput[]
+    OR?: WeeklyReportWhereInput[]
+    NOT?: WeeklyReportWhereInput | WeeklyReportWhereInput[]
+    userId?: StringFilter<"WeeklyReport"> | string
+    monthYear?: StringFilter<"WeeklyReport"> | string
+    year?: IntFilter<"WeeklyReport"> | number
+    month?: IntFilter<"WeeklyReport"> | number
+    week?: IntFilter<"WeeklyReport"> | number
+    marketVisitQty?: IntFilter<"WeeklyReport"> | number
+    marketVisitFindingQty?: IntFilter<"WeeklyReport"> | number
+    solvedQty?: IntFilter<"WeeklyReport"> | number
+    pendingQty?: IntFilter<"WeeklyReport"> | number
+    locSubmittedQty?: IntFilter<"WeeklyReport"> | number
+    locFindingDayQty?: FloatFilter<"WeeklyReport"> | number
+    dressCodeQty?: IntFilter<"WeeklyReport"> | number
+    dressCodeFindingQty?: IntFilter<"WeeklyReport"> | number
+    messVisitQty?: IntFilter<"WeeklyReport"> | number
+    messVisitFindingQty?: IntFilter<"WeeklyReport"> | number
+    status?: StringFilter<"WeeklyReport"> | string
+    deadline?: DateTimeFilter<"WeeklyReport"> | Date | string
+    submittedAt?: DateTimeFilter<"WeeklyReport"> | Date | string
+    updatedAt?: DateTimeFilter<"WeeklyReport"> | Date | string
+    notes?: StringNullableFilter<"WeeklyReport"> | string | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    findingHistory?: FindingHistoryListRelationFilter
+  }, "id" | "userId_year_month_week">
+
+  export type WeeklyReportOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    monthYear?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    week?: SortOrder
+    marketVisitQty?: SortOrder
+    marketVisitFindingQty?: SortOrder
+    solvedQty?: SortOrder
+    pendingQty?: SortOrder
+    locSubmittedQty?: SortOrder
+    locFindingDayQty?: SortOrder
+    dressCodeQty?: SortOrder
+    dressCodeFindingQty?: SortOrder
+    messVisitQty?: SortOrder
+    messVisitFindingQty?: SortOrder
+    status?: SortOrder
+    deadline?: SortOrder
+    submittedAt?: SortOrder
+    updatedAt?: SortOrder
+    notes?: SortOrderInput | SortOrder
+    _count?: WeeklyReportCountOrderByAggregateInput
+    _avg?: WeeklyReportAvgOrderByAggregateInput
+    _max?: WeeklyReportMaxOrderByAggregateInput
+    _min?: WeeklyReportMinOrderByAggregateInput
+    _sum?: WeeklyReportSumOrderByAggregateInput
   }
 
-  export type AccountUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    provider?: StringFieldUpdateOperationsInput | string
-    providerAccountId?: StringFieldUpdateOperationsInput | string
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
-    access_token?: NullableStringFieldUpdateOperationsInput | string | null
-    expires_at?: NullableIntFieldUpdateOperationsInput | number | null
-    token_type?: NullableStringFieldUpdateOperationsInput | string | null
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
-    id_token?: NullableStringFieldUpdateOperationsInput | string | null
-    session_state?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
-    user?: UserUpdateOneRequiredWithoutAccountsNestedInput
+  export type WeeklyReportScalarWhereWithAggregatesInput = {
+    AND?: WeeklyReportScalarWhereWithAggregatesInput | WeeklyReportScalarWhereWithAggregatesInput[]
+    OR?: WeeklyReportScalarWhereWithAggregatesInput[]
+    NOT?: WeeklyReportScalarWhereWithAggregatesInput | WeeklyReportScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"WeeklyReport"> | string
+    userId?: StringWithAggregatesFilter<"WeeklyReport"> | string
+    monthYear?: StringWithAggregatesFilter<"WeeklyReport"> | string
+    year?: IntWithAggregatesFilter<"WeeklyReport"> | number
+    month?: IntWithAggregatesFilter<"WeeklyReport"> | number
+    week?: IntWithAggregatesFilter<"WeeklyReport"> | number
+    marketVisitQty?: IntWithAggregatesFilter<"WeeklyReport"> | number
+    marketVisitFindingQty?: IntWithAggregatesFilter<"WeeklyReport"> | number
+    solvedQty?: IntWithAggregatesFilter<"WeeklyReport"> | number
+    pendingQty?: IntWithAggregatesFilter<"WeeklyReport"> | number
+    locSubmittedQty?: IntWithAggregatesFilter<"WeeklyReport"> | number
+    locFindingDayQty?: FloatWithAggregatesFilter<"WeeklyReport"> | number
+    dressCodeQty?: IntWithAggregatesFilter<"WeeklyReport"> | number
+    dressCodeFindingQty?: IntWithAggregatesFilter<"WeeklyReport"> | number
+    messVisitQty?: IntWithAggregatesFilter<"WeeklyReport"> | number
+    messVisitFindingQty?: IntWithAggregatesFilter<"WeeklyReport"> | number
+    status?: StringWithAggregatesFilter<"WeeklyReport"> | string
+    deadline?: DateTimeWithAggregatesFilter<"WeeklyReport"> | Date | string
+    submittedAt?: DateTimeWithAggregatesFilter<"WeeklyReport"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"WeeklyReport"> | Date | string
+    notes?: StringNullableWithAggregatesFilter<"WeeklyReport"> | string | null
   }
 
-  export type AccountUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    provider?: StringFieldUpdateOperationsInput | string
-    providerAccountId?: StringFieldUpdateOperationsInput | string
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
-    access_token?: NullableStringFieldUpdateOperationsInput | string | null
-    expires_at?: NullableIntFieldUpdateOperationsInput | number | null
-    token_type?: NullableStringFieldUpdateOperationsInput | string | null
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
-    id_token?: NullableStringFieldUpdateOperationsInput | string | null
-    session_state?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+  export type FindingHistoryWhereInput = {
+    AND?: FindingHistoryWhereInput | FindingHistoryWhereInput[]
+    OR?: FindingHistoryWhereInput[]
+    NOT?: FindingHistoryWhereInput | FindingHistoryWhereInput[]
+    id?: StringFilter<"FindingHistory"> | string
+    reportId?: StringFilter<"FindingHistory"> | string
+    updatedById?: StringFilter<"FindingHistory"> | string
+    previousSolved?: IntFilter<"FindingHistory"> | number
+    newSolved?: IntFilter<"FindingHistory"> | number
+    previousPending?: IntFilter<"FindingHistory"> | number
+    newPending?: IntFilter<"FindingHistory"> | number
+    remark?: StringNullableFilter<"FindingHistory"> | string | null
+    createdAt?: DateTimeFilter<"FindingHistory"> | Date | string
+    report?: XOR<WeeklyReportScalarRelationFilter, WeeklyReportWhereInput>
+    updatedBy?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
-  export type AccountCreateManyInput = {
+  export type FindingHistoryOrderByWithRelationInput = {
+    id?: SortOrder
+    reportId?: SortOrder
+    updatedById?: SortOrder
+    previousSolved?: SortOrder
+    newSolved?: SortOrder
+    previousPending?: SortOrder
+    newPending?: SortOrder
+    remark?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    report?: WeeklyReportOrderByWithRelationInput
+    updatedBy?: UserOrderByWithRelationInput
+  }
+
+  export type FindingHistoryWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    userId: string
-    type: string
-    provider: string
-    providerAccountId: string
-    refresh_token?: string | null
-    access_token?: string | null
-    expires_at?: number | null
-    token_type?: string | null
-    scope?: string | null
-    id_token?: string | null
-    session_state?: string | null
-    refresh_token_expires_in?: number | null
+    AND?: FindingHistoryWhereInput | FindingHistoryWhereInput[]
+    OR?: FindingHistoryWhereInput[]
+    NOT?: FindingHistoryWhereInput | FindingHistoryWhereInput[]
+    reportId?: StringFilter<"FindingHistory"> | string
+    updatedById?: StringFilter<"FindingHistory"> | string
+    previousSolved?: IntFilter<"FindingHistory"> | number
+    newSolved?: IntFilter<"FindingHistory"> | number
+    previousPending?: IntFilter<"FindingHistory"> | number
+    newPending?: IntFilter<"FindingHistory"> | number
+    remark?: StringNullableFilter<"FindingHistory"> | string | null
+    createdAt?: DateTimeFilter<"FindingHistory"> | Date | string
+    report?: XOR<WeeklyReportScalarRelationFilter, WeeklyReportWhereInput>
+    updatedBy?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type FindingHistoryOrderByWithAggregationInput = {
+    id?: SortOrder
+    reportId?: SortOrder
+    updatedById?: SortOrder
+    previousSolved?: SortOrder
+    newSolved?: SortOrder
+    previousPending?: SortOrder
+    newPending?: SortOrder
+    remark?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: FindingHistoryCountOrderByAggregateInput
+    _avg?: FindingHistoryAvgOrderByAggregateInput
+    _max?: FindingHistoryMaxOrderByAggregateInput
+    _min?: FindingHistoryMinOrderByAggregateInput
+    _sum?: FindingHistorySumOrderByAggregateInput
   }
 
-  export type AccountUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    provider?: StringFieldUpdateOperationsInput | string
-    providerAccountId?: StringFieldUpdateOperationsInput | string
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
-    access_token?: NullableStringFieldUpdateOperationsInput | string | null
-    expires_at?: NullableIntFieldUpdateOperationsInput | number | null
-    token_type?: NullableStringFieldUpdateOperationsInput | string | null
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
-    id_token?: NullableStringFieldUpdateOperationsInput | string | null
-    session_state?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+  export type FindingHistoryScalarWhereWithAggregatesInput = {
+    AND?: FindingHistoryScalarWhereWithAggregatesInput | FindingHistoryScalarWhereWithAggregatesInput[]
+    OR?: FindingHistoryScalarWhereWithAggregatesInput[]
+    NOT?: FindingHistoryScalarWhereWithAggregatesInput | FindingHistoryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"FindingHistory"> | string
+    reportId?: StringWithAggregatesFilter<"FindingHistory"> | string
+    updatedById?: StringWithAggregatesFilter<"FindingHistory"> | string
+    previousSolved?: IntWithAggregatesFilter<"FindingHistory"> | number
+    newSolved?: IntWithAggregatesFilter<"FindingHistory"> | number
+    previousPending?: IntWithAggregatesFilter<"FindingHistory"> | number
+    newPending?: IntWithAggregatesFilter<"FindingHistory"> | number
+    remark?: StringNullableWithAggregatesFilter<"FindingHistory"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"FindingHistory"> | Date | string
   }
 
-  export type AccountUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    provider?: StringFieldUpdateOperationsInput | string
-    providerAccountId?: StringFieldUpdateOperationsInput | string
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
-    access_token?: NullableStringFieldUpdateOperationsInput | string | null
-    expires_at?: NullableIntFieldUpdateOperationsInput | number | null
-    token_type?: NullableStringFieldUpdateOperationsInput | string | null
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
-    id_token?: NullableStringFieldUpdateOperationsInput | string | null
-    session_state?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+  export type MonthlyTargetWhereInput = {
+    AND?: MonthlyTargetWhereInput | MonthlyTargetWhereInput[]
+    OR?: MonthlyTargetWhereInput[]
+    NOT?: MonthlyTargetWhereInput | MonthlyTargetWhereInput[]
+    id?: StringFilter<"MonthlyTarget"> | string
+    userId?: StringFilter<"MonthlyTarget"> | string
+    year?: IntFilter<"MonthlyTarget"> | number
+    month?: IntFilter<"MonthlyTarget"> | number
+    monthYear?: StringFilter<"MonthlyTarget"> | string
+    locTarget?: IntFilter<"MonthlyTarget"> | number
+    messVisitTarget?: IntFilter<"MonthlyTarget"> | number
+    dressCodeTarget?: IntFilter<"MonthlyTarget"> | number
+    isLocked?: BoolFilter<"MonthlyTarget"> | boolean
+    createdAt?: DateTimeFilter<"MonthlyTarget"> | Date | string
+    updatedAt?: DateTimeFilter<"MonthlyTarget"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
-  export type SessionCreateInput = {
+  export type MonthlyTargetOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    monthYear?: SortOrder
+    locTarget?: SortOrder
+    messVisitTarget?: SortOrder
+    dressCodeTarget?: SortOrder
+    isLocked?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type MonthlyTargetWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    sessionToken: string
-    expires: Date | string
-    user: UserCreateNestedOneWithoutSessionsInput
+    userId_year_month?: MonthlyTargetUserIdYearMonthCompoundUniqueInput
+    AND?: MonthlyTargetWhereInput | MonthlyTargetWhereInput[]
+    OR?: MonthlyTargetWhereInput[]
+    NOT?: MonthlyTargetWhereInput | MonthlyTargetWhereInput[]
+    userId?: StringFilter<"MonthlyTarget"> | string
+    year?: IntFilter<"MonthlyTarget"> | number
+    month?: IntFilter<"MonthlyTarget"> | number
+    monthYear?: StringFilter<"MonthlyTarget"> | string
+    locTarget?: IntFilter<"MonthlyTarget"> | number
+    messVisitTarget?: IntFilter<"MonthlyTarget"> | number
+    dressCodeTarget?: IntFilter<"MonthlyTarget"> | number
+    isLocked?: BoolFilter<"MonthlyTarget"> | boolean
+    createdAt?: DateTimeFilter<"MonthlyTarget"> | Date | string
+    updatedAt?: DateTimeFilter<"MonthlyTarget"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId_year_month">
+
+  export type MonthlyTargetOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    monthYear?: SortOrder
+    locTarget?: SortOrder
+    messVisitTarget?: SortOrder
+    dressCodeTarget?: SortOrder
+    isLocked?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: MonthlyTargetCountOrderByAggregateInput
+    _avg?: MonthlyTargetAvgOrderByAggregateInput
+    _max?: MonthlyTargetMaxOrderByAggregateInput
+    _min?: MonthlyTargetMinOrderByAggregateInput
+    _sum?: MonthlyTargetSumOrderByAggregateInput
   }
 
-  export type SessionUncheckedCreateInput = {
+  export type MonthlyTargetScalarWhereWithAggregatesInput = {
+    AND?: MonthlyTargetScalarWhereWithAggregatesInput | MonthlyTargetScalarWhereWithAggregatesInput[]
+    OR?: MonthlyTargetScalarWhereWithAggregatesInput[]
+    NOT?: MonthlyTargetScalarWhereWithAggregatesInput | MonthlyTargetScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MonthlyTarget"> | string
+    userId?: StringWithAggregatesFilter<"MonthlyTarget"> | string
+    year?: IntWithAggregatesFilter<"MonthlyTarget"> | number
+    month?: IntWithAggregatesFilter<"MonthlyTarget"> | number
+    monthYear?: StringWithAggregatesFilter<"MonthlyTarget"> | string
+    locTarget?: IntWithAggregatesFilter<"MonthlyTarget"> | number
+    messVisitTarget?: IntWithAggregatesFilter<"MonthlyTarget"> | number
+    dressCodeTarget?: IntWithAggregatesFilter<"MonthlyTarget"> | number
+    isLocked?: BoolWithAggregatesFilter<"MonthlyTarget"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"MonthlyTarget"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"MonthlyTarget"> | Date | string
+  }
+
+  export type EmailNotificationConfigWhereInput = {
+    AND?: EmailNotificationConfigWhereInput | EmailNotificationConfigWhereInput[]
+    OR?: EmailNotificationConfigWhereInput[]
+    NOT?: EmailNotificationConfigWhereInput | EmailNotificationConfigWhereInput[]
+    id?: StringFilter<"EmailNotificationConfig"> | string
+    code?: StringFilter<"EmailNotificationConfig"> | string
+    name?: StringFilter<"EmailNotificationConfig"> | string
+    description?: StringNullableFilter<"EmailNotificationConfig"> | string | null
+    subjectTemplate?: StringFilter<"EmailNotificationConfig"> | string
+    bodyTemplate?: StringFilter<"EmailNotificationConfig"> | string
+    ccRecipients?: StringFilter<"EmailNotificationConfig"> | string
+    bccRecipients?: StringNullableFilter<"EmailNotificationConfig"> | string | null
+    isActive?: BoolFilter<"EmailNotificationConfig"> | boolean
+    updatedAt?: DateTimeFilter<"EmailNotificationConfig"> | Date | string
+  }
+
+  export type EmailNotificationConfigOrderByWithRelationInput = {
+    id?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    subjectTemplate?: SortOrder
+    bodyTemplate?: SortOrder
+    ccRecipients?: SortOrder
+    bccRecipients?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EmailNotificationConfigWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    sessionToken: string
-    userId: string
-    expires: Date | string
+    code?: string
+    AND?: EmailNotificationConfigWhereInput | EmailNotificationConfigWhereInput[]
+    OR?: EmailNotificationConfigWhereInput[]
+    NOT?: EmailNotificationConfigWhereInput | EmailNotificationConfigWhereInput[]
+    name?: StringFilter<"EmailNotificationConfig"> | string
+    description?: StringNullableFilter<"EmailNotificationConfig"> | string | null
+    subjectTemplate?: StringFilter<"EmailNotificationConfig"> | string
+    bodyTemplate?: StringFilter<"EmailNotificationConfig"> | string
+    ccRecipients?: StringFilter<"EmailNotificationConfig"> | string
+    bccRecipients?: StringNullableFilter<"EmailNotificationConfig"> | string | null
+    isActive?: BoolFilter<"EmailNotificationConfig"> | boolean
+    updatedAt?: DateTimeFilter<"EmailNotificationConfig"> | Date | string
+  }, "id" | "code">
+
+  export type EmailNotificationConfigOrderByWithAggregationInput = {
+    id?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    subjectTemplate?: SortOrder
+    bodyTemplate?: SortOrder
+    ccRecipients?: SortOrder
+    bccRecipients?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    updatedAt?: SortOrder
+    _count?: EmailNotificationConfigCountOrderByAggregateInput
+    _max?: EmailNotificationConfigMaxOrderByAggregateInput
+    _min?: EmailNotificationConfigMinOrderByAggregateInput
   }
 
-  export type SessionUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    sessionToken?: StringFieldUpdateOperationsInput | string
-    expires?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutSessionsNestedInput
+  export type EmailNotificationConfigScalarWhereWithAggregatesInput = {
+    AND?: EmailNotificationConfigScalarWhereWithAggregatesInput | EmailNotificationConfigScalarWhereWithAggregatesInput[]
+    OR?: EmailNotificationConfigScalarWhereWithAggregatesInput[]
+    NOT?: EmailNotificationConfigScalarWhereWithAggregatesInput | EmailNotificationConfigScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"EmailNotificationConfig"> | string
+    code?: StringWithAggregatesFilter<"EmailNotificationConfig"> | string
+    name?: StringWithAggregatesFilter<"EmailNotificationConfig"> | string
+    description?: StringNullableWithAggregatesFilter<"EmailNotificationConfig"> | string | null
+    subjectTemplate?: StringWithAggregatesFilter<"EmailNotificationConfig"> | string
+    bodyTemplate?: StringWithAggregatesFilter<"EmailNotificationConfig"> | string
+    ccRecipients?: StringWithAggregatesFilter<"EmailNotificationConfig"> | string
+    bccRecipients?: StringNullableWithAggregatesFilter<"EmailNotificationConfig"> | string | null
+    isActive?: BoolWithAggregatesFilter<"EmailNotificationConfig"> | boolean
+    updatedAt?: DateTimeWithAggregatesFilter<"EmailNotificationConfig"> | Date | string
   }
 
-  export type SessionUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    sessionToken?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    expires?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type EmailNotificationLogWhereInput = {
+    AND?: EmailNotificationLogWhereInput | EmailNotificationLogWhereInput[]
+    OR?: EmailNotificationLogWhereInput[]
+    NOT?: EmailNotificationLogWhereInput | EmailNotificationLogWhereInput[]
+    id?: StringFilter<"EmailNotificationLog"> | string
+    userId?: StringFilter<"EmailNotificationLog"> | string
+    year?: IntFilter<"EmailNotificationLog"> | number
+    month?: IntFilter<"EmailNotificationLog"> | number
+    week?: IntFilter<"EmailNotificationLog"> | number
+    emailType?: StringFilter<"EmailNotificationLog"> | string
+    toEmail?: StringFilter<"EmailNotificationLog"> | string
+    ccEmails?: StringNullableFilter<"EmailNotificationLog"> | string | null
+    subject?: StringFilter<"EmailNotificationLog"> | string
+    status?: StringFilter<"EmailNotificationLog"> | string
+    sentAt?: DateTimeFilter<"EmailNotificationLog"> | Date | string
+    errorMessage?: StringNullableFilter<"EmailNotificationLog"> | string | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
-  export type SessionCreateManyInput = {
+  export type EmailNotificationLogOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    week?: SortOrder
+    emailType?: SortOrder
+    toEmail?: SortOrder
+    ccEmails?: SortOrderInput | SortOrder
+    subject?: SortOrder
+    status?: SortOrder
+    sentAt?: SortOrder
+    errorMessage?: SortOrderInput | SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type EmailNotificationLogWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    sessionToken: string
-    userId: string
-    expires: Date | string
+    userId_year_month_week_emailType?: EmailNotificationLogUserIdYearMonthWeekEmailTypeCompoundUniqueInput
+    AND?: EmailNotificationLogWhereInput | EmailNotificationLogWhereInput[]
+    OR?: EmailNotificationLogWhereInput[]
+    NOT?: EmailNotificationLogWhereInput | EmailNotificationLogWhereInput[]
+    userId?: StringFilter<"EmailNotificationLog"> | string
+    year?: IntFilter<"EmailNotificationLog"> | number
+    month?: IntFilter<"EmailNotificationLog"> | number
+    week?: IntFilter<"EmailNotificationLog"> | number
+    emailType?: StringFilter<"EmailNotificationLog"> | string
+    toEmail?: StringFilter<"EmailNotificationLog"> | string
+    ccEmails?: StringNullableFilter<"EmailNotificationLog"> | string | null
+    subject?: StringFilter<"EmailNotificationLog"> | string
+    status?: StringFilter<"EmailNotificationLog"> | string
+    sentAt?: DateTimeFilter<"EmailNotificationLog"> | Date | string
+    errorMessage?: StringNullableFilter<"EmailNotificationLog"> | string | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId_year_month_week_emailType">
+
+  export type EmailNotificationLogOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    week?: SortOrder
+    emailType?: SortOrder
+    toEmail?: SortOrder
+    ccEmails?: SortOrderInput | SortOrder
+    subject?: SortOrder
+    status?: SortOrder
+    sentAt?: SortOrder
+    errorMessage?: SortOrderInput | SortOrder
+    _count?: EmailNotificationLogCountOrderByAggregateInput
+    _avg?: EmailNotificationLogAvgOrderByAggregateInput
+    _max?: EmailNotificationLogMaxOrderByAggregateInput
+    _min?: EmailNotificationLogMinOrderByAggregateInput
+    _sum?: EmailNotificationLogSumOrderByAggregateInput
   }
 
-  export type SessionUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    sessionToken?: StringFieldUpdateOperationsInput | string
-    expires?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type SessionUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    sessionToken?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    expires?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type EmailNotificationLogScalarWhereWithAggregatesInput = {
+    AND?: EmailNotificationLogScalarWhereWithAggregatesInput | EmailNotificationLogScalarWhereWithAggregatesInput[]
+    OR?: EmailNotificationLogScalarWhereWithAggregatesInput[]
+    NOT?: EmailNotificationLogScalarWhereWithAggregatesInput | EmailNotificationLogScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"EmailNotificationLog"> | string
+    userId?: StringWithAggregatesFilter<"EmailNotificationLog"> | string
+    year?: IntWithAggregatesFilter<"EmailNotificationLog"> | number
+    month?: IntWithAggregatesFilter<"EmailNotificationLog"> | number
+    week?: IntWithAggregatesFilter<"EmailNotificationLog"> | number
+    emailType?: StringWithAggregatesFilter<"EmailNotificationLog"> | string
+    toEmail?: StringWithAggregatesFilter<"EmailNotificationLog"> | string
+    ccEmails?: StringNullableWithAggregatesFilter<"EmailNotificationLog"> | string | null
+    subject?: StringWithAggregatesFilter<"EmailNotificationLog"> | string
+    status?: StringWithAggregatesFilter<"EmailNotificationLog"> | string
+    sentAt?: DateTimeWithAggregatesFilter<"EmailNotificationLog"> | Date | string
+    errorMessage?: StringNullableWithAggregatesFilter<"EmailNotificationLog"> | string | null
   }
 
   export type UserCreateInput = {
     id?: string
-    name?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    accounts?: AccountCreateNestedManyWithoutUserInput
-    sessions?: SessionCreateNestedManyWithoutUserInput
-    posts?: PostCreateNestedManyWithoutCreatedByInput
+    staffId: string
+    name: string
+    designation: string
+    zone: string
+    email: string
+    mobile?: string | null
+    role?: string
+    status?: string
+    password?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    reports?: WeeklyReportCreateNestedManyWithoutUserInput
+    targets?: MonthlyTargetCreateNestedManyWithoutUserInput
+    findingAudits?: FindingHistoryCreateNestedManyWithoutUpdatedByInput
+    emailLogs?: EmailNotificationLogCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
     id?: string
-    name?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    posts?: PostUncheckedCreateNestedManyWithoutCreatedByInput
+    staffId: string
+    name: string
+    designation: string
+    zone: string
+    email: string
+    mobile?: string | null
+    role?: string
+    status?: string
+    password?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    reports?: WeeklyReportUncheckedCreateNestedManyWithoutUserInput
+    targets?: MonthlyTargetUncheckedCreateNestedManyWithoutUserInput
+    findingAudits?: FindingHistoryUncheckedCreateNestedManyWithoutUpdatedByInput
+    emailLogs?: EmailNotificationLogUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    accounts?: AccountUpdateManyWithoutUserNestedInput
-    sessions?: SessionUpdateManyWithoutUserNestedInput
-    posts?: PostUpdateManyWithoutCreatedByNestedInput
+    staffId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    designation?: StringFieldUpdateOperationsInput | string
+    zone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reports?: WeeklyReportUpdateManyWithoutUserNestedInput
+    targets?: MonthlyTargetUpdateManyWithoutUserNestedInput
+    findingAudits?: FindingHistoryUpdateManyWithoutUpdatedByNestedInput
+    emailLogs?: EmailNotificationLogUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    posts?: PostUncheckedUpdateManyWithoutCreatedByNestedInput
+    staffId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    designation?: StringFieldUpdateOperationsInput | string
+    zone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reports?: WeeklyReportUncheckedUpdateManyWithoutUserNestedInput
+    targets?: MonthlyTargetUncheckedUpdateManyWithoutUserNestedInput
+    findingAudits?: FindingHistoryUncheckedUpdateManyWithoutUpdatedByNestedInput
+    emailLogs?: EmailNotificationLogUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
     id?: string
-    name?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
+    staffId: string
+    name: string
+    designation: string
+    zone: string
+    email: string
+    mobile?: string | null
+    role?: string
+    status?: string
+    password?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
+    staffId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    designation?: StringFieldUpdateOperationsInput | string
+    zone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
+    staffId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    designation?: StringFieldUpdateOperationsInput | string
+    zone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type VerificationTokenCreateInput = {
-    identifier: string
-    token: string
-    expires: Date | string
+  export type ZoneCreateInput = {
+    id?: string
+    name: string
+    code?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
   }
 
-  export type VerificationTokenUncheckedCreateInput = {
-    identifier: string
-    token: string
-    expires: Date | string
+  export type ZoneUncheckedCreateInput = {
+    id?: string
+    name: string
+    code?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
   }
 
-  export type VerificationTokenUpdateInput = {
-    identifier?: StringFieldUpdateOperationsInput | string
-    token?: StringFieldUpdateOperationsInput | string
-    expires?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type ZoneUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type VerificationTokenUncheckedUpdateInput = {
-    identifier?: StringFieldUpdateOperationsInput | string
-    token?: StringFieldUpdateOperationsInput | string
-    expires?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type ZoneUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type VerificationTokenCreateManyInput = {
-    identifier: string
-    token: string
-    expires: Date | string
+  export type ZoneCreateManyInput = {
+    id?: string
+    name: string
+    code?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
   }
 
-  export type VerificationTokenUpdateManyMutationInput = {
-    identifier?: StringFieldUpdateOperationsInput | string
-    token?: StringFieldUpdateOperationsInput | string
-    expires?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type ZoneUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type VerificationTokenUncheckedUpdateManyInput = {
-    identifier?: StringFieldUpdateOperationsInput | string
-    token?: StringFieldUpdateOperationsInput | string
-    expires?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type ZoneUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+  export type WeeklyReportCreateInput = {
+    id?: string
+    monthYear: string
+    year: number
+    month: number
+    week: number
+    marketVisitQty?: number
+    marketVisitFindingQty?: number
+    solvedQty?: number
+    pendingQty?: number
+    locSubmittedQty?: number
+    locFindingDayQty?: number
+    dressCodeQty?: number
+    dressCodeFindingQty?: number
+    messVisitQty?: number
+    messVisitFindingQty?: number
+    status?: string
+    deadline: Date | string
+    submittedAt?: Date | string
+    updatedAt?: Date | string
+    notes?: string | null
+    user: UserCreateNestedOneWithoutReportsInput
+    findingHistory?: FindingHistoryCreateNestedManyWithoutReportInput
+  }
+
+  export type WeeklyReportUncheckedCreateInput = {
+    id?: string
+    userId: string
+    monthYear: string
+    year: number
+    month: number
+    week: number
+    marketVisitQty?: number
+    marketVisitFindingQty?: number
+    solvedQty?: number
+    pendingQty?: number
+    locSubmittedQty?: number
+    locFindingDayQty?: number
+    dressCodeQty?: number
+    dressCodeFindingQty?: number
+    messVisitQty?: number
+    messVisitFindingQty?: number
+    status?: string
+    deadline: Date | string
+    submittedAt?: Date | string
+    updatedAt?: Date | string
+    notes?: string | null
+    findingHistory?: FindingHistoryUncheckedCreateNestedManyWithoutReportInput
+  }
+
+  export type WeeklyReportUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    monthYear?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    week?: IntFieldUpdateOperationsInput | number
+    marketVisitQty?: IntFieldUpdateOperationsInput | number
+    marketVisitFindingQty?: IntFieldUpdateOperationsInput | number
+    solvedQty?: IntFieldUpdateOperationsInput | number
+    pendingQty?: IntFieldUpdateOperationsInput | number
+    locSubmittedQty?: IntFieldUpdateOperationsInput | number
+    locFindingDayQty?: FloatFieldUpdateOperationsInput | number
+    dressCodeQty?: IntFieldUpdateOperationsInput | number
+    dressCodeFindingQty?: IntFieldUpdateOperationsInput | number
+    messVisitQty?: IntFieldUpdateOperationsInput | number
+    messVisitFindingQty?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    deadline?: DateTimeFieldUpdateOperationsInput | Date | string
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    user?: UserUpdateOneRequiredWithoutReportsNestedInput
+    findingHistory?: FindingHistoryUpdateManyWithoutReportNestedInput
+  }
+
+  export type WeeklyReportUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    monthYear?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    week?: IntFieldUpdateOperationsInput | number
+    marketVisitQty?: IntFieldUpdateOperationsInput | number
+    marketVisitFindingQty?: IntFieldUpdateOperationsInput | number
+    solvedQty?: IntFieldUpdateOperationsInput | number
+    pendingQty?: IntFieldUpdateOperationsInput | number
+    locSubmittedQty?: IntFieldUpdateOperationsInput | number
+    locFindingDayQty?: FloatFieldUpdateOperationsInput | number
+    dressCodeQty?: IntFieldUpdateOperationsInput | number
+    dressCodeFindingQty?: IntFieldUpdateOperationsInput | number
+    messVisitQty?: IntFieldUpdateOperationsInput | number
+    messVisitFindingQty?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    deadline?: DateTimeFieldUpdateOperationsInput | Date | string
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    findingHistory?: FindingHistoryUncheckedUpdateManyWithoutReportNestedInput
+  }
+
+  export type WeeklyReportCreateManyInput = {
+    id?: string
+    userId: string
+    monthYear: string
+    year: number
+    month: number
+    week: number
+    marketVisitQty?: number
+    marketVisitFindingQty?: number
+    solvedQty?: number
+    pendingQty?: number
+    locSubmittedQty?: number
+    locFindingDayQty?: number
+    dressCodeQty?: number
+    dressCodeFindingQty?: number
+    messVisitQty?: number
+    messVisitFindingQty?: number
+    status?: string
+    deadline: Date | string
+    submittedAt?: Date | string
+    updatedAt?: Date | string
+    notes?: string | null
+  }
+
+  export type WeeklyReportUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    monthYear?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    week?: IntFieldUpdateOperationsInput | number
+    marketVisitQty?: IntFieldUpdateOperationsInput | number
+    marketVisitFindingQty?: IntFieldUpdateOperationsInput | number
+    solvedQty?: IntFieldUpdateOperationsInput | number
+    pendingQty?: IntFieldUpdateOperationsInput | number
+    locSubmittedQty?: IntFieldUpdateOperationsInput | number
+    locFindingDayQty?: FloatFieldUpdateOperationsInput | number
+    dressCodeQty?: IntFieldUpdateOperationsInput | number
+    dressCodeFindingQty?: IntFieldUpdateOperationsInput | number
+    messVisitQty?: IntFieldUpdateOperationsInput | number
+    messVisitFindingQty?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    deadline?: DateTimeFieldUpdateOperationsInput | Date | string
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type WeeklyReportUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    monthYear?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    week?: IntFieldUpdateOperationsInput | number
+    marketVisitQty?: IntFieldUpdateOperationsInput | number
+    marketVisitFindingQty?: IntFieldUpdateOperationsInput | number
+    solvedQty?: IntFieldUpdateOperationsInput | number
+    pendingQty?: IntFieldUpdateOperationsInput | number
+    locSubmittedQty?: IntFieldUpdateOperationsInput | number
+    locFindingDayQty?: FloatFieldUpdateOperationsInput | number
+    dressCodeQty?: IntFieldUpdateOperationsInput | number
+    dressCodeFindingQty?: IntFieldUpdateOperationsInput | number
+    messVisitQty?: IntFieldUpdateOperationsInput | number
+    messVisitFindingQty?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    deadline?: DateTimeFieldUpdateOperationsInput | Date | string
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type FindingHistoryCreateInput = {
+    id?: string
+    previousSolved: number
+    newSolved: number
+    previousPending: number
+    newPending: number
+    remark?: string | null
+    createdAt?: Date | string
+    report: WeeklyReportCreateNestedOneWithoutFindingHistoryInput
+    updatedBy: UserCreateNestedOneWithoutFindingAuditsInput
+  }
+
+  export type FindingHistoryUncheckedCreateInput = {
+    id?: string
+    reportId: string
+    updatedById: string
+    previousSolved: number
+    newSolved: number
+    previousPending: number
+    newPending: number
+    remark?: string | null
+    createdAt?: Date | string
+  }
+
+  export type FindingHistoryUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    previousSolved?: IntFieldUpdateOperationsInput | number
+    newSolved?: IntFieldUpdateOperationsInput | number
+    previousPending?: IntFieldUpdateOperationsInput | number
+    newPending?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    report?: WeeklyReportUpdateOneRequiredWithoutFindingHistoryNestedInput
+    updatedBy?: UserUpdateOneRequiredWithoutFindingAuditsNestedInput
+  }
+
+  export type FindingHistoryUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reportId?: StringFieldUpdateOperationsInput | string
+    updatedById?: StringFieldUpdateOperationsInput | string
+    previousSolved?: IntFieldUpdateOperationsInput | number
+    newSolved?: IntFieldUpdateOperationsInput | number
+    previousPending?: IntFieldUpdateOperationsInput | number
+    newPending?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FindingHistoryCreateManyInput = {
+    id?: string
+    reportId: string
+    updatedById: string
+    previousSolved: number
+    newSolved: number
+    previousPending: number
+    newPending: number
+    remark?: string | null
+    createdAt?: Date | string
+  }
+
+  export type FindingHistoryUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    previousSolved?: IntFieldUpdateOperationsInput | number
+    newSolved?: IntFieldUpdateOperationsInput | number
+    previousPending?: IntFieldUpdateOperationsInput | number
+    newPending?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FindingHistoryUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reportId?: StringFieldUpdateOperationsInput | string
+    updatedById?: StringFieldUpdateOperationsInput | string
+    previousSolved?: IntFieldUpdateOperationsInput | number
+    newSolved?: IntFieldUpdateOperationsInput | number
+    previousPending?: IntFieldUpdateOperationsInput | number
+    newPending?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MonthlyTargetCreateInput = {
+    id?: string
+    year: number
+    month: number
+    monthYear: string
+    locTarget?: number
+    messVisitTarget?: number
+    dressCodeTarget?: number
+    isLocked?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutTargetsInput
+  }
+
+  export type MonthlyTargetUncheckedCreateInput = {
+    id?: string
+    userId: string
+    year: number
+    month: number
+    monthYear: string
+    locTarget?: number
+    messVisitTarget?: number
+    dressCodeTarget?: number
+    isLocked?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MonthlyTargetUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    monthYear?: StringFieldUpdateOperationsInput | string
+    locTarget?: IntFieldUpdateOperationsInput | number
+    messVisitTarget?: IntFieldUpdateOperationsInput | number
+    dressCodeTarget?: IntFieldUpdateOperationsInput | number
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutTargetsNestedInput
+  }
+
+  export type MonthlyTargetUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    monthYear?: StringFieldUpdateOperationsInput | string
+    locTarget?: IntFieldUpdateOperationsInput | number
+    messVisitTarget?: IntFieldUpdateOperationsInput | number
+    dressCodeTarget?: IntFieldUpdateOperationsInput | number
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MonthlyTargetCreateManyInput = {
+    id?: string
+    userId: string
+    year: number
+    month: number
+    monthYear: string
+    locTarget?: number
+    messVisitTarget?: number
+    dressCodeTarget?: number
+    isLocked?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MonthlyTargetUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    monthYear?: StringFieldUpdateOperationsInput | string
+    locTarget?: IntFieldUpdateOperationsInput | number
+    messVisitTarget?: IntFieldUpdateOperationsInput | number
+    dressCodeTarget?: IntFieldUpdateOperationsInput | number
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MonthlyTargetUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    monthYear?: StringFieldUpdateOperationsInput | string
+    locTarget?: IntFieldUpdateOperationsInput | number
+    messVisitTarget?: IntFieldUpdateOperationsInput | number
+    dressCodeTarget?: IntFieldUpdateOperationsInput | number
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmailNotificationConfigCreateInput = {
+    id?: string
+    code: string
+    name: string
+    description?: string | null
+    subjectTemplate: string
+    bodyTemplate: string
+    ccRecipients: string
+    bccRecipients?: string | null
+    isActive?: boolean
+    updatedAt?: Date | string
+  }
+
+  export type EmailNotificationConfigUncheckedCreateInput = {
+    id?: string
+    code: string
+    name: string
+    description?: string | null
+    subjectTemplate: string
+    bodyTemplate: string
+    ccRecipients: string
+    bccRecipients?: string | null
+    isActive?: boolean
+    updatedAt?: Date | string
+  }
+
+  export type EmailNotificationConfigUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    subjectTemplate?: StringFieldUpdateOperationsInput | string
+    bodyTemplate?: StringFieldUpdateOperationsInput | string
+    ccRecipients?: StringFieldUpdateOperationsInput | string
+    bccRecipients?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmailNotificationConfigUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    subjectTemplate?: StringFieldUpdateOperationsInput | string
+    bodyTemplate?: StringFieldUpdateOperationsInput | string
+    ccRecipients?: StringFieldUpdateOperationsInput | string
+    bccRecipients?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmailNotificationConfigCreateManyInput = {
+    id?: string
+    code: string
+    name: string
+    description?: string | null
+    subjectTemplate: string
+    bodyTemplate: string
+    ccRecipients: string
+    bccRecipients?: string | null
+    isActive?: boolean
+    updatedAt?: Date | string
+  }
+
+  export type EmailNotificationConfigUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    subjectTemplate?: StringFieldUpdateOperationsInput | string
+    bodyTemplate?: StringFieldUpdateOperationsInput | string
+    ccRecipients?: StringFieldUpdateOperationsInput | string
+    bccRecipients?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmailNotificationConfigUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    subjectTemplate?: StringFieldUpdateOperationsInput | string
+    bodyTemplate?: StringFieldUpdateOperationsInput | string
+    ccRecipients?: StringFieldUpdateOperationsInput | string
+    bccRecipients?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmailNotificationLogCreateInput = {
+    id?: string
+    year: number
+    month: number
+    week: number
+    emailType: string
+    toEmail: string
+    ccEmails?: string | null
+    subject: string
+    status?: string
+    sentAt?: Date | string
+    errorMessage?: string | null
+    user: UserCreateNestedOneWithoutEmailLogsInput
+  }
+
+  export type EmailNotificationLogUncheckedCreateInput = {
+    id?: string
+    userId: string
+    year: number
+    month: number
+    week: number
+    emailType: string
+    toEmail: string
+    ccEmails?: string | null
+    subject: string
+    status?: string
+    sentAt?: Date | string
+    errorMessage?: string | null
+  }
+
+  export type EmailNotificationLogUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    week?: IntFieldUpdateOperationsInput | number
+    emailType?: StringFieldUpdateOperationsInput | string
+    toEmail?: StringFieldUpdateOperationsInput | string
+    ccEmails?: NullableStringFieldUpdateOperationsInput | string | null
+    subject?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    user?: UserUpdateOneRequiredWithoutEmailLogsNestedInput
+  }
+
+  export type EmailNotificationLogUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    week?: IntFieldUpdateOperationsInput | number
+    emailType?: StringFieldUpdateOperationsInput | string
+    toEmail?: StringFieldUpdateOperationsInput | string
+    ccEmails?: NullableStringFieldUpdateOperationsInput | string | null
+    subject?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type EmailNotificationLogCreateManyInput = {
+    id?: string
+    userId: string
+    year: number
+    month: number
+    week: number
+    emailType: string
+    toEmail: string
+    ccEmails?: string | null
+    subject: string
+    status?: string
+    sentAt?: Date | string
+    errorMessage?: string | null
+  }
+
+  export type EmailNotificationLogUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    week?: IntFieldUpdateOperationsInput | number
+    emailType?: StringFieldUpdateOperationsInput | string
+    toEmail?: StringFieldUpdateOperationsInput | string
+    ccEmails?: NullableStringFieldUpdateOperationsInput | string | null
+    subject?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type EmailNotificationLogUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    week?: IntFieldUpdateOperationsInput | number
+    emailType?: StringFieldUpdateOperationsInput | string
+    toEmail?: StringFieldUpdateOperationsInput | string
+    ccEmails?: NullableStringFieldUpdateOperationsInput | string | null
+    subject?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -7519,14 +11255,27 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -7534,47 +11283,323 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type WeeklyReportListRelationFilter = {
+    every?: WeeklyReportWhereInput
+    some?: WeeklyReportWhereInput
+    none?: WeeklyReportWhereInput
+  }
+
+  export type MonthlyTargetListRelationFilter = {
+    every?: MonthlyTargetWhereInput
+    some?: MonthlyTargetWhereInput
+    none?: MonthlyTargetWhereInput
+  }
+
+  export type FindingHistoryListRelationFilter = {
+    every?: FindingHistoryWhereInput
+    some?: FindingHistoryWhereInput
+    none?: FindingHistoryWhereInput
+  }
+
+  export type EmailNotificationLogListRelationFilter = {
+    every?: EmailNotificationLogWhereInput
+    some?: EmailNotificationLogWhereInput
+    none?: EmailNotificationLogWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type WeeklyReportOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MonthlyTargetOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type FindingHistoryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type EmailNotificationLogOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UserCountOrderByAggregateInput = {
+    id?: SortOrder
+    staffId?: SortOrder
+    name?: SortOrder
+    designation?: SortOrder
+    zone?: SortOrder
+    email?: SortOrder
+    mobile?: SortOrder
+    role?: SortOrder
+    status?: SortOrder
+    password?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserMaxOrderByAggregateInput = {
+    id?: SortOrder
+    staffId?: SortOrder
+    name?: SortOrder
+    designation?: SortOrder
+    zone?: SortOrder
+    email?: SortOrder
+    mobile?: SortOrder
+    role?: SortOrder
+    status?: SortOrder
+    password?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserMinOrderByAggregateInput = {
+    id?: SortOrder
+    staffId?: SortOrder
+    name?: SortOrder
+    designation?: SortOrder
+    zone?: SortOrder
+    email?: SortOrder
+    mobile?: SortOrder
+    role?: SortOrder
+    status?: SortOrder
+    password?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type ZoneCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    code?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ZoneMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    code?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ZoneMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    code?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
   }
 
-  export type PostCountOrderByAggregateInput = {
+  export type WeeklyReportUserIdYearMonthWeekCompoundUniqueInput = {
+    userId: string
+    year: number
+    month: number
+    week: number
+  }
+
+  export type WeeklyReportCountOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
-    createdAt?: SortOrder
+    userId?: SortOrder
+    monthYear?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    week?: SortOrder
+    marketVisitQty?: SortOrder
+    marketVisitFindingQty?: SortOrder
+    solvedQty?: SortOrder
+    pendingQty?: SortOrder
+    locSubmittedQty?: SortOrder
+    locFindingDayQty?: SortOrder
+    dressCodeQty?: SortOrder
+    dressCodeFindingQty?: SortOrder
+    messVisitQty?: SortOrder
+    messVisitFindingQty?: SortOrder
+    status?: SortOrder
+    deadline?: SortOrder
+    submittedAt?: SortOrder
     updatedAt?: SortOrder
-    createdById?: SortOrder
+    notes?: SortOrder
   }
 
-  export type PostAvgOrderByAggregateInput = {
-    id?: SortOrder
+  export type WeeklyReportAvgOrderByAggregateInput = {
+    year?: SortOrder
+    month?: SortOrder
+    week?: SortOrder
+    marketVisitQty?: SortOrder
+    marketVisitFindingQty?: SortOrder
+    solvedQty?: SortOrder
+    pendingQty?: SortOrder
+    locSubmittedQty?: SortOrder
+    locFindingDayQty?: SortOrder
+    dressCodeQty?: SortOrder
+    dressCodeFindingQty?: SortOrder
+    messVisitQty?: SortOrder
+    messVisitFindingQty?: SortOrder
   }
 
-  export type PostMaxOrderByAggregateInput = {
+  export type WeeklyReportMaxOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
-    createdAt?: SortOrder
+    userId?: SortOrder
+    monthYear?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    week?: SortOrder
+    marketVisitQty?: SortOrder
+    marketVisitFindingQty?: SortOrder
+    solvedQty?: SortOrder
+    pendingQty?: SortOrder
+    locSubmittedQty?: SortOrder
+    locFindingDayQty?: SortOrder
+    dressCodeQty?: SortOrder
+    dressCodeFindingQty?: SortOrder
+    messVisitQty?: SortOrder
+    messVisitFindingQty?: SortOrder
+    status?: SortOrder
+    deadline?: SortOrder
+    submittedAt?: SortOrder
     updatedAt?: SortOrder
-    createdById?: SortOrder
+    notes?: SortOrder
   }
 
-  export type PostMinOrderByAggregateInput = {
+  export type WeeklyReportMinOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
-    createdAt?: SortOrder
+    userId?: SortOrder
+    monthYear?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    week?: SortOrder
+    marketVisitQty?: SortOrder
+    marketVisitFindingQty?: SortOrder
+    solvedQty?: SortOrder
+    pendingQty?: SortOrder
+    locSubmittedQty?: SortOrder
+    locFindingDayQty?: SortOrder
+    dressCodeQty?: SortOrder
+    dressCodeFindingQty?: SortOrder
+    messVisitQty?: SortOrder
+    messVisitFindingQty?: SortOrder
+    status?: SortOrder
+    deadline?: SortOrder
+    submittedAt?: SortOrder
     updatedAt?: SortOrder
-    createdById?: SortOrder
+    notes?: SortOrder
   }
 
-  export type PostSumOrderByAggregateInput = {
-    id?: SortOrder
+  export type WeeklyReportSumOrderByAggregateInput = {
+    year?: SortOrder
+    month?: SortOrder
+    week?: SortOrder
+    marketVisitQty?: SortOrder
+    marketVisitFindingQty?: SortOrder
+    solvedQty?: SortOrder
+    pendingQty?: SortOrder
+    locSubmittedQty?: SortOrder
+    locFindingDayQty?: SortOrder
+    dressCodeQty?: SortOrder
+    dressCodeFindingQty?: SortOrder
+    messVisitQty?: SortOrder
+    messVisitFindingQty?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -7587,309 +11612,447 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
+  export type WeeklyReportScalarRelationFilter = {
+    is?: WeeklyReportWhereInput
+    isNot?: WeeklyReportWhereInput
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  export type FindingHistoryCountOrderByAggregateInput = {
+    id?: SortOrder
+    reportId?: SortOrder
+    updatedById?: SortOrder
+    previousSolved?: SortOrder
+    newSolved?: SortOrder
+    previousPending?: SortOrder
+    newPending?: SortOrder
+    remark?: SortOrder
+    createdAt?: SortOrder
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  export type FindingHistoryAvgOrderByAggregateInput = {
+    previousSolved?: SortOrder
+    newSolved?: SortOrder
+    previousPending?: SortOrder
+    newPending?: SortOrder
   }
 
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
+  export type FindingHistoryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    reportId?: SortOrder
+    updatedById?: SortOrder
+    previousSolved?: SortOrder
+    newSolved?: SortOrder
+    previousPending?: SortOrder
+    newPending?: SortOrder
+    remark?: SortOrder
+    createdAt?: SortOrder
   }
 
-  export type AccountProviderProviderAccountIdCompoundUniqueInput = {
-    provider: string
-    providerAccountId: string
+  export type FindingHistoryMinOrderByAggregateInput = {
+    id?: SortOrder
+    reportId?: SortOrder
+    updatedById?: SortOrder
+    previousSolved?: SortOrder
+    newSolved?: SortOrder
+    previousPending?: SortOrder
+    newPending?: SortOrder
+    remark?: SortOrder
+    createdAt?: SortOrder
   }
 
-  export type AccountCountOrderByAggregateInput = {
+  export type FindingHistorySumOrderByAggregateInput = {
+    previousSolved?: SortOrder
+    newSolved?: SortOrder
+    previousPending?: SortOrder
+    newPending?: SortOrder
+  }
+
+  export type MonthlyTargetUserIdYearMonthCompoundUniqueInput = {
+    userId: string
+    year: number
+    month: number
+  }
+
+  export type MonthlyTargetCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    type?: SortOrder
-    provider?: SortOrder
-    providerAccountId?: SortOrder
-    refresh_token?: SortOrder
-    access_token?: SortOrder
-    expires_at?: SortOrder
-    token_type?: SortOrder
-    scope?: SortOrder
-    id_token?: SortOrder
-    session_state?: SortOrder
-    refresh_token_expires_in?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    monthYear?: SortOrder
+    locTarget?: SortOrder
+    messVisitTarget?: SortOrder
+    dressCodeTarget?: SortOrder
+    isLocked?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
-  export type AccountAvgOrderByAggregateInput = {
-    expires_at?: SortOrder
-    refresh_token_expires_in?: SortOrder
+  export type MonthlyTargetAvgOrderByAggregateInput = {
+    year?: SortOrder
+    month?: SortOrder
+    locTarget?: SortOrder
+    messVisitTarget?: SortOrder
+    dressCodeTarget?: SortOrder
   }
 
-  export type AccountMaxOrderByAggregateInput = {
+  export type MonthlyTargetMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    type?: SortOrder
-    provider?: SortOrder
-    providerAccountId?: SortOrder
-    refresh_token?: SortOrder
-    access_token?: SortOrder
-    expires_at?: SortOrder
-    token_type?: SortOrder
-    scope?: SortOrder
-    id_token?: SortOrder
-    session_state?: SortOrder
-    refresh_token_expires_in?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    monthYear?: SortOrder
+    locTarget?: SortOrder
+    messVisitTarget?: SortOrder
+    dressCodeTarget?: SortOrder
+    isLocked?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
-  export type AccountMinOrderByAggregateInput = {
+  export type MonthlyTargetMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    type?: SortOrder
-    provider?: SortOrder
-    providerAccountId?: SortOrder
-    refresh_token?: SortOrder
-    access_token?: SortOrder
-    expires_at?: SortOrder
-    token_type?: SortOrder
-    scope?: SortOrder
-    id_token?: SortOrder
-    session_state?: SortOrder
-    refresh_token_expires_in?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    monthYear?: SortOrder
+    locTarget?: SortOrder
+    messVisitTarget?: SortOrder
+    dressCodeTarget?: SortOrder
+    isLocked?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
-  export type AccountSumOrderByAggregateInput = {
-    expires_at?: SortOrder
-    refresh_token_expires_in?: SortOrder
+  export type MonthlyTargetSumOrderByAggregateInput = {
+    year?: SortOrder
+    month?: SortOrder
+    locTarget?: SortOrder
+    messVisitTarget?: SortOrder
+    dressCodeTarget?: SortOrder
   }
 
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type SessionCountOrderByAggregateInput = {
+  export type EmailNotificationConfigCountOrderByAggregateInput = {
     id?: SortOrder
-    sessionToken?: SortOrder
-    userId?: SortOrder
-    expires?: SortOrder
-  }
-
-  export type SessionMaxOrderByAggregateInput = {
-    id?: SortOrder
-    sessionToken?: SortOrder
-    userId?: SortOrder
-    expires?: SortOrder
-  }
-
-  export type SessionMinOrderByAggregateInput = {
-    id?: SortOrder
-    sessionToken?: SortOrder
-    userId?: SortOrder
-    expires?: SortOrder
-  }
-
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type AccountListRelationFilter = {
-    every?: AccountWhereInput
-    some?: AccountWhereInput
-    none?: AccountWhereInput
-  }
-
-  export type SessionListRelationFilter = {
-    every?: SessionWhereInput
-    some?: SessionWhereInput
-    none?: SessionWhereInput
-  }
-
-  export type PostListRelationFilter = {
-    every?: PostWhereInput
-    some?: PostWhereInput
-    none?: PostWhereInput
-  }
-
-  export type AccountOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type SessionOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type PostOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type UserCountOrderByAggregateInput = {
-    id?: SortOrder
+    code?: SortOrder
     name?: SortOrder
-    email?: SortOrder
-    emailVerified?: SortOrder
-    image?: SortOrder
+    description?: SortOrder
+    subjectTemplate?: SortOrder
+    bodyTemplate?: SortOrder
+    ccRecipients?: SortOrder
+    bccRecipients?: SortOrder
+    isActive?: SortOrder
+    updatedAt?: SortOrder
   }
 
-  export type UserMaxOrderByAggregateInput = {
+  export type EmailNotificationConfigMaxOrderByAggregateInput = {
     id?: SortOrder
+    code?: SortOrder
     name?: SortOrder
-    email?: SortOrder
-    emailVerified?: SortOrder
-    image?: SortOrder
+    description?: SortOrder
+    subjectTemplate?: SortOrder
+    bodyTemplate?: SortOrder
+    ccRecipients?: SortOrder
+    bccRecipients?: SortOrder
+    isActive?: SortOrder
+    updatedAt?: SortOrder
   }
 
-  export type UserMinOrderByAggregateInput = {
+  export type EmailNotificationConfigMinOrderByAggregateInput = {
     id?: SortOrder
+    code?: SortOrder
     name?: SortOrder
-    email?: SortOrder
-    emailVerified?: SortOrder
-    image?: SortOrder
+    description?: SortOrder
+    subjectTemplate?: SortOrder
+    bodyTemplate?: SortOrder
+    ccRecipients?: SortOrder
+    bccRecipients?: SortOrder
+    isActive?: SortOrder
+    updatedAt?: SortOrder
   }
 
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  export type EmailNotificationLogUserIdYearMonthWeekEmailTypeCompoundUniqueInput = {
+    userId: string
+    year: number
+    month: number
+    week: number
+    emailType: string
   }
 
-  export type VerificationTokenIdentifierTokenCompoundUniqueInput = {
-    identifier: string
-    token: string
+  export type EmailNotificationLogCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    week?: SortOrder
+    emailType?: SortOrder
+    toEmail?: SortOrder
+    ccEmails?: SortOrder
+    subject?: SortOrder
+    status?: SortOrder
+    sentAt?: SortOrder
+    errorMessage?: SortOrder
   }
 
-  export type VerificationTokenCountOrderByAggregateInput = {
-    identifier?: SortOrder
-    token?: SortOrder
-    expires?: SortOrder
+  export type EmailNotificationLogAvgOrderByAggregateInput = {
+    year?: SortOrder
+    month?: SortOrder
+    week?: SortOrder
   }
 
-  export type VerificationTokenMaxOrderByAggregateInput = {
-    identifier?: SortOrder
-    token?: SortOrder
-    expires?: SortOrder
+  export type EmailNotificationLogMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    week?: SortOrder
+    emailType?: SortOrder
+    toEmail?: SortOrder
+    ccEmails?: SortOrder
+    subject?: SortOrder
+    status?: SortOrder
+    sentAt?: SortOrder
+    errorMessage?: SortOrder
   }
 
-  export type VerificationTokenMinOrderByAggregateInput = {
-    identifier?: SortOrder
-    token?: SortOrder
-    expires?: SortOrder
+  export type EmailNotificationLogMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    week?: SortOrder
+    emailType?: SortOrder
+    toEmail?: SortOrder
+    ccEmails?: SortOrder
+    subject?: SortOrder
+    status?: SortOrder
+    sentAt?: SortOrder
+    errorMessage?: SortOrder
   }
 
-  export type UserCreateNestedOneWithoutPostsInput = {
-    create?: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutPostsInput
-    connect?: UserWhereUniqueInput
+  export type EmailNotificationLogSumOrderByAggregateInput = {
+    year?: SortOrder
+    month?: SortOrder
+    week?: SortOrder
+  }
+
+  export type WeeklyReportCreateNestedManyWithoutUserInput = {
+    create?: XOR<WeeklyReportCreateWithoutUserInput, WeeklyReportUncheckedCreateWithoutUserInput> | WeeklyReportCreateWithoutUserInput[] | WeeklyReportUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: WeeklyReportCreateOrConnectWithoutUserInput | WeeklyReportCreateOrConnectWithoutUserInput[]
+    createMany?: WeeklyReportCreateManyUserInputEnvelope
+    connect?: WeeklyReportWhereUniqueInput | WeeklyReportWhereUniqueInput[]
+  }
+
+  export type MonthlyTargetCreateNestedManyWithoutUserInput = {
+    create?: XOR<MonthlyTargetCreateWithoutUserInput, MonthlyTargetUncheckedCreateWithoutUserInput> | MonthlyTargetCreateWithoutUserInput[] | MonthlyTargetUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MonthlyTargetCreateOrConnectWithoutUserInput | MonthlyTargetCreateOrConnectWithoutUserInput[]
+    createMany?: MonthlyTargetCreateManyUserInputEnvelope
+    connect?: MonthlyTargetWhereUniqueInput | MonthlyTargetWhereUniqueInput[]
+  }
+
+  export type FindingHistoryCreateNestedManyWithoutUpdatedByInput = {
+    create?: XOR<FindingHistoryCreateWithoutUpdatedByInput, FindingHistoryUncheckedCreateWithoutUpdatedByInput> | FindingHistoryCreateWithoutUpdatedByInput[] | FindingHistoryUncheckedCreateWithoutUpdatedByInput[]
+    connectOrCreate?: FindingHistoryCreateOrConnectWithoutUpdatedByInput | FindingHistoryCreateOrConnectWithoutUpdatedByInput[]
+    createMany?: FindingHistoryCreateManyUpdatedByInputEnvelope
+    connect?: FindingHistoryWhereUniqueInput | FindingHistoryWhereUniqueInput[]
+  }
+
+  export type EmailNotificationLogCreateNestedManyWithoutUserInput = {
+    create?: XOR<EmailNotificationLogCreateWithoutUserInput, EmailNotificationLogUncheckedCreateWithoutUserInput> | EmailNotificationLogCreateWithoutUserInput[] | EmailNotificationLogUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: EmailNotificationLogCreateOrConnectWithoutUserInput | EmailNotificationLogCreateOrConnectWithoutUserInput[]
+    createMany?: EmailNotificationLogCreateManyUserInputEnvelope
+    connect?: EmailNotificationLogWhereUniqueInput | EmailNotificationLogWhereUniqueInput[]
+  }
+
+  export type WeeklyReportUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<WeeklyReportCreateWithoutUserInput, WeeklyReportUncheckedCreateWithoutUserInput> | WeeklyReportCreateWithoutUserInput[] | WeeklyReportUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: WeeklyReportCreateOrConnectWithoutUserInput | WeeklyReportCreateOrConnectWithoutUserInput[]
+    createMany?: WeeklyReportCreateManyUserInputEnvelope
+    connect?: WeeklyReportWhereUniqueInput | WeeklyReportWhereUniqueInput[]
+  }
+
+  export type MonthlyTargetUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<MonthlyTargetCreateWithoutUserInput, MonthlyTargetUncheckedCreateWithoutUserInput> | MonthlyTargetCreateWithoutUserInput[] | MonthlyTargetUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MonthlyTargetCreateOrConnectWithoutUserInput | MonthlyTargetCreateOrConnectWithoutUserInput[]
+    createMany?: MonthlyTargetCreateManyUserInputEnvelope
+    connect?: MonthlyTargetWhereUniqueInput | MonthlyTargetWhereUniqueInput[]
+  }
+
+  export type FindingHistoryUncheckedCreateNestedManyWithoutUpdatedByInput = {
+    create?: XOR<FindingHistoryCreateWithoutUpdatedByInput, FindingHistoryUncheckedCreateWithoutUpdatedByInput> | FindingHistoryCreateWithoutUpdatedByInput[] | FindingHistoryUncheckedCreateWithoutUpdatedByInput[]
+    connectOrCreate?: FindingHistoryCreateOrConnectWithoutUpdatedByInput | FindingHistoryCreateOrConnectWithoutUpdatedByInput[]
+    createMany?: FindingHistoryCreateManyUpdatedByInputEnvelope
+    connect?: FindingHistoryWhereUniqueInput | FindingHistoryWhereUniqueInput[]
+  }
+
+  export type EmailNotificationLogUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<EmailNotificationLogCreateWithoutUserInput, EmailNotificationLogUncheckedCreateWithoutUserInput> | EmailNotificationLogCreateWithoutUserInput[] | EmailNotificationLogUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: EmailNotificationLogCreateOrConnectWithoutUserInput | EmailNotificationLogCreateOrConnectWithoutUserInput[]
+    createMany?: EmailNotificationLogCreateManyUserInputEnvelope
+    connect?: EmailNotificationLogWhereUniqueInput | EmailNotificationLogWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
 
-  export type UserUpdateOneRequiredWithoutPostsNestedInput = {
-    create?: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutPostsInput
-    upsert?: UserUpsertWithoutPostsInput
+  export type WeeklyReportUpdateManyWithoutUserNestedInput = {
+    create?: XOR<WeeklyReportCreateWithoutUserInput, WeeklyReportUncheckedCreateWithoutUserInput> | WeeklyReportCreateWithoutUserInput[] | WeeklyReportUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: WeeklyReportCreateOrConnectWithoutUserInput | WeeklyReportCreateOrConnectWithoutUserInput[]
+    upsert?: WeeklyReportUpsertWithWhereUniqueWithoutUserInput | WeeklyReportUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: WeeklyReportCreateManyUserInputEnvelope
+    set?: WeeklyReportWhereUniqueInput | WeeklyReportWhereUniqueInput[]
+    disconnect?: WeeklyReportWhereUniqueInput | WeeklyReportWhereUniqueInput[]
+    delete?: WeeklyReportWhereUniqueInput | WeeklyReportWhereUniqueInput[]
+    connect?: WeeklyReportWhereUniqueInput | WeeklyReportWhereUniqueInput[]
+    update?: WeeklyReportUpdateWithWhereUniqueWithoutUserInput | WeeklyReportUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: WeeklyReportUpdateManyWithWhereWithoutUserInput | WeeklyReportUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: WeeklyReportScalarWhereInput | WeeklyReportScalarWhereInput[]
+  }
+
+  export type MonthlyTargetUpdateManyWithoutUserNestedInput = {
+    create?: XOR<MonthlyTargetCreateWithoutUserInput, MonthlyTargetUncheckedCreateWithoutUserInput> | MonthlyTargetCreateWithoutUserInput[] | MonthlyTargetUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MonthlyTargetCreateOrConnectWithoutUserInput | MonthlyTargetCreateOrConnectWithoutUserInput[]
+    upsert?: MonthlyTargetUpsertWithWhereUniqueWithoutUserInput | MonthlyTargetUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: MonthlyTargetCreateManyUserInputEnvelope
+    set?: MonthlyTargetWhereUniqueInput | MonthlyTargetWhereUniqueInput[]
+    disconnect?: MonthlyTargetWhereUniqueInput | MonthlyTargetWhereUniqueInput[]
+    delete?: MonthlyTargetWhereUniqueInput | MonthlyTargetWhereUniqueInput[]
+    connect?: MonthlyTargetWhereUniqueInput | MonthlyTargetWhereUniqueInput[]
+    update?: MonthlyTargetUpdateWithWhereUniqueWithoutUserInput | MonthlyTargetUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: MonthlyTargetUpdateManyWithWhereWithoutUserInput | MonthlyTargetUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: MonthlyTargetScalarWhereInput | MonthlyTargetScalarWhereInput[]
+  }
+
+  export type FindingHistoryUpdateManyWithoutUpdatedByNestedInput = {
+    create?: XOR<FindingHistoryCreateWithoutUpdatedByInput, FindingHistoryUncheckedCreateWithoutUpdatedByInput> | FindingHistoryCreateWithoutUpdatedByInput[] | FindingHistoryUncheckedCreateWithoutUpdatedByInput[]
+    connectOrCreate?: FindingHistoryCreateOrConnectWithoutUpdatedByInput | FindingHistoryCreateOrConnectWithoutUpdatedByInput[]
+    upsert?: FindingHistoryUpsertWithWhereUniqueWithoutUpdatedByInput | FindingHistoryUpsertWithWhereUniqueWithoutUpdatedByInput[]
+    createMany?: FindingHistoryCreateManyUpdatedByInputEnvelope
+    set?: FindingHistoryWhereUniqueInput | FindingHistoryWhereUniqueInput[]
+    disconnect?: FindingHistoryWhereUniqueInput | FindingHistoryWhereUniqueInput[]
+    delete?: FindingHistoryWhereUniqueInput | FindingHistoryWhereUniqueInput[]
+    connect?: FindingHistoryWhereUniqueInput | FindingHistoryWhereUniqueInput[]
+    update?: FindingHistoryUpdateWithWhereUniqueWithoutUpdatedByInput | FindingHistoryUpdateWithWhereUniqueWithoutUpdatedByInput[]
+    updateMany?: FindingHistoryUpdateManyWithWhereWithoutUpdatedByInput | FindingHistoryUpdateManyWithWhereWithoutUpdatedByInput[]
+    deleteMany?: FindingHistoryScalarWhereInput | FindingHistoryScalarWhereInput[]
+  }
+
+  export type EmailNotificationLogUpdateManyWithoutUserNestedInput = {
+    create?: XOR<EmailNotificationLogCreateWithoutUserInput, EmailNotificationLogUncheckedCreateWithoutUserInput> | EmailNotificationLogCreateWithoutUserInput[] | EmailNotificationLogUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: EmailNotificationLogCreateOrConnectWithoutUserInput | EmailNotificationLogCreateOrConnectWithoutUserInput[]
+    upsert?: EmailNotificationLogUpsertWithWhereUniqueWithoutUserInput | EmailNotificationLogUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: EmailNotificationLogCreateManyUserInputEnvelope
+    set?: EmailNotificationLogWhereUniqueInput | EmailNotificationLogWhereUniqueInput[]
+    disconnect?: EmailNotificationLogWhereUniqueInput | EmailNotificationLogWhereUniqueInput[]
+    delete?: EmailNotificationLogWhereUniqueInput | EmailNotificationLogWhereUniqueInput[]
+    connect?: EmailNotificationLogWhereUniqueInput | EmailNotificationLogWhereUniqueInput[]
+    update?: EmailNotificationLogUpdateWithWhereUniqueWithoutUserInput | EmailNotificationLogUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: EmailNotificationLogUpdateManyWithWhereWithoutUserInput | EmailNotificationLogUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: EmailNotificationLogScalarWhereInput | EmailNotificationLogScalarWhereInput[]
+  }
+
+  export type WeeklyReportUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<WeeklyReportCreateWithoutUserInput, WeeklyReportUncheckedCreateWithoutUserInput> | WeeklyReportCreateWithoutUserInput[] | WeeklyReportUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: WeeklyReportCreateOrConnectWithoutUserInput | WeeklyReportCreateOrConnectWithoutUserInput[]
+    upsert?: WeeklyReportUpsertWithWhereUniqueWithoutUserInput | WeeklyReportUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: WeeklyReportCreateManyUserInputEnvelope
+    set?: WeeklyReportWhereUniqueInput | WeeklyReportWhereUniqueInput[]
+    disconnect?: WeeklyReportWhereUniqueInput | WeeklyReportWhereUniqueInput[]
+    delete?: WeeklyReportWhereUniqueInput | WeeklyReportWhereUniqueInput[]
+    connect?: WeeklyReportWhereUniqueInput | WeeklyReportWhereUniqueInput[]
+    update?: WeeklyReportUpdateWithWhereUniqueWithoutUserInput | WeeklyReportUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: WeeklyReportUpdateManyWithWhereWithoutUserInput | WeeklyReportUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: WeeklyReportScalarWhereInput | WeeklyReportScalarWhereInput[]
+  }
+
+  export type MonthlyTargetUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<MonthlyTargetCreateWithoutUserInput, MonthlyTargetUncheckedCreateWithoutUserInput> | MonthlyTargetCreateWithoutUserInput[] | MonthlyTargetUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MonthlyTargetCreateOrConnectWithoutUserInput | MonthlyTargetCreateOrConnectWithoutUserInput[]
+    upsert?: MonthlyTargetUpsertWithWhereUniqueWithoutUserInput | MonthlyTargetUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: MonthlyTargetCreateManyUserInputEnvelope
+    set?: MonthlyTargetWhereUniqueInput | MonthlyTargetWhereUniqueInput[]
+    disconnect?: MonthlyTargetWhereUniqueInput | MonthlyTargetWhereUniqueInput[]
+    delete?: MonthlyTargetWhereUniqueInput | MonthlyTargetWhereUniqueInput[]
+    connect?: MonthlyTargetWhereUniqueInput | MonthlyTargetWhereUniqueInput[]
+    update?: MonthlyTargetUpdateWithWhereUniqueWithoutUserInput | MonthlyTargetUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: MonthlyTargetUpdateManyWithWhereWithoutUserInput | MonthlyTargetUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: MonthlyTargetScalarWhereInput | MonthlyTargetScalarWhereInput[]
+  }
+
+  export type FindingHistoryUncheckedUpdateManyWithoutUpdatedByNestedInput = {
+    create?: XOR<FindingHistoryCreateWithoutUpdatedByInput, FindingHistoryUncheckedCreateWithoutUpdatedByInput> | FindingHistoryCreateWithoutUpdatedByInput[] | FindingHistoryUncheckedCreateWithoutUpdatedByInput[]
+    connectOrCreate?: FindingHistoryCreateOrConnectWithoutUpdatedByInput | FindingHistoryCreateOrConnectWithoutUpdatedByInput[]
+    upsert?: FindingHistoryUpsertWithWhereUniqueWithoutUpdatedByInput | FindingHistoryUpsertWithWhereUniqueWithoutUpdatedByInput[]
+    createMany?: FindingHistoryCreateManyUpdatedByInputEnvelope
+    set?: FindingHistoryWhereUniqueInput | FindingHistoryWhereUniqueInput[]
+    disconnect?: FindingHistoryWhereUniqueInput | FindingHistoryWhereUniqueInput[]
+    delete?: FindingHistoryWhereUniqueInput | FindingHistoryWhereUniqueInput[]
+    connect?: FindingHistoryWhereUniqueInput | FindingHistoryWhereUniqueInput[]
+    update?: FindingHistoryUpdateWithWhereUniqueWithoutUpdatedByInput | FindingHistoryUpdateWithWhereUniqueWithoutUpdatedByInput[]
+    updateMany?: FindingHistoryUpdateManyWithWhereWithoutUpdatedByInput | FindingHistoryUpdateManyWithWhereWithoutUpdatedByInput[]
+    deleteMany?: FindingHistoryScalarWhereInput | FindingHistoryScalarWhereInput[]
+  }
+
+  export type EmailNotificationLogUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<EmailNotificationLogCreateWithoutUserInput, EmailNotificationLogUncheckedCreateWithoutUserInput> | EmailNotificationLogCreateWithoutUserInput[] | EmailNotificationLogUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: EmailNotificationLogCreateOrConnectWithoutUserInput | EmailNotificationLogCreateOrConnectWithoutUserInput[]
+    upsert?: EmailNotificationLogUpsertWithWhereUniqueWithoutUserInput | EmailNotificationLogUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: EmailNotificationLogCreateManyUserInputEnvelope
+    set?: EmailNotificationLogWhereUniqueInput | EmailNotificationLogWhereUniqueInput[]
+    disconnect?: EmailNotificationLogWhereUniqueInput | EmailNotificationLogWhereUniqueInput[]
+    delete?: EmailNotificationLogWhereUniqueInput | EmailNotificationLogWhereUniqueInput[]
+    connect?: EmailNotificationLogWhereUniqueInput | EmailNotificationLogWhereUniqueInput[]
+    update?: EmailNotificationLogUpdateWithWhereUniqueWithoutUserInput | EmailNotificationLogUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: EmailNotificationLogUpdateManyWithWhereWithoutUserInput | EmailNotificationLogUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: EmailNotificationLogScalarWhereInput | EmailNotificationLogScalarWhereInput[]
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type UserCreateNestedOneWithoutReportsInput = {
+    create?: XOR<UserCreateWithoutReportsInput, UserUncheckedCreateWithoutReportsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReportsInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPostsInput, UserUpdateWithoutPostsInput>, UserUncheckedUpdateWithoutPostsInput>
+  }
+
+  export type FindingHistoryCreateNestedManyWithoutReportInput = {
+    create?: XOR<FindingHistoryCreateWithoutReportInput, FindingHistoryUncheckedCreateWithoutReportInput> | FindingHistoryCreateWithoutReportInput[] | FindingHistoryUncheckedCreateWithoutReportInput[]
+    connectOrCreate?: FindingHistoryCreateOrConnectWithoutReportInput | FindingHistoryCreateOrConnectWithoutReportInput[]
+    createMany?: FindingHistoryCreateManyReportInputEnvelope
+    connect?: FindingHistoryWhereUniqueInput | FindingHistoryWhereUniqueInput[]
+  }
+
+  export type FindingHistoryUncheckedCreateNestedManyWithoutReportInput = {
+    create?: XOR<FindingHistoryCreateWithoutReportInput, FindingHistoryUncheckedCreateWithoutReportInput> | FindingHistoryCreateWithoutReportInput[] | FindingHistoryUncheckedCreateWithoutReportInput[]
+    connectOrCreate?: FindingHistoryCreateOrConnectWithoutReportInput | FindingHistoryCreateOrConnectWithoutReportInput[]
+    createMany?: FindingHistoryCreateManyReportInputEnvelope
+    connect?: FindingHistoryWhereUniqueInput | FindingHistoryWhereUniqueInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -7900,191 +12063,110 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type UserCreateNestedOneWithoutAccountsInput = {
-    create?: XOR<UserCreateWithoutAccountsInput, UserUncheckedCreateWithoutAccountsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutAccountsInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
   }
 
-  export type UserUpdateOneRequiredWithoutAccountsNestedInput = {
-    create?: XOR<UserCreateWithoutAccountsInput, UserUncheckedCreateWithoutAccountsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutAccountsInput
-    upsert?: UserUpsertWithoutAccountsInput
+  export type UserUpdateOneRequiredWithoutReportsNestedInput = {
+    create?: XOR<UserCreateWithoutReportsInput, UserUncheckedCreateWithoutReportsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReportsInput
+    upsert?: UserUpsertWithoutReportsInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAccountsInput, UserUpdateWithoutAccountsInput>, UserUncheckedUpdateWithoutAccountsInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutReportsInput, UserUpdateWithoutReportsInput>, UserUncheckedUpdateWithoutReportsInput>
   }
 
-  export type UserCreateNestedOneWithoutSessionsInput = {
-    create?: XOR<UserCreateWithoutSessionsInput, UserUncheckedCreateWithoutSessionsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSessionsInput
+  export type FindingHistoryUpdateManyWithoutReportNestedInput = {
+    create?: XOR<FindingHistoryCreateWithoutReportInput, FindingHistoryUncheckedCreateWithoutReportInput> | FindingHistoryCreateWithoutReportInput[] | FindingHistoryUncheckedCreateWithoutReportInput[]
+    connectOrCreate?: FindingHistoryCreateOrConnectWithoutReportInput | FindingHistoryCreateOrConnectWithoutReportInput[]
+    upsert?: FindingHistoryUpsertWithWhereUniqueWithoutReportInput | FindingHistoryUpsertWithWhereUniqueWithoutReportInput[]
+    createMany?: FindingHistoryCreateManyReportInputEnvelope
+    set?: FindingHistoryWhereUniqueInput | FindingHistoryWhereUniqueInput[]
+    disconnect?: FindingHistoryWhereUniqueInput | FindingHistoryWhereUniqueInput[]
+    delete?: FindingHistoryWhereUniqueInput | FindingHistoryWhereUniqueInput[]
+    connect?: FindingHistoryWhereUniqueInput | FindingHistoryWhereUniqueInput[]
+    update?: FindingHistoryUpdateWithWhereUniqueWithoutReportInput | FindingHistoryUpdateWithWhereUniqueWithoutReportInput[]
+    updateMany?: FindingHistoryUpdateManyWithWhereWithoutReportInput | FindingHistoryUpdateManyWithWhereWithoutReportInput[]
+    deleteMany?: FindingHistoryScalarWhereInput | FindingHistoryScalarWhereInput[]
+  }
+
+  export type FindingHistoryUncheckedUpdateManyWithoutReportNestedInput = {
+    create?: XOR<FindingHistoryCreateWithoutReportInput, FindingHistoryUncheckedCreateWithoutReportInput> | FindingHistoryCreateWithoutReportInput[] | FindingHistoryUncheckedCreateWithoutReportInput[]
+    connectOrCreate?: FindingHistoryCreateOrConnectWithoutReportInput | FindingHistoryCreateOrConnectWithoutReportInput[]
+    upsert?: FindingHistoryUpsertWithWhereUniqueWithoutReportInput | FindingHistoryUpsertWithWhereUniqueWithoutReportInput[]
+    createMany?: FindingHistoryCreateManyReportInputEnvelope
+    set?: FindingHistoryWhereUniqueInput | FindingHistoryWhereUniqueInput[]
+    disconnect?: FindingHistoryWhereUniqueInput | FindingHistoryWhereUniqueInput[]
+    delete?: FindingHistoryWhereUniqueInput | FindingHistoryWhereUniqueInput[]
+    connect?: FindingHistoryWhereUniqueInput | FindingHistoryWhereUniqueInput[]
+    update?: FindingHistoryUpdateWithWhereUniqueWithoutReportInput | FindingHistoryUpdateWithWhereUniqueWithoutReportInput[]
+    updateMany?: FindingHistoryUpdateManyWithWhereWithoutReportInput | FindingHistoryUpdateManyWithWhereWithoutReportInput[]
+    deleteMany?: FindingHistoryScalarWhereInput | FindingHistoryScalarWhereInput[]
+  }
+
+  export type WeeklyReportCreateNestedOneWithoutFindingHistoryInput = {
+    create?: XOR<WeeklyReportCreateWithoutFindingHistoryInput, WeeklyReportUncheckedCreateWithoutFindingHistoryInput>
+    connectOrCreate?: WeeklyReportCreateOrConnectWithoutFindingHistoryInput
+    connect?: WeeklyReportWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutFindingAuditsInput = {
+    create?: XOR<UserCreateWithoutFindingAuditsInput, UserUncheckedCreateWithoutFindingAuditsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFindingAuditsInput
     connect?: UserWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutSessionsNestedInput = {
-    create?: XOR<UserCreateWithoutSessionsInput, UserUncheckedCreateWithoutSessionsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSessionsInput
-    upsert?: UserUpsertWithoutSessionsInput
+  export type WeeklyReportUpdateOneRequiredWithoutFindingHistoryNestedInput = {
+    create?: XOR<WeeklyReportCreateWithoutFindingHistoryInput, WeeklyReportUncheckedCreateWithoutFindingHistoryInput>
+    connectOrCreate?: WeeklyReportCreateOrConnectWithoutFindingHistoryInput
+    upsert?: WeeklyReportUpsertWithoutFindingHistoryInput
+    connect?: WeeklyReportWhereUniqueInput
+    update?: XOR<XOR<WeeklyReportUpdateToOneWithWhereWithoutFindingHistoryInput, WeeklyReportUpdateWithoutFindingHistoryInput>, WeeklyReportUncheckedUpdateWithoutFindingHistoryInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutFindingAuditsNestedInput = {
+    create?: XOR<UserCreateWithoutFindingAuditsInput, UserUncheckedCreateWithoutFindingAuditsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFindingAuditsInput
+    upsert?: UserUpsertWithoutFindingAuditsInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSessionsInput, UserUpdateWithoutSessionsInput>, UserUncheckedUpdateWithoutSessionsInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFindingAuditsInput, UserUpdateWithoutFindingAuditsInput>, UserUncheckedUpdateWithoutFindingAuditsInput>
   }
 
-  export type AccountCreateNestedManyWithoutUserInput = {
-    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
-    createMany?: AccountCreateManyUserInputEnvelope
-    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+  export type UserCreateNestedOneWithoutTargetsInput = {
+    create?: XOR<UserCreateWithoutTargetsInput, UserUncheckedCreateWithoutTargetsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTargetsInput
+    connect?: UserWhereUniqueInput
   }
 
-  export type SessionCreateNestedManyWithoutUserInput = {
-    create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
-    createMany?: SessionCreateManyUserInputEnvelope
-    connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+  export type UserUpdateOneRequiredWithoutTargetsNestedInput = {
+    create?: XOR<UserCreateWithoutTargetsInput, UserUncheckedCreateWithoutTargetsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTargetsInput
+    upsert?: UserUpsertWithoutTargetsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTargetsInput, UserUpdateWithoutTargetsInput>, UserUncheckedUpdateWithoutTargetsInput>
   }
 
-  export type PostCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<PostCreateWithoutCreatedByInput, PostUncheckedCreateWithoutCreatedByInput> | PostCreateWithoutCreatedByInput[] | PostUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: PostCreateOrConnectWithoutCreatedByInput | PostCreateOrConnectWithoutCreatedByInput[]
-    createMany?: PostCreateManyCreatedByInputEnvelope
-    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+  export type UserCreateNestedOneWithoutEmailLogsInput = {
+    create?: XOR<UserCreateWithoutEmailLogsInput, UserUncheckedCreateWithoutEmailLogsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutEmailLogsInput
+    connect?: UserWhereUniqueInput
   }
 
-  export type AccountUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
-    createMany?: AccountCreateManyUserInputEnvelope
-    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-  }
-
-  export type SessionUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
-    createMany?: SessionCreateManyUserInputEnvelope
-    connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-  }
-
-  export type PostUncheckedCreateNestedManyWithoutCreatedByInput = {
-    create?: XOR<PostCreateWithoutCreatedByInput, PostUncheckedCreateWithoutCreatedByInput> | PostCreateWithoutCreatedByInput[] | PostUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: PostCreateOrConnectWithoutCreatedByInput | PostCreateOrConnectWithoutCreatedByInput[]
-    createMany?: PostCreateManyCreatedByInputEnvelope
-    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
-  }
-
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
-  }
-
-  export type AccountUpdateManyWithoutUserNestedInput = {
-    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
-    upsert?: AccountUpsertWithWhereUniqueWithoutUserInput | AccountUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: AccountCreateManyUserInputEnvelope
-    set?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    disconnect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    delete?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
-  }
-
-  export type SessionUpdateManyWithoutUserNestedInput = {
-    create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
-    upsert?: SessionUpsertWithWhereUniqueWithoutUserInput | SessionUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: SessionCreateManyUserInputEnvelope
-    set?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-    disconnect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-    delete?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-    connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-    update?: SessionUpdateWithWhereUniqueWithoutUserInput | SessionUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: SessionUpdateManyWithWhereWithoutUserInput | SessionUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
-  }
-
-  export type PostUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<PostCreateWithoutCreatedByInput, PostUncheckedCreateWithoutCreatedByInput> | PostCreateWithoutCreatedByInput[] | PostUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: PostCreateOrConnectWithoutCreatedByInput | PostCreateOrConnectWithoutCreatedByInput[]
-    upsert?: PostUpsertWithWhereUniqueWithoutCreatedByInput | PostUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: PostCreateManyCreatedByInputEnvelope
-    set?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    disconnect?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    delete?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    update?: PostUpdateWithWhereUniqueWithoutCreatedByInput | PostUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: PostUpdateManyWithWhereWithoutCreatedByInput | PostUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: PostScalarWhereInput | PostScalarWhereInput[]
-  }
-
-  export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
-    upsert?: AccountUpsertWithWhereUniqueWithoutUserInput | AccountUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: AccountCreateManyUserInputEnvelope
-    set?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    disconnect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    delete?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
-  }
-
-  export type SessionUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
-    upsert?: SessionUpsertWithWhereUniqueWithoutUserInput | SessionUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: SessionCreateManyUserInputEnvelope
-    set?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-    disconnect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-    delete?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-    connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-    update?: SessionUpdateWithWhereUniqueWithoutUserInput | SessionUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: SessionUpdateManyWithWhereWithoutUserInput | SessionUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
-  }
-
-  export type PostUncheckedUpdateManyWithoutCreatedByNestedInput = {
-    create?: XOR<PostCreateWithoutCreatedByInput, PostUncheckedCreateWithoutCreatedByInput> | PostCreateWithoutCreatedByInput[] | PostUncheckedCreateWithoutCreatedByInput[]
-    connectOrCreate?: PostCreateOrConnectWithoutCreatedByInput | PostCreateOrConnectWithoutCreatedByInput[]
-    upsert?: PostUpsertWithWhereUniqueWithoutCreatedByInput | PostUpsertWithWhereUniqueWithoutCreatedByInput[]
-    createMany?: PostCreateManyCreatedByInputEnvelope
-    set?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    disconnect?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    delete?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    update?: PostUpdateWithWhereUniqueWithoutCreatedByInput | PostUpdateWithWhereUniqueWithoutCreatedByInput[]
-    updateMany?: PostUpdateManyWithWhereWithoutCreatedByInput | PostUpdateManyWithWhereWithoutCreatedByInput[]
-    deleteMany?: PostScalarWhereInput | PostScalarWhereInput[]
-  }
-
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+  export type UserUpdateOneRequiredWithoutEmailLogsNestedInput = {
+    create?: XOR<UserCreateWithoutEmailLogsInput, UserUncheckedCreateWithoutEmailLogsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutEmailLogsInput
+    upsert?: UserUpsertWithoutEmailLogsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutEmailLogsInput, UserUpdateWithoutEmailLogsInput>, UserUncheckedUpdateWithoutEmailLogsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -8095,10 +12177,24 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -8106,37 +12202,10 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -8150,49 +12219,21 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -8206,508 +12247,1187 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
-  export type UserCreateWithoutPostsInput = {
+  export type WeeklyReportCreateWithoutUserInput = {
     id?: string
-    name?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    accounts?: AccountCreateNestedManyWithoutUserInput
-    sessions?: SessionCreateNestedManyWithoutUserInput
+    monthYear: string
+    year: number
+    month: number
+    week: number
+    marketVisitQty?: number
+    marketVisitFindingQty?: number
+    solvedQty?: number
+    pendingQty?: number
+    locSubmittedQty?: number
+    locFindingDayQty?: number
+    dressCodeQty?: number
+    dressCodeFindingQty?: number
+    messVisitQty?: number
+    messVisitFindingQty?: number
+    status?: string
+    deadline: Date | string
+    submittedAt?: Date | string
+    updatedAt?: Date | string
+    notes?: string | null
+    findingHistory?: FindingHistoryCreateNestedManyWithoutReportInput
   }
 
-  export type UserUncheckedCreateWithoutPostsInput = {
+  export type WeeklyReportUncheckedCreateWithoutUserInput = {
     id?: string
-    name?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    monthYear: string
+    year: number
+    month: number
+    week: number
+    marketVisitQty?: number
+    marketVisitFindingQty?: number
+    solvedQty?: number
+    pendingQty?: number
+    locSubmittedQty?: number
+    locFindingDayQty?: number
+    dressCodeQty?: number
+    dressCodeFindingQty?: number
+    messVisitQty?: number
+    messVisitFindingQty?: number
+    status?: string
+    deadline: Date | string
+    submittedAt?: Date | string
+    updatedAt?: Date | string
+    notes?: string | null
+    findingHistory?: FindingHistoryUncheckedCreateNestedManyWithoutReportInput
   }
 
-  export type UserCreateOrConnectWithoutPostsInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
+  export type WeeklyReportCreateOrConnectWithoutUserInput = {
+    where: WeeklyReportWhereUniqueInput
+    create: XOR<WeeklyReportCreateWithoutUserInput, WeeklyReportUncheckedCreateWithoutUserInput>
   }
 
-  export type UserUpsertWithoutPostsInput = {
-    update: XOR<UserUpdateWithoutPostsInput, UserUncheckedUpdateWithoutPostsInput>
-    create: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
-    where?: UserWhereInput
+  export type WeeklyReportCreateManyUserInputEnvelope = {
+    data: WeeklyReportCreateManyUserInput | WeeklyReportCreateManyUserInput[]
   }
 
-  export type UserUpdateToOneWithWhereWithoutPostsInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutPostsInput, UserUncheckedUpdateWithoutPostsInput>
-  }
-
-  export type UserUpdateWithoutPostsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    accounts?: AccountUpdateManyWithoutUserNestedInput
-    sessions?: SessionUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutPostsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserCreateWithoutAccountsInput = {
+  export type MonthlyTargetCreateWithoutUserInput = {
     id?: string
-    name?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    sessions?: SessionCreateNestedManyWithoutUserInput
-    posts?: PostCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutAccountsInput = {
-    id?: string
-    name?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    posts?: PostUncheckedCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutAccountsInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutAccountsInput, UserUncheckedCreateWithoutAccountsInput>
-  }
-
-  export type UserUpsertWithoutAccountsInput = {
-    update: XOR<UserUpdateWithoutAccountsInput, UserUncheckedUpdateWithoutAccountsInput>
-    create: XOR<UserCreateWithoutAccountsInput, UserUncheckedCreateWithoutAccountsInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutAccountsInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutAccountsInput, UserUncheckedUpdateWithoutAccountsInput>
-  }
-
-  export type UserUpdateWithoutAccountsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    sessions?: SessionUpdateManyWithoutUserNestedInput
-    posts?: PostUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutAccountsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    posts?: PostUncheckedUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type UserCreateWithoutSessionsInput = {
-    id?: string
-    name?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    accounts?: AccountCreateNestedManyWithoutUserInput
-    posts?: PostCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserUncheckedCreateWithoutSessionsInput = {
-    id?: string
-    name?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    posts?: PostUncheckedCreateNestedManyWithoutCreatedByInput
-  }
-
-  export type UserCreateOrConnectWithoutSessionsInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutSessionsInput, UserUncheckedCreateWithoutSessionsInput>
-  }
-
-  export type UserUpsertWithoutSessionsInput = {
-    update: XOR<UserUpdateWithoutSessionsInput, UserUncheckedUpdateWithoutSessionsInput>
-    create: XOR<UserCreateWithoutSessionsInput, UserUncheckedCreateWithoutSessionsInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutSessionsInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutSessionsInput, UserUncheckedUpdateWithoutSessionsInput>
-  }
-
-  export type UserUpdateWithoutSessionsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    accounts?: AccountUpdateManyWithoutUserNestedInput
-    posts?: PostUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutSessionsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    posts?: PostUncheckedUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type AccountCreateWithoutUserInput = {
-    id?: string
-    type: string
-    provider: string
-    providerAccountId: string
-    refresh_token?: string | null
-    access_token?: string | null
-    expires_at?: number | null
-    token_type?: string | null
-    scope?: string | null
-    id_token?: string | null
-    session_state?: string | null
-    refresh_token_expires_in?: number | null
-  }
-
-  export type AccountUncheckedCreateWithoutUserInput = {
-    id?: string
-    type: string
-    provider: string
-    providerAccountId: string
-    refresh_token?: string | null
-    access_token?: string | null
-    expires_at?: number | null
-    token_type?: string | null
-    scope?: string | null
-    id_token?: string | null
-    session_state?: string | null
-    refresh_token_expires_in?: number | null
-  }
-
-  export type AccountCreateOrConnectWithoutUserInput = {
-    where: AccountWhereUniqueInput
-    create: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput>
-  }
-
-  export type AccountCreateManyUserInputEnvelope = {
-    data: AccountCreateManyUserInput | AccountCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type SessionCreateWithoutUserInput = {
-    id?: string
-    sessionToken: string
-    expires: Date | string
-  }
-
-  export type SessionUncheckedCreateWithoutUserInput = {
-    id?: string
-    sessionToken: string
-    expires: Date | string
-  }
-
-  export type SessionCreateOrConnectWithoutUserInput = {
-    where: SessionWhereUniqueInput
-    create: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput>
-  }
-
-  export type SessionCreateManyUserInputEnvelope = {
-    data: SessionCreateManyUserInput | SessionCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type PostCreateWithoutCreatedByInput = {
-    name: string
+    year: number
+    month: number
+    monthYear: string
+    locTarget?: number
+    messVisitTarget?: number
+    dressCodeTarget?: number
+    isLocked?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type PostUncheckedCreateWithoutCreatedByInput = {
-    id?: number
-    name: string
+  export type MonthlyTargetUncheckedCreateWithoutUserInput = {
+    id?: string
+    year: number
+    month: number
+    monthYear: string
+    locTarget?: number
+    messVisitTarget?: number
+    dressCodeTarget?: number
+    isLocked?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type PostCreateOrConnectWithoutCreatedByInput = {
-    where: PostWhereUniqueInput
-    create: XOR<PostCreateWithoutCreatedByInput, PostUncheckedCreateWithoutCreatedByInput>
+  export type MonthlyTargetCreateOrConnectWithoutUserInput = {
+    where: MonthlyTargetWhereUniqueInput
+    create: XOR<MonthlyTargetCreateWithoutUserInput, MonthlyTargetUncheckedCreateWithoutUserInput>
   }
 
-  export type PostCreateManyCreatedByInputEnvelope = {
-    data: PostCreateManyCreatedByInput | PostCreateManyCreatedByInput[]
-    skipDuplicates?: boolean
+  export type MonthlyTargetCreateManyUserInputEnvelope = {
+    data: MonthlyTargetCreateManyUserInput | MonthlyTargetCreateManyUserInput[]
   }
 
-  export type AccountUpsertWithWhereUniqueWithoutUserInput = {
-    where: AccountWhereUniqueInput
-    update: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
-    create: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput>
-  }
-
-  export type AccountUpdateWithWhereUniqueWithoutUserInput = {
-    where: AccountWhereUniqueInput
-    data: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
-  }
-
-  export type AccountUpdateManyWithWhereWithoutUserInput = {
-    where: AccountScalarWhereInput
-    data: XOR<AccountUpdateManyMutationInput, AccountUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type AccountScalarWhereInput = {
-    AND?: AccountScalarWhereInput | AccountScalarWhereInput[]
-    OR?: AccountScalarWhereInput[]
-    NOT?: AccountScalarWhereInput | AccountScalarWhereInput[]
-    id?: StringFilter<"Account"> | string
-    userId?: StringFilter<"Account"> | string
-    type?: StringFilter<"Account"> | string
-    provider?: StringFilter<"Account"> | string
-    providerAccountId?: StringFilter<"Account"> | string
-    refresh_token?: StringNullableFilter<"Account"> | string | null
-    access_token?: StringNullableFilter<"Account"> | string | null
-    expires_at?: IntNullableFilter<"Account"> | number | null
-    token_type?: StringNullableFilter<"Account"> | string | null
-    scope?: StringNullableFilter<"Account"> | string | null
-    id_token?: StringNullableFilter<"Account"> | string | null
-    session_state?: StringNullableFilter<"Account"> | string | null
-    refresh_token_expires_in?: IntNullableFilter<"Account"> | number | null
-  }
-
-  export type SessionUpsertWithWhereUniqueWithoutUserInput = {
-    where: SessionWhereUniqueInput
-    update: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
-    create: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput>
-  }
-
-  export type SessionUpdateWithWhereUniqueWithoutUserInput = {
-    where: SessionWhereUniqueInput
-    data: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
-  }
-
-  export type SessionUpdateManyWithWhereWithoutUserInput = {
-    where: SessionScalarWhereInput
-    data: XOR<SessionUpdateManyMutationInput, SessionUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type SessionScalarWhereInput = {
-    AND?: SessionScalarWhereInput | SessionScalarWhereInput[]
-    OR?: SessionScalarWhereInput[]
-    NOT?: SessionScalarWhereInput | SessionScalarWhereInput[]
-    id?: StringFilter<"Session"> | string
-    sessionToken?: StringFilter<"Session"> | string
-    userId?: StringFilter<"Session"> | string
-    expires?: DateTimeFilter<"Session"> | Date | string
-  }
-
-  export type PostUpsertWithWhereUniqueWithoutCreatedByInput = {
-    where: PostWhereUniqueInput
-    update: XOR<PostUpdateWithoutCreatedByInput, PostUncheckedUpdateWithoutCreatedByInput>
-    create: XOR<PostCreateWithoutCreatedByInput, PostUncheckedCreateWithoutCreatedByInput>
-  }
-
-  export type PostUpdateWithWhereUniqueWithoutCreatedByInput = {
-    where: PostWhereUniqueInput
-    data: XOR<PostUpdateWithoutCreatedByInput, PostUncheckedUpdateWithoutCreatedByInput>
-  }
-
-  export type PostUpdateManyWithWhereWithoutCreatedByInput = {
-    where: PostScalarWhereInput
-    data: XOR<PostUpdateManyMutationInput, PostUncheckedUpdateManyWithoutCreatedByInput>
-  }
-
-  export type PostScalarWhereInput = {
-    AND?: PostScalarWhereInput | PostScalarWhereInput[]
-    OR?: PostScalarWhereInput[]
-    NOT?: PostScalarWhereInput | PostScalarWhereInput[]
-    id?: IntFilter<"Post"> | number
-    name?: StringFilter<"Post"> | string
-    createdAt?: DateTimeFilter<"Post"> | Date | string
-    updatedAt?: DateTimeFilter<"Post"> | Date | string
-    createdById?: StringFilter<"Post"> | string
-  }
-
-  export type AccountCreateManyUserInput = {
+  export type FindingHistoryCreateWithoutUpdatedByInput = {
     id?: string
-    type: string
-    provider: string
-    providerAccountId: string
-    refresh_token?: string | null
-    access_token?: string | null
-    expires_at?: number | null
-    token_type?: string | null
-    scope?: string | null
-    id_token?: string | null
-    session_state?: string | null
-    refresh_token_expires_in?: number | null
+    previousSolved: number
+    newSolved: number
+    previousPending: number
+    newPending: number
+    remark?: string | null
+    createdAt?: Date | string
+    report: WeeklyReportCreateNestedOneWithoutFindingHistoryInput
   }
 
-  export type SessionCreateManyUserInput = {
+  export type FindingHistoryUncheckedCreateWithoutUpdatedByInput = {
     id?: string
-    sessionToken: string
-    expires: Date | string
+    reportId: string
+    previousSolved: number
+    newSolved: number
+    previousPending: number
+    newPending: number
+    remark?: string | null
+    createdAt?: Date | string
   }
 
-  export type PostCreateManyCreatedByInput = {
-    id?: number
+  export type FindingHistoryCreateOrConnectWithoutUpdatedByInput = {
+    where: FindingHistoryWhereUniqueInput
+    create: XOR<FindingHistoryCreateWithoutUpdatedByInput, FindingHistoryUncheckedCreateWithoutUpdatedByInput>
+  }
+
+  export type FindingHistoryCreateManyUpdatedByInputEnvelope = {
+    data: FindingHistoryCreateManyUpdatedByInput | FindingHistoryCreateManyUpdatedByInput[]
+  }
+
+  export type EmailNotificationLogCreateWithoutUserInput = {
+    id?: string
+    year: number
+    month: number
+    week: number
+    emailType: string
+    toEmail: string
+    ccEmails?: string | null
+    subject: string
+    status?: string
+    sentAt?: Date | string
+    errorMessage?: string | null
+  }
+
+  export type EmailNotificationLogUncheckedCreateWithoutUserInput = {
+    id?: string
+    year: number
+    month: number
+    week: number
+    emailType: string
+    toEmail: string
+    ccEmails?: string | null
+    subject: string
+    status?: string
+    sentAt?: Date | string
+    errorMessage?: string | null
+  }
+
+  export type EmailNotificationLogCreateOrConnectWithoutUserInput = {
+    where: EmailNotificationLogWhereUniqueInput
+    create: XOR<EmailNotificationLogCreateWithoutUserInput, EmailNotificationLogUncheckedCreateWithoutUserInput>
+  }
+
+  export type EmailNotificationLogCreateManyUserInputEnvelope = {
+    data: EmailNotificationLogCreateManyUserInput | EmailNotificationLogCreateManyUserInput[]
+  }
+
+  export type WeeklyReportUpsertWithWhereUniqueWithoutUserInput = {
+    where: WeeklyReportWhereUniqueInput
+    update: XOR<WeeklyReportUpdateWithoutUserInput, WeeklyReportUncheckedUpdateWithoutUserInput>
+    create: XOR<WeeklyReportCreateWithoutUserInput, WeeklyReportUncheckedCreateWithoutUserInput>
+  }
+
+  export type WeeklyReportUpdateWithWhereUniqueWithoutUserInput = {
+    where: WeeklyReportWhereUniqueInput
+    data: XOR<WeeklyReportUpdateWithoutUserInput, WeeklyReportUncheckedUpdateWithoutUserInput>
+  }
+
+  export type WeeklyReportUpdateManyWithWhereWithoutUserInput = {
+    where: WeeklyReportScalarWhereInput
+    data: XOR<WeeklyReportUpdateManyMutationInput, WeeklyReportUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type WeeklyReportScalarWhereInput = {
+    AND?: WeeklyReportScalarWhereInput | WeeklyReportScalarWhereInput[]
+    OR?: WeeklyReportScalarWhereInput[]
+    NOT?: WeeklyReportScalarWhereInput | WeeklyReportScalarWhereInput[]
+    id?: StringFilter<"WeeklyReport"> | string
+    userId?: StringFilter<"WeeklyReport"> | string
+    monthYear?: StringFilter<"WeeklyReport"> | string
+    year?: IntFilter<"WeeklyReport"> | number
+    month?: IntFilter<"WeeklyReport"> | number
+    week?: IntFilter<"WeeklyReport"> | number
+    marketVisitQty?: IntFilter<"WeeklyReport"> | number
+    marketVisitFindingQty?: IntFilter<"WeeklyReport"> | number
+    solvedQty?: IntFilter<"WeeklyReport"> | number
+    pendingQty?: IntFilter<"WeeklyReport"> | number
+    locSubmittedQty?: IntFilter<"WeeklyReport"> | number
+    locFindingDayQty?: FloatFilter<"WeeklyReport"> | number
+    dressCodeQty?: IntFilter<"WeeklyReport"> | number
+    dressCodeFindingQty?: IntFilter<"WeeklyReport"> | number
+    messVisitQty?: IntFilter<"WeeklyReport"> | number
+    messVisitFindingQty?: IntFilter<"WeeklyReport"> | number
+    status?: StringFilter<"WeeklyReport"> | string
+    deadline?: DateTimeFilter<"WeeklyReport"> | Date | string
+    submittedAt?: DateTimeFilter<"WeeklyReport"> | Date | string
+    updatedAt?: DateTimeFilter<"WeeklyReport"> | Date | string
+    notes?: StringNullableFilter<"WeeklyReport"> | string | null
+  }
+
+  export type MonthlyTargetUpsertWithWhereUniqueWithoutUserInput = {
+    where: MonthlyTargetWhereUniqueInput
+    update: XOR<MonthlyTargetUpdateWithoutUserInput, MonthlyTargetUncheckedUpdateWithoutUserInput>
+    create: XOR<MonthlyTargetCreateWithoutUserInput, MonthlyTargetUncheckedCreateWithoutUserInput>
+  }
+
+  export type MonthlyTargetUpdateWithWhereUniqueWithoutUserInput = {
+    where: MonthlyTargetWhereUniqueInput
+    data: XOR<MonthlyTargetUpdateWithoutUserInput, MonthlyTargetUncheckedUpdateWithoutUserInput>
+  }
+
+  export type MonthlyTargetUpdateManyWithWhereWithoutUserInput = {
+    where: MonthlyTargetScalarWhereInput
+    data: XOR<MonthlyTargetUpdateManyMutationInput, MonthlyTargetUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type MonthlyTargetScalarWhereInput = {
+    AND?: MonthlyTargetScalarWhereInput | MonthlyTargetScalarWhereInput[]
+    OR?: MonthlyTargetScalarWhereInput[]
+    NOT?: MonthlyTargetScalarWhereInput | MonthlyTargetScalarWhereInput[]
+    id?: StringFilter<"MonthlyTarget"> | string
+    userId?: StringFilter<"MonthlyTarget"> | string
+    year?: IntFilter<"MonthlyTarget"> | number
+    month?: IntFilter<"MonthlyTarget"> | number
+    monthYear?: StringFilter<"MonthlyTarget"> | string
+    locTarget?: IntFilter<"MonthlyTarget"> | number
+    messVisitTarget?: IntFilter<"MonthlyTarget"> | number
+    dressCodeTarget?: IntFilter<"MonthlyTarget"> | number
+    isLocked?: BoolFilter<"MonthlyTarget"> | boolean
+    createdAt?: DateTimeFilter<"MonthlyTarget"> | Date | string
+    updatedAt?: DateTimeFilter<"MonthlyTarget"> | Date | string
+  }
+
+  export type FindingHistoryUpsertWithWhereUniqueWithoutUpdatedByInput = {
+    where: FindingHistoryWhereUniqueInput
+    update: XOR<FindingHistoryUpdateWithoutUpdatedByInput, FindingHistoryUncheckedUpdateWithoutUpdatedByInput>
+    create: XOR<FindingHistoryCreateWithoutUpdatedByInput, FindingHistoryUncheckedCreateWithoutUpdatedByInput>
+  }
+
+  export type FindingHistoryUpdateWithWhereUniqueWithoutUpdatedByInput = {
+    where: FindingHistoryWhereUniqueInput
+    data: XOR<FindingHistoryUpdateWithoutUpdatedByInput, FindingHistoryUncheckedUpdateWithoutUpdatedByInput>
+  }
+
+  export type FindingHistoryUpdateManyWithWhereWithoutUpdatedByInput = {
+    where: FindingHistoryScalarWhereInput
+    data: XOR<FindingHistoryUpdateManyMutationInput, FindingHistoryUncheckedUpdateManyWithoutUpdatedByInput>
+  }
+
+  export type FindingHistoryScalarWhereInput = {
+    AND?: FindingHistoryScalarWhereInput | FindingHistoryScalarWhereInput[]
+    OR?: FindingHistoryScalarWhereInput[]
+    NOT?: FindingHistoryScalarWhereInput | FindingHistoryScalarWhereInput[]
+    id?: StringFilter<"FindingHistory"> | string
+    reportId?: StringFilter<"FindingHistory"> | string
+    updatedById?: StringFilter<"FindingHistory"> | string
+    previousSolved?: IntFilter<"FindingHistory"> | number
+    newSolved?: IntFilter<"FindingHistory"> | number
+    previousPending?: IntFilter<"FindingHistory"> | number
+    newPending?: IntFilter<"FindingHistory"> | number
+    remark?: StringNullableFilter<"FindingHistory"> | string | null
+    createdAt?: DateTimeFilter<"FindingHistory"> | Date | string
+  }
+
+  export type EmailNotificationLogUpsertWithWhereUniqueWithoutUserInput = {
+    where: EmailNotificationLogWhereUniqueInput
+    update: XOR<EmailNotificationLogUpdateWithoutUserInput, EmailNotificationLogUncheckedUpdateWithoutUserInput>
+    create: XOR<EmailNotificationLogCreateWithoutUserInput, EmailNotificationLogUncheckedCreateWithoutUserInput>
+  }
+
+  export type EmailNotificationLogUpdateWithWhereUniqueWithoutUserInput = {
+    where: EmailNotificationLogWhereUniqueInput
+    data: XOR<EmailNotificationLogUpdateWithoutUserInput, EmailNotificationLogUncheckedUpdateWithoutUserInput>
+  }
+
+  export type EmailNotificationLogUpdateManyWithWhereWithoutUserInput = {
+    where: EmailNotificationLogScalarWhereInput
+    data: XOR<EmailNotificationLogUpdateManyMutationInput, EmailNotificationLogUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type EmailNotificationLogScalarWhereInput = {
+    AND?: EmailNotificationLogScalarWhereInput | EmailNotificationLogScalarWhereInput[]
+    OR?: EmailNotificationLogScalarWhereInput[]
+    NOT?: EmailNotificationLogScalarWhereInput | EmailNotificationLogScalarWhereInput[]
+    id?: StringFilter<"EmailNotificationLog"> | string
+    userId?: StringFilter<"EmailNotificationLog"> | string
+    year?: IntFilter<"EmailNotificationLog"> | number
+    month?: IntFilter<"EmailNotificationLog"> | number
+    week?: IntFilter<"EmailNotificationLog"> | number
+    emailType?: StringFilter<"EmailNotificationLog"> | string
+    toEmail?: StringFilter<"EmailNotificationLog"> | string
+    ccEmails?: StringNullableFilter<"EmailNotificationLog"> | string | null
+    subject?: StringFilter<"EmailNotificationLog"> | string
+    status?: StringFilter<"EmailNotificationLog"> | string
+    sentAt?: DateTimeFilter<"EmailNotificationLog"> | Date | string
+    errorMessage?: StringNullableFilter<"EmailNotificationLog"> | string | null
+  }
+
+  export type UserCreateWithoutReportsInput = {
+    id?: string
+    staffId: string
     name: string
+    designation: string
+    zone: string
+    email: string
+    mobile?: string | null
+    role?: string
+    status?: string
+    password?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    targets?: MonthlyTargetCreateNestedManyWithoutUserInput
+    findingAudits?: FindingHistoryCreateNestedManyWithoutUpdatedByInput
+    emailLogs?: EmailNotificationLogCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutReportsInput = {
+    id?: string
+    staffId: string
+    name: string
+    designation: string
+    zone: string
+    email: string
+    mobile?: string | null
+    role?: string
+    status?: string
+    password?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    targets?: MonthlyTargetUncheckedCreateNestedManyWithoutUserInput
+    findingAudits?: FindingHistoryUncheckedCreateNestedManyWithoutUpdatedByInput
+    emailLogs?: EmailNotificationLogUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutReportsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutReportsInput, UserUncheckedCreateWithoutReportsInput>
+  }
+
+  export type FindingHistoryCreateWithoutReportInput = {
+    id?: string
+    previousSolved: number
+    newSolved: number
+    previousPending: number
+    newPending: number
+    remark?: string | null
+    createdAt?: Date | string
+    updatedBy: UserCreateNestedOneWithoutFindingAuditsInput
+  }
+
+  export type FindingHistoryUncheckedCreateWithoutReportInput = {
+    id?: string
+    updatedById: string
+    previousSolved: number
+    newSolved: number
+    previousPending: number
+    newPending: number
+    remark?: string | null
+    createdAt?: Date | string
+  }
+
+  export type FindingHistoryCreateOrConnectWithoutReportInput = {
+    where: FindingHistoryWhereUniqueInput
+    create: XOR<FindingHistoryCreateWithoutReportInput, FindingHistoryUncheckedCreateWithoutReportInput>
+  }
+
+  export type FindingHistoryCreateManyReportInputEnvelope = {
+    data: FindingHistoryCreateManyReportInput | FindingHistoryCreateManyReportInput[]
+  }
+
+  export type UserUpsertWithoutReportsInput = {
+    update: XOR<UserUpdateWithoutReportsInput, UserUncheckedUpdateWithoutReportsInput>
+    create: XOR<UserCreateWithoutReportsInput, UserUncheckedCreateWithoutReportsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutReportsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutReportsInput, UserUncheckedUpdateWithoutReportsInput>
+  }
+
+  export type UserUpdateWithoutReportsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    staffId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    designation?: StringFieldUpdateOperationsInput | string
+    zone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    targets?: MonthlyTargetUpdateManyWithoutUserNestedInput
+    findingAudits?: FindingHistoryUpdateManyWithoutUpdatedByNestedInput
+    emailLogs?: EmailNotificationLogUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutReportsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    staffId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    designation?: StringFieldUpdateOperationsInput | string
+    zone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    targets?: MonthlyTargetUncheckedUpdateManyWithoutUserNestedInput
+    findingAudits?: FindingHistoryUncheckedUpdateManyWithoutUpdatedByNestedInput
+    emailLogs?: EmailNotificationLogUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type FindingHistoryUpsertWithWhereUniqueWithoutReportInput = {
+    where: FindingHistoryWhereUniqueInput
+    update: XOR<FindingHistoryUpdateWithoutReportInput, FindingHistoryUncheckedUpdateWithoutReportInput>
+    create: XOR<FindingHistoryCreateWithoutReportInput, FindingHistoryUncheckedCreateWithoutReportInput>
+  }
+
+  export type FindingHistoryUpdateWithWhereUniqueWithoutReportInput = {
+    where: FindingHistoryWhereUniqueInput
+    data: XOR<FindingHistoryUpdateWithoutReportInput, FindingHistoryUncheckedUpdateWithoutReportInput>
+  }
+
+  export type FindingHistoryUpdateManyWithWhereWithoutReportInput = {
+    where: FindingHistoryScalarWhereInput
+    data: XOR<FindingHistoryUpdateManyMutationInput, FindingHistoryUncheckedUpdateManyWithoutReportInput>
+  }
+
+  export type WeeklyReportCreateWithoutFindingHistoryInput = {
+    id?: string
+    monthYear: string
+    year: number
+    month: number
+    week: number
+    marketVisitQty?: number
+    marketVisitFindingQty?: number
+    solvedQty?: number
+    pendingQty?: number
+    locSubmittedQty?: number
+    locFindingDayQty?: number
+    dressCodeQty?: number
+    dressCodeFindingQty?: number
+    messVisitQty?: number
+    messVisitFindingQty?: number
+    status?: string
+    deadline: Date | string
+    submittedAt?: Date | string
+    updatedAt?: Date | string
+    notes?: string | null
+    user: UserCreateNestedOneWithoutReportsInput
+  }
+
+  export type WeeklyReportUncheckedCreateWithoutFindingHistoryInput = {
+    id?: string
+    userId: string
+    monthYear: string
+    year: number
+    month: number
+    week: number
+    marketVisitQty?: number
+    marketVisitFindingQty?: number
+    solvedQty?: number
+    pendingQty?: number
+    locSubmittedQty?: number
+    locFindingDayQty?: number
+    dressCodeQty?: number
+    dressCodeFindingQty?: number
+    messVisitQty?: number
+    messVisitFindingQty?: number
+    status?: string
+    deadline: Date | string
+    submittedAt?: Date | string
+    updatedAt?: Date | string
+    notes?: string | null
+  }
+
+  export type WeeklyReportCreateOrConnectWithoutFindingHistoryInput = {
+    where: WeeklyReportWhereUniqueInput
+    create: XOR<WeeklyReportCreateWithoutFindingHistoryInput, WeeklyReportUncheckedCreateWithoutFindingHistoryInput>
+  }
+
+  export type UserCreateWithoutFindingAuditsInput = {
+    id?: string
+    staffId: string
+    name: string
+    designation: string
+    zone: string
+    email: string
+    mobile?: string | null
+    role?: string
+    status?: string
+    password?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    reports?: WeeklyReportCreateNestedManyWithoutUserInput
+    targets?: MonthlyTargetCreateNestedManyWithoutUserInput
+    emailLogs?: EmailNotificationLogCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutFindingAuditsInput = {
+    id?: string
+    staffId: string
+    name: string
+    designation: string
+    zone: string
+    email: string
+    mobile?: string | null
+    role?: string
+    status?: string
+    password?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    reports?: WeeklyReportUncheckedCreateNestedManyWithoutUserInput
+    targets?: MonthlyTargetUncheckedCreateNestedManyWithoutUserInput
+    emailLogs?: EmailNotificationLogUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutFindingAuditsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutFindingAuditsInput, UserUncheckedCreateWithoutFindingAuditsInput>
+  }
+
+  export type WeeklyReportUpsertWithoutFindingHistoryInput = {
+    update: XOR<WeeklyReportUpdateWithoutFindingHistoryInput, WeeklyReportUncheckedUpdateWithoutFindingHistoryInput>
+    create: XOR<WeeklyReportCreateWithoutFindingHistoryInput, WeeklyReportUncheckedCreateWithoutFindingHistoryInput>
+    where?: WeeklyReportWhereInput
+  }
+
+  export type WeeklyReportUpdateToOneWithWhereWithoutFindingHistoryInput = {
+    where?: WeeklyReportWhereInput
+    data: XOR<WeeklyReportUpdateWithoutFindingHistoryInput, WeeklyReportUncheckedUpdateWithoutFindingHistoryInput>
+  }
+
+  export type WeeklyReportUpdateWithoutFindingHistoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    monthYear?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    week?: IntFieldUpdateOperationsInput | number
+    marketVisitQty?: IntFieldUpdateOperationsInput | number
+    marketVisitFindingQty?: IntFieldUpdateOperationsInput | number
+    solvedQty?: IntFieldUpdateOperationsInput | number
+    pendingQty?: IntFieldUpdateOperationsInput | number
+    locSubmittedQty?: IntFieldUpdateOperationsInput | number
+    locFindingDayQty?: FloatFieldUpdateOperationsInput | number
+    dressCodeQty?: IntFieldUpdateOperationsInput | number
+    dressCodeFindingQty?: IntFieldUpdateOperationsInput | number
+    messVisitQty?: IntFieldUpdateOperationsInput | number
+    messVisitFindingQty?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    deadline?: DateTimeFieldUpdateOperationsInput | Date | string
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    user?: UserUpdateOneRequiredWithoutReportsNestedInput
+  }
+
+  export type WeeklyReportUncheckedUpdateWithoutFindingHistoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    monthYear?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    week?: IntFieldUpdateOperationsInput | number
+    marketVisitQty?: IntFieldUpdateOperationsInput | number
+    marketVisitFindingQty?: IntFieldUpdateOperationsInput | number
+    solvedQty?: IntFieldUpdateOperationsInput | number
+    pendingQty?: IntFieldUpdateOperationsInput | number
+    locSubmittedQty?: IntFieldUpdateOperationsInput | number
+    locFindingDayQty?: FloatFieldUpdateOperationsInput | number
+    dressCodeQty?: IntFieldUpdateOperationsInput | number
+    dressCodeFindingQty?: IntFieldUpdateOperationsInput | number
+    messVisitQty?: IntFieldUpdateOperationsInput | number
+    messVisitFindingQty?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    deadline?: DateTimeFieldUpdateOperationsInput | Date | string
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type UserUpsertWithoutFindingAuditsInput = {
+    update: XOR<UserUpdateWithoutFindingAuditsInput, UserUncheckedUpdateWithoutFindingAuditsInput>
+    create: XOR<UserCreateWithoutFindingAuditsInput, UserUncheckedCreateWithoutFindingAuditsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutFindingAuditsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutFindingAuditsInput, UserUncheckedUpdateWithoutFindingAuditsInput>
+  }
+
+  export type UserUpdateWithoutFindingAuditsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    staffId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    designation?: StringFieldUpdateOperationsInput | string
+    zone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reports?: WeeklyReportUpdateManyWithoutUserNestedInput
+    targets?: MonthlyTargetUpdateManyWithoutUserNestedInput
+    emailLogs?: EmailNotificationLogUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutFindingAuditsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    staffId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    designation?: StringFieldUpdateOperationsInput | string
+    zone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reports?: WeeklyReportUncheckedUpdateManyWithoutUserNestedInput
+    targets?: MonthlyTargetUncheckedUpdateManyWithoutUserNestedInput
+    emailLogs?: EmailNotificationLogUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutTargetsInput = {
+    id?: string
+    staffId: string
+    name: string
+    designation: string
+    zone: string
+    email: string
+    mobile?: string | null
+    role?: string
+    status?: string
+    password?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    reports?: WeeklyReportCreateNestedManyWithoutUserInput
+    findingAudits?: FindingHistoryCreateNestedManyWithoutUpdatedByInput
+    emailLogs?: EmailNotificationLogCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutTargetsInput = {
+    id?: string
+    staffId: string
+    name: string
+    designation: string
+    zone: string
+    email: string
+    mobile?: string | null
+    role?: string
+    status?: string
+    password?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    reports?: WeeklyReportUncheckedCreateNestedManyWithoutUserInput
+    findingAudits?: FindingHistoryUncheckedCreateNestedManyWithoutUpdatedByInput
+    emailLogs?: EmailNotificationLogUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutTargetsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutTargetsInput, UserUncheckedCreateWithoutTargetsInput>
+  }
+
+  export type UserUpsertWithoutTargetsInput = {
+    update: XOR<UserUpdateWithoutTargetsInput, UserUncheckedUpdateWithoutTargetsInput>
+    create: XOR<UserCreateWithoutTargetsInput, UserUncheckedCreateWithoutTargetsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutTargetsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutTargetsInput, UserUncheckedUpdateWithoutTargetsInput>
+  }
+
+  export type UserUpdateWithoutTargetsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    staffId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    designation?: StringFieldUpdateOperationsInput | string
+    zone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reports?: WeeklyReportUpdateManyWithoutUserNestedInput
+    findingAudits?: FindingHistoryUpdateManyWithoutUpdatedByNestedInput
+    emailLogs?: EmailNotificationLogUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutTargetsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    staffId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    designation?: StringFieldUpdateOperationsInput | string
+    zone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reports?: WeeklyReportUncheckedUpdateManyWithoutUserNestedInput
+    findingAudits?: FindingHistoryUncheckedUpdateManyWithoutUpdatedByNestedInput
+    emailLogs?: EmailNotificationLogUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutEmailLogsInput = {
+    id?: string
+    staffId: string
+    name: string
+    designation: string
+    zone: string
+    email: string
+    mobile?: string | null
+    role?: string
+    status?: string
+    password?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    reports?: WeeklyReportCreateNestedManyWithoutUserInput
+    targets?: MonthlyTargetCreateNestedManyWithoutUserInput
+    findingAudits?: FindingHistoryCreateNestedManyWithoutUpdatedByInput
+  }
+
+  export type UserUncheckedCreateWithoutEmailLogsInput = {
+    id?: string
+    staffId: string
+    name: string
+    designation: string
+    zone: string
+    email: string
+    mobile?: string | null
+    role?: string
+    status?: string
+    password?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    reports?: WeeklyReportUncheckedCreateNestedManyWithoutUserInput
+    targets?: MonthlyTargetUncheckedCreateNestedManyWithoutUserInput
+    findingAudits?: FindingHistoryUncheckedCreateNestedManyWithoutUpdatedByInput
+  }
+
+  export type UserCreateOrConnectWithoutEmailLogsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutEmailLogsInput, UserUncheckedCreateWithoutEmailLogsInput>
+  }
+
+  export type UserUpsertWithoutEmailLogsInput = {
+    update: XOR<UserUpdateWithoutEmailLogsInput, UserUncheckedUpdateWithoutEmailLogsInput>
+    create: XOR<UserCreateWithoutEmailLogsInput, UserUncheckedCreateWithoutEmailLogsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutEmailLogsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutEmailLogsInput, UserUncheckedUpdateWithoutEmailLogsInput>
+  }
+
+  export type UserUpdateWithoutEmailLogsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    staffId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    designation?: StringFieldUpdateOperationsInput | string
+    zone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reports?: WeeklyReportUpdateManyWithoutUserNestedInput
+    targets?: MonthlyTargetUpdateManyWithoutUserNestedInput
+    findingAudits?: FindingHistoryUpdateManyWithoutUpdatedByNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutEmailLogsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    staffId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    designation?: StringFieldUpdateOperationsInput | string
+    zone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reports?: WeeklyReportUncheckedUpdateManyWithoutUserNestedInput
+    targets?: MonthlyTargetUncheckedUpdateManyWithoutUserNestedInput
+    findingAudits?: FindingHistoryUncheckedUpdateManyWithoutUpdatedByNestedInput
+  }
+
+  export type WeeklyReportCreateManyUserInput = {
+    id?: string
+    monthYear: string
+    year: number
+    month: number
+    week: number
+    marketVisitQty?: number
+    marketVisitFindingQty?: number
+    solvedQty?: number
+    pendingQty?: number
+    locSubmittedQty?: number
+    locFindingDayQty?: number
+    dressCodeQty?: number
+    dressCodeFindingQty?: number
+    messVisitQty?: number
+    messVisitFindingQty?: number
+    status?: string
+    deadline: Date | string
+    submittedAt?: Date | string
+    updatedAt?: Date | string
+    notes?: string | null
+  }
+
+  export type MonthlyTargetCreateManyUserInput = {
+    id?: string
+    year: number
+    month: number
+    monthYear: string
+    locTarget?: number
+    messVisitTarget?: number
+    dressCodeTarget?: number
+    isLocked?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type AccountUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    provider?: StringFieldUpdateOperationsInput | string
-    providerAccountId?: StringFieldUpdateOperationsInput | string
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
-    access_token?: NullableStringFieldUpdateOperationsInput | string | null
-    expires_at?: NullableIntFieldUpdateOperationsInput | number | null
-    token_type?: NullableStringFieldUpdateOperationsInput | string | null
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
-    id_token?: NullableStringFieldUpdateOperationsInput | string | null
-    session_state?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+  export type FindingHistoryCreateManyUpdatedByInput = {
+    id?: string
+    reportId: string
+    previousSolved: number
+    newSolved: number
+    previousPending: number
+    newPending: number
+    remark?: string | null
+    createdAt?: Date | string
   }
 
-  export type AccountUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    provider?: StringFieldUpdateOperationsInput | string
-    providerAccountId?: StringFieldUpdateOperationsInput | string
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
-    access_token?: NullableStringFieldUpdateOperationsInput | string | null
-    expires_at?: NullableIntFieldUpdateOperationsInput | number | null
-    token_type?: NullableStringFieldUpdateOperationsInput | string | null
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
-    id_token?: NullableStringFieldUpdateOperationsInput | string | null
-    session_state?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+  export type EmailNotificationLogCreateManyUserInput = {
+    id?: string
+    year: number
+    month: number
+    week: number
+    emailType: string
+    toEmail: string
+    ccEmails?: string | null
+    subject: string
+    status?: string
+    sentAt?: Date | string
+    errorMessage?: string | null
   }
 
-  export type AccountUncheckedUpdateManyWithoutUserInput = {
+  export type WeeklyReportUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    provider?: StringFieldUpdateOperationsInput | string
-    providerAccountId?: StringFieldUpdateOperationsInput | string
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
-    access_token?: NullableStringFieldUpdateOperationsInput | string | null
-    expires_at?: NullableIntFieldUpdateOperationsInput | number | null
-    token_type?: NullableStringFieldUpdateOperationsInput | string | null
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
-    id_token?: NullableStringFieldUpdateOperationsInput | string | null
-    session_state?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    monthYear?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    week?: IntFieldUpdateOperationsInput | number
+    marketVisitQty?: IntFieldUpdateOperationsInput | number
+    marketVisitFindingQty?: IntFieldUpdateOperationsInput | number
+    solvedQty?: IntFieldUpdateOperationsInput | number
+    pendingQty?: IntFieldUpdateOperationsInput | number
+    locSubmittedQty?: IntFieldUpdateOperationsInput | number
+    locFindingDayQty?: FloatFieldUpdateOperationsInput | number
+    dressCodeQty?: IntFieldUpdateOperationsInput | number
+    dressCodeFindingQty?: IntFieldUpdateOperationsInput | number
+    messVisitQty?: IntFieldUpdateOperationsInput | number
+    messVisitFindingQty?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    deadline?: DateTimeFieldUpdateOperationsInput | Date | string
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    findingHistory?: FindingHistoryUpdateManyWithoutReportNestedInput
   }
 
-  export type SessionUpdateWithoutUserInput = {
+  export type WeeklyReportUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    sessionToken?: StringFieldUpdateOperationsInput | string
-    expires?: DateTimeFieldUpdateOperationsInput | Date | string
+    monthYear?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    week?: IntFieldUpdateOperationsInput | number
+    marketVisitQty?: IntFieldUpdateOperationsInput | number
+    marketVisitFindingQty?: IntFieldUpdateOperationsInput | number
+    solvedQty?: IntFieldUpdateOperationsInput | number
+    pendingQty?: IntFieldUpdateOperationsInput | number
+    locSubmittedQty?: IntFieldUpdateOperationsInput | number
+    locFindingDayQty?: FloatFieldUpdateOperationsInput | number
+    dressCodeQty?: IntFieldUpdateOperationsInput | number
+    dressCodeFindingQty?: IntFieldUpdateOperationsInput | number
+    messVisitQty?: IntFieldUpdateOperationsInput | number
+    messVisitFindingQty?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    deadline?: DateTimeFieldUpdateOperationsInput | Date | string
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    findingHistory?: FindingHistoryUncheckedUpdateManyWithoutReportNestedInput
   }
 
-  export type SessionUncheckedUpdateWithoutUserInput = {
+  export type WeeklyReportUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    sessionToken?: StringFieldUpdateOperationsInput | string
-    expires?: DateTimeFieldUpdateOperationsInput | Date | string
+    monthYear?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    week?: IntFieldUpdateOperationsInput | number
+    marketVisitQty?: IntFieldUpdateOperationsInput | number
+    marketVisitFindingQty?: IntFieldUpdateOperationsInput | number
+    solvedQty?: IntFieldUpdateOperationsInput | number
+    pendingQty?: IntFieldUpdateOperationsInput | number
+    locSubmittedQty?: IntFieldUpdateOperationsInput | number
+    locFindingDayQty?: FloatFieldUpdateOperationsInput | number
+    dressCodeQty?: IntFieldUpdateOperationsInput | number
+    dressCodeFindingQty?: IntFieldUpdateOperationsInput | number
+    messVisitQty?: IntFieldUpdateOperationsInput | number
+    messVisitFindingQty?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    deadline?: DateTimeFieldUpdateOperationsInput | Date | string
+    submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type SessionUncheckedUpdateManyWithoutUserInput = {
+  export type MonthlyTargetUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    sessionToken?: StringFieldUpdateOperationsInput | string
-    expires?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PostUpdateWithoutCreatedByInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    monthYear?: StringFieldUpdateOperationsInput | string
+    locTarget?: IntFieldUpdateOperationsInput | number
+    messVisitTarget?: IntFieldUpdateOperationsInput | number
+    dressCodeTarget?: IntFieldUpdateOperationsInput | number
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PostUncheckedUpdateWithoutCreatedByInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+  export type MonthlyTargetUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    monthYear?: StringFieldUpdateOperationsInput | string
+    locTarget?: IntFieldUpdateOperationsInput | number
+    messVisitTarget?: IntFieldUpdateOperationsInput | number
+    dressCodeTarget?: IntFieldUpdateOperationsInput | number
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PostUncheckedUpdateManyWithoutCreatedByInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+  export type MonthlyTargetUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    monthYear?: StringFieldUpdateOperationsInput | string
+    locTarget?: IntFieldUpdateOperationsInput | number
+    messVisitTarget?: IntFieldUpdateOperationsInput | number
+    dressCodeTarget?: IntFieldUpdateOperationsInput | number
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FindingHistoryUpdateWithoutUpdatedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    previousSolved?: IntFieldUpdateOperationsInput | number
+    newSolved?: IntFieldUpdateOperationsInput | number
+    previousPending?: IntFieldUpdateOperationsInput | number
+    newPending?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    report?: WeeklyReportUpdateOneRequiredWithoutFindingHistoryNestedInput
+  }
+
+  export type FindingHistoryUncheckedUpdateWithoutUpdatedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reportId?: StringFieldUpdateOperationsInput | string
+    previousSolved?: IntFieldUpdateOperationsInput | number
+    newSolved?: IntFieldUpdateOperationsInput | number
+    previousPending?: IntFieldUpdateOperationsInput | number
+    newPending?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FindingHistoryUncheckedUpdateManyWithoutUpdatedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reportId?: StringFieldUpdateOperationsInput | string
+    previousSolved?: IntFieldUpdateOperationsInput | number
+    newSolved?: IntFieldUpdateOperationsInput | number
+    previousPending?: IntFieldUpdateOperationsInput | number
+    newPending?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EmailNotificationLogUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    week?: IntFieldUpdateOperationsInput | number
+    emailType?: StringFieldUpdateOperationsInput | string
+    toEmail?: StringFieldUpdateOperationsInput | string
+    ccEmails?: NullableStringFieldUpdateOperationsInput | string | null
+    subject?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type EmailNotificationLogUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    week?: IntFieldUpdateOperationsInput | number
+    emailType?: StringFieldUpdateOperationsInput | string
+    toEmail?: StringFieldUpdateOperationsInput | string
+    ccEmails?: NullableStringFieldUpdateOperationsInput | string | null
+    subject?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type EmailNotificationLogUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    week?: IntFieldUpdateOperationsInput | number
+    emailType?: StringFieldUpdateOperationsInput | string
+    toEmail?: StringFieldUpdateOperationsInput | string
+    ccEmails?: NullableStringFieldUpdateOperationsInput | string | null
+    subject?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type FindingHistoryCreateManyReportInput = {
+    id?: string
+    updatedById: string
+    previousSolved: number
+    newSolved: number
+    previousPending: number
+    newPending: number
+    remark?: string | null
+    createdAt?: Date | string
+  }
+
+  export type FindingHistoryUpdateWithoutReportInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    previousSolved?: IntFieldUpdateOperationsInput | number
+    newSolved?: IntFieldUpdateOperationsInput | number
+    previousPending?: IntFieldUpdateOperationsInput | number
+    newPending?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedBy?: UserUpdateOneRequiredWithoutFindingAuditsNestedInput
+  }
+
+  export type FindingHistoryUncheckedUpdateWithoutReportInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    updatedById?: StringFieldUpdateOperationsInput | string
+    previousSolved?: IntFieldUpdateOperationsInput | number
+    newSolved?: IntFieldUpdateOperationsInput | number
+    previousPending?: IntFieldUpdateOperationsInput | number
+    newPending?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FindingHistoryUncheckedUpdateManyWithoutReportInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    updatedById?: StringFieldUpdateOperationsInput | string
+    previousSolved?: IntFieldUpdateOperationsInput | number
+    newSolved?: IntFieldUpdateOperationsInput | number
+    previousPending?: IntFieldUpdateOperationsInput | number
+    newPending?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
