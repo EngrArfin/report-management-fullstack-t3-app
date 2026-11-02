@@ -60,7 +60,7 @@ export function SubmitReportModal() {
     },
   });
 
-  // Fetch all OMs if Admin is logged in (Admin can submit on behalf of an OM if needed)
+  // Fetch all OMs if Admin is logged in
   const { data: allOms } = api.om.getAll.useQuery(undefined, {
     enabled: isSubmitModalOpen && activeUser.role === "ADMIN",
   });
@@ -100,40 +100,58 @@ export function SubmitReportModal() {
     });
   };
 
+  const handleResetZero = () => {
+    setMarketVisitQty(0);
+    setMarketVisitFindingQty(0);
+    setSolvedQty(0);
+    setPendingQty(0);
+    setLocSubmittedQty(0);
+    setLocFindingDayQty(0);
+    setDressCodeQty(0);
+    setDressCodeFindingQty(0);
+    setMessVisitQty(0);
+    setMessVisitFindingQty(0);
+  };
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm animate-in fade-in">
-      <div className="relative max-h-[92vh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-slate-800 bg-slate-900 p-6 text-white shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-3 sm:p-5 backdrop-blur-md animate-in fade-in">
+      <div className="glass-panel relative max-h-[94vh] w-full max-w-3xl overflow-y-auto rounded-3xl p-5 sm:p-7 text-white shadow-2xl border border-slate-700/80 space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-800 pb-4">
           <div>
-            <h3 className="text-lg font-bold text-white sm:text-xl">
-              Weekly Activity Report Submission
-            </h3>
-            <p className="text-xs text-slate-400">
-              Enter once → Automatically updates Summaries, Dashboard, Target Achievement & Excel
+            <div className="flex items-center gap-2">
+              <span className="flex h-7 w-7 items-center justify-center rounded-xl bg-indigo-600 text-xs font-bold text-white shadow-md shadow-indigo-600/30">
+                ✍️
+              </span>
+              <h3 className="text-base sm:text-xl font-black text-white tracking-tight">
+                Weekly Activity Report Submission
+              </h3>
+            </div>
+            <p className="text-xs text-slate-400 mt-1">
+              Enter Data Once → Automatically calculates Summaries, Dashboard, Target Achievement & Excel
             </p>
           </div>
           <button
             onClick={() => setIsSubmitModalOpen(false)}
-            className="rounded-lg p-2 text-slate-400 hover:bg-slate-800 hover:text-white"
+            className="rounded-xl p-2 text-slate-400 hover:bg-slate-800 hover:text-white transition"
           >
             ✕
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="mt-5 space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-5">
           {/* Target User & Period Selection */}
-          <div className="grid grid-cols-1 gap-4 rounded-xl border border-slate-800 bg-slate-800/40 p-4 sm:grid-cols-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 rounded-2xl border border-slate-800 bg-slate-950/70 p-4">
             {/* If Admin, can select OM */}
             {activeUser.role === "ADMIN" ? (
               <div>
-                <label className="block text-xs font-medium text-slate-400 mb-1">
+                <label className="block text-xs font-bold text-slate-300 mb-1">
                   Select Office Manager (OM)
                 </label>
                 <select
                   value={targetUserId}
                   onChange={(e) => setTargetUserId(e.target.value)}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-800 p-2 text-xs text-white"
+                  className="w-full rounded-xl border border-slate-700 bg-slate-900 p-2 text-xs font-medium text-white outline-none focus:border-indigo-500"
                 >
                   {allOms?.map((om) => (
                     <option key={om.id} value={om.id}>
@@ -144,18 +162,18 @@ export function SubmitReportModal() {
               </div>
             ) : (
               <div>
-                <label className="block text-xs font-medium text-slate-400 mb-1">
+                <label className="block text-xs font-bold text-slate-300 mb-1">
                   Reporting OM
                 </label>
-                <div className="rounded-lg border border-slate-700/60 bg-slate-800/80 p-2 text-xs font-semibold text-indigo-300">
+                <div className="rounded-xl border border-indigo-900/40 bg-indigo-950/20 p-2 text-xs font-bold text-indigo-300">
                   {activeUser.name} ({activeUser.staffId} - {activeUser.zone})
                 </div>
               </div>
             )}
 
-            {/* Month */}
+            {/* Month Selection */}
             <div>
-              <label className="block text-xs font-medium text-slate-400 mb-1">Select Month</label>
+              <label className="block text-xs font-bold text-slate-300 mb-1">Reporting Month</label>
               <select
                 value={`${year}-${month}`}
                 onChange={(e) => {
@@ -165,7 +183,7 @@ export function SubmitReportModal() {
                     setMonth(m);
                   }
                 }}
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 p-2 text-xs text-white"
+                className="w-full rounded-xl border border-slate-700 bg-slate-900 p-2 text-xs font-medium text-white outline-none focus:border-indigo-500"
               >
                 <option value="2026-9">September 2026</option>
                 <option value="2026-8">August 2026</option>
@@ -175,13 +193,13 @@ export function SubmitReportModal() {
               </select>
             </div>
 
-            {/* Week */}
+            {/* Week Selection */}
             <div>
-              <label className="block text-xs font-medium text-slate-400 mb-1">Select Week</label>
+              <label className="block text-xs font-bold text-slate-300 mb-1">Reporting Week</label>
               <select
                 value={week}
                 onChange={(e) => setWeek(Number(e.target.value))}
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 p-2 text-xs text-white"
+                className="w-full rounded-xl border border-slate-700 bg-slate-900 p-2 text-xs font-medium text-white outline-none focus:border-indigo-500"
               >
                 <option value={1}>Week 1</option>
                 <option value={2}>Week 2</option>
@@ -191,44 +209,56 @@ export function SubmitReportModal() {
             </div>
           </div>
 
-          {/* Deadline notice banner (Requirement #6) */}
-          <div className="flex items-center justify-between rounded-lg border border-indigo-900/40 bg-indigo-950/20 px-4 py-2.5 text-xs text-indigo-300">
+          {/* Deadline notice banner (Requirement #6) & Zero Activity helper */}
+          <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-indigo-500/30 bg-gradient-to-r from-indigo-950/30 to-slate-900/60 px-4 py-2.5 text-xs text-indigo-300">
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Official Submission Deadline: <strong>Friday 11:59 PM</strong> of the week</span>
+              <span>Official Final Deadline: <strong>Friday 11:59 PM</strong></span>
             </div>
-            <span className="text-[11px] text-slate-400">Zero activities permitted (Enter 0)</span>
+            <button
+              type="button"
+              onClick={handleResetZero}
+              className="text-[11px] font-bold text-indigo-400 hover:text-indigo-200 underline"
+            >
+              Zero Activity Week? Set All to 0
+            </button>
           </div>
 
           {/* ACTIVITY 1: Market Visit (Requirement #10) */}
-          <div className="rounded-xl border border-slate-800 bg-slate-800/30 p-4 space-y-3">
-            <div className="flex items-center justify-between">
-              <h4 className="text-sm font-semibold text-white">1. Market Visit</h4>
+          <div className="rounded-2xl border border-slate-800 bg-slate-950/60 p-4 sm:p-5 space-y-3">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <h4 className="text-sm font-bold text-white">1. Market Visit</h4>
               <span
-                className={`text-xs font-medium ${
-                  isFindingBalanced ? "text-emerald-400" : "text-rose-400"
+                className={`text-xs font-bold px-2.5 py-0.5 rounded-full ${
+                  isFindingBalanced
+                    ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/30"
+                    : "bg-rose-500/15 text-rose-400 border border-rose-500/30"
                 }`}
               >
                 {isFindingBalanced
-                  ? `✓ Balanced: Solved (${solvedQty}) + Pending (${pendingQty}) = Finding (${marketVisitFindingQty})`
+                  ? `✓ Solved (${solvedQty}) + Pending (${pendingQty}) = Finding (${marketVisitFindingQty})`
                   : `⚠️ Balance Error: Solved + Pending (${solvedQty + pendingQty}) ≠ Finding (${marketVisitFindingQty})`}
               </span>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               <div>
-                <label className="block text-[11px] text-slate-400 mb-1">Market Visit Qty</label>
+                <label className="block text-[11px] text-slate-400 font-semibold mb-1">
+                  Market Visit Qty
+                </label>
                 <input
                   type="number"
                   min="0"
                   value={marketVisitQty}
                   onChange={(e) => setMarketVisitQty(Math.max(0, parseInt(e.target.value) || 0))}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-800 p-2 text-sm text-white"
+                  className="w-full rounded-xl border border-slate-700 bg-slate-900 p-2 text-sm font-bold text-white outline-none focus:border-indigo-500"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] text-slate-400 mb-1">Market Finding Qty</label>
+                <label className="block text-[11px] text-slate-400 font-semibold mb-1">
+                  Market Finding Qty
+                </label>
                 <input
                   type="number"
                   min="0"
@@ -236,17 +266,18 @@ export function SubmitReportModal() {
                   onChange={(e) => {
                     const f = Math.max(0, parseInt(e.target.value) || 0);
                     setMarketVisitFindingQty(f);
-                    // auto balance initially if zero
                     if (solvedQty + pendingQty !== f) {
                       setPendingQty(f - solvedQty >= 0 ? f - solvedQty : 0);
                     }
                   }}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-800 p-2 text-sm text-amber-300 font-semibold"
+                  className="w-full rounded-xl border border-slate-700 bg-slate-900 p-2 text-sm font-extrabold text-amber-300 outline-none focus:border-indigo-500"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] text-slate-400 mb-1">Solved Qty</label>
+                <label className="block text-[11px] text-slate-400 font-semibold mb-1">
+                  Solved Qty
+                </label>
                 <input
                   type="number"
                   min="0"
@@ -256,47 +287,51 @@ export function SubmitReportModal() {
                     setSolvedQty(s);
                     setPendingQty(Math.max(0, marketVisitFindingQty - s));
                   }}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-800 p-2 text-sm text-emerald-400 font-semibold"
+                  className="w-full rounded-xl border border-slate-700 bg-slate-900 p-2 text-sm font-extrabold text-emerald-400 outline-none focus:border-indigo-500"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] text-slate-400 mb-1">Pending Qty</label>
+                <label className="block text-[11px] text-slate-400 font-semibold mb-1">
+                  Pending Qty
+                </label>
                 <input
                   type="number"
                   min="0"
                   value={pendingQty}
                   onChange={(e) => setPendingQty(Math.max(0, parseInt(e.target.value) || 0))}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-800 p-2 text-sm text-rose-400 font-semibold"
+                  className="w-full rounded-xl border border-slate-700 bg-slate-900 p-2 text-sm font-extrabold text-rose-400 outline-none focus:border-indigo-500"
                 />
               </div>
             </div>
           </div>
 
           {/* ACTIVITY 2: Location Tracking (LOC) - STRICTLY NO "LOC Visit Qty" (Requirement #12) */}
-          <div className="rounded-xl border border-slate-800 bg-slate-800/30 p-4 space-y-3">
-            <div className="flex items-center justify-between">
-              <h4 className="text-sm font-semibold text-white">2. Location Tracking (LOC)</h4>
-              <span className="text-[11px] text-slate-500 font-medium">
-                * Note: LOC Visit Qty is excluded per business policy
+          <div className="rounded-2xl border border-slate-800 bg-slate-950/60 p-4 sm:p-5 space-y-3">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <h4 className="text-sm font-bold text-white">2. Location Tracking (LOC)</h4>
+              <span className="text-[11px] text-purple-400 font-bold bg-purple-500/10 px-2 py-0.5 rounded-full border border-purple-500/20">
+                LOC Visit Qty is strictly excluded
               </span>
             </div>
 
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               <div>
-                <label className="block text-[11px] text-slate-400 mb-1">LOC Submitted Qty</label>
+                <label className="block text-[11px] text-slate-400 font-semibold mb-1">
+                  LOC Submitted Qty
+                </label>
                 <input
                   type="number"
                   min="0"
                   value={locSubmittedQty}
                   onChange={(e) => setLocSubmittedQty(Math.max(0, parseInt(e.target.value) || 0))}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-800 p-2 text-sm text-white"
+                  className="w-full rounded-xl border border-slate-700 bg-slate-900 p-2 text-sm font-bold text-white outline-none focus:border-indigo-500"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] text-slate-400 mb-1">
-                  LOC Finding Day Qty (Decimal allowed, e.g. 3.5 days)
+                <label className="block text-[11px] text-slate-400 font-semibold mb-1">
+                  LOC Finding Day Qty (Supports decimal e.g. 3.5 days)
                 </label>
                 <input
                   type="number"
@@ -304,30 +339,34 @@ export function SubmitReportModal() {
                   min="0"
                   value={locFindingDayQty}
                   onChange={(e) => setLocFindingDayQty(Math.max(0, parseFloat(e.target.value) || 0))}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-800 p-2 text-sm text-purple-300 font-semibold"
+                  className="w-full rounded-xl border border-slate-700 bg-slate-900 p-2 text-sm font-extrabold text-purple-300 outline-none focus:border-indigo-500"
                 />
               </div>
             </div>
           </div>
 
           {/* ACTIVITY 3 & 4: Dress Code and Mess Visit (Requirement #13, #14) */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Dress Code */}
-            <div className="rounded-xl border border-slate-800 bg-slate-800/30 p-4 space-y-3">
-              <h4 className="text-sm font-semibold text-white">3. Dress Code</h4>
-              <div className="grid grid-cols-2 gap-2">
+            <div className="rounded-2xl border border-slate-800 bg-slate-950/60 p-4 sm:p-5 space-y-3">
+              <h4 className="text-sm font-bold text-white">3. Dress Code</h4>
+              <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[11px] text-slate-400 mb-1">Dress Code Qty</label>
+                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">
+                    Dress Code Qty
+                  </label>
                   <input
                     type="number"
                     min="0"
                     value={dressCodeQty}
                     onChange={(e) => setDressCodeQty(Math.max(0, parseInt(e.target.value) || 0))}
-                    className="w-full rounded-lg border border-slate-700 bg-slate-800 p-2 text-sm text-white"
+                    className="w-full rounded-xl border border-slate-700 bg-slate-900 p-2 text-sm font-bold text-white outline-none focus:border-indigo-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] text-slate-400 mb-1">Dress Finding Qty</label>
+                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">
+                    Dress Finding Qty
+                  </label>
                   <input
                     type="number"
                     min="0"
@@ -335,28 +374,32 @@ export function SubmitReportModal() {
                     onChange={(e) =>
                       setDressCodeFindingQty(Math.max(0, parseFloat(e.target.value) || 0))
                     }
-                    className="w-full rounded-lg border border-slate-700 bg-slate-800 p-2 text-sm text-amber-300 font-semibold"
+                    className="w-full rounded-xl border border-slate-700 bg-slate-900 p-2 text-sm font-bold text-amber-300 outline-none focus:border-indigo-500"
                   />
                 </div>
               </div>
             </div>
 
             {/* Mess Visit */}
-            <div className="rounded-xl border border-slate-800 bg-slate-800/30 p-4 space-y-3">
-              <h4 className="text-sm font-semibold text-white">4. Mess Visit</h4>
-              <div className="grid grid-cols-2 gap-2">
+            <div className="rounded-2xl border border-slate-800 bg-slate-950/60 p-4 sm:p-5 space-y-3">
+              <h4 className="text-sm font-bold text-white">4. Mess Visit</h4>
+              <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[11px] text-slate-400 mb-1">Mess Visit Qty</label>
+                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">
+                    Mess Visit Qty
+                  </label>
                   <input
                     type="number"
                     min="0"
                     value={messVisitQty}
                     onChange={(e) => setMessVisitQty(Math.max(0, parseInt(e.target.value) || 0))}
-                    className="w-full rounded-lg border border-slate-700 bg-slate-800 p-2 text-sm text-white"
+                    className="w-full rounded-xl border border-slate-700 bg-slate-900 p-2 text-sm font-bold text-white outline-none focus:border-indigo-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] text-slate-400 mb-1">Mess Finding Qty</label>
+                  <label className="block text-[11px] text-slate-400 font-semibold mb-1">
+                    Mess Finding Qty
+                  </label>
                   <input
                     type="number"
                     min="0"
@@ -364,42 +407,42 @@ export function SubmitReportModal() {
                     onChange={(e) =>
                       setMessVisitFindingQty(Math.max(0, parseInt(e.target.value) || 0))
                     }
-                    className="w-full rounded-lg border border-slate-700 bg-slate-800 p-2 text-sm text-amber-300 font-semibold"
+                    className="w-full rounded-xl border border-slate-700 bg-slate-900 p-2 text-sm font-bold text-amber-300 outline-none focus:border-indigo-500"
                   />
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Notes */}
+          {/* Remarks */}
           <div>
-            <label className="block text-xs font-medium text-slate-400 mb-1">
-              Remarks / Field Observation Notes (Optional)
+            <label className="block text-xs font-bold text-slate-300 mb-1">
+              Field Remarks / Operational Notes (Optional)
             </label>
             <textarea
               rows={2}
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              placeholder="e.g. Conducted inspections across Mitford medical stores. All critical issues resolved on-site."
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 p-2.5 text-xs text-white placeholder-slate-500"
+              placeholder="e.g. Conducted intensive inspections across regional pharmacies. Pending findings prioritized."
+              className="w-full rounded-xl border border-slate-700 bg-slate-900 p-2.5 text-xs text-white placeholder-slate-500 outline-none focus:border-indigo-500"
             />
           </div>
 
-          {/* Actions */}
+          {/* Form Actions */}
           <div className="flex items-center justify-end gap-3 border-t border-slate-800 pt-4">
             <button
               type="button"
               onClick={() => setIsSubmitModalOpen(false)}
-              className="rounded-lg border border-slate-700 px-4 py-2 text-xs font-medium text-slate-300 hover:bg-slate-800"
+              className="rounded-xl border border-slate-700 px-4 py-2 text-xs font-semibold text-slate-300 hover:bg-slate-800 transition"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={submitMutation.isPending || !isFindingBalanced}
-              className="flex items-center gap-2 rounded-lg bg-indigo-600 px-5 py-2 text-xs font-semibold text-white shadow-lg shadow-indigo-600/30 transition hover:bg-indigo-500 disabled:opacity-50"
+              className="rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 px-6 py-2.5 text-xs font-bold text-white shadow-xl shadow-indigo-600/30 hover:from-indigo-500 hover:to-indigo-400 disabled:opacity-50 active:scale-95 transition"
             >
-              {submitMutation.isPending ? "Submitting..." : "Submit Weekly Report"}
+              {submitMutation.isPending ? "Submitting to System..." : "Confirm Weekly Submission"}
             </button>
           </div>
         </form>

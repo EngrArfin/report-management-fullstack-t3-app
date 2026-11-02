@@ -40,7 +40,7 @@ export function TargetManagementView() {
 
   const setTargetsMutation = api.target.setTargets.useMutation({
     onSuccess: () => {
-      showToast("Targets configured successfully!", "success");
+      showToast("Targets configured and applied successfully!", "success");
       void utils.target.getMonthlyAchievement.invalidate();
       void utils.dashboard.getMetrics.invalidate();
     },
@@ -70,14 +70,14 @@ export function TargetManagementView() {
   };
 
   return (
-    <div className="space-y-6 pb-12">
-      {/* Header */}
+    <div className="space-y-6 pb-16">
+      {/* Header & Controls */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-white sm:text-2xl">
-            Target Management & Achievement Module
+          <h2 className="text-lg sm:text-2xl font-extrabold tracking-tight text-white">
+            Target Management & Performance Governance
           </h2>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-slate-400 mt-0.5">
             Configure monthly activity quotas, monitor achievement rates, and rank field performance
           </p>
         </div>
@@ -85,7 +85,7 @@ export function TargetManagementView() {
         <button
           onClick={() => refetch()}
           disabled={isFetching}
-          className="flex items-center gap-1.5 rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5 text-xs text-slate-300 hover:bg-slate-700"
+          className="flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900 px-3 py-1.5 text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition"
         >
           <IconRefresh className={`h-3.5 w-3.5 ${isFetching ? "animate-spin" : ""}`} />
           <span>Refresh</span>
@@ -94,24 +94,31 @@ export function TargetManagementView() {
 
       {/* ADMIN TARGET CONFIGURATION PANEL (Requirement #32, #39) */}
       {activeUser.role === "ADMIN" && (
-        <div className="rounded-xl border border-indigo-900/40 bg-indigo-950/15 p-5 shadow-lg space-y-4">
-          <div className="flex items-center justify-between border-b border-indigo-900/30 pb-3">
-            <div className="flex items-center gap-2">
-              <IconTarget className="h-5 w-5 text-indigo-400" />
-              <h3 className="font-bold text-white">
-                Admin Target Setting Console — {achievementData?.monthYear}
-              </h3>
+        <div className="glass-panel rounded-2xl p-5 sm:p-6 shadow-xl border border-indigo-500/30 space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
+            <div className="flex items-center gap-2.5">
+              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/30">
+                <IconTarget className="h-4 w-4" />
+              </div>
+              <div>
+                <h3 className="font-extrabold text-white text-sm sm:text-base">
+                  Admin Target Configuration Console — {achievementData?.monthYear}
+                </h3>
+                <p className="text-[11px] text-slate-400">
+                  Set baseline monthly quotas for field personnel
+                </p>
+              </div>
             </div>
-            <span className="text-xs text-indigo-300 font-medium">
-              Flexible Target Distribution Rule
+            <span className="rounded-full bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 text-[10px] font-bold text-indigo-400">
+              Admin Exclusive
             </span>
           </div>
 
           <form onSubmit={handleSaveTargets} className="space-y-4">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
               {/* LOC Target */}
-              <div className="rounded-lg border border-slate-800 bg-slate-900/80 p-3">
-                <label className="block text-xs font-semibold text-purple-300 mb-1">
+              <div className="rounded-xl border border-purple-500/30 bg-purple-950/20 p-3.5">
+                <label className="block text-xs font-bold text-purple-300 mb-1">
                   LOC Submitted Target (Qty)
                 </label>
                 <input
@@ -119,13 +126,13 @@ export function TargetManagementView() {
                   min="0"
                   value={locTarget}
                   onChange={(e) => setLocTarget(Math.max(0, parseInt(e.target.value) || 0))}
-                  className="w-full rounded border border-slate-700 bg-slate-800 p-2 text-sm font-bold text-white"
+                  className="w-full rounded-lg border border-purple-900/50 bg-slate-950 p-2 text-sm font-extrabold text-white focus:border-purple-500 outline-none"
                 />
               </div>
 
               {/* Mess Visit Target */}
-              <div className="rounded-lg border border-slate-800 bg-slate-900/80 p-3">
-                <label className="block text-xs font-semibold text-rose-300 mb-1">
+              <div className="rounded-xl border border-rose-500/30 bg-rose-950/20 p-3.5">
+                <label className="block text-xs font-bold text-rose-300 mb-1">
                   Mess Visit Target (Qty)
                 </label>
                 <input
@@ -133,13 +140,13 @@ export function TargetManagementView() {
                   min="0"
                   value={messTarget}
                   onChange={(e) => setMessTarget(Math.max(0, parseInt(e.target.value) || 0))}
-                  className="w-full rounded border border-slate-700 bg-slate-800 p-2 text-sm font-bold text-white"
+                  className="w-full rounded-lg border border-rose-900/50 bg-slate-950 p-2 text-sm font-extrabold text-white focus:border-rose-500 outline-none"
                 />
               </div>
 
               {/* Dress Code Target */}
-              <div className="rounded-lg border border-slate-800 bg-slate-900/80 p-3">
-                <label className="block text-xs font-semibold text-teal-300 mb-1">
+              <div className="rounded-xl border border-teal-500/30 bg-teal-950/20 p-3.5">
+                <label className="block text-xs font-bold text-teal-300 mb-1">
                   Dress Code Target (Qty)
                 </label>
                 <input
@@ -147,29 +154,29 @@ export function TargetManagementView() {
                   min="0"
                   value={dressTarget}
                   onChange={(e) => setDressTarget(Math.max(0, parseInt(e.target.value) || 0))}
-                  className="w-full rounded border border-slate-700 bg-slate-800 p-2 text-sm font-bold text-white"
+                  className="w-full rounded-lg border border-teal-900/50 bg-slate-950 p-2 text-sm font-extrabold text-white focus:border-teal-500 outline-none"
                 />
               </div>
             </div>
 
-            {/* Target Distribution Mode */}
+            {/* Distribution Rule Switcher */}
             <div className="flex flex-wrap items-center justify-between gap-3 pt-2 text-xs">
-              <div className="flex items-center gap-4">
-                <label className="flex items-center gap-2 cursor-pointer text-slate-300 font-medium">
+              <div className="flex flex-wrap items-center gap-4">
+                <label className="flex items-center gap-2 cursor-pointer font-semibold text-slate-300">
                   <input
                     type="radio"
                     checked={applyToAll}
                     onChange={() => setApplyToAll(true)}
-                    className="text-indigo-600 focus:ring-0"
+                    className="text-indigo-600"
                   />
                   <span>Apply target uniformly to ALL Active Office Managers</span>
                 </label>
-                <label className="flex items-center gap-2 cursor-pointer text-slate-300 font-medium">
+                <label className="flex items-center gap-2 cursor-pointer font-semibold text-slate-300">
                   <input
                     type="radio"
                     checked={!applyToAll}
                     onChange={() => setApplyToAll(false)}
-                    className="text-indigo-600 focus:ring-0"
+                    className="text-indigo-600"
                   />
                   <span>Select specific OM</span>
                 </label>
@@ -178,17 +185,17 @@ export function TargetManagementView() {
               <button
                 type="submit"
                 disabled={setTargetsMutation.isPending}
-                className="rounded-lg bg-indigo-600 px-5 py-2 font-semibold text-white shadow-md hover:bg-indigo-500 disabled:opacity-50"
+                className="rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 px-5 py-2 font-bold text-white shadow-lg shadow-indigo-600/30 hover:from-indigo-500 hover:to-indigo-400 active:scale-95 transition disabled:opacity-50"
               >
-                {setTargetsMutation.isPending ? "Applying..." : "Save Monthly Targets"}
+                {setTargetsMutation.isPending ? "Applying Targets..." : "Save & Finalize Targets"}
               </button>
             </div>
 
-            {/* Individual OM Selectors if applyToAll is false */}
+            {/* Individual OM Checkboxes if selective mode */}
             {!applyToAll && (
-              <div className="max-h-36 overflow-y-auto rounded-lg border border-slate-800 bg-slate-900 p-3 grid grid-cols-2 gap-2 text-xs">
+              <div className="max-h-40 overflow-y-auto rounded-xl border border-slate-800 bg-slate-950/80 p-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-xs">
                 {allOms?.map((om) => (
-                  <label key={om.id} className="flex items-center gap-2 text-slate-300">
+                  <label key={om.id} className="flex items-center gap-2 text-slate-300 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={selectedOmIds.includes(om.id)}
@@ -196,6 +203,7 @@ export function TargetManagementView() {
                         if (e.target.checked) setSelectedOmIds([...selectedOmIds, om.id]);
                         else setSelectedOmIds(selectedOmIds.filter((id) => id !== om.id));
                       }}
+                      className="rounded text-indigo-600"
                     />
                     <span>
                       {om.name} ({om.staffId} - {om.zone})
@@ -209,169 +217,176 @@ export function TargetManagementView() {
       )}
 
       {/* LEADERBOARD & OM-WISE ACHIEVEMENT (Requirement #34, #35, #38) */}
-      <section className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 shadow-xl space-y-4">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+      <section className="glass-panel rounded-2xl p-4 sm:p-6 shadow-xl space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/80 pb-3">
           <div>
-            <h3 className="text-base font-bold text-white">
-              OM Performance Ranking & Achievement Dashboard ({achievementData?.monthYear})
+            <h3 className="text-sm sm:text-base font-extrabold text-white">
+              Office Manager Target Achievement Leaderboard ({achievementData?.monthYear})
             </h3>
-            <p className="text-xs text-slate-400">
-              Ranked by Overall Target Achievement Percentage
+            <p className="text-[11px] text-slate-400">
+              Ranked in descending order by Overall Target Achievement Percentage
             </p>
           </div>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
-            <thead>
-              <tr className="border-b border-slate-800 bg-slate-800/60 text-slate-400">
-                <th className="py-3 px-3 font-semibold text-center">Rank</th>
-                <th className="py-3 px-3 font-semibold">Staff ID</th>
-                <th className="py-3 px-3 font-semibold">Name</th>
-                <th className="py-3 px-3 font-semibold">Zone</th>
-                <th className="py-3 px-3 font-semibold text-center">LOC (Ach/Tgt)</th>
-                <th className="py-3 px-3 font-semibold text-center">LOC %</th>
-                <th className="py-3 px-3 font-semibold text-center">Mess (Ach/Tgt)</th>
-                <th className="py-3 px-3 font-semibold text-center">Mess %</th>
-                <th className="py-3 px-3 font-semibold text-center">Dress (Ach/Tgt)</th>
-                <th className="py-3 px-3 font-semibold text-center">Dress %</th>
-                <th className="py-3 px-4 font-semibold text-right">Overall Achievement</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-800/60">
-              {isLoading ? (
-                <tr>
-                  <td colSpan={11} className="py-8 text-center text-slate-400">
-                    Computing achievement metrics...
-                  </td>
+        <div className="overflow-hidden rounded-xl border border-slate-800 bg-slate-950/70">
+          <div className="overflow-x-auto table-scrollbar">
+            <table className="w-full text-left text-xs whitespace-nowrap">
+              <thead>
+                <tr className="border-b border-slate-800 bg-slate-900/95 text-slate-400">
+                  <th className="py-3.5 px-3 font-bold text-center text-slate-300">Rank</th>
+                  <th className="py-3.5 px-4 font-bold text-slate-300">Staff ID</th>
+                  <th className="py-3.5 px-4 font-bold text-slate-300">Office Manager</th>
+                  <th className="py-3.5 px-3 font-bold text-slate-300">Zone</th>
+                  <th className="py-3.5 px-3 font-bold text-center text-purple-300">LOC (Ach / Tgt)</th>
+                  <th className="py-3.5 px-3 font-bold text-center text-purple-400">LOC %</th>
+                  <th className="py-3.5 px-3 font-bold text-center text-rose-300">Mess (Ach / Tgt)</th>
+                  <th className="py-3.5 px-3 font-bold text-center text-rose-400">Mess %</th>
+                  <th className="py-3.5 px-3 font-bold text-center text-teal-300">Dress (Ach / Tgt)</th>
+                  <th className="py-3.5 px-3 font-bold text-center text-teal-400">Dress %</th>
+                  <th className="py-3.5 px-4 font-bold text-right text-indigo-300">Overall Rating</th>
                 </tr>
-              ) : (
-                achievementData?.rows.map((row) => (
-                  <tr key={row.userId} className="hover:bg-slate-800/30 transition">
-                    <td className="py-3 px-3 text-center">
-                      <span
-                        className={`inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold ${
-                          row.rank === 1
-                            ? "bg-amber-400 text-slate-950 shadow-md shadow-amber-400/30"
-                            : row.rank === 2
-                            ? "bg-slate-300 text-slate-950"
-                            : row.rank === 3
-                            ? "bg-amber-700/60 text-amber-200"
-                            : "bg-slate-800 text-slate-400"
-                        }`}
-                      >
-                        {row.rank}
-                      </span>
-                    </td>
-                    <td className="py-3 px-3 font-mono font-medium text-indigo-300">{row.staffId}</td>
-                    <td className="py-3 px-3 font-medium text-white">{row.name}</td>
-                    <td className="py-3 px-3 text-slate-400">{row.zone}</td>
-                    <td className="py-3 px-3 text-center text-slate-300">
-                      {row.achievedLoc} / {row.targetLoc}
-                    </td>
-                    <td className="py-3 px-3 text-center font-semibold text-purple-300">
-                      {row.locPct}%
-                    </td>
-                    <td className="py-3 px-3 text-center text-slate-300">
-                      {row.achievedMess} / {row.targetMess}
-                    </td>
-                    <td className="py-3 px-3 text-center font-semibold text-rose-300">
-                      {row.messPct}%
-                    </td>
-                    <td className="py-3 px-3 text-center text-slate-300">
-                      {row.achievedDress} / {row.targetDress}
-                    </td>
-                    <td className="py-3 px-3 text-center font-semibold text-teal-300">
-                      {row.dressPct}%
-                    </td>
-                    <td className="py-3 px-4 text-right">
-                      <div className="flex items-center justify-end gap-2">
-                        <div className="hidden sm:block h-2 w-20 overflow-hidden rounded-full bg-slate-800">
-                          <div
-                            className={`h-full ${
-                              row.overallPct >= 90
-                                ? "bg-emerald-500"
-                                : row.overallPct >= 70
-                                ? "bg-indigo-500"
-                                : "bg-amber-500"
-                            }`}
-                            style={{ width: `${Math.min(100, row.overallPct)}%` }}
-                          />
-                        </div>
-                        <span className="font-bold text-white text-sm">{row.overallPct}%</span>
-                      </div>
+              </thead>
+              <tbody className="divide-y divide-slate-800/60 font-medium">
+                {isLoading ? (
+                  <tr>
+                    <td colSpan={11} className="py-10 text-center text-slate-400">
+                      Computing target achievement metrics...
                     </td>
                   </tr>
-                ))
-              )}
-            </tbody>
-          </table>
+                ) : (
+                  achievementData?.rows.map((row) => (
+                    <tr key={row.userId} className="hover:bg-indigo-950/15 transition">
+                      <td className="py-3 px-3 text-center">
+                        <span
+                          className={`inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-black shadow-md ${
+                            row.rank === 1
+                              ? "bg-amber-400 text-slate-950 shadow-amber-400/30"
+                              : row.rank === 2
+                              ? "bg-slate-300 text-slate-950"
+                              : row.rank === 3
+                              ? "bg-amber-700/80 text-amber-100"
+                              : "bg-slate-800 text-slate-400"
+                          }`}
+                        >
+                          {row.rank === 1 ? "🥇" : row.rank === 2 ? "🥈" : row.rank === 3 ? "🥉" : row.rank}
+                        </span>
+                      </td>
+                      <td className="py-3 px-4 font-mono font-bold text-indigo-400">{row.staffId}</td>
+                      <td className="py-3 px-4 text-white font-semibold">{row.name}</td>
+                      <td className="py-3 px-3 text-slate-300">{row.zone}</td>
+                      <td className="py-3 px-3 text-center text-slate-300">
+                        {row.achievedLoc} / <span className="text-slate-500">{row.targetLoc}</span>
+                      </td>
+                      <td className="py-3 px-3 text-center font-extrabold text-purple-400">
+                        {row.locPct}%
+                      </td>
+                      <td className="py-3 px-3 text-center text-slate-300">
+                        {row.achievedMess} / <span className="text-slate-500">{row.targetMess}</span>
+                      </td>
+                      <td className="py-3 px-3 text-center font-extrabold text-rose-400">
+                        {row.messPct}%
+                      </td>
+                      <td className="py-3 px-3 text-center text-slate-300">
+                        {row.achievedDress} / <span className="text-slate-500">{row.targetDress}</span>
+                      </td>
+                      <td className="py-3 px-3 text-center font-extrabold text-teal-400">
+                        {row.dressPct}%
+                      </td>
+                      <td className="py-3 px-4 text-right">
+                        <div className="flex items-center justify-end gap-2.5">
+                          <div className="hidden sm:block h-2 w-24 overflow-hidden rounded-full bg-slate-800">
+                            <div
+                              className={`h-full ${
+                                row.overallPct >= 90
+                                  ? "bg-emerald-400"
+                                  : row.overallPct >= 75
+                                  ? "bg-indigo-400"
+                                  : "bg-amber-400"
+                              }`}
+                              style={{ width: `${Math.min(100, row.overallPct)}%` }}
+                            />
+                          </div>
+                          <span className="font-black text-white text-sm">{row.overallPct}%</span>
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
       {/* MONTH-OVER-MONTH PERFORMANCE COMPARISON (Requirement #37) */}
-      <section className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 shadow-xl space-y-4">
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-3">
+      <section className="glass-panel rounded-2xl p-4 sm:p-6 shadow-xl space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/80 pb-3">
           <div>
-            <h3 className="text-base font-bold text-white">
+            <h3 className="text-sm sm:text-base font-extrabold text-white">
               Month-over-Month Historical Performance Comparison
             </h3>
-            <p className="text-xs text-slate-400">
-              Compare target achievement progress between two distinct operating months
+            <p className="text-[11px] text-slate-400">
+              Track performance improvement or decline between August 2026 and September 2026
             </p>
           </div>
 
           <div className="flex items-center gap-2 text-xs">
-            <span className="text-slate-400">Period 1:</span>
-            <span className="rounded bg-slate-800 px-2 py-1 text-slate-200 font-semibold">
-              August 2026
+            <span className="rounded-lg bg-slate-800 px-2.5 py-1 text-slate-300 font-bold border border-slate-700">
+              {comparisonData?.period1}
             </span>
-            <span className="text-slate-400">vs Period 2:</span>
-            <span className="rounded bg-indigo-900/50 px-2 py-1 text-indigo-300 font-semibold">
-              September 2026
+            <span className="text-slate-500">vs</span>
+            <span className="rounded-lg bg-indigo-950/80 border border-indigo-500/40 px-2.5 py-1 text-indigo-300 font-bold">
+              {comparisonData?.period2}
             </span>
           </div>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
-            <thead>
-              <tr className="border-b border-slate-800 bg-slate-800/60 text-slate-400">
-                <th className="py-3 px-3 font-semibold">Staff ID</th>
-                <th className="py-3 px-3 font-semibold">Name</th>
-                <th className="py-3 px-3 font-semibold">Zone</th>
-                <th className="py-3 px-3 font-semibold text-center">{comparisonData?.period1} Overall</th>
-                <th className="py-3 px-3 font-semibold text-center">{comparisonData?.period2} Overall</th>
-                <th className="py-3 px-3 font-semibold text-center">Net Trend</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-800/60">
-              {comparisonData?.comparisons.map((comp) => (
-                <tr key={comp.userId} className="hover:bg-slate-800/30">
-                  <td className="py-3 px-3 font-mono text-indigo-300">{comp.staffId}</td>
-                  <td className="py-3 px-3 font-medium text-white">{comp.name}</td>
-                  <td className="py-3 px-3 text-slate-400">{comp.zone}</td>
-                  <td className="py-3 px-3 text-center font-medium text-slate-300">
-                    {comp.month1.overallPct}%
-                  </td>
-                  <td className="py-3 px-3 text-center font-bold text-indigo-300">
-                    {comp.month2.overallPct}%
-                  </td>
-                  <td className="py-3 px-3 text-center">
-                    <span
-                      className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-bold ${
-                        comp.diffPct >= 0
-                          ? "bg-emerald-500/20 text-emerald-400"
-                          : "bg-rose-500/20 text-rose-400"
-                      }`}
-                    >
-                      {comp.diffPct >= 0 ? `+${comp.diffPct}%` : `${comp.diffPct}%`}
-                    </span>
-                  </td>
+        <div className="overflow-hidden rounded-xl border border-slate-800 bg-slate-950/70">
+          <div className="overflow-x-auto table-scrollbar">
+            <table className="w-full text-left text-xs whitespace-nowrap">
+              <thead>
+                <tr className="border-b border-slate-800 bg-slate-900/95 text-slate-400">
+                  <th className="py-3 px-4 font-bold text-slate-300">Staff ID</th>
+                  <th className="py-3 px-4 font-bold text-slate-300">Office Manager</th>
+                  <th className="py-3 px-3 font-bold text-slate-300">Zone</th>
+                  <th className="py-3 px-4 font-bold text-center text-slate-300">
+                    {comparisonData?.period1} Overall
+                  </th>
+                  <th className="py-3 px-4 font-bold text-center text-indigo-300">
+                    {comparisonData?.period2} Overall
+                  </th>
+                  <th className="py-3 px-4 font-bold text-center text-slate-300">Net Improvement</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y divide-slate-800/60 font-medium">
+                {comparisonData?.comparisons.map((comp) => (
+                  <tr key={comp.userId} className="hover:bg-indigo-950/15 transition">
+                    <td className="py-3 px-4 font-mono font-bold text-indigo-400">{comp.staffId}</td>
+                    <td className="py-3 px-4 text-white font-semibold">{comp.name}</td>
+                    <td className="py-3 px-3 text-slate-300">{comp.zone}</td>
+                    <td className="py-3 px-4 text-center font-bold text-slate-300">
+                      {comp.month1.overallPct}%
+                    </td>
+                    <td className="py-3 px-4 text-center font-extrabold text-indigo-300">
+                      {comp.month2.overallPct}%
+                    </td>
+                    <td className="py-3 px-4 text-center">
+                      <span
+                        className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 font-black text-xs ${
+                          comp.diffPct >= 0
+                            ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
+                            : "bg-rose-500/20 text-rose-400 border border-rose-500/30"
+                        }`}
+                      >
+                        {comp.diffPct >= 0 ? `▲ +${comp.diffPct}%` : `▼ ${comp.diffPct}%`}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
     </div>

@@ -92,10 +92,13 @@ report-management-fullstack-t3-app/
 ├── src/
 │   ├── app/                              # Next.js 15 App Router
 │   │   ├── _components/                  # Modular React UI Components
-│   │   │   ├── AppContext.tsx            # Global state, active profile, toast notifications
+│   │   │   ├── AppContext.tsx            # Global state, auth session, toast notifications
 │   │   │   ├── Icons.tsx                 # Zero-dependency SVG icon system
-│   │   │   ├── Navbar.tsx                # Role switcher, month/week/zone filters, navigation
-│   │   │   ├── MainApp.tsx               # Primary tab switcher container
+│   │   │   ├── LandingPage.tsx           # Executive public landing page & live capability ticker
+│   │   │   ├── LoginModal.tsx            # Staff ID / Email authentication & 1-click persona demo
+│   │   │   ├── Sidebar.tsx               # Enterprise collapsible sidebar with categorized nav
+│   │   │   ├── TopNavbar.tsx             # Top header with quick filters, deadline badge & switcher
+│   │   │   ├── MainApp.tsx               # Primary portal router (Landing vs Authenticated Portal)
 │   │   │   ├── DashboardView.tsx         # 6-section Executive Operations Dashboard
 │   │   │   ├── SubmitReportModal.tsx     # 5-step intuitive submission form with live validation
 │   │   │   ├── SubmissionTrackingView.tsx# Week 1-4 status matrix (Submitted, Pending, Late)
