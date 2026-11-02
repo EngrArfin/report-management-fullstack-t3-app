@@ -43,7 +43,7 @@ export function MainApp({ allUsers, allZones }: MainAppProps) {
 
       {/* 2. Main Portal Container (offset by sidebar width) */}
       <div
-        className={`flex min-h-screen flex-1 flex-col transition-all duration-300 ease-in-out ${
+        className={`flex min-h-screen flex-1 flex-col min-w-0 overflow-x-hidden transition-all duration-300 ease-in-out ${
           isSidebarCollapsed ? "lg:pl-20" : "lg:pl-64"
         }`}
       >
@@ -51,7 +51,7 @@ export function MainApp({ allUsers, allZones }: MainAppProps) {
         <TopNavbar allUsers={allUsers} allZones={allZones} />
 
         {/* Dynamic Operational Content View */}
-        <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6 sm:px-6">
+        <main className="mx-auto w-full max-w-[1600px] min-w-0 flex-1 px-3 sm:px-6 lg:px-8 py-6 space-y-6">
           {activeTab === "dashboard" && <DashboardView />}
           {activeTab === "tracking" && <SubmissionTrackingView />}
           {activeTab === "activity" && <ActivitySummaryView />}

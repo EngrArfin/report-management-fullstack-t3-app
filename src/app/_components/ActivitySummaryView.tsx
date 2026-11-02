@@ -3,17 +3,33 @@
 import React, { useState } from "react";
 import { useApp } from "./AppContext";
 import { api } from "~/trpc/react";
-import { IconRefresh, IconDownload, IconSearch } from "./Icons";
+import { IconRefresh, IconDownload, IconSearch, IconFilter } from "./Icons";
+
+type PeriodOption =
+  | "1_MONTH"
+  | "3_MONTHS"
+  | "6_MONTHS"
+  | "1_YEAR"
+  | "CUSTOM"
+  | "ALL";
+
+type ActivitySortBy =
+  | "DEFAULT"
+  | "MV_DESC"
+  | "FINDING_DESC"
+  | "LOC_DESC"
+  | "DC_DESC"
+  | "MESS_DESC";
 
 export function ActivitySummaryView() {
-  const { selectedYear, selectedMonth, selectedWeek, selectedZone } = useApp();
+  const { selectedYear, selectedMonth, selectedWeek, selectedZone, setSelectedZone } =
+    useApp();
 
-  const [periodOption, setPeriodOption] = useState<
-    "1_MONTH" | "3_MONTHS" | "6_MONTHS" | "1_YEAR" | "CUSTOM" | "ALL"
-  >("1_MONTH");
+  const [periodOption, setPeriodOption] = useState<PeriodOption>("1_MONTH");
   const [fromDate, setFromDate] = useState<string>("2026-07-01");
   const [toDate, setToDate] = useState<string>("2026-09-30");
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [sortBy, setSortBy] = useState<ActivitySortBy>("DEFAULT");
 
   const { data, isLoading, refetch, isFetching } = api.report.getActivitySummary.useQuery({
     year: selectedYear,
@@ -25,13 +41,29 @@ export function ActivitySummaryView() {
     toDate: periodOption === "CUSTOM" ? toDate : undefined,
   });
 
-  const filteredRows =
+  // Unique zones
+  const uniqueZones = Array.from(new Set(data?.map((r) => r.zone) ?? [])).sort();
+
+  let filteredRows =
     data?.filter(
       (r) =>
         r.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         r.staffId.toLowerCase().includes(searchQuery.toLowerCase()) ||
         r.zone.toLowerCase().includes(searchQuery.toLowerCase())
     ) ?? [];
+
+  // Sorting
+  if (sortBy === "MV_DESC") {
+    filteredRows = [...filteredRows].sort((a, b) => b.marketVisitQty - a.marketVisitQty);
+  } else if (sortBy === "FINDING_DESC") {
+    filteredRows = [...filteredRows].sort((a, b) => b.marketFinding - a.marketFinding);
+  } else if (sortBy === "LOC_DESC") {
+    filteredRows = [...filteredRows].sort((a, b) => b.locSubmittedQty - a.locSubmittedQty);
+  } else if (sortBy === "DC_DESC") {
+    filteredRows = [...filteredRows].sort((a, b) => b.dressCodeQty - a.dressCodeQty);
+  } else if (sortBy === "MESS_DESC") {
+    filteredRows = [...filteredRows].sort((a, b) => b.messVisitQty - a.messVisitQty);
+  }
 
   // Calculate Grand Totals row for executive oversight
   const grandTotals = filteredRows.reduce(
@@ -62,15 +94,15 @@ export function ActivitySummaryView() {
   );
 
   return (
-    <div className="space-y-5 pb-16">
+    <div className="space-y-5 pb-20 min-w-0">
       {/* Header & Controls */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
         <div>
           <h2 className="text-lg sm:text-2xl font-extrabold tracking-tight text-white">
-            Multi-Dimensional Activity Summary Rollup
+            Activity Summary & Operational Rollup
           </h2>
           <p className="text-xs text-slate-400 mt-0.5">
-            Auto-aggregated field metrics across Market Visit, Location Tracking, Dress Code & Mess Inspection
+            Rollup across Market Visit, Location Tracking, Dress Code & Mess Visit with fixed identity columns
           </p>
         </div>
 
@@ -78,70 +110,66 @@ export function ActivitySummaryView() {
           <button
             onClick={() => refetch()}
             disabled={isFetching}
-            className="flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900 px-3 py-1.5 text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition"
+            className="flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900 px-3 py-1.5 text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition shadow-sm"
           >
             <IconRefresh className={`h-3.5 w-3.5 ${isFetching ? "animate-spin" : ""}`} />
             <span>Refresh</span>
           </button>
+
           <a
             href={`/api/export/excel?year=${selectedYear}&month=${selectedMonth}&week=${selectedWeek}&zone=${selectedZone}`}
-            className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 px-3.5 py-1.5 text-xs font-bold text-white shadow-md shadow-emerald-600/30 hover:from-emerald-500 hover:to-emerald-400 transition"
+            className="flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900 px-3 py-1.5 text-xs font-semibold text-slate-300 hover:bg-slate-800 hover:text-white transition shadow-sm"
           >
-            <IconDownload className="h-4 w-4" />
-            <span>Export to Excel</span>
+            <IconDownload className="h-3.5 w-3.5 text-emerald-400" />
+            <span>Export Table</span>
           </a>
         </div>
       </div>
 
-      {/* Period Selector & Search Filter Bar (Requirements #23, #24) */}
-      <div className="glass-panel rounded-2xl p-4 space-y-3">
-        <div className="flex flex-wrap items-center justify-between gap-3 text-xs">
-          {/* Quick Period Buttons */}
+      {/* Period Quick Select & In-Table Filters */}
+      <div className="glass-panel flex flex-col gap-3.5 rounded-2xl p-4 text-xs shadow-md">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/80 pb-3">
+          <span className="font-extrabold uppercase tracking-wider text-slate-400 text-[11px]">
+            Aggregation Period Rollup:
+          </span>
+
           <div className="flex flex-wrap items-center gap-1.5">
-            <span className="font-bold text-slate-400 mr-1">Period:</span>
-            {(["1_MONTH", "3_MONTHS", "6_MONTHS", "1_YEAR", "CUSTOM"] as const).map((p) => (
+            {(
+              [
+                { id: "1_MONTH", label: "1 Month (Current)" },
+                { id: "3_MONTHS", label: "3 Months (Quarter)" },
+                { id: "6_MONTHS", label: "6 Months" },
+                { id: "1_YEAR", label: "1 Year (Annual)" },
+                { id: "ALL", label: "All Time" },
+                { id: "CUSTOM", label: "Custom Dates" },
+              ] as const
+            ).map((p) => (
               <button
-                key={p}
-                onClick={() => setPeriodOption(p)}
+                key={p.id}
+                onClick={() => setPeriodOption(p.id)}
                 className={`rounded-xl px-3 py-1.5 font-bold transition ${
-                  periodOption === p
+                  periodOption === p.id
                     ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30"
-                    : "bg-slate-800/80 text-slate-300 hover:bg-slate-800 hover:text-white"
+                    : "bg-slate-900 border border-slate-800 text-slate-300 hover:bg-slate-800 hover:text-white"
                 }`}
               >
-                {p === "1_MONTH" && "1 Month"}
-                {p === "3_MONTHS" && "3 Months"}
-                {p === "6_MONTHS" && "6 Months"}
-                {p === "1_YEAR" && "1 Year"}
-                {p === "CUSTOM" && "Custom Range"}
+                {p.label}
               </button>
             ))}
           </div>
-
-          {/* Quick Search Input */}
-          <div className="relative w-full sm:w-64">
-            <IconSearch className="absolute left-3 top-2.5 h-3.5 w-3.5 text-slate-500" />
-            <input
-              type="text"
-              placeholder="Search OM or Zone..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full rounded-xl border border-slate-700 bg-slate-950/80 pl-8 pr-3 py-1.5 text-xs text-white placeholder-slate-500 outline-none focus:border-indigo-500"
-            />
-          </div>
         </div>
 
-        {/* Custom Date Range Picker (Requirement #24) */}
+        {/* Custom Date Range if Selected */}
         {periodOption === "CUSTOM" && (
-          <div className="flex flex-wrap items-center gap-3 border-t border-slate-800 pt-3 text-xs">
-            <span className="font-bold text-indigo-400">Custom Date Range:</span>
+          <div className="flex flex-wrap items-center gap-3 rounded-xl border border-indigo-900/40 bg-indigo-950/20 p-3">
+            <span className="text-[11px] font-bold text-indigo-300">Custom Date Range:</span>
             <div className="flex items-center gap-2">
               <span className="text-slate-400">From:</span>
               <input
                 type="date"
                 value={fromDate}
                 onChange={(e) => setFromDate(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-2 py-1 text-xs text-white outline-none"
+                className="rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1 text-xs text-white"
               />
             </div>
             <div className="flex items-center gap-2">
@@ -150,21 +178,81 @@ export function ActivitySummaryView() {
                 type="date"
                 value={toDate}
                 onChange={(e) => setToDate(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-2 py-1 text-xs text-white outline-none"
+                className="rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1 text-xs text-white"
               />
             </div>
           </div>
         )}
+
+        {/* In-Table Toolbar: Search + Zone Filter + Metric Sort */}
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center gap-2.5">
+            <div className="relative w-full sm:w-56">
+              <IconSearch className="absolute left-3 top-2.5 h-3.5 w-3.5 text-slate-400 pointer-events-none" />
+              <input
+                type="text"
+                placeholder="Search OM, ID or Zone..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full rounded-xl border border-slate-700 bg-slate-950/80 pl-9 pr-3 py-1.5 text-xs text-white placeholder-slate-500 outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+              />
+            </div>
+
+            {/* In-Table Zone Dropdown */}
+            <div className="flex items-center gap-1.5 rounded-xl border border-slate-700 bg-slate-950/80 px-2.5 py-1 text-xs">
+              <IconFilter className="h-3.5 w-3.5 text-indigo-400" />
+              <select
+                value={selectedZone}
+                onChange={(e) => setSelectedZone(e.target.value)}
+                className="bg-transparent text-xs font-semibold text-slate-200 outline-none cursor-pointer"
+                title="Filter by Zone"
+              >
+                <option value="ALL" className="bg-slate-900 text-white">All Zones</option>
+                {uniqueZones.map((z) => (
+                  <option key={z} value={z} className="bg-slate-900 text-white">
+                    {z}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* In-Table Metric Sort */}
+            <div className="flex items-center gap-1.5 rounded-xl border border-slate-700 bg-slate-950/80 px-2.5 py-1 text-xs">
+              <span className="text-[10px] text-slate-400 font-bold uppercase">Sort:</span>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as ActivitySortBy)}
+                className="bg-transparent text-xs font-semibold text-slate-200 outline-none cursor-pointer"
+                title="Sort Table By Metric"
+              >
+                <option value="DEFAULT" className="bg-slate-900 text-white">Default (Staff ID)</option>
+                <option value="MV_DESC" className="bg-slate-900 text-white">Market Visits (High to Low)</option>
+                <option value="FINDING_DESC" className="bg-slate-900 text-white">Market Findings (High to Low)</option>
+                <option value="LOC_DESC" className="bg-slate-900 text-white">LOC Submitted (High to Low)</option>
+                <option value="DC_DESC" className="bg-slate-900 text-white">Dress Code (High to Low)</option>
+                <option value="MESS_DESC" className="bg-slate-900 text-white">Mess Visits (High to Low)</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="text-[11px] text-slate-400">
+            Showing <strong className="text-white">{filteredRows.length}</strong> Office Managers
+          </div>
+        </div>
       </div>
 
-      {/* Activity Summary Table (Requirement #19) */}
+      {/* Activity Summary Table with Fixed / Sticky Identification Columns */}
       <div className="glass-panel overflow-hidden rounded-2xl shadow-xl border border-slate-800">
         <div className="overflow-x-auto table-scrollbar">
-          <table className="w-full text-left text-xs whitespace-nowrap">
+          <table className="w-full text-left text-xs whitespace-nowrap border-collapse">
             <thead>
               <tr className="border-b border-slate-800 bg-slate-900/95 text-slate-400">
-                <th className="py-3 px-3 font-bold text-slate-300">Staff ID</th>
-                <th className="py-3 px-3 font-bold text-slate-300">Office Manager</th>
+                <th className="sticky left-0 z-20 bg-slate-900 py-3.5 px-3 font-bold text-slate-300 w-24">
+                  Staff ID
+                </th>
+                <th className="sticky left-24 z-20 bg-slate-900 py-3.5 px-3 font-bold text-slate-300 border-r border-slate-800 shadow-[4px_0_8px_rgba(0,0,0,0.5)]">
+                  Office Manager
+                </th>
                 <th className="py-3 px-2 font-bold text-slate-300">Desig.</th>
                 <th className="py-3 px-3 font-bold text-slate-300">Zone</th>
                 <th className="py-3 px-3 font-bold text-right text-sky-400">Market Visit</th>
@@ -188,68 +276,76 @@ export function ActivitySummaryView() {
                 </tr>
               ) : filteredRows.length === 0 ? (
                 <tr>
-                  <td colSpan={14} className="py-10 text-center text-slate-400">
-                    No activity data found for selected period.
+                  <td colSpan={14} className="py-12 text-center text-slate-400">
+                    <div className="flex flex-col items-center gap-2">
+                      <span className="text-sm font-semibold text-slate-300">
+                        {selectedZone !== "ALL"
+                          ? `No activity records found for zone "${selectedZone}"`
+                          : "No activity data found for selected period."}
+                      </span>
+                      {selectedZone !== "ALL" && (
+                        <button
+                          onClick={() => setSelectedZone("ALL")}
+                          className="mt-1 rounded-xl bg-indigo-600 px-3.5 py-1.5 text-xs font-bold text-white shadow hover:bg-indigo-500 transition"
+                        >
+                          Show All Zones Activity Summary
+                        </button>
+                      )}
+                    </div>
                   </td>
                 </tr>
               ) : (
                 filteredRows.map((row) => (
-                  <tr key={row.userId} className="hover:bg-indigo-950/15 transition">
-                    <td className="py-3 px-3 font-mono font-bold text-indigo-400">{row.staffId}</td>
-                    <td className="py-3 px-3 text-white font-semibold">{row.name}</td>
+                  <tr key={row.userId} className="hover:bg-indigo-950/20 transition-colors group">
+                    <td className="sticky left-0 z-10 bg-slate-950 group-hover:bg-slate-900 py-3 px-3 font-mono font-bold text-indigo-400 transition-colors">
+                      <span className="rounded bg-indigo-500/10 px-2 py-0.5 border border-indigo-500/20">
+                        {row.staffId}
+                      </span>
+                    </td>
+                    <td className="sticky left-24 z-10 bg-slate-950 group-hover:bg-slate-900 py-3 px-3 text-white font-semibold border-r border-slate-800 shadow-[4px_0_8px_rgba(0,0,0,0.5)] transition-colors">
+                      {row.name}
+                    </td>
                     <td className="py-3 px-2 text-slate-400">{row.designation}</td>
-                    <td className="py-3 px-3 text-slate-300">{row.zone}</td>
-                    <td className="py-3 px-3 text-right font-extrabold text-sky-400">
-                      {row.marketVisitQty}
+                    <td className="py-3 px-3 text-slate-300">
+                      <span className="rounded-md bg-slate-800/60 px-2 py-0.5 text-slate-300 font-semibold border border-slate-700/60">
+                        {row.zone}
+                      </span>
                     </td>
-                    <td className="py-3 px-3 text-right font-bold text-amber-400">
-                      {row.marketFinding}
-                    </td>
-                    <td className="py-3 px-3 text-right font-bold text-emerald-400">
-                      {row.solvedQty}
-                    </td>
-                    <td className="py-3 px-3 text-right font-bold text-rose-400">
-                      {row.pendingQty}
-                    </td>
-                    <td className="py-3 px-3 text-right font-extrabold text-purple-400">
-                      {row.locSubmittedQty}
-                    </td>
-                    <td className="py-3 px-3 text-right font-bold text-purple-300">
-                      {row.locFindingDays}
-                    </td>
-                    <td className="py-3 px-3 text-right font-extrabold text-teal-400">
-                      {row.dressCodeQty}
-                    </td>
-                    <td className="py-3 px-3 text-right font-medium text-amber-300">
-                      {row.dressFinding}
-                    </td>
-                    <td className="py-3 px-3 text-right font-extrabold text-rose-400">
-                      {row.messVisitQty}
-                    </td>
-                    <td className="py-3 px-3 text-right font-medium text-amber-300">
-                      {row.messFinding}
-                    </td>
+                    <td className="py-3 px-3 text-right font-bold text-slate-100">{row.marketVisitQty}</td>
+                    <td className="py-3 px-3 text-right font-bold text-amber-400">{row.marketFinding}</td>
+                    <td className="py-3 px-3 text-right font-bold text-emerald-400">{row.solvedQty}</td>
+                    <td className="py-3 px-3 text-right font-bold text-rose-400">{row.pendingQty}</td>
+                    <td className="py-3 px-3 text-right font-bold text-purple-300">{row.locSubmittedQty}</td>
+                    <td className="py-3 px-3 text-right font-medium text-slate-300">{row.locFindingDays}</td>
+                    <td className="py-3 px-3 text-right font-bold text-teal-300">{row.dressCodeQty}</td>
+                    <td className="py-3 px-3 text-right text-slate-300">{row.dressFinding}</td>
+                    <td className="py-3 px-3 text-right font-bold text-rose-300">{row.messVisitQty}</td>
+                    <td className="py-3 px-3 text-right text-slate-300">{row.messFinding}</td>
                   </tr>
                 ))
               )}
             </tbody>
-            {/* Grand Totals Summary Footer */}
             {filteredRows.length > 0 && (
               <tfoot>
-                <tr className="border-t-2 border-indigo-500/40 bg-indigo-950/30 text-white font-extrabold">
-                  <td colSpan={4} className="py-3.5 px-3 text-indigo-300 font-bold uppercase tracking-wider">
-                    Grand Totals ({filteredRows.length} OMs)
+                <tr className="border-t-2 border-slate-700 bg-slate-900/95 font-bold text-slate-200">
+                  <td
+                    colSpan={2}
+                    className="sticky left-0 z-10 bg-slate-900 py-3.5 px-3 text-left uppercase text-[11px] tracking-wider text-slate-400 border-r border-slate-800 shadow-[4px_0_8px_rgba(0,0,0,0.5)]"
+                  >
+                    Grand Total ({filteredRows.length} OMs)
                   </td>
-                  <td className="py-3.5 px-3 text-right text-sky-300">{grandTotals.marketVisitQty}</td>
-                  <td className="py-3.5 px-3 text-right text-amber-300">{grandTotals.marketFinding}</td>
-                  <td className="py-3.5 px-3 text-right text-emerald-300">{grandTotals.solvedQty}</td>
-                  <td className="py-3.5 px-3 text-right text-rose-300">{grandTotals.pendingQty}</td>
+                  <td className="py-3.5 px-2 text-slate-400">-</td>
+                  <td className="py-3.5 px-3 text-slate-400">-</td>
+                  <td className="py-3.5 px-3 text-right text-sky-400">{grandTotals.marketVisitQty}</td>
+                  <td className="py-3.5 px-3 text-right text-amber-400">{grandTotals.marketFinding}</td>
+                  <td className="py-3.5 px-3 text-right text-emerald-400">{grandTotals.solvedQty}</td>
+                  <td className="py-3.5 px-3 text-right text-rose-400">{grandTotals.pendingQty}</td>
                   <td className="py-3.5 px-3 text-right text-purple-300">{grandTotals.locSubmittedQty}</td>
-                  <td className="py-3.5 px-3 text-right text-purple-300">{grandTotals.locFindingDays}</td>
+                  <td className="py-3.5 px-3 text-right text-slate-300">{grandTotals.locFindingDays}</td>
                   <td className="py-3.5 px-3 text-right text-teal-300">{grandTotals.dressCodeQty}</td>
-                  <td className="py-3.5 px-3 text-right text-amber-300">{grandTotals.dressFinding}</td>
+                  <td className="py-3.5 px-3 text-right text-slate-300">{grandTotals.dressFinding}</td>
                   <td className="py-3.5 px-3 text-right text-rose-300">{grandTotals.messVisitQty}</td>
-                  <td className="py-3.5 px-3 text-right text-amber-300">{grandTotals.messFinding}</td>
+                  <td className="py-3.5 px-3 text-right text-slate-300">{grandTotals.messFinding}</td>
                 </tr>
               </tfoot>
             )}

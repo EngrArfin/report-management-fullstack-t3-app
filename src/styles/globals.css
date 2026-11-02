@@ -46,3 +46,18 @@
 .glass-card:hover {
   border-color: rgba(99, 102, 241, 0.4);
 }
+
+/* Universal cursor pointer for all clickable elements */
+button,
+[role="button"],
+select,
+input[type="checkbox"],
+input[type="radio"],
+input[type="submit"],
+input[type="button"],
+a,
+summary,
+label,
+.clickable {
+  cursor: pointer !important;
+}

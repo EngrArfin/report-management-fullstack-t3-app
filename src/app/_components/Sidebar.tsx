@@ -87,7 +87,11 @@ export function Sidebar() {
         }`}
       >
         {/* Brand Header */}
-        <div className="flex h-16 items-center justify-between border-b border-slate-800/80 px-4">
+        <div
+          className={`flex h-16 items-center border-b border-slate-800/80 px-4 ${
+            isSidebarCollapsed ? "justify-center" : "justify-between"
+          }`}
+        >
           <div className="flex items-center gap-3 overflow-hidden">
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-indigo-600 to-cyan-500 text-white font-extrabold shadow-lg shadow-indigo-500/20">
               OM
@@ -105,18 +109,29 @@ export function Sidebar() {
           </div>
 
           {/* Desktop Collapse Toggle */}
-          <button
-            onClick={() => setIsSidebarCollapsed((prev) => !prev)}
-            className="hidden rounded-lg p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white lg:flex transition"
-            title={isSidebarCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
-          >
-            {isSidebarCollapsed ? (
-              <IconChevronRight className="h-4 w-4" />
-            ) : (
+          {!isSidebarCollapsed && (
+            <button
+              onClick={() => setIsSidebarCollapsed(true)}
+              className="hidden rounded-xl border border-slate-800 bg-slate-900/90 p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white lg:flex transition shadow-sm"
+              title="Collapse Sidebar"
+            >
               <IconChevronLeft className="h-4 w-4" />
-            )}
-          </button>
+            </button>
+          )}
         </div>
+
+        {/* If collapsed, show expand button below logo */}
+        {isSidebarCollapsed && (
+          <div className="hidden lg:flex justify-center py-2 border-b border-slate-800/60">
+            <button
+              onClick={() => setIsSidebarCollapsed(false)}
+              className="rounded-xl border border-slate-800 bg-slate-900/90 p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white transition shadow-sm"
+              title="Expand Sidebar"
+            >
+              <IconChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+        )}
 
         {/* Quick Submit CTA Button in Sidebar */}
         <div className="p-3">
