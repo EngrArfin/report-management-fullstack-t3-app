@@ -3,6 +3,8 @@ import { AppProvider } from "./_components/AppContext";
 import { MainApp } from "./_components/MainApp";
 import type { ActiveUser } from "./_components/AppContext";
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const users = await db.user.findMany({
     orderBy: [

@@ -30,6 +30,7 @@ declare module "next-auth" {
  * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
  */
 export const authConfig = {
+  trustHost: true,
   providers: [
     CredentialsProvider({
       name: "Staff ID or Email",
