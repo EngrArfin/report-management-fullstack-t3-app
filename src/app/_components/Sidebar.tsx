@@ -13,6 +13,7 @@ import {
   IconChevronLeft,
   IconChevronRight,
   IconLogout,
+  IconSettings,
 } from "./Icons";
 
 interface NavItem {
@@ -64,6 +65,12 @@ export function Sidebar() {
         { id: "notifications", label: "Automated Email Alerts", icon: IconMail },
       ],
     },
+    {
+      group: "Preferences",
+      items: [
+        { id: "settings", label: "System Settings", icon: IconSettings },
+      ],
+    },
   ];
 
   return (
@@ -91,7 +98,7 @@ export function Sidebar() {
           }`}
         >
           <div className="flex items-center gap-3 overflow-hidden">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-indigo-600 to-cyan-500 text-white font-extrabold shadow-lg shadow-indigo-500/20">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white font-extrabold shadow-md shadow-blue-900/30">
               OM
             </div>
             {!isSidebarCollapsed && (
@@ -99,7 +106,7 @@ export function Sidebar() {
                 <span className="truncate text-sm font-extrabold tracking-tight text-white">
                   Report Portal
                 </span>
-                <span className="text-[10px] font-medium text-indigo-400">
+                <span className="text-[10px] font-medium text-slate-400">
                   Head Office Operations
                 </span>
               </div>
@@ -152,9 +159,9 @@ export function Sidebar() {
                         setActiveTab(item.id);
                         setIsMobileSidebarOpen(false);
                       }}
-                      className={`group flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-xs font-medium transition-all cursor-pointer ${
+                      className={`group flex w-full items-center justify-between rounded-xl px-3 py-2 text-xs font-medium transition-all cursor-pointer ${
                         isActive
-                          ? "bg-indigo-600/15 text-indigo-300 font-bold border border-indigo-500/30 shadow-sm"
+                          ? "bg-blue-600/15 text-blue-300 font-bold border border-blue-500/30 shadow-sm"
                           : "text-slate-400 hover:bg-slate-900 hover:text-slate-200"
                       }`}
                       title={item.label}
@@ -162,14 +169,14 @@ export function Sidebar() {
                       <div className="flex items-center gap-3 overflow-hidden">
                         <Icon
                           className={`h-4 w-4 shrink-0 transition ${
-                            isActive ? "text-indigo-400" : "text-slate-400 group-hover:text-slate-200"
+                            isActive ? "text-blue-400" : "text-slate-400 group-hover:text-slate-200"
                           }`}
                         />
                         {!isSidebarCollapsed && <span className="truncate">{item.label}</span>}
                       </div>
 
                       {!isSidebarCollapsed && item.badge && (
-                        <span className="rounded-full bg-indigo-500/10 px-2 py-0.5 text-[9px] font-bold text-indigo-400 border border-indigo-500/20">
+                        <span className="rounded-full bg-blue-500/10 px-2 py-0.5 text-[9px] font-bold text-blue-400 border border-blue-500/20">
                           {item.badge}
                         </span>
                       )}

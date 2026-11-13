@@ -11,6 +11,7 @@ import {
   IconUsers,
   IconFilter,
   IconRefresh,
+  IconSettings,
 } from "./Icons";
 
 interface TopNavbarProps {
@@ -22,6 +23,7 @@ export function TopNavbar({ allUsers, allZones }: TopNavbarProps) {
   const {
     activeUser,
     setActiveUser,
+    setActiveTab,
     selectedYear,
     setSelectedYear,
     selectedMonth,
@@ -154,28 +156,28 @@ export function TopNavbar({ allUsers, allZones }: TopNavbarProps) {
             }}
             className={`h-8.5 px-3 rounded-xl border text-xs font-semibold flex items-center gap-2 transition cursor-pointer shadow-sm ${
               isFilterOpen
-                ? "border-indigo-500 bg-indigo-950/40 text-white ring-2 ring-indigo-500/20"
+                ? "border-blue-500 bg-blue-950/40 text-white ring-2 ring-blue-500/20"
                 : isFiltered
-                ? "border-indigo-500/60 bg-indigo-950/30 text-indigo-300"
+                ? "border-blue-500/60 bg-blue-950/30 text-blue-300"
                 : "border-slate-800 bg-slate-900/90 text-slate-200 hover:border-slate-700 hover:bg-slate-800 hover:text-white"
             }`}
             title="Filter by Month, Week, or Zone"
           >
-            <IconFilter className="h-3.5 w-3.5 text-indigo-400 shrink-0" />
+            <IconFilter className="h-3.5 w-3.5 text-blue-400 shrink-0" />
             <span className="font-bold">{activeMonthObj?.short ?? "Filters"}</span>
             {selectedWeek !== "all" && (
-              <span className="text-[10px] text-indigo-300 bg-indigo-500/20 px-1.5 py-0.2 rounded font-mono">
+              <span className="text-[10px] text-blue-300 bg-blue-500/20 px-1.5 py-0.2 rounded font-mono">
                 W{selectedWeek}
               </span>
             )}
             {selectedZone !== "ALL" && (
-              <span className="max-w-[70px] truncate text-[10px] text-cyan-300 bg-cyan-500/20 px-1.5 py-0.2 rounded font-semibold hidden sm:inline">
+              <span className="max-w-[70px] truncate text-[10px] text-slate-300 bg-slate-800 px-1.5 py-0.2 rounded font-semibold hidden sm:inline">
                 {selectedZone}
               </span>
             )}
             <IconChevronDown
               className={`h-3 w-3 text-slate-400 transition-transform duration-200 ${
-                isFilterOpen ? "rotate-180 text-indigo-400" : ""
+                isFilterOpen ? "rotate-180 text-blue-400" : ""
               }`}
             />
           </button>
@@ -216,7 +218,7 @@ export function TopNavbar({ allUsers, allZones }: TopNavbarProps) {
                         }}
                         className={`rounded-xl px-2.5 py-1.5 text-xs text-left font-medium transition cursor-pointer flex items-center justify-between ${
                           isSelected
-                            ? "bg-indigo-600 text-white font-bold shadow-md shadow-indigo-600/30"
+                            ? "bg-blue-600 text-white font-bold shadow-sm"
                             : "bg-slate-900 border border-slate-800 text-slate-300 hover:bg-slate-800 hover:text-white"
                         }`}
                       >
@@ -243,7 +245,7 @@ export function TopNavbar({ allUsers, allZones }: TopNavbarProps) {
                         onClick={() => setSelectedWeek(w.value)}
                         className={`rounded-xl py-1.5 text-xs text-center font-bold transition cursor-pointer ${
                           isSelected
-                            ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30"
+                            ? "bg-blue-600 text-white shadow-sm"
                             : "bg-slate-900 border border-slate-800 text-slate-300 hover:bg-slate-800 hover:text-white"
                         }`}
                       >
@@ -269,7 +271,7 @@ export function TopNavbar({ allUsers, allZones }: TopNavbarProps) {
                     value={zoneSearch}
                     onChange={(e) => setZoneSearch(e.target.value)}
                     placeholder="Search zone..."
-                    className="w-full rounded-xl border border-slate-800 bg-slate-900 px-2.5 py-1 text-xs text-white placeholder-slate-500 outline-none focus:border-indigo-500"
+                    className="w-full rounded-xl border border-slate-800 bg-slate-900 px-2.5 py-1 text-xs text-white placeholder-slate-500 outline-none focus:border-blue-500"
                   />
 
                   <div className="max-h-36 overflow-y-auto space-y-1 pr-1 table-scrollbar">
@@ -278,7 +280,7 @@ export function TopNavbar({ allUsers, allZones }: TopNavbarProps) {
                       onClick={() => setSelectedZone("ALL")}
                       className={`w-full flex items-center justify-between rounded-xl px-2.5 py-1.5 text-xs font-medium transition cursor-pointer ${
                         selectedZone === "ALL"
-                          ? "bg-indigo-600 text-white font-bold"
+                          ? "bg-blue-600 text-white font-bold"
                           : "text-slate-300 hover:bg-slate-900 hover:text-white"
                       }`}
                     >
@@ -295,7 +297,7 @@ export function TopNavbar({ allUsers, allZones }: TopNavbarProps) {
                           onClick={() => setSelectedZone(z.name)}
                           className={`w-full flex items-center justify-between rounded-xl px-2.5 py-1.5 text-xs font-medium transition cursor-pointer ${
                             isSelected
-                              ? "bg-indigo-600 text-white font-bold"
+                              ? "bg-blue-600 text-white font-bold"
                               : "text-slate-300 hover:bg-slate-900 hover:text-white"
                           }`}
                         >
@@ -313,7 +315,7 @@ export function TopNavbar({ allUsers, allZones }: TopNavbarProps) {
                 <button
                   type="button"
                   onClick={() => setIsFilterOpen(false)}
-                  className="rounded-xl bg-indigo-600 px-3.5 py-1 text-xs font-bold text-white shadow-md hover:bg-indigo-500 transition cursor-pointer"
+                  className="rounded-xl bg-blue-600 px-3.5 py-1 text-xs font-bold text-white shadow-sm hover:bg-blue-500 transition cursor-pointer"
                 >
                   Done
                 </button>
@@ -340,13 +342,13 @@ export function TopNavbar({ allUsers, allZones }: TopNavbarProps) {
             title="User Profile Menu"
           >
             <div
-              className={`flex h-6.5 w-6.5 items-center justify-center rounded-lg text-xs font-black shadow-md ${
+              className={`flex h-6.5 w-6.5 items-center justify-center rounded-lg text-xs font-bold ${
                 activeUser.role === "ADMIN"
-                  ? "bg-gradient-to-tr from-amber-600 via-amber-500 to-yellow-400 text-slate-950 shadow-amber-500/20"
-                  : "bg-gradient-to-tr from-indigo-600 via-indigo-500 to-cyan-400 text-white shadow-indigo-500/20"
+                  ? "bg-slate-800 text-amber-300 border border-amber-500/30"
+                  : "bg-slate-800 text-blue-300 border border-blue-500/30"
               }`}
             >
-              {activeUser.role === "ADMIN" ? "👑" : getInitials(activeUser.name)}
+              {activeUser.role === "ADMIN" ? "AD" : getInitials(activeUser.name)}
             </div>
             {/* Active online dot */}
             <span className="absolute -bottom-0.5 -right-0.5 h-2 w-2 rounded-full border border-slate-950 bg-emerald-400" />
@@ -359,13 +361,13 @@ export function TopNavbar({ allUsers, allZones }: TopNavbarProps) {
               <div className="rounded-xl border border-slate-800/80 bg-gradient-to-br from-slate-900 to-slate-950 p-3 shadow-inner">
                 <div className="flex items-center gap-3">
                   <div
-                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-sm font-black shadow-lg ${
+                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-xs font-bold ${
                       activeUser.role === "ADMIN"
-                        ? "bg-gradient-to-tr from-amber-600 to-yellow-400 text-slate-950 ring-2 ring-amber-400/30"
-                        : "bg-gradient-to-tr from-indigo-600 to-cyan-400 text-white ring-2 ring-indigo-400/30"
+                        ? "bg-slate-800 text-amber-300 border border-amber-500/30"
+                        : "bg-slate-800 text-blue-300 border border-blue-500/30"
                     }`}
                   >
-                    {activeUser.role === "ADMIN" ? "👑" : getInitials(activeUser.name)}
+                    {activeUser.role === "ADMIN" ? "AD" : getInitials(activeUser.name)}
                   </div>
                   <div className="flex flex-col min-w-0">
                     <div className="flex items-center gap-1.5">
@@ -447,10 +449,22 @@ export function TopNavbar({ allUsers, allZones }: TopNavbarProps) {
                 </div>
               </div>
 
-              {/* Helpful Cutoff & Sign Out */}
+              {/* Settings, Cutoff & Sign Out */}
               <div className="border-t border-slate-800/80 pt-2 space-y-1">
-                <div className="flex items-center gap-2 px-2 py-1 text-[11px] text-slate-400">
-                  <IconShield className="h-3.5 w-3.5 text-indigo-400 shrink-0" />
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsUserMenuOpen(false);
+                    setActiveTab("settings");
+                  }}
+                  className="w-full flex items-center gap-2.5 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-300 hover:bg-slate-900 hover:text-white transition cursor-pointer"
+                >
+                  <IconSettings className="h-3.5 w-3.5 text-blue-400" />
+                  <span>Account & System Settings</span>
+                </button>
+
+                <div className="flex items-center gap-2 px-3 py-1 text-[11px] text-slate-400">
+                  <IconShield className="h-3.5 w-3.5 text-blue-400 shrink-0" />
                   <span>Cutoff: Friday 11:59 PM BST</span>
                 </div>
 
