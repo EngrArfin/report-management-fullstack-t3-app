@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 export interface ActiveUser {
   id: string;
@@ -74,13 +74,13 @@ export function AppProvider({
     initialUsers?.[0] ?? defaultAdmin
   );
 
-  // Authentication state: starts at Corporate Login
+  // Authentication state
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [showLanding, setShowLanding] = useState<boolean>(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
 
-  // Layout & Sidebar
-  const [activeTab, setActiveTab] = useState<string>("dashboard");
+  // Layout & Navigation Tab
+  const [activeTab, setActiveTabState] = useState<string>("dashboard");
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState<boolean>(false);
 
@@ -97,6 +97,50 @@ export function AppProvider({
   // Toast
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" | "info" } | null>(null);
 
+  // Hydrate session & routing from localStorage / URL hash on mount
+  useEffect(() => {
+    try {
+      const storedAuth = localStorage.getItem("om_auth");
+      if (storedAuth === "true") {
+        setIsAuthenticated(true);
+        const storedUser = localStorage.getItem("om_user");
+        if (storedUser) {
+          const parsed = JSON.parse(storedUser) as ActiveUser;
+          if (parsed?.id && parsed?.staffId) {
+            setActiveUser(parsed);
+          }
+        }
+      }
+
+      // Sync active tab from URL hash (e.g. #settings, #tracking) or localStorage
+      const hash = window.location.hash.replace("#", "").trim();
+      const validTabs = ["dashboard", "tracking", "activity", "target", "export", "oms", "notifications", "settings"];
+      if (hash && validTabs.includes(hash)) {
+        setActiveTabState(hash);
+      } else {
+        const storedTab = localStorage.getItem("om_tab");
+        if (storedTab && validTabs.includes(storedTab)) {
+          setActiveTabState(storedTab);
+        }
+      }
+    } catch {
+      // Ignore localStorage access errors in private browsing
+    }
+  }, []);
+
+  // Set active tab with URL hash and storage persistence
+  const setActiveTab = (tab: string) => {
+    setActiveTabState(tab);
+    try {
+      localStorage.setItem("om_tab", tab);
+      if (typeof window !== "undefined") {
+        window.history.replaceState(null, "", `#${tab}`);
+      }
+    } catch {
+      // Ignore
+    }
+  };
+
   const showToast = (message: string, type: "success" | "error" | "info" = "success") => {
     setToast({ message, type });
     setTimeout(() => setToast(null), 4000);
@@ -107,12 +151,28 @@ export function AppProvider({
     setIsAuthenticated(true);
     setShowLanding(false);
     setIsLoginModalOpen(false);
+    try {
+      localStorage.setItem("om_auth", "true");
+      localStorage.setItem("om_user", JSON.stringify(user));
+    } catch {
+      // Ignore
+    }
     showToast(`Welcome back, ${user.name}! (${user.role} - ${user.zone})`, "success");
   };
 
   const handleLogout = () => {
     setIsAuthenticated(false);
     setShowLanding(false);
+    try {
+      localStorage.removeItem("om_auth");
+      localStorage.removeItem("om_user");
+      localStorage.removeItem("om_tab");
+      if (typeof window !== "undefined") {
+        window.history.replaceState(null, "", window.location.pathname);
+      }
+    } catch {
+      // Ignore
+    }
     showToast("You have been signed out successfully.", "info");
   };
 

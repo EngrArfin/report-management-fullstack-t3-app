@@ -141,7 +141,7 @@ export function DashboardView() {
 
             <button
               onClick={() => setIsSubmitModalOpen(true)}
-              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-600 to-indigo-500 px-4 py-2 text-xs font-extrabold text-white shadow-lg shadow-indigo-600/30 hover:from-indigo-500 hover:to-indigo-400 active:scale-95 transition"
+              className="flex items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-500 px-4 py-2 text-xs font-bold text-white shadow-md shadow-blue-900/30 active:scale-95 transition cursor-pointer"
             >
               <IconForm className="h-4 w-4" />
               <span>Submit Weekly Report</span>

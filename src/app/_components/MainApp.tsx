@@ -12,6 +12,7 @@ import { TargetManagementView } from "./TargetManagementView";
 import { OmManagementView } from "./OmManagementView";
 import { NotificationView } from "./NotificationView";
 import { ExcelExportView } from "./ExcelExportView";
+import { SettingsView } from "./SettingsView";
 import { SubmitReportModal } from "./SubmitReportModal";
 import { FindingUpdateModal } from "./FindingUpdateModal";
 import type { ActiveUser } from "./AppContext";
@@ -53,6 +54,7 @@ export function MainApp({ allUsers, allZones }: MainAppProps) {
           {activeTab === "export" && <ExcelExportView />}
           {activeTab === "oms" && <OmManagementView />}
           {activeTab === "notifications" && <NotificationView />}
+          {activeTab === "settings" && <SettingsView />}
         </main>
 
         {/* Global Footer */}
