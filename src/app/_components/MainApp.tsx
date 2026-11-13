@@ -4,8 +4,7 @@ import React from "react";
 import { useApp } from "./AppContext";
 import { Sidebar } from "./Sidebar";
 import { TopNavbar } from "./TopNavbar";
-import { LandingPage } from "./LandingPage";
-import { LoginModal } from "./LoginModal";
+import { CorporateLoginPage } from "./CorporateLoginPage";
 import { DashboardView } from "./DashboardView";
 import { SubmissionTrackingView } from "./SubmissionTrackingView";
 import { ActivitySummaryView } from "./ActivitySummaryView";
@@ -23,16 +22,11 @@ interface MainAppProps {
 }
 
 export function MainApp({ allUsers, allZones }: MainAppProps) {
-  const { isAuthenticated, showLanding, activeTab, isSidebarCollapsed } = useApp();
+  const { isAuthenticated, activeTab, isSidebarCollapsed } = useApp();
 
-  // If not authenticated or showing landing page, render executive landing experience!
-  if (!isAuthenticated || showLanding) {
-    return (
-      <>
-        <LandingPage allUsers={allUsers} />
-        <LoginModal allUsers={allUsers} />
-      </>
-    );
+  // Root Corporate Login: If not authenticated, render dedicated enterprise sign-in
+  if (!isAuthenticated) {
+    return <CorporateLoginPage allUsers={allUsers} />;
   }
 
   // Once authenticated, render full Enterprise Portal with Sidebar + Top Navbar!
@@ -70,7 +64,6 @@ export function MainApp({ allUsers, allZones }: MainAppProps) {
       {/* Global Interactive Modals */}
       <SubmitReportModal />
       <FindingUpdateModal />
-      <LoginModal allUsers={allUsers} />
     </div>
   );
 }

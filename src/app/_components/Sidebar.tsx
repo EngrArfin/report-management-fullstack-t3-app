@@ -4,7 +4,6 @@ import React from "react";
 import { useApp } from "./AppContext";
 import {
   IconDashboard,
-  IconForm,
   IconTracking,
   IconTable,
   IconTarget,
@@ -38,7 +37,6 @@ export function Sidebar() {
     setIsSidebarCollapsed,
     isMobileSidebarOpen,
     setIsMobileSidebarOpen,
-    setIsSubmitModalOpen,
     handleLogout,
   } = useApp();
 
@@ -74,7 +72,7 @@ export function Sidebar() {
       {isMobileSidebarOpen && (
         <div
           onClick={() => setIsMobileSidebarOpen(false)}
-          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden animate-in fade-in"
+          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden animate-in fade-in cursor-pointer"
         />
       )}
 
@@ -112,7 +110,7 @@ export function Sidebar() {
           {!isSidebarCollapsed && (
             <button
               onClick={() => setIsSidebarCollapsed(true)}
-              className="hidden rounded-xl border border-slate-800 bg-slate-900/90 p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white lg:flex transition shadow-sm"
+              className="hidden rounded-xl border border-slate-800 bg-slate-900/90 p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white lg:flex transition shadow-sm cursor-pointer"
               title="Collapse Sidebar"
             >
               <IconChevronLeft className="h-4 w-4" />
@@ -125,7 +123,7 @@ export function Sidebar() {
           <div className="hidden lg:flex justify-center py-2 border-b border-slate-800/60">
             <button
               onClick={() => setIsSidebarCollapsed(false)}
-              className="rounded-xl border border-slate-800 bg-slate-900/90 p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white transition shadow-sm"
+              className="rounded-xl border border-slate-800 bg-slate-900/90 p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white transition shadow-sm cursor-pointer"
               title="Expand Sidebar"
             >
               <IconChevronRight className="h-4 w-4" />
@@ -133,25 +131,8 @@ export function Sidebar() {
           </div>
         )}
 
-        {/* Quick Submit CTA Button in Sidebar */}
-        <div className="p-3">
-          <button
-            onClick={() => {
-              setIsSubmitModalOpen(true);
-              setIsMobileSidebarOpen(false);
-            }}
-            className={`w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 py-2.5 px-3 text-xs font-bold text-white shadow-lg shadow-indigo-600/25 hover:from-indigo-500 hover:to-indigo-400 active:scale-95 transition ${
-              isSidebarCollapsed ? "px-0" : ""
-            }`}
-            title="Submit Weekly Report"
-          >
-            <IconForm className="h-4 w-4 shrink-0" />
-            {!isSidebarCollapsed && <span>+ Submit Report</span>}
-          </button>
-        </div>
-
         {/* Navigation Items */}
-        <div className="flex-1 overflow-y-auto px-3 py-2 space-y-5">
+        <div className="flex-1 overflow-y-auto px-3 py-4 space-y-5">
           {navigationGroups.map((grp) => {
             if (grp.adminOnly && activeUser.role !== "ADMIN") return null;
             return (
@@ -171,7 +152,7 @@ export function Sidebar() {
                         setActiveTab(item.id);
                         setIsMobileSidebarOpen(false);
                       }}
-                      className={`group flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-xs font-medium transition-all ${
+                      className={`group flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-xs font-medium transition-all cursor-pointer ${
                         isActive
                           ? "bg-indigo-600/15 text-indigo-300 font-bold border border-indigo-500/30 shadow-sm"
                           : "text-slate-400 hover:bg-slate-900 hover:text-slate-200"
@@ -223,7 +204,7 @@ export function Sidebar() {
 
             <button
               onClick={handleLogout}
-              className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-800 hover:text-rose-400 transition"
+              className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-800 hover:text-rose-400 transition cursor-pointer"
               title="Sign Out / Change User"
             >
               <IconLogout className="h-4 w-4" />

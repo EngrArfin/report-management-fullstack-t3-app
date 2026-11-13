@@ -74,10 +74,9 @@ export function AppProvider({
     initialUsers?.[0] ?? defaultAdmin
   );
 
-  // Authentication & Landing page state
-  // Default: start at Landing Page so visitors and executives experience the professional entry portal!
+  // Authentication state: starts at Corporate Login
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const [showLanding, setShowLanding] = useState<boolean>(true);
+  const [showLanding, setShowLanding] = useState<boolean>(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
 
   // Layout & Sidebar
@@ -113,7 +112,7 @@ export function AppProvider({
 
   const handleLogout = () => {
     setIsAuthenticated(false);
-    setShowLanding(true);
+    setShowLanding(false);
     showToast("You have been signed out successfully.", "info");
   };
 

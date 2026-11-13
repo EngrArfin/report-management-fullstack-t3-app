@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useApp } from "./AppContext";
 import { api } from "~/trpc/react";
-import { IconRefresh, IconDownload, IconSearch, IconFilter } from "./Icons";
+import { IconRefresh, IconDownload, IconSearch, IconFilter, IconCalendar } from "./Icons";
 
 type PeriodOption =
   | "1_MONTH"
@@ -99,10 +99,10 @@ export function ActivitySummaryView() {
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
         <div>
           <h2 className="text-lg sm:text-2xl font-extrabold tracking-tight text-white">
-            Activity Summary & Operational Rollup
+            Activity Summary
           </h2>
           <p className="text-xs text-slate-400 mt-0.5">
-            Rollup across Market Visit, Location Tracking, Dress Code & Mess Visit with fixed identity columns
+            Operational Rollup
           </p>
         </div>
 
@@ -126,68 +126,12 @@ export function ActivitySummaryView() {
         </div>
       </div>
 
-      {/* Period Quick Select & In-Table Filters */}
-      <div className="glass-panel flex flex-col gap-3.5 rounded-2xl p-4 text-xs shadow-md">
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/80 pb-3">
-          <span className="font-extrabold uppercase tracking-wider text-slate-400 text-[11px]">
-            Aggregation Period Rollup:
-          </span>
-
-          <div className="flex flex-wrap items-center gap-1.5">
-            {(
-              [
-                { id: "1_MONTH", label: "1 Month (Current)" },
-                { id: "3_MONTHS", label: "3 Months (Quarter)" },
-                { id: "6_MONTHS", label: "6 Months" },
-                { id: "1_YEAR", label: "1 Year (Annual)" },
-                { id: "ALL", label: "All Time" },
-                { id: "CUSTOM", label: "Custom Dates" },
-              ] as const
-            ).map((p) => (
-              <button
-                key={p.id}
-                onClick={() => setPeriodOption(p.id)}
-                className={`rounded-xl px-3 py-1.5 font-bold transition ${
-                  periodOption === p.id
-                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30"
-                    : "bg-slate-900 border border-slate-800 text-slate-300 hover:bg-slate-800 hover:text-white"
-                }`}
-              >
-                {p.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Custom Date Range if Selected */}
-        {periodOption === "CUSTOM" && (
-          <div className="flex flex-wrap items-center gap-3 rounded-xl border border-indigo-900/40 bg-indigo-950/20 p-3">
-            <span className="text-[11px] font-bold text-indigo-300">Custom Date Range:</span>
-            <div className="flex items-center gap-2">
-              <span className="text-slate-400">From:</span>
-              <input
-                type="date"
-                value={fromDate}
-                onChange={(e) => setFromDate(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1 text-xs text-white"
-              />
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-slate-400">To:</span>
-              <input
-                type="date"
-                value={toDate}
-                onChange={(e) => setToDate(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1 text-xs text-white"
-              />
-            </div>
-          </div>
-        )}
-
-        {/* In-Table Toolbar: Search + Zone Filter + Metric Sort */}
+      {/* In-Table Toolbar: Search + Period Dropdown + Zone Filter + Metric Sort */}
+      <div className="glass-panel flex flex-col gap-3 rounded-2xl p-3.5 text-xs shadow-md">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2.5">
-            <div className="relative w-full sm:w-56">
+            {/* Search */}
+            <div className="relative w-full sm:w-52">
               <IconSearch className="absolute left-3 top-2.5 h-3.5 w-3.5 text-slate-400 pointer-events-none" />
               <input
                 type="text"
@@ -198,8 +142,27 @@ export function ActivitySummaryView() {
               />
             </div>
 
+            {/* Period Dropdown Filter */}
+            <div className="flex items-center gap-1.5 rounded-xl border border-slate-700 bg-slate-950/80 px-2.5 py-1.5 text-xs">
+              <IconCalendar className="h-3.5 w-3.5 text-indigo-400" />
+              <span className="text-[10px] text-slate-400 font-bold uppercase">Period:</span>
+              <select
+                value={periodOption}
+                onChange={(e) => setPeriodOption(e.target.value as PeriodOption)}
+                className="bg-transparent text-xs font-semibold text-slate-200 outline-none cursor-pointer"
+                title="Select Aggregation Period"
+              >
+                <option value="1_MONTH" className="bg-slate-900 text-white">1 Month (Current)</option>
+                <option value="3_MONTHS" className="bg-slate-900 text-white">3 Months (Quarter)</option>
+                <option value="6_MONTHS" className="bg-slate-900 text-white">6 Months</option>
+                <option value="1_YEAR" className="bg-slate-900 text-white">1 Year (Annual)</option>
+                <option value="ALL" className="bg-slate-900 text-white">All Time</option>
+                <option value="CUSTOM" className="bg-slate-900 text-white">Custom Dates</option>
+              </select>
+            </div>
+
             {/* In-Table Zone Dropdown */}
-            <div className="flex items-center gap-1.5 rounded-xl border border-slate-700 bg-slate-950/80 px-2.5 py-1 text-xs">
+            <div className="flex items-center gap-1.5 rounded-xl border border-slate-700 bg-slate-950/80 px-2.5 py-1.5 text-xs">
               <IconFilter className="h-3.5 w-3.5 text-indigo-400" />
               <select
                 value={selectedZone}
@@ -217,7 +180,7 @@ export function ActivitySummaryView() {
             </div>
 
             {/* In-Table Metric Sort */}
-            <div className="flex items-center gap-1.5 rounded-xl border border-slate-700 bg-slate-950/80 px-2.5 py-1 text-xs">
+            <div className="flex items-center gap-1.5 rounded-xl border border-slate-700 bg-slate-950/80 px-2.5 py-1.5 text-xs">
               <span className="text-[10px] text-slate-400 font-bold uppercase">Sort:</span>
               <select
                 value={sortBy}
@@ -239,6 +202,31 @@ export function ActivitySummaryView() {
             Showing <strong className="text-white">{filteredRows.length}</strong> Office Managers
           </div>
         </div>
+
+        {/* Custom Date Range if Selected */}
+        {periodOption === "CUSTOM" && (
+          <div className="flex flex-wrap items-center gap-3 rounded-xl border border-indigo-900/40 bg-indigo-950/20 p-2.5">
+            <span className="text-[11px] font-bold text-indigo-300">Custom Date Range:</span>
+            <div className="flex items-center gap-2">
+              <span className="text-slate-400">From:</span>
+              <input
+                type="date"
+                value={fromDate}
+                onChange={(e) => setFromDate(e.target.value)}
+                className="rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1 text-xs text-white"
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-slate-400">To:</span>
+              <input
+                type="date"
+                value={toDate}
+                onChange={(e) => setToDate(e.target.value)}
+                className="rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1 text-xs text-white"
+              />
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Activity Summary Table with Fixed / Sticky Identification Columns */}
@@ -270,8 +258,10 @@ export function ActivitySummaryView() {
             <tbody className="divide-y divide-slate-800/60 font-medium">
               {isLoading ? (
                 <tr>
-                  <td colSpan={14} className="py-10 text-center text-slate-400">
-                    Aggregating summary records...
+                  <td colSpan={14} className="py-16 text-center">
+                    <div className="flex items-center justify-center">
+                      <div className="h-7 w-7 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent" />
+                    </div>
                   </td>
                 </tr>
               ) : filteredRows.length === 0 ? (

@@ -81,10 +81,10 @@ export function NotificationView() {
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
         <div>
           <h2 className="text-lg sm:text-2xl font-extrabold tracking-tight text-white">
-            Automated Deadline Notification & Senior Routing Engine
+            Email Notifications
           </h2>
           <p className="text-xs text-slate-400 mt-0.5">
-            Automatic Friday 11:59 PM missed report detection, senior management CC rules & anti-duplicate dispatch audit
+            Friday 11:59 PM BST Automated Routing
           </p>
         </div>
 
@@ -256,8 +256,10 @@ export function NotificationView() {
               <tbody className="divide-y divide-slate-800/60 font-medium">
                 {isLogsLoading ? (
                   <tr>
-                    <td colSpan={6} className="py-10 text-center text-slate-400">
-                      Loading notification logs...
+                    <td colSpan={6} className="py-16 text-center">
+                      <div className="flex items-center justify-center">
+                        <div className="h-7 w-7 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent" />
+                      </div>
                     </td>
                   </tr>
                 ) : logs?.length === 0 ? (

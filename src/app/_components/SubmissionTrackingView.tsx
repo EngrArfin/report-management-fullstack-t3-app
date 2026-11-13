@@ -37,10 +37,7 @@ export function SubmissionTrackingView() {
   if (isLoading) {
     return (
       <div className="flex min-h-[360px] items-center justify-center">
-        <div className="flex flex-col items-center gap-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-8 text-slate-400 backdrop-blur-md">
-          <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent shadow-lg shadow-indigo-500/20" />
-          <p className="text-xs font-semibold text-slate-300">Loading submission tracking matrix...</p>
-        </div>
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent" />
       </div>
     );
   }
@@ -127,11 +124,10 @@ export function SubmissionTrackingView() {
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
         <div>
           <h2 className="text-lg sm:text-2xl font-extrabold tracking-tight text-white">
-            Submission Compliance & Tracking Matrix
+            Submission Tracking
           </h2>
           <p className="text-xs text-slate-400 mt-0.5">
-            Operating Period: <span className="font-bold text-indigo-300">{data?.monthYear}</span> • Real-time
-            status verification across Week 1 to Week 4 (Friday 11:59 PM Deadline)
+            {data?.monthYear} • Week 1 to 4 Compliance
           </p>
         </div>
 

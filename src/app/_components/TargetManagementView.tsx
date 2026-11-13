@@ -208,17 +208,12 @@ export function TargetManagementView() {
               <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/30">
                 <IconTarget className="h-4 w-4" />
               </div>
-              <div>
-                <h3 className="font-extrabold text-white text-sm sm:text-base">
-                  Admin Target Configuration Console — {achievementData?.monthYear ?? "Monthly Quotas"}
-                </h3>
-                <p className="text-[11px] text-slate-400">
-                  Set baseline monthly quotas for field personnel across key operational metrics
-                </p>
-              </div>
+              <h3 className="font-extrabold text-white text-sm sm:text-base">
+                Target Configuration
+              </h3>
             </div>
             <span className="rounded-full bg-indigo-500/15 border border-indigo-500/30 px-2.5 py-0.5 text-[10px] font-bold text-indigo-300">
-              Admin Exclusive
+              Admin
             </span>
           </div>
 
@@ -340,19 +335,14 @@ export function TargetManagementView() {
 
       {/* LEADERBOARD & OM-WISE ACHIEVEMENT (FIXED STICKY COLUMNS + INLINE DROPDOWNS) */}
       <section className="rounded-3xl border border-slate-800/80 bg-slate-900/90 p-5 sm:p-7 shadow-2xl backdrop-blur-xl space-y-4">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
-          <div>
-            <div className="flex items-center gap-2">
-              <h3 className="text-sm sm:text-base font-extrabold text-white">
-                Office Manager Target Achievement Leaderboard
-              </h3>
-              <span className="rounded-full bg-slate-800 px-2.5 py-0.5 text-[10px] font-bold text-slate-300 border border-slate-700">
-                {achievementData?.monthYear ?? `${selectedMonth}/${selectedYear}`}
-              </span>
-            </div>
-            <p className="text-[11px] text-slate-400 mt-0.5">
-              Ranked by Overall Achievement: (Achieved ÷ Target) × 100 • Pinned rank & name columns
-            </p>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-4">
+          <div className="flex items-center gap-2">
+            <h3 className="text-sm sm:text-base font-extrabold text-white">
+              Target Leaderboard
+            </h3>
+            <span className="rounded-full bg-slate-800 px-2 py-0.5 text-[10px] font-bold text-slate-300 border border-slate-700">
+              {achievementData?.monthYear ?? `${selectedMonth}/${selectedYear}`}
+            </span>
           </div>
 
           <div className="flex flex-wrap items-center gap-2.5">
@@ -434,10 +424,9 @@ export function TargetManagementView() {
               <tbody className="divide-y divide-slate-800/60 font-medium">
                 {isLoading ? (
                   <tr>
-                    <td colSpan={10} className="py-12 text-center text-slate-400">
-                      <div className="flex flex-col items-center gap-3">
+                    <td colSpan={10} className="py-16 text-center">
+                      <div className="flex items-center justify-center">
                         <div className="h-7 w-7 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent" />
-                        <span className="text-xs font-semibold">Computing target achievement metrics...</span>
                       </div>
                     </td>
                   </tr>

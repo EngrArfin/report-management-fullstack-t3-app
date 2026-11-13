@@ -50,10 +50,10 @@ export function ExcelExportView() {
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
         <div>
           <h2 className="text-lg sm:text-2xl font-extrabold tracking-tight text-white">
-            Official Excel Reporting & Export Center
+            Excel Export Center
           </h2>
           <p className="text-xs text-slate-400 mt-0.5">
-            Standardized 18-column operational audit dataset (Requirement #47) • Fixed identity columns
+            18-Column Standard Dataset
           </p>
         </div>
 
@@ -196,8 +196,10 @@ export function ExcelExportView() {
             <tbody className="divide-y divide-slate-800/60 font-medium">
               {isLoading ? (
                 <tr>
-                  <td colSpan={18} className="py-10 text-center text-slate-400">
-                    Preparing export records...
+                  <td colSpan={18} className="py-16 text-center">
+                    <div className="flex items-center justify-center">
+                      <div className="h-7 w-7 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent" />
+                    </div>
                   </td>
                 </tr>
               ) : filteredData.length === 0 ? (

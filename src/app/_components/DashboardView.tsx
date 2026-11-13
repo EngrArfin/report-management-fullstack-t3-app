@@ -48,18 +48,7 @@ export function DashboardView() {
   if (isLoading) {
     return (
       <div className="flex min-h-[460px] items-center justify-center">
-        <div className="flex flex-col items-center gap-4 rounded-3xl border border-slate-800 bg-slate-900/80 p-10 text-slate-400 backdrop-blur-xl shadow-2xl">
-          <div className="relative flex h-12 w-12 items-center justify-center">
-            <div className="h-12 w-12 animate-spin rounded-full border-3 border-indigo-500 border-t-transparent shadow-lg shadow-indigo-500/20" />
-            <span className="absolute text-[10px] font-black text-indigo-400">OM</span>
-          </div>
-          <div className="text-center">
-            <h4 className="text-sm font-bold text-white">Aggregating Operational Data</h4>
-            <p className="mt-1 text-xs text-slate-400">
-              Calculating real-time field performance, target metrics, and audit logs...
-            </p>
-          </div>
-        </div>
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent" />
       </div>
     );
   }
@@ -134,12 +123,8 @@ export function DashboardView() {
             </div>
 
             <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white">
-              Office Manager Weekly Operations & Governance Portal
+              Executive Dashboard
             </h2>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
-              Automated weekly reporting system with real-time audit trails, Target vs Achievement scoring,
-              and Friday 11:59:59 PM cutoff policy enforcement.
-            </p>
           </div>
 
           {/* Quick Hero Actions */}

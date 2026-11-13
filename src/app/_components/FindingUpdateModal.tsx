@@ -85,7 +85,9 @@ export function FindingUpdateModal() {
         </div>
 
         {isLoading ? (
-          <div className="py-10 text-center text-xs text-slate-400">Loading finding details...</div>
+          <div className="py-12 flex items-center justify-center">
+            <div className="h-7 w-7 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent" />
+          </div>
         ) : !report ? (
           <div className="py-10 text-center text-xs text-slate-400">Report details not found.</div>
         ) : (
