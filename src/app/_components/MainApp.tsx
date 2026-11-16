@@ -15,19 +15,17 @@ import { ExcelExportView } from "./ExcelExportView";
 import { SettingsView } from "./SettingsView";
 import { SubmitReportModal } from "./SubmitReportModal";
 import { FindingUpdateModal } from "./FindingUpdateModal";
-import type { ActiveUser } from "./AppContext";
 
 interface MainAppProps {
-  allUsers: ActiveUser[];
   allZones: { id: string; name: string }[];
 }
 
-export function MainApp({ allUsers, allZones }: MainAppProps) {
+export function MainApp({ allZones }: MainAppProps) {
   const { isAuthenticated, activeTab, isSidebarCollapsed } = useApp();
 
   // Root Corporate Login: If not authenticated, render dedicated enterprise sign-in
   if (!isAuthenticated) {
-    return <CorporateLoginPage allUsers={allUsers} />;
+    return <CorporateLoginPage />;
   }
 
   // Once authenticated, render full Enterprise Portal with Sidebar + Top Navbar!
@@ -42,8 +40,8 @@ export function MainApp({ allUsers, allZones }: MainAppProps) {
           isSidebarCollapsed ? "lg:pl-20" : "lg:pl-64"
         }`}
       >
-        {/* Top Navbar with quick actions, filters, search & persona switcher */}
-        <TopNavbar allUsers={allUsers} allZones={allZones} />
+        {/* Top Navbar with quick actions, filters, and user profile */}
+        <TopNavbar allZones={allZones} />
 
         {/* Dynamic Operational Content View */}
         <main className="mx-auto w-full max-w-[1600px] min-w-0 flex-1 px-3 sm:px-6 lg:px-8 py-6 space-y-6">

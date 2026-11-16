@@ -43,6 +43,7 @@ async function main() {
       mobile: "+8801700000000",
       role: "ADMIN",
       status: "ACTIVE",
+      password: "admin@123",
     },
   });
 
@@ -56,6 +57,7 @@ async function main() {
       mobile: "+8801711000001",
       role: "OM",
       status: "ACTIVE",
+      password: "om@123456",
     },
   });
 
@@ -69,6 +71,7 @@ async function main() {
       mobile: "+8801711000002",
       role: "OM",
       status: "ACTIVE",
+      password: "om@123456",
     },
   });
 
@@ -82,6 +85,7 @@ async function main() {
       mobile: "+8801711000003",
       role: "OM",
       status: "ACTIVE",
+      password: "om@123456",
     },
   });
 
@@ -95,6 +99,7 @@ async function main() {
       mobile: "+8801711000004",
       role: "OM",
       status: "ACTIVE",
+      password: "om@123456",
     },
   });
 
@@ -108,6 +113,7 @@ async function main() {
       mobile: "+8801711000005",
       role: "OM",
       status: "ACTIVE",
+      password: "om@123456",
     },
   });
 

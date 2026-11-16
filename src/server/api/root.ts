@@ -1,4 +1,5 @@
 import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
+import { authRouter } from "~/server/api/routers/auth";
 import { reportRouter } from "~/server/api/routers/report";
 import { targetRouter } from "~/server/api/routers/target";
 import { omRouter } from "~/server/api/routers/om";
@@ -10,6 +11,7 @@ import { exportRouter } from "~/server/api/routers/export";
  * Primary tRPC router for Office Manager (OM) Weekly Report Management System.
  */
 export const appRouter = createTRPCRouter({
+  auth: authRouter,
   report: reportRouter,
   target: targetRouter,
   om: omRouter,

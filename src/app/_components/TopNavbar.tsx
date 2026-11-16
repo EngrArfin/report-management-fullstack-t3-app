@@ -1,28 +1,25 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { useApp, type ActiveUser } from "./AppContext";
+import { useApp } from "./AppContext";
 import {
   IconMenu,
   IconLogout,
   IconChevronDown,
   IconCheck,
   IconShield,
-  IconUsers,
   IconFilter,
   IconRefresh,
   IconSettings,
 } from "./Icons";
 
 interface TopNavbarProps {
-  allUsers: ActiveUser[];
   allZones: { id: string; name: string }[];
 }
 
-export function TopNavbar({ allUsers, allZones }: TopNavbarProps) {
+export function TopNavbar({ allZones }: TopNavbarProps) {
   const {
     activeUser,
-    setActiveUser,
     setActiveTab,
     selectedYear,
     setSelectedYear,
@@ -40,7 +37,6 @@ export function TopNavbar({ allUsers, allZones }: TopNavbarProps) {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
   const [zoneSearch, setZoneSearch] = useState("");
-  const [personaSearch, setPersonaSearch] = useState("");
 
   const filterRef = useRef<HTMLDivElement>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
@@ -113,13 +109,6 @@ export function TopNavbar({ allUsers, allZones }: TopNavbarProps) {
       .join("")
       .toUpperCase();
   };
-
-  const filteredUsers = allUsers.filter(
-    (u) =>
-      u.name.toLowerCase().includes(personaSearch.toLowerCase()) ||
-      u.staffId.toLowerCase().includes(personaSearch.toLowerCase()) ||
-      u.zone.toLowerCase().includes(personaSearch.toLowerCase())
-  );
 
   const filteredZones = allZones.filter((z) =>
     z.name.toLowerCase().includes(zoneSearch.toLowerCase())
@@ -400,52 +389,6 @@ export function TopNavbar({ allUsers, allZones }: TopNavbarProps) {
                   <span className="rounded-md bg-slate-800 px-2 py-0.5 text-slate-300 font-semibold">
                     Zone: {activeUser.zone}
                   </span>
-                </div>
-              </div>
-
-              {/* Persona Switcher */}
-              <div className="space-y-1.5">
-                <div className="flex items-center justify-between px-1">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 flex items-center gap-1">
-                    <IconUsers className="h-3 w-3 text-indigo-400" />
-                    Switch Account
-                  </span>
-                  <span className="text-[10px] text-indigo-400 font-semibold">Demo</span>
-                </div>
-
-                <input
-                  type="text"
-                  value={personaSearch}
-                  onChange={(e) => setPersonaSearch(e.target.value)}
-                  placeholder="Search staff or zone..."
-                  className="w-full rounded-xl border border-slate-800 bg-slate-900 px-2.5 py-1 text-xs text-white placeholder-slate-500 outline-none focus:border-indigo-500"
-                />
-
-                <div className="max-h-40 overflow-y-auto space-y-1 pr-1 table-scrollbar">
-                  {filteredUsers.map((u) => {
-                    const isCurrent = u.id === activeUser.id;
-                    return (
-                      <button
-                        key={u.id}
-                        type="button"
-                        onClick={() => {
-                          setActiveUser(u);
-                          setIsUserMenuOpen(false);
-                        }}
-                        className={`w-full flex items-center justify-between rounded-xl px-2.5 py-1.5 text-left transition cursor-pointer ${
-                          isCurrent
-                            ? "bg-indigo-600/20 border border-indigo-500/40 text-white"
-                            : "hover:bg-slate-900 text-slate-300 hover:text-white"
-                        }`}
-                      >
-                        <div className="flex items-center gap-2 min-w-0">
-                          <span className="truncate text-xs font-semibold">{u.name}</span>
-                          <span className="text-[10px] text-slate-400">#{u.staffId}</span>
-                        </div>
-                        {isCurrent && <IconCheck className="h-3.5 w-3.5 text-indigo-400 shrink-0" />}
-                      </button>
-                    );
-                  })}
                 </div>
               </div>
 

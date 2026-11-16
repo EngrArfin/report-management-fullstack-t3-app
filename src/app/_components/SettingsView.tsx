@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useApp } from "./AppContext";
+import { api } from "~/trpc/react";
 import {
   IconSettings,
   IconShield,
@@ -28,38 +29,67 @@ export function SettingsView() {
   const [emailReminders, setEmailReminders] = useState(true);
   const [autoSaveDraft, setAutoSaveDraft] = useState(true);
 
+  const updateProfileMutation = api.auth.updateProfile.useMutation({
+    onSuccess: (data) => {
+      setActiveUser(data.user);
+      try {
+        localStorage.setItem("om_user", JSON.stringify(data.user));
+      } catch {
+        // Ignore
+      }
+      showToast("Profile credentials updated successfully in database.", "success");
+    },
+    onError: (err) => {
+      showToast(err.message || "Failed to update profile.", "error");
+    },
+  });
+
+  const changePasswordMutation = api.auth.changePassword.useMutation({
+    onSuccess: (data) => {
+      setCurrentPin("");
+      setNewPin("");
+      setConfirmPin("");
+      showToast(data.message || "Security credentials updated successfully in database.", "success");
+    },
+    onError: (err) => {
+      showToast(err.message || "Failed to change password.", "error");
+    },
+  });
+
   const handleSaveProfile = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim()) {
       showToast("Full name is required.", "error");
       return;
     }
-    const updated = {
-      ...activeUser,
+    updateProfileMutation.mutate({
+      userId: activeUser.id,
       name: name.trim(),
       email: email.trim(),
       designation: designation.trim(),
       zone: zone.trim(),
-    };
-    setActiveUser(updated);
-    try {
-      localStorage.setItem("om_user", JSON.stringify(updated));
-    } catch {
-      // Ignore
-    }
-    showToast("Profile credentials updated successfully.", "success");
+    });
   };
 
   const handleUpdatePassword = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newPin || newPin !== confirmPin) {
-      showToast("New passwords do not match or are empty.", "error");
+    if (!currentPin) {
+      showToast("Current password is required.", "error");
       return;
     }
-    setCurrentPin("");
-    setNewPin("");
-    setConfirmPin("");
-    showToast("Security credentials updated successfully.", "success");
+    if (!newPin || newPin.length < 4) {
+      showToast("New password must be at least 4 characters.", "error");
+      return;
+    }
+    if (newPin !== confirmPin) {
+      showToast("New passwords do not match.", "error");
+      return;
+    }
+    changePasswordMutation.mutate({
+      userId: activeUser.id,
+      currentPassword: currentPin,
+      newPassword: newPin,
+    });
   };
 
   return (
@@ -93,11 +123,10 @@ export function SettingsView() {
             key={tab.id}
             type="button"
             onClick={() => setActiveTab(tab.id as typeof activeTab)}
-            className={`px-4 py-2.5 border-b-2 transition cursor-pointer whitespace-nowrap ${
-              activeTab === tab.id
+            className={`px-4 py-2.5 border-b-2 transition cursor-pointer whitespace-nowrap ${activeTab === tab.id
                 ? "border-blue-500 text-white font-bold bg-slate-900/50"
                 : "border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-700"
-            }`}
+              }`}
           >
             {tab.label}
           </button>
@@ -191,9 +220,17 @@ export function SettingsView() {
             <div className="pt-2 flex justify-end">
               <button
                 type="submit"
-                className="rounded-xl bg-blue-600 hover:bg-blue-500 px-4 py-2 text-xs font-bold text-white shadow-sm transition cursor-pointer"
+                disabled={updateProfileMutation.isPending}
+                className="rounded-xl bg-blue-600 hover:bg-blue-500 disabled:opacity-50 px-4 py-2 text-xs font-bold text-white shadow-sm transition cursor-pointer flex items-center gap-2"
               >
-                Save Changes
+                {updateProfileMutation.isPending ? (
+                  <>
+                    <span className="h-3 w-3 rounded-full border-2 border-white/30 border-t-white animate-spin inline-block" />
+                    <span>Saving...</span>
+                  </>
+                ) : (
+                  <span>Save Changes</span>
+                )}
               </button>
             </div>
           </div>
@@ -253,12 +290,20 @@ export function SettingsView() {
             </div>
 
             <div className="pt-2 flex items-center justify-between">
-              <span className="text-[11px] text-slate-400">Default PIN accepted for all demo personas</span>
+              <span className="text-[11px] text-slate-400">Stored securely in database</span>
               <button
                 type="submit"
-                className="rounded-xl bg-blue-600 hover:bg-blue-500 px-4 py-2 text-xs font-bold text-white shadow-sm transition cursor-pointer"
+                disabled={changePasswordMutation.isPending}
+                className="rounded-xl bg-blue-600 hover:bg-blue-500 disabled:opacity-50 px-4 py-2 text-xs font-bold text-white shadow-sm transition cursor-pointer flex items-center gap-2"
               >
-                Update Password
+                {changePasswordMutation.isPending ? (
+                  <>
+                    <span className="h-3 w-3 rounded-full border-2 border-white/30 border-t-white animate-spin inline-block" />
+                    <span>Updating...</span>
+                  </>
+                ) : (
+                  <span>Update Password</span>
+                )}
               </button>
             </div>
           </div>

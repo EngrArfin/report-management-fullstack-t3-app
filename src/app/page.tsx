@@ -31,7 +31,7 @@ export default async function HomePage() {
 
   return (
     <AppProvider initialUsers={activeUsers}>
-      <MainApp allUsers={activeUsers} allZones={zones} />
+      <MainApp allZones={zones} />
     </AppProvider>
   );
 }
