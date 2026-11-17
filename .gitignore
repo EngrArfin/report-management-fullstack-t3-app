@@ -44,3 +44,6 @@ yarn-error.log*
 # idea files
 .idea
 config.bat
+.env
+.env.*
+.env.example
