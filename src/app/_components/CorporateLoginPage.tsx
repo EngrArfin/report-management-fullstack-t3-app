@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useApp } from "./AppContext";
 import { api } from "~/trpc/react";
-import { IconLock, IconShield } from "./Icons";
+import { IconLock } from "./Icons";
 
 export function CorporateLoginPage() {
   const { handleLogin, showToast } = useApp();
