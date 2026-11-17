@@ -39,33 +39,42 @@ export function CorporateLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between selection:bg-blue-600 selection:text-white relative">
-      {/* Formal Dark Background */}
-      <div className="absolute inset-0 bg-radial-[circle_at_top_center] from-slate-900/60 via-slate-950 to-slate-950 pointer-events-none" />
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between selection:bg-blue-600 selection:text-white relative overflow-x-hidden">
+      {/* Background subtle radial glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(30,58,138,0.18),rgba(2,6,23,0))] pointer-events-none" />
 
-      {/* Main Centered Sign-In Area (NO NAVBAR) */}
+      {/* Main Sign-In Section (Clean 2-column layout) */}
       <main className="relative z-10 flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8">
-        <div className="w-full max-w-md">
-          {/* Main Corporate Authentication Card */}
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/95 backdrop-blur-xl shadow-2xl p-6 sm:p-8 space-y-6">
-            {/* Corporate Brand Emblem */}
-            <div className="text-center">
-              <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white font-extrabold text-base shadow-lg shadow-blue-900/30 mb-3.5">
-                OM
+        <div className="w-full max-w-4xl rounded-3xl border border-slate-800 bg-slate-900/95 backdrop-blur-xl shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 min-h-[520px]">
+
+          {/* Left Column: Clean & Simple Login Form */}
+          <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-between space-y-6 bg-slate-900/90">
+            {/* Circular Logo & Header */}
+            <div className="space-y-4">
+              <div className="h-14 w-14 rounded-full bg-slate-950 border border-slate-700/80 p-1.5 shadow-md flex items-center justify-center overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/logo.png"
+                  alt="Report Portal Logo"
+                  className="h-full w-full object-contain rounded-full"
+                />
               </div>
-              <h1 className="text-xl font-bold tracking-tight text-white">
-                Office Operations Portal
-              </h1>
-              <p className="mt-1 text-xs text-slate-400">
-                Weekly Report Management & Performance Governance
-              </p>
+
+              <div>
+                <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
+                  Office Operations Portal
+                </h1>
+                <p className="mt-1 text-xs text-slate-400">
+                  Sign in with your Staff ID or Corporate Email
+                </p>
+              </div>
             </div>
 
-            {/* Real Authentication Form */}
+            {/* Form */}
             <form onSubmit={handleCredentialsSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
-                  Staff ID or Corporate Email
+                <label className="block text-xs font-medium text-slate-300 mb-1.5">
+                  Staff ID or Email
                 </label>
                 <input
                   type="text"
@@ -74,12 +83,12 @@ export function CorporateLoginPage() {
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
                   placeholder="e.g. ADMIN001 or 572816"
-                  className="w-full rounded-xl border border-slate-700 bg-slate-950/90 px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500/30 transition"
+                  className="w-full rounded-xl border border-slate-700 bg-slate-950/90 px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500/40 transition"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                <label className="block text-xs font-medium text-slate-300 mb-1.5">
                   Password
                 </label>
                 <input
@@ -88,44 +97,51 @@ export function CorporateLoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full rounded-xl border border-slate-700 bg-slate-950/90 px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500/30 transition"
+                  className="w-full rounded-xl border border-slate-700 bg-slate-950/90 px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500/40 transition"
                 />
               </div>
 
-              {/* Submit Action Button */}
+              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={loginMutation.isPending}
-                className="w-full mt-2 flex items-center justify-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-500 py-2.5 text-xs sm:text-sm font-bold text-white shadow-md shadow-blue-900/30 active:scale-[0.99] transition cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full mt-2 flex items-center justify-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-500 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-md shadow-blue-900/30 active:scale-[0.99] transition cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {loginMutation.isPending ? (
-                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                  <>
+                    <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                    <span>Signing in...</span>
+                  </>
                 ) : (
                   <>
                     <IconLock className="h-4 w-4" />
-                    <span>Sign In to Portal</span>
+                    <span>Sign In</span>
                   </>
                 )}
               </button>
             </form>
 
-            {/* Corporate System Notice */}
-            <div className="pt-4 border-t border-slate-800 text-center space-y-1">
-              <div className="flex items-center justify-center gap-1.5 text-[11px] text-slate-400">
-                <IconShield className="h-3.5 w-3.5 text-blue-400" />
-                <span>Enterprise Authentication Node</span>
-              </div>
-              <p className="text-[10px] text-slate-400">
-                Restricted to authorized company personnel. All sign-in attempts are audited.
-              </p>
-            </div>
+
           </div>
+
+          {/* Right Column: Clean & Natural Photographic Showcase */}
+          <div className="hidden lg:block relative overflow-hidden bg-slate-950">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/login-showcase.jpg"
+              alt="Operations Review & Performance Reporting"
+              className="h-full w-full object-cover"
+            />
+            {/* Gentle dark gradient overlay at bottom for smooth natural depth */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
+          </div>
+
         </div>
       </main>
 
-      {/* Formal Minimalist Footer */}
+      {/* Minimal Footer */}
       <footer className="relative z-10 w-full border-t border-slate-900 bg-slate-950/90 py-3 text-center text-[11px] text-slate-400">
-        © 2026 Office Operations Management • 256-Bit SSL Encrypted Enterprise Access
+        © 2026 Office Operations Management
       </footer>
     </div>
   );

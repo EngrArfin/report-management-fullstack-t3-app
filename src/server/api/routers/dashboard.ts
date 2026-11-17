@@ -29,7 +29,7 @@ export const dashboardRouter = createTRPCRouter({
       const totalOmCount = await db.user.count({ where: userWhere });
       const activeOms = await db.user.findMany({
         where: userWhere,
-        select: { id: true, staffId: true, name: true, zone: true },
+        select: { id: true, staffId: true, name: true, zone: true, image: true },
       });
 
       // Filter reports
@@ -141,6 +141,7 @@ export const dashboardRouter = createTRPCRouter({
           staffId: om.staffId,
           name: om.name,
           zone: om.zone,
+          image: om.image ?? null,
           submissionCount: omReps.length,
           marketVisit: mv,
           marketFinding: mf,

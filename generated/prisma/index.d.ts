@@ -1516,6 +1516,7 @@ export namespace Prisma {
     role: string | null
     status: string | null
     password: string | null
+    image: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1531,6 +1532,7 @@ export namespace Prisma {
     role: string | null
     status: string | null
     password: string | null
+    image: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1546,6 +1548,7 @@ export namespace Prisma {
     role: number
     status: number
     password: number
+    image: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -1563,6 +1566,7 @@ export namespace Prisma {
     role?: true
     status?: true
     password?: true
+    image?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1578,6 +1582,7 @@ export namespace Prisma {
     role?: true
     status?: true
     password?: true
+    image?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1593,6 +1598,7 @@ export namespace Prisma {
     role?: true
     status?: true
     password?: true
+    image?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -1681,6 +1687,7 @@ export namespace Prisma {
     role: string
     status: string
     password: string | null
+    image: string | null
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -1713,6 +1720,7 @@ export namespace Prisma {
     role?: boolean
     status?: boolean
     password?: boolean
+    image?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     reports?: boolean | User$reportsArgs<ExtArgs>
@@ -1733,6 +1741,7 @@ export namespace Prisma {
     role?: boolean
     status?: boolean
     password?: boolean
+    image?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -1748,6 +1757,7 @@ export namespace Prisma {
     role?: boolean
     status?: boolean
     password?: boolean
+    image?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -1763,11 +1773,12 @@ export namespace Prisma {
     role?: boolean
     status?: boolean
     password?: boolean
+    image?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "staffId" | "name" | "designation" | "zone" | "email" | "mobile" | "role" | "status" | "password" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "staffId" | "name" | "designation" | "zone" | "email" | "mobile" | "role" | "status" | "password" | "image" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     reports?: boolean | User$reportsArgs<ExtArgs>
     targets?: boolean | User$targetsArgs<ExtArgs>
@@ -1797,6 +1808,7 @@ export namespace Prisma {
       role: string
       status: string
       password: string | null
+      image: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -2236,6 +2248,7 @@ export namespace Prisma {
     readonly role: FieldRef<"User", 'String'>
     readonly status: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
+    readonly image: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
@@ -9739,6 +9752,7 @@ export namespace Prisma {
     role: 'role',
     status: 'status',
     password: 'password',
+    image: 'image',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -9959,6 +9973,7 @@ export namespace Prisma {
     role?: StringFilter<"User"> | string
     status?: StringFilter<"User"> | string
     password?: StringNullableFilter<"User"> | string | null
+    image?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     reports?: WeeklyReportListRelationFilter
@@ -9978,6 +9993,7 @@ export namespace Prisma {
     role?: SortOrder
     status?: SortOrder
     password?: SortOrderInput | SortOrder
+    image?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     reports?: WeeklyReportOrderByRelationAggregateInput
@@ -10000,6 +10016,7 @@ export namespace Prisma {
     role?: StringFilter<"User"> | string
     status?: StringFilter<"User"> | string
     password?: StringNullableFilter<"User"> | string | null
+    image?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     reports?: WeeklyReportListRelationFilter
@@ -10019,6 +10036,7 @@ export namespace Prisma {
     role?: SortOrder
     status?: SortOrder
     password?: SortOrderInput | SortOrder
+    image?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -10040,6 +10058,7 @@ export namespace Prisma {
     role?: StringWithAggregatesFilter<"User"> | string
     status?: StringWithAggregatesFilter<"User"> | string
     password?: StringNullableWithAggregatesFilter<"User"> | string | null
+    image?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -10586,6 +10605,7 @@ export namespace Prisma {
     role?: string
     status?: string
     password?: string | null
+    image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     reports?: WeeklyReportCreateNestedManyWithoutUserInput
@@ -10605,6 +10625,7 @@ export namespace Prisma {
     role?: string
     status?: string
     password?: string | null
+    image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     reports?: WeeklyReportUncheckedCreateNestedManyWithoutUserInput
@@ -10624,6 +10645,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     reports?: WeeklyReportUpdateManyWithoutUserNestedInput
@@ -10643,6 +10665,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     reports?: WeeklyReportUncheckedUpdateManyWithoutUserNestedInput
@@ -10662,6 +10685,7 @@ export namespace Prisma {
     role?: string
     status?: string
     password?: string | null
+    image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10677,6 +10701,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10692,6 +10717,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11394,6 +11420,7 @@ export namespace Prisma {
     role?: SortOrder
     status?: SortOrder
     password?: SortOrder
+    image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -11409,6 +11436,7 @@ export namespace Prisma {
     role?: SortOrder
     status?: SortOrder
     password?: SortOrder
+    image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -11424,6 +11452,7 @@ export namespace Prisma {
     role?: SortOrder
     status?: SortOrder
     password?: SortOrder
+    image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -12701,6 +12730,7 @@ export namespace Prisma {
     role?: string
     status?: string
     password?: string | null
+    image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     targets?: MonthlyTargetCreateNestedManyWithoutUserInput
@@ -12719,6 +12749,7 @@ export namespace Prisma {
     role?: string
     status?: string
     password?: string | null
+    image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     targets?: MonthlyTargetUncheckedCreateNestedManyWithoutUserInput
@@ -12785,6 +12816,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     targets?: MonthlyTargetUpdateManyWithoutUserNestedInput
@@ -12803,6 +12835,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     targets?: MonthlyTargetUncheckedUpdateManyWithoutUserNestedInput
@@ -12890,6 +12923,7 @@ export namespace Prisma {
     role?: string
     status?: string
     password?: string | null
+    image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     reports?: WeeklyReportCreateNestedManyWithoutUserInput
@@ -12908,6 +12942,7 @@ export namespace Prisma {
     role?: string
     status?: string
     password?: string | null
+    image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     reports?: WeeklyReportUncheckedCreateNestedManyWithoutUserInput
@@ -13001,6 +13036,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     reports?: WeeklyReportUpdateManyWithoutUserNestedInput
@@ -13019,6 +13055,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     reports?: WeeklyReportUncheckedUpdateManyWithoutUserNestedInput
@@ -13037,6 +13074,7 @@ export namespace Prisma {
     role?: string
     status?: string
     password?: string | null
+    image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     reports?: WeeklyReportCreateNestedManyWithoutUserInput
@@ -13055,6 +13093,7 @@ export namespace Prisma {
     role?: string
     status?: string
     password?: string | null
+    image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     reports?: WeeklyReportUncheckedCreateNestedManyWithoutUserInput
@@ -13089,6 +13128,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     reports?: WeeklyReportUpdateManyWithoutUserNestedInput
@@ -13107,6 +13147,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     reports?: WeeklyReportUncheckedUpdateManyWithoutUserNestedInput
@@ -13125,6 +13166,7 @@ export namespace Prisma {
     role?: string
     status?: string
     password?: string | null
+    image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     reports?: WeeklyReportCreateNestedManyWithoutUserInput
@@ -13143,6 +13185,7 @@ export namespace Prisma {
     role?: string
     status?: string
     password?: string | null
+    image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     reports?: WeeklyReportUncheckedCreateNestedManyWithoutUserInput
@@ -13177,6 +13220,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     reports?: WeeklyReportUpdateManyWithoutUserNestedInput
@@ -13195,6 +13239,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     reports?: WeeklyReportUncheckedUpdateManyWithoutUserNestedInput

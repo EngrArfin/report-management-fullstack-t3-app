@@ -141,6 +141,7 @@ export class TargetService {
         name: om.name,
         designation: om.designation,
         zone: om.zone,
+        image: om.image ?? null,
         hasTargetSet: !!target,
         isLocked: target?.isLocked ?? false,
         // LOC

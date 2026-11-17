@@ -27,6 +27,7 @@ export default async function HomePage() {
     zone: u.zone,
     email: u.email,
     role: u.role as "ADMIN" | "OM",
+    image: u.image ?? null,
   }));
 
   return (

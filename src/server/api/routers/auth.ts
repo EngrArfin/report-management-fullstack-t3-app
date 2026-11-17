@@ -58,6 +58,7 @@ export const authRouter = createTRPCRouter({
           zone: user.zone,
           email: user.email,
           role: user.role as "ADMIN" | "OM",
+          image: user.image ?? null,
         },
       };
     }),
@@ -107,21 +108,59 @@ export const authRouter = createTRPCRouter({
     .input(
       z.object({
         userId: z.string(),
+        staffId: z.string().optional(),
         name: z.string().min(1, "Name is required"),
-        email: z.string().email("Invalid email address"),
         designation: z.string().min(1, "Designation is required"),
         zone: z.string().min(1, "Zone is required"),
+        image: z.string().nullable().optional(),
       })
     )
     .mutation(async ({ ctx, input }) => {
-      const updated = await ctx.db.user.update({
+      // 1. Resolve user by ID or Staff ID
+      let user = await ctx.db.user.findUnique({
         where: { id: input.userId },
-        data: {
-          name: input.name,
-          email: input.email,
-          designation: input.designation,
-          zone: input.zone,
+      });
+
+      if (!user && input.staffId) {
+        user = await ctx.db.user.findUnique({
+          where: { staffId: input.staffId },
+        });
+      }
+
+      user ??= await ctx.db.user.findFirst({
+        where: {
+          OR: [
+            { staffId: input.staffId },
+            { name: input.name },
+          ],
         },
+      });
+
+      if (!user) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "User record not found in database.",
+        });
+      }
+
+      const dataToUpdate: {
+        name: string;
+        designation: string;
+        zone: string;
+        image?: string | null;
+      } = {
+        name: input.name,
+        designation: input.designation,
+        zone: input.zone,
+      };
+
+      if (input.image !== undefined) {
+        dataToUpdate.image = input.image;
+      }
+
+      const updated = await ctx.db.user.update({
+        where: { id: user.id },
+        data: dataToUpdate,
       });
 
       return {
@@ -134,6 +173,7 @@ export const authRouter = createTRPCRouter({
           zone: updated.zone,
           email: updated.email,
           role: updated.role as "ADMIN" | "OM",
+          image: updated.image,
         },
       };
     }),

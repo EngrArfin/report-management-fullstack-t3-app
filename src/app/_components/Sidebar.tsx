@@ -98,8 +98,13 @@ export function Sidebar() {
           }`}
         >
           <div className="flex items-center gap-3 overflow-hidden">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white font-extrabold shadow-md shadow-blue-900/30">
-              OM
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-900 border border-slate-700/80 p-1 shadow-md shadow-blue-950/40 overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logo.png"
+                alt="Report Portal Logo"
+                className="h-full w-full object-contain rounded-full"
+              />
             </div>
             {!isSidebarCollapsed && (
               <div className="flex flex-col overflow-hidden">
@@ -196,8 +201,17 @@ export function Sidebar() {
             }`}
           >
             <div className="flex items-center gap-2.5 overflow-hidden">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-indigo-500/20 text-xs font-bold text-indigo-300">
-                {activeUser.name.charAt(0)}
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo-500/20 text-xs font-bold text-indigo-300 overflow-hidden border border-slate-700/60">
+                {activeUser.image ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={activeUser.image}
+                    alt={activeUser.name}
+                    className="h-full w-full object-cover"
+                  />
+                ) : (
+                  activeUser.name.charAt(0)
+                )}
               </div>
               {!isSidebarCollapsed && (
                 <div className="flex flex-col overflow-hidden text-left">

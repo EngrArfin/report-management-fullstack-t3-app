@@ -151,8 +151,17 @@ export function OmManagementView() {
                     <td className="py-3.5 px-4 font-mono font-bold text-indigo-400">{om.staffId}</td>
                     <td className="py-3.5 px-4 text-white font-semibold">
                       <div className="flex items-center gap-2">
-                        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-800 text-[10px] font-bold text-indigo-300">
-                          {om.name.charAt(0)}
+                        <div className="flex h-6.5 w-6.5 shrink-0 items-center justify-center rounded-full bg-slate-800 text-[10px] font-bold text-indigo-300 border border-slate-700/60 overflow-hidden">
+                          {om.image ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              src={om.image}
+                              alt={om.name}
+                              className="h-full w-full object-cover"
+                            />
+                          ) : (
+                            om.name.charAt(0)
+                          )}
                         </div>
                         <span>{om.name}</span>
                       </div>

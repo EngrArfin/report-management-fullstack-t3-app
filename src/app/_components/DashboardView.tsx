@@ -670,8 +670,17 @@ export function DashboardView() {
                       {/* Pinned Office Manager Name */}
                       <td className="sticky left-24 z-10 bg-slate-950 group-hover:bg-slate-900 py-3 px-4 text-white font-semibold border-r border-slate-800 shadow-[4px_0_8px_rgba(0,0,0,0.5)] transition-colors">
                         <div className="flex items-center gap-2.5">
-                          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-slate-800 text-[10px] font-black text-indigo-300 border border-slate-700">
-                            {om.name.charAt(0)}
+                          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-800 text-[10px] font-black text-indigo-300 border border-slate-700 overflow-hidden">
+                            {om.image ? (
+                              // eslint-disable-next-line @next/next/no-img-element
+                              <img
+                                src={om.image}
+                                alt={om.name}
+                                className="h-full w-full object-cover"
+                              />
+                            ) : (
+                              om.name.charAt(0)
+                            )}
                           </div>
                           <span>{om.name}</span>
                         </div>

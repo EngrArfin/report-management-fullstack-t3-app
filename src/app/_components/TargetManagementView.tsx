@@ -481,6 +481,18 @@ export function TargetManagementView() {
                           <span className="font-mono text-xs font-bold text-indigo-400 rounded bg-indigo-500/10 px-1.5 py-0.5 border border-indigo-500/20">
                             {row.staffId}
                           </span>
+                          <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-800 text-[10px] font-black text-indigo-300 border border-slate-700/60 overflow-hidden">
+                            {row.image ? (
+                              // eslint-disable-next-line @next/next/no-img-element
+                              <img
+                                src={row.image}
+                                alt={row.name}
+                                className="h-full w-full object-cover"
+                              />
+                            ) : (
+                              row.name.charAt(0)
+                            )}
+                          </div>
                           <span className="truncate max-w-[140px] sm:max-w-none">{row.name}</span>
                         </div>
                       </td>

@@ -6,7 +6,11 @@ import { TRPCReactProvider } from "~/trpc/react";
 export const metadata: Metadata = {
   title: "OM Weekly Report Management System",
   description: "Automated Office Manager Weekly Report Submission, Tracking, Summary & Analytics",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  icons: [
+    { rel: "icon", url: "/logo.png" },
+    { rel: "shortcut icon", url: "/logo.png" },
+    { rel: "apple-touch-icon", url: "/logo.png" },
+  ],
 };
 
 export default function RootLayout({

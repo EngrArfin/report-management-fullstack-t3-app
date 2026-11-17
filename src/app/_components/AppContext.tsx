@@ -10,6 +10,7 @@ export interface ActiveUser {
   zone: string;
   email: string;
   role: "ADMIN" | "OM";
+  image?: string | null;
 }
 
 interface AppContextType {

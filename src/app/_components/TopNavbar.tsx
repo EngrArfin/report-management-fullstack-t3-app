@@ -119,7 +119,7 @@ export function TopNavbar({ allZones }: TopNavbarProps) {
 
   return (
     <header className="sticky top-0 z-30 flex h-14 w-full items-center justify-between border-b border-slate-800/80 bg-slate-950/85 px-4 sm:px-6 backdrop-blur-2xl transition-all">
-      {/* Left: Mobile Navigation Button only */}
+      {/* Left: Mobile Navigation Button & Brand */}
       <div className="flex items-center gap-3">
         <button
           type="button"
@@ -129,6 +129,12 @@ export function TopNavbar({ allZones }: TopNavbarProps) {
         >
           <IconMenu className="h-5 w-5" />
         </button>
+
+        <div className="flex items-center gap-2 lg:hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo.png" alt="Report Portal Logo" className="h-7 w-7 object-contain rounded-full border border-slate-700/80 bg-slate-900 p-0.5" />
+          <span className="text-xs font-bold text-white tracking-tight">Report Portal</span>
+        </div>
       </div>
 
       {/* Right: Unified Minimal Filter Dropdown & Sleek User Logo/Avatar */}
@@ -323,7 +329,7 @@ export function TopNavbar({ allZones }: TopNavbarProps) {
               setIsUserMenuOpen((prev) => !prev);
               setIsFilterOpen(false);
             }}
-            className={`relative flex h-8.5 w-8.5 items-center justify-center rounded-xl border transition-all duration-200 outline-none cursor-pointer shadow-sm ${
+            className={`relative flex h-8.5 w-8.5 items-center justify-center rounded-full border transition-all duration-200 outline-none cursor-pointer shadow-sm ${
               isUserMenuOpen
                 ? "border-indigo-500 bg-slate-800 ring-2 ring-indigo-500/20"
                 : "border-slate-800 bg-slate-900/90 hover:border-slate-700 hover:bg-slate-800"
@@ -331,13 +337,24 @@ export function TopNavbar({ allZones }: TopNavbarProps) {
             title="User Profile Menu"
           >
             <div
-              className={`flex h-6.5 w-6.5 items-center justify-center rounded-lg text-xs font-bold ${
+              className={`flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold overflow-hidden ${
                 activeUser.role === "ADMIN"
                   ? "bg-slate-800 text-amber-300 border border-amber-500/30"
                   : "bg-slate-800 text-blue-300 border border-blue-500/30"
               }`}
             >
-              {activeUser.role === "ADMIN" ? "AD" : getInitials(activeUser.name)}
+              {activeUser.image ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={activeUser.image}
+                  alt={activeUser.name}
+                  className="h-full w-full object-cover"
+                />
+              ) : activeUser.role === "ADMIN" ? (
+                "AD"
+              ) : (
+                getInitials(activeUser.name)
+              )}
             </div>
             {/* Active online dot */}
             <span className="absolute -bottom-0.5 -right-0.5 h-2 w-2 rounded-full border border-slate-950 bg-emerald-400" />
@@ -350,13 +367,24 @@ export function TopNavbar({ allZones }: TopNavbarProps) {
               <div className="rounded-xl border border-slate-800/80 bg-gradient-to-br from-slate-900 to-slate-950 p-3 shadow-inner">
                 <div className="flex items-center gap-3">
                   <div
-                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-xs font-bold ${
+                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-xs font-bold overflow-hidden ${
                       activeUser.role === "ADMIN"
                         ? "bg-slate-800 text-amber-300 border border-amber-500/30"
                         : "bg-slate-800 text-blue-300 border border-blue-500/30"
                     }`}
                   >
-                    {activeUser.role === "ADMIN" ? "AD" : getInitials(activeUser.name)}
+                    {activeUser.image ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={activeUser.image}
+                        alt={activeUser.name}
+                        className="h-full w-full object-cover"
+                      />
+                    ) : activeUser.role === "ADMIN" ? (
+                      "AD"
+                    ) : (
+                      getInitials(activeUser.name)
+                    )}
                   </div>
                   <div className="flex flex-col min-w-0">
                     <div className="flex items-center gap-1.5">

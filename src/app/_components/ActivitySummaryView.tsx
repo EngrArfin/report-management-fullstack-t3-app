@@ -293,7 +293,21 @@ export function ActivitySummaryView() {
                       </span>
                     </td>
                     <td className="sticky left-24 z-10 bg-slate-950 group-hover:bg-slate-900 py-3 px-3 text-white font-semibold border-r border-slate-800 shadow-[4px_0_8px_rgba(0,0,0,0.5)] transition-colors">
-                      {row.name}
+                      <div className="flex items-center gap-2">
+                        <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-800 text-[10px] font-black text-indigo-300 border border-slate-700/60 overflow-hidden">
+                          {row.image ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              src={row.image}
+                              alt={row.name}
+                              className="h-full w-full object-cover"
+                            />
+                          ) : (
+                            row.name.charAt(0)
+                          )}
+                        </div>
+                        <span>{row.name}</span>
+                      </div>
                     </td>
                     <td className="py-3 px-2 text-slate-400">{row.designation}</td>
                     <td className="py-3 px-3 text-slate-300">
